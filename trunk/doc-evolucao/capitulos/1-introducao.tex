@@ -2,7 +2,7 @@
 
 \section{Objetivos} % Apresentar de forma precisa e concisa o objetivo do projeto.
 
- O objetivo principal deste projeto é criar um sistema de recomendação baseado em dados obtidos através de redes sociais que possibilite a identificação das opiniões e expectativas a respeito de produtos e/ou serviços. Há um esquema de reputação a ser considerado pelo sistema para que apenas recomendações relevantes sejam consideradas e as pessoas possam receber informação de fontes confiáveis.
+ O principal objetivo deste projeto é criar um sistema de recomendação baseado em documentos obtidos através da internet que possibilite a sugestão de itens confiáveis e relevantes ao usuário.
 
 \section{Escopo}
 
@@ -35,7 +35,64 @@
 
  Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus gostos. Tais recomendações são relativas a produtos/serviços mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{imagens/escopo}
+  \caption{\it Diagrama de blocos do sistema}
+  \label{fig:escopo}
+\end{figure}
+
+A Figura~\ref{fig:escopo} exibe o diagrama de blocos do sistema.
+
+\subsubsection{Estrutura Analítca do Projeto} % (fold)
+\label{ssub:estrutura_analítca_do_projeto}
+
+\begin{itemize}
+
+	\item Planejamento
+		\subitem Definição do Escopo
+			\subsubitem Examinar os objetivos do projeto
+			\subsubitem Examinar os recursos necessários
+			\subsubitem Elaborar o product backlog
+		
+	\item Pesquisa Bibliográfica
+		\subitem Sistema de Recomendação
+			\subsubitem Baseados em Conteúdo
+			\subsubitem Filtragem Colaborativa
+			\subsubitem Baseados em Confiança
+		\subitem Web Semântica
+			\subsubitem Microformatos
+			\subsubitem Resource Description Framework (RDF)
+			\subsubitem Web Ontology Language (OWL)
+		\subitem Web Social
+			\subsubitem Padrões de Projeto Sociais
+	
+	\item Conceituação
+		\subitem Construir cenários e personas
+		\subitem Selecionar as soluções possíveis e as funcionalidades necessárias
+		\subitem Arquitetura da informação
+		\subitem Avaliar a melhor solução
+		
+	\item Desenvolvimento
+		\subitem Sistema de recomendação
+			\subsubitem Captura e Parsing de documentos
+			\subsubitem Algortimo de recomendação
+			\subsubitem Interface de consulta de recomendações
+		\subitem Base de documentos semânticos
+		\subitem Front-End
+			\subsubitem Aplicação para rede social
+			\subsubitem Camada de Apresentação
+			\subsubitem Integração com a base de documentos
+			\subsubitem Integração com o Sistema de recomendação
+
+\end{itemize}
+
+
+% subsubsection estrutura_analítca_do_projeto (end)
+
 \section{Motivação} % Apresentar a motivação e justificativa para a realização do trabalho (por exemplo, sua aplicabilidade prática, comparação com alternativas já existentes, potencial de aprendizado e evolução, etc).
+
+ Recomendações sugerem itens para as pessoas ao invés de esperar que estes sejam descobertos passivamente. Ao oferecer valor aos usuários, fazendo suposições pertinentes sobre o tipo de objetos em que estão interessados, é possível conquistar a confiança deles. A vantagem para os usuários é a facilidade de encontrar a informação sem a ter a árdua tarefa de procurala.
 
  As plataformas sociais online têm modificado a forma com que as empresas utilizam a comunicação para o comércio. Pessoas estão utilizando a Internet para encontrar outras pessoas com interesses similares, fazer compras de forma mais eficiente, aprender sobre produtos e serviços e reclamar sobre produtos malfeitos e serviços pobres\cite{marketing_social_web}.
 
@@ -43,20 +100,26 @@
 
  Devido à grande variedade atual de produtos e serviços, as pessoas têm cada vez mais dificuldade nas suas escolhas e na argumentação sobre a possível decisão. Quanto mais produtos similares de fabricantes diferentes ou serviços realizados por diversos prestadores, mais as pessoas se vêem desnorteadas e sem saber se a decisão realizada foi a mais correta. O mesmo ocorre com as empresas na hora de lançar os seus produtos. Os seus clientes pedem cada vez mais inovações e não há como saber a opinião de cada pessoa ou de um determinado grupo de pessoas sobre as novas características agregadas a um produto já lançado ou sobre novos produtos que agregarão tais inovações tecnológicas. Se a empresa tivesse posse dessas informações, ela também poderia decidir sobre o seu melhor caminho, ou seja, em quais tecnologias ou tipos de serviço investir.
 
- O projeto visa ter como resultado um produto que auxilia esse processo de decisão com base na opinião das pessoas diretamente envolvidas. O sistema não pretende influenciar as pessoas e nem ao menos estreitar as opções que elas têm, mas sim organizar as opiniões de todos e deixar transparecer a outros a opinião alheia com o intuito de fazer com que os que deixaram a sua opinião possam ser ouvidos pelos outros e ter a sua escolha levada em conta pelo sistema.
+ O projeto visa ter como resultado um produto que auxilia o processo de escolha com base na opinião das pessoas diretamente envolvidas. O sistema pretende organizar as opiniões de todos e deixar transparecer a opinião alheia, dessa forma as opiniões registradas podem ser capturadas pela comunidade.
 
 \section{Alterações no Escopo do Projeto}
 
- Inicialmente o escopo do projeto englobava a criação de uma rede social utilizada como fim para recomendações de bares e restaurantes. Os usuários procuravam estabelecimentos cadastrados na rede e conseguiam informações sobre os serviços prestados de acordo com notas e comentários feitos por outros usuários. Com isso, eles podiam recomendar bares e restaurantes para outros usuários e também para tags. As tags serviam para classificar estabelecimentos em determinados grupos para facilitar a busca e identificação dos mesmos.
+ Inicialmente o escopo do projeto englobava a criação de uma rede social utilizada para recomendações de bares e restaurantes. Os usuários procuravam estabelecimentos cadastrados na rede e conseguiam informações sobre os serviços prestados de acordo com notas e comentários feitos por outros usuários. Com isso, eles podiam recomendar bares e restaurantes para outros usuários.
 
  Também dentro do escopo estavam definidos os donos dos estabelecimentos que podiam tomar o cadastro próprio e gerenciá-lo para obter as informações estatísticas de quais tipos de pessoas haviam frequentado o seu bar ou restaurante. Com isso, formava-se um canal de comunicação com o cliente que consistia na resposta a perguntas feitas diretamente ao estabelecimento, além de divulgação de informações e novidades sobre o seu negócio.
 
- As alterações no escopo consistem principalmente no uso da rede social que não será mais utilizada como "fim" e sim como "meio". O projeto agora visa a criação de uma ferramenta de groupware para que os usuários que utilizam a rede possam marcar encontros e reuniões nos bares e restaurantes cadastrados. Groupware é um software colaborativo que apóia o trabalho em grupo.
+ A segunda alteração no escopo do projeto tinha como objetivo a criação de uma ferramenta de groupware para que os usuários que utilizavam a rede pudessem marcar encontros e reuniões nos bares e restaurantes cadastrados. Groupware é um software colaborativo que apóia o trabalho em grupo. Nesse sistema o usuário poderia propor aos seus amigos um encontro em um determinado estabelecimento, sendo que os convidados poderiam aceitar ir ou não ao evento na data e horário estipulados.
 
- Um usuário pode propor aos seus amigos, por meio da rede social, um encontro em um determinado estabelecimento, sendo que os convidados podem aceitar ir ou não ao evento na data e horário estipulados. No caso negativo, a pessoa pode sugerir um outro evento ou modificações no evento atual. No final, o sistema transparece a opinião mais adequada para o grupo considerando as restrições de cada um dos integrantes.
+ Por fim, a terceira modificação no escopo do projeto direciona a um objetivo próximo ao incialmente proposto. Após esta última alteração, o foco do projeto tornou-se o sistema de recomendação. Este sistema será alimentado com informações obtidas através de documentos semanticamente estruturados que descrevem produtos, eventos, avaliações e pessoas. Além disso o sistema de recomendação poderá considerar outros fatores tais como: semelhanças nas avaliações feitas por usuários; e na confiança de um usuário em outro. Baseado nestas informações o sistema deve sugerir novos itens ao usuário, de tal forma que estes sejam relevantes e confiáveis.
 
 \subsection{Aplicações do Produto}
+ 
+ O sistema pode ser aplicado para sugestão de qualquer item ao usuário, independentemente do conteúdo. No entanto, para permitir um experiência mais rica ao usuário as sugestões estarão restritas a documentos semanticamente estruturados. Estes documentos podem representar produtos, empresas, eventos, pessoas, lugares, websites e urls.
+ 
+ Agregando o comportamento de vários usuários é possível identificar tendências e gerar recomendações baseadas nelas. Outra maneira de pensar nisto é que o sistema procura usuários que se comportam de maneira parecida quando estão escutando músicas, vendo filmes, ou lendo notícias.
+ 
+ As relações de confiança entre usuários expressas através da Internet permitem que o sistema fornceça informações mais confiáveis para o usuário. Dessa forma, evita-se o uso do sistema para manipulação indevida.
 
- O produto pode ser aplicado na organização de amigos que queiram se encontrar em um bar ou restaurante e em empresas que queiram ouvir o que seus clientes estão falando sobre o seu produto. Além disso, pode ser usado em academias que queiram mudar a grade horária de suas atividades e aulas, assim como escolas de inglês e cursos de informática. Em todo e qualquer lugar em que a opinião de cada pessoa envolvida seja importante o produto pode ser aplicado.
+ As recomendações geradas podem causar a serendipidade, ou seja, descobertas afortunadas de itens antes desconhecidos pelo usuário. Dessa forma, o usuário é capaz de econtrar uma informação de qualidade sem mesmo precisar procurala.
 
- No caso da organização de amigos que queiram se encontrar em um bar ou restaurante, o sistema funcionaria inicialmente com a recomendação de uma pessoa para um grupo de amigos propondo um encontro em um determinado estabelecimento em uma data e horário. O aplicativo deve ouvir a todos os que foram relacionados expondo a sua opinião sobre a proposta e informando se a pessoa concorda em estar no local e hora escolhidos. Qualquer um deles pode propor outro tipo de bar ou restaurante caso não goste do estabelecimento em questão e, desse modo, as pessoas poderão também decidir sobre essa nova proposta. Após todos terem opinado ou um tempo limite ter sido atingido (por exemplo: um dia antes da data marcada), o sistema indica, também podendo ser de acordo com o respaldo e poder de cada um dos envolvidos, qual foi a decisão da maioria. Quando utilizado como ferramenta de escuta das opiniões de clientes e consumidores, o aplicativo pode funcionar como canal de comunicação da diretoria de academias ou escolas de inglês. Desse modo, a diretoria propõe novas aulas, cursos ou grades horárias e obtém do sistema a opinião dos envolvidos (alunos neste caso). Com uma resposta de maioria positiva, a diretoria teria um embasamento na sua tomada de decisão. Em empresas que lancem produtos com inovações tecnológicas, há a possibilidade da empresa escutar aos seus clientes e verificar se um dado produto tem aceitação pela maioria interessada ou não.
+ Com base nas característas descritas acima, o sistema é adequado para servir de como ferramenta de apoio ao usuário em sistemas de e-commerce, através da sugestão de produtos, serviços e eventos nos quais o usuário pode vir a se interessar.
