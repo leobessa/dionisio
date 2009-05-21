@@ -1,0 +1,168 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage[brazilian,english]{babel}
+\usepackage{indentfirst}
+\usepackage{a4wide}
+\usepackage[section]{placeins}
+\usepackage[utf8]{inputenc}
+% \usepackage[Conny]{fncychap}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{type1cm}
+\usepackage{courier}
+\usepackage[scaled]{helvet}
+\usepackage{epigraph}
+\renewcommand*\familydefault{\sfdefault}
+
+\hyphenation{
+  es-ta-be-le-ci-do
+  a-de-qua-da-men-te
+  pro-ble-mas
+  di-men-sio-na-men-to
+  mo-de-lo
+}
+
+% Controlar linhas orfas e viuvas
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Formatar notas de rodape
+\usepackage[hang]{footmisc}
+\setlength{\footnotemargin}{1em}
+
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+\usepackage[left=3cm,top=3cm,right=2cm,bottom=2cm,includehead,ignoremp]{geometry}
+
+\usepackage[small]{titlesec}
+% \titlespacing{\chapter}{0pt}{-50pt}{*20}[0pt]
+\titlespacing{\chapter}{0pt}{*-10}{*5}
+
+% Running Headers and footers
+\usepackage{fancyhdr}
+% \pagestyle{fancy}
+\pagestyle{headings}
+% Redefine plain page style
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhead[LE,RO]{\thepage}
+}
+
+\linespread{1.3}
+%\pdfpagewidth=\paperwidth
+%\pdfpageheight=\paperheight
+
+% Para habilitar cálculos em dimensões
+\usepackage{calc}
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+%\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\title{Dionisio}
+\author{Allan Douglas R. de Oliveira \\ allandouglas@gmail.com \and
+Leonardo Nicacio Bessa \\ leobessa@gmail.com \and
+Thiago Rodrigues Andrade \\ suffragiumgmail.com}
+\date{2009-04-22}
+
+\usepackage[absolute]{textpos}
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.png, .pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+%\maketitle
+\pagestyle{empty}
+\include{capitulos/00-capa}
+%\include{capitulos/01-falso-rosto}
+\include{capitulos/02-rosto}
+%\include{capitulos/01-introducao}
+
+%\include{capitulos/03-dedicatoria}
+% agradecimentos (opcional)
+%\include{capitulos/05-epigrafe}
+
+\pagenumbering{roman}
+
+% Resumo e Abstract
+\selectlanguage{brazilian}
+%  \begin{abstract}
+%    \input{capitulos/resumo}
+%  \end{abstract}
+%\begin{otherlanguage}{english}
+%  \begin{abstract}
+%    \input{capitulos/abstract}
+%  \end{abstract}
+%\end{otherlanguage}
+
+%\listoffigures \thispagestyle{headings} % Lista de Figuras
+
+% \listoftables \thispagestyle{empty} % Lista de Tabelas
+
+\tableofcontents \thispagestyle{headings} % Sumario
+
+% lista de abreviaturas e siglas (opcional)
+% lista de simbolos (opcional)
+
+\pagestyle{headings}
+
+% Elementos de Texto
+\include{capitulos/1-introducao}
+%\include{capitulos/2-aspectos-conceituais}
+%\include{capitulos/3-especificacao}
+%\include{capitulos/4-metodologia}
+%\include{capitulos/5-implementacao}
+%\include{capitulos/6-testes}
+%\include{capitulos/7-conclusoes}
+
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+\bibliographystyle{abnt-num}   %\bibliographystyle{plain}
+% \bibliography{bibname.bib} % bibname=nome do seu arquivo BibTeX
+\include{capitulos/bibliografia}
+
+%\addcontentsline{toc}{chapter}{Glossário}
+%\include{capitulos/glossario}
+
+% anexos (opcional)
+%\addcontentsline{toc}{chapter}{\appendixname}
+%\appendix
+%\input{capitulos/apendice-A}
+%\input{capitulos/apendice-B}
+
+% indice remissivo (opcional)
+
+\end{document}
