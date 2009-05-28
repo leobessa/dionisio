@@ -2,17 +2,47 @@
 \label{cha:web_semantica}
 % Tecnologias e conceitos empregados, contextualização do Projeto de Formatura em sua área de aplicação, revisão da literatura.
 
-A Web é um sistema de documentos em hipermídia que são interligados e executados na Internet. A maioria do conteúdo disponível na Web atualmente é projetado para a leitura por seres humanos, e não possibilitar a utilização por programas de computador de forma significativa.\cite{the_semantic_web} Segundo BERNERS-LEE, a Web Semântica não é uma Web separada, mas um extensão da atual, na qual a informação é disponibilizada com sentido bem definido, aprimorando a capacidade colaboração entre pessoas e computadores.
+\section{World Wide Web} % (fold)
+\label{sec:world_wide_web}
 
-%The Semantic Web is not a separate Web but an extension of the current one, in which information is given well-defined meaning, better enabling computers and people to work in cooperation.
+
+A Web é um sistema de documentos em hipermídia que são interligados e executados na Internet. A maioria do conteúdo disponível na Web atualmente é projetado para a leitura por seres humanos. A utilização de programas de computador para interpretação desse conteúdo é complexa devido a baixa flexibilidade dos programas em relação aos humanos. Se por um lado os aplicativos são menos flexíveis que os seres humanos para a interpretação, por outro eles são capazes de desenvolver e analisar estruturas de dados complexas. A Web Semântica, apresentada a seguir, baseia-se nessa virtude do software. 
+
+% Novas tecnologias como RSS, XML-RPC e SOAP foram desenvolvidas para facilitar o acesso a algumas informações disponíveis nas páginas da Web.
+
+Segundo BERNERS-LEE, a Web Semântica não é uma Web separada, mas um extensão da atual, na qual a informação é disponibilizada com sentido bem definido, aprimorando a capacidade de cooperação entre pessoas e computadores\cite{the_semantic_web}. Os documentos nesta extensão da Web são convenientes para utilização tanto por humanos como por programas.
 
 % 2.	A WS precisará de uma base de dados centralizada para poder raciocinar?
 
 Da mesma forma que os humanos buscam informações em bases de dados descentralizadas na Web, com a adoção da Web Semântica agentes computacionais poderão fazer o mesmo. Essa descentralização de documentos permite que inconsistências ocorram, porém possibilita um rápido crescimento no volume de dados.
 
+%The Semantic Web is not a separate Web but an extension of the current one, in which information is given well-defined meaning, better enabling computers and people to work in cooperation.
+
+A W3C realiza trabalhos para aprimorar, extender e padranizar a Web. Tecnologias para representação estrutural e semântica dos recursos na Web foram desenvoldidas pelo consórcio, resultando em um conjunto de especificações para a Web Semântica. Atualmente este conjunto é composto pelo Resource Description Framework (RDF), a linguagem RDF Schema e a Web Ontology Language (OWL).
+
+
 % 3.	Explicar a diferença entre apresentar dados e entender dados no contexto da web atual?
 
+\subsection{Protocolo HTTP} % (fold)
+\label{sub:protocolo_http}
 
+% O que torna o protocolo HTTP, um protocolo designado a carregar notas de projetos em um laboratório de física, também adequado para aplicações Internet distribuídas?
+
+
+% subsection protocolo_http (end)
+
+\subsection{Padrão de Nomenclatura URI} % (fold)
+\label{sub:padrão_de_nomenclatura_uri}
+
+% subsection padrão_de_nomenclatura_uri (end)
+
+\subsection{Linguagem de Marcação} % (fold)
+\label{sub:linguagem_de_marcação}
+
+
+% subsection linguagem_de_marcação (end)
+
+% section world_wide_web (end)
 \section{Representação de Conhecimento} % (fold)
 \label{sec:representação_de_conhecimento}
 
@@ -21,15 +51,19 @@ Da mesma forma que os humanos buscam informações em bases de dados descentrali
 
 %5.	Como se expressa algo usando RDF?
 
-\subsubsection{Ontologia} % (fold)
+\subsection{Ontologia} % (fold)
 \label{ssub:ontologia}
 
 %6.	Defina ontologia e mostre um exemplo?
+
+% an ontology is a formal explicit description of concepts in a domain of discourse (classes (sometimes called concepts)), properties of each concept describing various features and attributes of the concept (slots (sometimes called roles or properties)), and restrictions on slots (facets (sometimes called role restrictions)). An ontology together with a set of individual instances of classes constitutes a knowledge base. In reality, there is a fine line where the ontology ends and the knowledge base begins.
 
 %7.	Em termos físicos, onde ficam as ontologias a serem utilizadas na Web Semântica?
 
 %8.	O que são regras de inferência e como elas se relacionam às ontologias?
 
+% The WWW Consortium (W3C) is developing the Resource Description Framework (Brickley and Guha 1999), a language for encoding knowledge on Web pages to make it understandable to electronic agents searching for information. [Ontology Development 101: A Guide to Creating Your First Ontology]
+% Sharing common understanding of the structure of information among people or software agents  is one of the more common goals in developing ontologies (Musen 1992; Gruber 1993). For example, suppose several different Web sites contain medical information or provide medical e-commerce services. If these Web sites share and publish the same underlying ontology of the terms they all use, then computer agents can extract and aggregate information from these different sites. The agents can use this aggregated information to answer user queries or as input data to other applications. [Ontology Development 101: A Guide to Creating Your First Ontology]
 
 % subsubsection ontologia (end)
 
