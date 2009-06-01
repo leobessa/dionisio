@@ -1,19 +1,42 @@
 \chapter{SISTEMAS DE RECOMENDAÇÃO} \pagenumbering{arabic}% (fold)
 \label{cha:sistemas_de_recomendação}
 
-\section{Sistemas baseados em conteúdo} % (fold)
-\label{sec:sistemas_baseados_em_conteúdo}
+\section{Introdução}
+Sistemas de recomendação são aqueles que sugerem itens ao seus usuários de forma a ajudá-los a encontrar mais efetivamente os itens de maior interesse dentre uma variedade imensa de opções.
 
-% section sistemas_baseados_em_conteúdo (end)
+A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas vezes escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre o produto ou em resenhas encontradas em revistas e jornais.
 
-\section{Sistemas baseados em filtragem colaborativa} % (fold)
-\label{sec:sistemas_baseados_em_filtragem_colaborativa}
+Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
 
-% section sistemas_baseados_em_filtragem_colaborativa (end)
+\section{Contexto histórico}
+O primeiro sistema de recomendação, Tapestry~\footnote{ver \cite{Goldberg92}}, foi desenvolvido no início da década de 90.~\cite{Resnick97} Na última década o sistemas, principalmente os baseado em filtragem colaborativa, foram um grande foco de estudo~\cite{Herlocker04}.
 
-\section{Sistemas baseados em percepção de confiança} % (fold)
-\label{sec:sistemas_baseados_em_percepção_de_confiança}
+Graças ao acumulo de informações provenientes da web social, observa-se hoje que vários sistemas de recomendação podem ser experimentados pelo usuários da Internet, como por exemplo:
 
-% section sistemas_baseados_em_percepção_de_confiança (end)
+\begin{itemize}
+\item 
+A Amazon\footnote{http://www.amazon.com} e o Submarino\footnote{http://www.submarino.com.br}, lojas virtuais de artigos diversos, recomendam itens semelhantes para aqueles usuários que compram um produto ou manifestam interesse em comprá-lo.
 
-% chapter sistemas_de_recomendaçãoo (end)
+\item O Last.fm\footnote{http://last.fm}, uma rede social focada em música, recomenda artistas e canções semelhantes àquelas que os usuários mais gostam de ouvir.
+
+\item O Digg (citar) e o Delicious (citar), sistemas de compartilhamento de links(footnote para bookmark), geram uma lista geral de links recomendados baseado nas opiniões dos usuários do sistema.
+
+\item O StumbleUpon (citar), também um sistema online de compartilhamento de links, permite que os usuários recebam recomendações de links e avaliem se eles gostaram ou não daquele link, gerando recomendações personalizadas baseadas nessa avaliação.
+\end{itemize}
+
+
+\section{Classificações dos sistemas de recomendação}
+
+Nas próximas seções serão apresentadas as diferentes abordagens para se implementar sistemas de recomendação. As primeiras abordagens foram as com filtragem baseada em conteúdo (citar alguém), depois criou-se a filtragem social, utilizando inicialmente a vertente chamada filtragem colaborativa (citar alguém). Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem. Na seção (seção XXX) serão discutidos as diferentes implementações encontradas na literatura.
+
+\subsection{Filtragem baseada em conteúdo} % (fold)
+\cite{Balabanovi97}
+
+\subsection{Filtragem social} % (fold)
+
+\subsubsection{Filtragem colaborativa}
+
+\subsubsection{Filtragem baseada em confiança} % (fold)
+
+\section{Discussão sobre as diferentes abordagens}
+
