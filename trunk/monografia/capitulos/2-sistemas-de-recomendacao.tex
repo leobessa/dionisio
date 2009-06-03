@@ -2,14 +2,14 @@
 \label{cha:sistemas_de_recomendação}
 
 \section{Introdução}
-Sistemas de recomendação são aqueles que sugerem itens ao seus usuários de forma a ajudá-los a encontrar mais efetivamente os itens de maior interesse dentre uma variedade imensa de opções.
+Sistemas de recomendação~\footnote{Em inglês, \textit{Recommender systems}} são aqueles que sugerem itens ao seus usuários de forma a ajudá-los a encontrar mais efetivamente os itens de maior interesse dentre uma variedade imensa de opções.
 
 A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas vezes escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre o produto ou em resenhas encontradas em revistas e jornais.
 
 Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
 
 \section{Contexto histórico}
-O primeiro sistema de recomendação, Tapestry~\footnote{ver \cite{Goldberg92}}, foi desenvolvido no início da década de 90.~\cite{Resnick97} Na última década o sistemas, principalmente os baseado em filtragem colaborativa, foram um grande foco de estudo~\cite{Herlocker04}.
+O primeiro sistema de recomendação, Tapestry~\footnote{Ver \cite{Goldberg92}}, foi desenvolvido no início da década de 90.~\cite{Resnick97} Na última década o sistemas, principalmente os baseado em filtragem colaborativa, foram um grande foco de estudo~\cite{Herlocker04}.
 
 Graças ao acumulo de informações provenientes da web social, observa-se hoje que vários sistemas de recomendação podem ser experimentados pelo usuários da Internet, como por exemplo:
 
@@ -27,18 +27,30 @@ A Amazon~\footnote{http://www.amazon.com} e o Submarino~\footnote{http://www.sub
 
 \section{Classificações dos sistemas de recomendação}
 
-Nas próximas seções serão apresentadas as diferentes abordagens para se implementar sistemas de recomendação. As primeiras abordagens foram as com filtragem baseada em conteúdo (citar alguém), depois criou-se a filtragem social, utilizando inicialmente a vertente chamada filtragem colaborativa (citar alguém). Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem. Na seção (seção XXX) serão discutidos as diferentes implementações encontradas na literatura.
+Nas próximas seções serão apresentadas as diferentes abordagens para a implementação de sistemas de recomendação. As primeiras abordagens foram a filtragem colaborativa e a filtragem baseada em conteúdo. Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem. Na seção (seção XXX) serão discutidos as diferentes implementações encontradas na literatura.
 
 \subsection{Filtragem baseada em conteúdo} % (fold)
 A filtragem baseada em conteúdo consiste na extração de \textit{features} dos itens a serem recomendados e da comparação desses \textit{features} com aqueles que formam o  perfil histórico do usuário. Esse é um dos primeiros métodos que surgiram e sua origem está na comunidade de \textit{information retrieval}.~\cite{Balabanovi97}
 
 Como exemplo, suponha-se que se queira recomendar documentos em formato texto. Os features nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela frequência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se os features (palavras) presentes podem ser encontrados em grande frequência nos documentos avaliados positivamente pelo usuário no passado.
 
-Outros exemplos de features que podem ser usados em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras.
+Outros exemplos de features que podem ser usados em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras palavras-chave.
+
+(falar um pouquinho porque é bom/ruim)
 
 \subsection{Filtragem social} % (fold)
 
+% Revisar o seguinte paper e ver se as referencias deles são melhores:                Recommendation as Classi cation: Using Social and Content-Based Information in Recommendation
+% Talvez usar o Pazzani96syskill para falar de content-based
+
+A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hill95}} consiste em um conjunto de técnicas que utilizam o contexto e as relações sociais de uma comunidade de usuários para fazer recomendações. Ao contrário da filtragem colaborativa, o conteúdo de cada item não é analisado, possibilitando-se recomendar qualquer tipo de item.
+
 \subsubsection{Filtragem colaborativa}
+
+O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings}} dos itens que podem ser recomendados. Isso resultada em uma tripla (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário. O primeiro passo é encontrar os usuários mais semelhantes a este usuário que vai receber a recomendação. Após esses usuários forem encontrados, a lista de recomendação consistirá dos itens melhor avaliados por cada um deste usuários, sendo o ranking de cada item o produto \textit{rating} do usuário para este item x semelhança deste usuário em relação ao usuário que receberá a recomendação. (transformar esta uma frase em uma expressão matemática)
+
+% Ler e citar \cite{Breese98} para explicar o algoritmo básico de collaborative filtering
+
 
 \subsubsection{Filtragem baseada em confiança} % (fold)
 
