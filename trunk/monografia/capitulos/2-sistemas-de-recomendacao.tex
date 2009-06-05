@@ -47,9 +47,35 @@ A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hil
 
 \subsubsection{Filtragem colaborativa}
 
-O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings}} dos itens que podem ser recomendados. Isso resultada em uma tripla (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário. O primeiro passo é encontrar os usuários mais semelhantes a este usuário que vai receber a recomendação. Após esses usuários forem encontrados, a lista de recomendação consistirá dos itens melhor avaliados por cada um deste usuários, sendo o ranking de cada item o produto \textit{rating} do usuário para este item x semelhança deste usuário em relação ao usuário que receberá a recomendação. (transformar esta uma frase em uma expressão matemática)
+O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}} dos itens que podem ser recomendados. Isso resulta em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário. Na descrição a seguir, este usuário a quem se deseja recomendar algo será chamado usuário ativo. A avaliação de um item feita por um usuário será chamada de voto. Os passos são os seguintes:
 
-% Ler e citar \cite{Breese98} para explicar o algoritmo básico de collaborative filtering
+\begin{enumerate}
+\item 
+Para cada usuário do sistema, determina-se a similaridade entre este usuário e o usuário ativo. Este valor será designado por $w$\footnote{Do inglês, \textit{weight}, pois como será visto, esta similaridade é o peso do voto daquele usuário no valor final previsto}.
+
+\item Para cada item do sistema não avaliado pelo usuário ativo, calcula-se o voto previsto $p$ para aquele item utilizando-se o voto de cada usuário que avaliou aquele item e a similaridade $w$ daquele usuário e o usuário ativo.
+\end{enumerate}
+
+A lista de itens recomendados será formada pelos $n$ itens com os maiores votos previstos ordenados decrescentemente.
+
+Mais detalhadamente, o algoritmo básico é o seguinte:
+
+Sendo $v_{i,j}$ o voto do usuário $i$ para o item $j$, $I_{i}$ o conjunto de itens que foram avaliados pelo usuário $i$, define-se voto médio de um usuário $i$ como:
+
+\begin{equation}
+ \bar{v_{i}} = \frac{1}{|I_{i}|} \sum_{j \in I_{i}} v_{i,j}
+\end{equation}
+
+O valor previsto do voto do usuário ativo $a$ para o item $j$, será dado por:
+
+\begin{equation}
+ p_{a,j} = \bar{v_{a}} + \sum_{i=1}^n{w(a,i) (v_{i,j} - \bar{v_{i})}}
+\end{equation}
+
+onde $n$ é o número de usuários do sistema e $w(a,i)$ é a similaridade entre o usuário $a$ e o usuário $i$.
+
+Para mais detalhes e variações deste método, ver \cite{Breese98}.
+% Explicar com mais detalhes o método e citar outros tipos de w
 
 
 \subsubsection{Filtragem baseada em confiança} % (fold)
