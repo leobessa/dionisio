@@ -10,7 +10,7 @@ A Web é um sistema de documentos em hipermídia que são interligados e executa
 
 % Novas tecnologias como RSS, XML-RPC e SOAP foram desenvolvidas para facilitar o acesso a algumas informações disponíveis nas páginas da Web.
 
-Segundo BERNERS-LEE, a Web Semântica não é uma Web separada, mas um extensão da atual, na qual a informação é disponibilizada com sentido bem definido, aprimorando a capacidade de cooperação entre pessoas e computadores\cite{the_semantic_web}. Os documentos nesta extensão da Web são convenientes para utilização tanto por humanos como por programas.
+Segundo Berners-Lee \cite{the_semantic_web}, a Web Semântica não é uma Web separada, mas um extensão da atual, na qual a informação é disponibilizada com sentido bem definido, aprimorando a capacidade de cooperação entre pessoas e computadores. Os documentos nesta extensão da Web são convenientes para utilização tanto por humanos como por programas.
 
 % 2.	A WS precisará de uma base de dados centralizada para poder raciocinar?
 
@@ -18,10 +18,14 @@ Da mesma forma que os humanos buscam informações em bases de dados descentrali
 
 %The Semantic Web is not a separate Web but an extension of the current one, in which information is given well-defined meaning, better enabling computers and people to work in cooperation.
 
-A W3C realiza trabalhos para aprimorar, extender e padranizar a Web. Tecnologias para representação estrutural e semântica dos recursos na Web foram desenvoldidas pelo consórcio, resultando em um conjunto de especificações para a Web Semântica. Atualmente este conjunto é composto pelo Resource Description Framework (RDF), a linguagem RDF Schema e a Web Ontology Language (OWL).
+A W3C realiza trabalhos para aprimorar, extender e padranizar a Web. Com o apoio de uma equipe especializada do consórcio, tecnologias para representação estrutural e semântica dos recursos na Web foram desenvoldidas, resultando em um conjunto de especificações para a Web Semântica. Atualmente este conjunto é basicamente composto pelo Resource Description Framework (RDF), a linguagem RDF Schema e a Web Ontology Language (OWL).
 
 
 % 3.	Explicar a diferença entre apresentar dados e entender dados no contexto da web atual?
+
+Os mecanismos de busca atualmente utilizados na Web são capazes de listar os sites que contenham os termos desejados, bem como orderna-los de acordo com critérios de relevância. Considerando as dificuldades impostas a interpretação do conteúdo pelos computadores, fica a cargo do usuário a tarefa de identificar quais dos sites obtidos são coerentes com as expectativas de contexto e necessidade.
+
+% { Nessa direção, Souza e Alvarenga (2004) consideram que a dificuldade em determinar os contextos informacionais tem como conseqüência a impossibilidade de se identificar de forma precisa a atinência dos documentos. Além disso, a ênfase das tecnologias e linguagens utilizadas nas páginas da Web tradicional focaliza os aspectos de exibição e apresentação dos dados, de uma forma que a informação seja descrita pobremente e pouco passível de ser consumida concomitantemente por máquinas e seres humanos. A partir disso é que surge a proposta da Web Semântica.} [][http://www.scielo.br/scielo.php?pid=S1413-99362007000100006&script=sci_arttext| Web Semântica: ontologias como ferramentas de representação do conhecimento]]
 
 \subsection{Protocolo HTTP} % (fold)
 \label{sub:protocolo_http}
@@ -56,6 +60,16 @@ A W3C realiza trabalhos para aprimorar, extender e padranizar a Web. Tecnologias
 
 %6.	Defina ontologia e mostre um exemplo?
 
+Segundo Gruber \cite{Gruber93}, uma ontologia é uma especificação explícita de uma conceituação. Para a comunidade de Ciências da Informação, uma ontologia é um termo técnico utilizado para indicar um artefato projetado para permitir a modelagem de conhecimento sobre algum domínio\cite{Gruber08}. As ontologias descrevem conceitos e relacionamentos entre eles, dessa forma, possibilitam que pessoas e agentes de software compartilhem informações.
+
+%O termo ``ontologia'' representa significados distintos para a comunidade filosófica e para a comunidade de Inteligência Artificial. A ontologia no sentido filosófico definida por Aristóteles é um sistema particular de categorização, independente da linguagem, para obter uma visão de mundo. Por outro lado,no sentido mais difundido pela comunidade de Inteligência Artificial, uma ontologia refere-se a um artefato de engenharia constituído por um vocabulário específico utilizado para descrever um realidade. [Fonte: Formal ontology in information systems: proceedings of the First International Conference (FOIS'98), June 6-8, Trento, Italy By N. Guarino]
+
+% An ontology is an explicit specification of a conceptualization. [GRUBER, T. R. A translation approach to portable ontologies. Knowledge Acquisition, v. 5, n. 2, 1993, p. 199-220.]
+
+%Uma ontologia define um conjunto de termos utilizados para modelar um domínio de conhecimento, isto é, é uma descrição de conceitos e relacionamentos entre eles que pode se usada por pessoas ou agentes de software para compartilhar informações dentro de um domínio. 
+
+%A ontologia é um conceito chave para a implementação da Web Semântca.
+
 % an ontology is a formal explicit description of concepts in a domain of discourse (classes (sometimes called concepts)), properties of each concept describing various features and attributes of the concept (slots (sometimes called roles or properties)), and restrictions on slots (facets (sometimes called role restrictions)). An ontology together with a set of individual instances of classes constitutes a knowledge base. In reality, there is a fine line where the ontology ends and the knowledge base begins.
 
 %7.	Em termos físicos, onde ficam as ontologias a serem utilizadas na Web Semântica?
@@ -64,6 +78,12 @@ A W3C realiza trabalhos para aprimorar, extender e padranizar a Web. Tecnologias
 
 % The WWW Consortium (W3C) is developing the Resource Description Framework (Brickley and Guha 1999), a language for encoding knowledge on Web pages to make it understandable to electronic agents searching for information. [Ontology Development 101: A Guide to Creating Your First Ontology]
 % Sharing common understanding of the structure of information among people or software agents  is one of the more common goals in developing ontologies (Musen 1992; Gruber 1993). For example, suppose several different Web sites contain medical information or provide medical e-commerce services. If these Web sites share and publish the same underlying ontology of the terms they all use, then computer agents can extract and aggregate information from these different sites. The agents can use this aggregated information to answer user queries or as input data to other applications. [Ontology Development 101: A Guide to Creating Your First Ontology]
+
+% O uso de ontologias, no contexto da Web Semântica, requer uma linguagem de ontologia compatível com a Web, com uma sintaxe e uma semântica bem deﬁnida, suporte ao raciocínio eﬁciente e expressiva.As linguagens de ontologia para Web são, geralmente, expressas em uma linguagem lógica, a lógica descritiva, garantindo as distinções entre as classes, propriedades e relações, evitando ambigüidades. [http://www.inf.pucrs.br/~ai190471/Mestrado/artigo_apresentacao_dissertacao/Owl.pdf]
+
+Para expressar ontologias através da Web Semântica, é necessário definir uma linguagem de ontologia compatível com a Web. A partir de 1990, foram desenvolvidas linguagens com este fim, dentre estas pode-se citar: a SHOE (Simple HTML Ontology Extensions), XOL (Ontology Exchange Language), OIL (Ontology Inference Layer) e DAML (DARPA Agent Markup Language). A combinação destas duas últimas culminou na origem de outra linguagem, a DAML+OIL. Entretanto, a lingugaem mais difundida é a OWL Web Ontology Language que é uma revisão da DAML+OIL, na qual foram incorporadas as lições aprendidas no projeto e na aplicação da DAML+OIL\cite{Harmelen04}.
+
+A OWL é uma linguagem de ontologia aprovada pelo W3C.
 
 % subsubsection ontologia (end)
 
