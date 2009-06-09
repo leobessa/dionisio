@@ -4,7 +4,7 @@
 \section{Introdução}
 Sistemas de recomendação~\footnote{Em inglês, \textit{Recommender systems}.} são aqueles que sugerem itens ao seus usuários de forma a ajudá-los a encontrar mais efetivamente os itens de maior interesse dentre uma variedade imensa de opções.
 
-A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre o produto ou em resenhas encontradas em revistas e jornais.
+A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre um determinado produto antes de comprá-lo ou experimentá-lo. Estas informações são transmitidas boca-a-boca entre amigos e colegas ou através de resenhas especializadas que podem encontradas em revistas e jornais.
 
 Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
 
@@ -34,9 +34,9 @@ Nas próximas seções serão apresentadas as diferentes abordagens para a imple
 \section{Filtragem baseada em conteúdo} % (fold)
 A filtragem baseada em conteúdo consiste na extração de \textit{features} dos itens a serem recomendados e da comparação desses \textit{features} com aqueles que formam o  perfil histórico do usuário. Esse é um dos primeiros métodos que surgiram e sua origem está na comunidade de \textit{information retrieval}.~\cite{Balabanovi97}
 
-Como exemplo, suponha-se que se queira recomendar documentos em formato texto. Os features nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela frequência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se os features (palavras) presentes podem ser encontrados em grande frequência nos documentos avaliados positivamente pelo usuário no passado.
+Como exemplo, suponha-se que se queira recomendar documentos em formato texto. Os \textit{features} nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela frequência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se os \textit{features} (palavras) presentes podem ser encontrados em grande frequência nos documentos avaliados positivamente pelo usuário no passado.
 
-Outros exemplos de features que podem ser usados em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras palavras-chave.
+Outros exemplos de \textit{features} que podem ser usados em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras palavras-chave.
 
 % (falar um pouquinho porque é bom/ruim)
 
@@ -52,10 +52,12 @@ O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\foot
 
 \begin{enumerate}
 \item 
-Para cada usuário do sistema, determina-se a similaridade entre este usuário e o usuário ativo. Este valor será designado por $s$\footnote{Do inglês, \textit{weight}, pois como será visto, esta similaridade é o peso do voto daquele usuário no valor final previsto.}.
+Para cada usuário do sistema, determina-se a similaridade entre este usuário e o usuário ativo. Este valor será designado por $s$.
 
-\item Para cada item do sistema não avaliado pelo usuário ativo, calcula-se o voto previsto $p$ para aquele item utilizando-se o voto de cada usuário que avaliou aquele item e a similaridade $s$ daquele usuário e o usuário ativo. O voto previsto é uma estimativa da avaliação que aquele usuário faria do item caso já o conhecesse.
+\item Para cada item do sistema não avaliado pelo usuário ativo, calcula-se o voto previsto $p$ para aquele item utilizando-se o voto de cada usuário que avaliou o item e a similaridade $s$ entre o usuário e o usuário ativo. O voto previsto é uma estimativa da avaliação que aquele usuário faria do item caso já o conhecesse.
 \end{enumerate}
+
+\paragraph{Geração de uma lista de recomendação de tamanho $n$.}
 
 A lista de itens recomendados será formada pelos $n$ itens com os maiores votos previstos ordenados decrescentemente.
 
@@ -91,7 +93,7 @@ O cálculo de $s$ geralmente é realizado utilizando-se o coeficiente de correla
 
 \paragraph{Forma geral da Filtragem Colaborativa.}
 
-Apesar dos primeiras abordagens terem utilizado a similaridade $s$, qualquer peso $w$\footnote{Do inglês \textit{weigth}} pode ser usado na equação \ref{eq:filtragem_colaborativa_similaridade}, que pode então ser reescrita da seguida maneira:
+Apesar dos primeiras abordagens terem utilizado a similaridade $s$, qualquer peso $w$\footnote{Do inglês \textit{weigth}} pode ser usado na equação \ref{eq:filtragem_colaborativa_similaridade}. Pode-se então reescreve-la da seguinte maneira geral:
 
 \begin{equation}
  p_{a,j} = \bar{v_{a}} + k\sum_{i=1}^n{w(a,i) (v_{i,j} - \bar{v_{i})}}
@@ -108,6 +110,8 @@ A filtragem baseada em confiança\footnote{Entendida aqui no contexto de \textit
 
 Esta confiança é fornecida de forma explícita pelo usuário. Este método se mostrou muito efetivo no casos em que a maioria dos usuários do sistema são \textit{cold-users}, isto é, quando a maioria dos usuários avaliou poucos itens e portanto possuem poucos itens em comum. Em um cenário como esse a filtragem colaborativa tradicional falha em encontrar usuários semelhantes pois há pouca intersecção de avaliações de itens~\footnote{Em inglês, \textit{rating-overlap}.}.
 
+%\section{
 
-\section{Discussão sobre as diferentes abordagens}
+%\section{Discussão sobre as diferentes abordagens}
+
 
