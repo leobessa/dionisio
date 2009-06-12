@@ -1,24 +1,66 @@
 \chapter{ESPECIFICAÇÃO DO PROJETO} % (fold)
 \label{cha:especificacao_do_projeto}
 
-\section{Funcionalidades principais} % (fold)
-\label{sec:funcionalidades_principais}
+ O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a várias redes sociais, sendo que uma dessas redes será desenvolvida neste projeto. Além disso, serão desenvolvidos aplicativos para integração às redes sociais existentes.
 
-As funcionalidades principais do sistema são:
 
+\section{Descrição das funcionalidades do sistema}
+
+ Através do sistema os usuários poderão cadastrar produtos e avaliá-los quantitativamente, sendo possível realizar recomendações a outros usuários. Desse modo, o usuário poderá construir a sua reputação. O sistema de recomendação filtra as informações recebidas por todos os usuários, as quais são enviadas por outros usuários, de modo que apenas aquelas relevantes cheguem ao conhecimento das pessoas. As recomendações geradas pelo sistema são baseadas nas opiniões, nas relações sociais entre os usuários e nas relações encontradas entre os produtos. Com base na relação entre usuários, produtos e avaliações o sistema irá inferir as seguintes informações:
 \begin{itemize}
 
-	\item Seleção de produtos baseada em preferência do usuário
+ \item Similaridade entre usuários
 
-	\item Permitir que o usuário avalie um produto
+ \item Similaridade entre produtos
 
-	\item Permitir que o usuário envie uma recomendação a outro usuário
+ \item Grau de confiança nas recomendações de um usuário para outro
 
-	\item Exposição das avaliações em formatos abertos
-	
+ \item Grau de reputação global de um usuário baseado nas recomendações diretas
+
+ \item Relação de consumo entre diferentes produtos
+
+ \item Recomendações de produtos mais relevantes para um determinado usuário
+
 \end{itemize}
 
-% section funcionalidades_principais (end)
+ Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários.
+
+ Ao entrar na rede o usuário tem a opção de buscar produtos/serviços já cadastrados e, caso não existam, pode ele mesmo cadastrá-los. Neste cadastro o usuário pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus gostos. Com isso, as pessoas podem recomendá-lo para seus amigos presentes na rede social, sendo que essa recomendação deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto ou serviço.
+
+ Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus gostos. Estas informações são utilizadas para verificar a similaridade entre usuários, ou seja, usuários que tenham gostos semelhantes. A avaliação altera o grau de confiança entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a confiança do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de confiança no outro usuário diminua.
+
+ O sistema armazena todas essas informações referentes à avaliação de produtos/serviços e de confiança entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar à pessoa apenas informações relevantes. Ou seja, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de confiança diminui e o sistema passa a não mostrar mais recomendações desse usuário.
+
+ Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus gostos. Tais recomendações são relativas a produtos/serviços mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{imagens/Diagrama_Visao_Geral}
+  \caption{\it Diagrama de blocos do sistema}
+  \label{fig:escopo}
+\end{figure}
+
+A Figura~\ref{fig:escopo} exibe o diagrama de blocos do sistema.
+
+
+%\section{Funcionalidades principais} % (fold)
+%\label{sec:funcionalidades_principais}
+
+%As funcionalidades principais do sistema são:
+
+%\begin{itemize}
+
+%	\item Seleção de produtos baseada em preferência do usuário
+
+%	\item Permitir que o usuário avalie um produto
+
+%	\item Permitir que o usuário envie uma recomendação a outro usuário
+
+%	\item Exposição das avaliações em formatos abertos
+	
+%\end{itemize}
+
+%% section funcionalidades_principais (end)
 
 \section{Tecnologia} % (fold)
 \label{sec:tecnologia}
