@@ -4,7 +4,7 @@
  O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a várias redes sociais, sendo que uma dessas redes será desenvolvida neste projeto. Além disso, serão desenvolvidos aplicativos para integração às redes sociais existentes.
 
 
-\section{Descrição das funcionalidades do sistema}
+\section{Descrição do Sistema}
 
  Através do sistema os usuários poderão cadastrar produtos e avaliá-los quantitativamente, sendo possível realizar recomendações a outros usuários. Desse modo, o usuário poderá construir a sua reputação. O sistema de recomendação filtra as informações recebidas por todos os usuários, as quais são enviadas por outros usuários, de modo que apenas aquelas relevantes cheguem ao conhecimento das pessoas. As recomendações geradas pelo sistema são baseadas nas opiniões, nas relações sociais entre os usuários e nas relações encontradas entre os produtos. Com base na relação entre usuários, produtos e avaliações o sistema irá inferir as seguintes informações:
 \begin{itemize}
@@ -43,24 +43,38 @@
 A Figura~\ref{fig:escopo} exibe o diagrama de blocos do sistema.
 
 
-%\section{Funcionalidades principais} % (fold)
-%\label{sec:funcionalidades_principais}
+\section{Funcionalidades principais} % (fold)
+\label{sec:funcionalidades_principais}
 
-%As funcionalidades principais do sistema são:
+Abaixo estão sumarizadas as principais funcionalidades do sistema:
 
-%\begin{itemize}
+\begin{itemize}
 
-%	\item Seleção de produtos baseada em preferência do usuário
+	\item Recomendação de produtos baseada em preferência do usuário
 
-%	\item Permitir que o usuário avalie um produto
+	\item Permitir que o usuário avalie um produto
 
-%	\item Permitir que o usuário envie uma recomendação a outro usuário
+	\item Permitir que o usuário envie uma recomendação a outro usuário
 
-%	\item Exposição das avaliações em formatos abertos
+	\item Exposição das avaliações em formatos abertos
+
+    \item Inserção de novos produtos a partir de formatos abertos
 	
-%\end{itemize}
+\end{itemize}
 
-%% section funcionalidades_principais (end)
+\section{Requisitos não-funcionais}
+
+Os principais requisitos não-funcionais são:
+
+\begin{itemize}
+
+    \item O sistema deverá ter uma interface web compatível as últimas versões dos \textit{browsers} Internet Explorer, Mozilla Firefox e Safari.
+    
+    \item O sistema deverá ter um \textit{backend} compatível com servidores Linux.
+
+    \item O sistema deverá fornecer tempo médio de resposta menor que 2 segundos para 50 usuários simultâneos quando executado em um servidor com processador Intel Core 2 Duo T7250 ou superior e 2 GB de memória RAM. % esta é a configuração do meu notebook -- Allan
+
+\end{itemize}
 
 \section{Tecnologia} % (fold)
 \label{sec:tecnologia}
