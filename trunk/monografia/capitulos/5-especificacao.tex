@@ -25,13 +25,13 @@
 
  Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários.
 
- Ao entrar na rede o usuário tem a opção de buscar produtos/serviços já cadastrados e, caso não existam, pode ele mesmo cadastrá-los. Neste cadastro o usuário pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus gostos. Com isso, as pessoas podem recomendá-lo para seus amigos presentes na rede social, sendo que essa recomendação deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto ou serviço.
+ Ao entrar na rede o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, pode ele mesmo cadastrá-los. Neste cadastro o usuário pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus gostos. Com isso, as pessoas podem recomendá-lo para seus amigos presentes na rede social, sendo que essa recomendação deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
 
  Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus gostos. Estas informações são utilizadas para verificar a similaridade entre usuários, ou seja, usuários que tenham gostos semelhantes. A avaliação altera o grau de confiança entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a confiança do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de confiança no outro usuário diminua.
 
- O sistema armazena todas essas informações referentes à avaliação de produtos/serviços e de confiança entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar à pessoa apenas informações relevantes. Ou seja, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de confiança diminui e o sistema passa a não mostrar mais recomendações desse usuário.
+ O sistema armazena todas essas informações referentes à avaliação de produtos e de confiança entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar à pessoa apenas informações relevantes. Ou seja, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de confiança diminui e, quando esta diminuir até um limite, o sistema passa a não mostrar mais recomendações desse usuário.
 
- Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus gostos. Tais recomendações são relativas a produtos/serviços mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
+ Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus gostos. Tais recomendações são relativas aos produtos mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
 
 \begin{figure}
   \centering
@@ -51,16 +51,29 @@ Abaixo estão sumarizadas as principais funcionalidades do sistema:
 \begin{itemize}
 
 	\item Recomendação de produtos baseada em preferência do usuário
+ Como usuário, eu quero receber uma lista de produtos que eu provavelemente goste para que eu não precise filtrar os itens que me interessam.
 
 	\item Permitir que o usuário avalie um produto
+ Como usuário, quero fazer a minha avaliação de produtos para que outros tenham conhecimento da minha opinião.
 
 	\item Permitir que o usuário envie uma recomendação a outro usuário
+ Como recomendador, quero enviar uma recomendação de produto para outra pessoa para que ela conheça a minha opinião sobre este item.
 
 	\item Exposição das avaliações em formatos abertos
+ Como agente web, quero obter as avaliações dos usuários em formato padronizado (e aberto) para que possa interpretar estas avaliações.
 
     \item Inserção de novos produtos a partir de formatos abertos
+ Como usuário, quero poder inserir em formato aberto um novo produto que ainda não está cadastrado.
 
-    \item Explicação automática ao usuário do porquê aquele item ter sido recomendado
+    \item Explicação automática ao usuário do porquê daquele item ter sido recomendado
+ Como usuário, quero saber porque aquele produto me foi recomendado.
+
+    \item Visualização das avaliações dos amigos
+ Como usuário, quero estar ciente sobre como meus amigos avaliaram produtos (para que eu possa conhecer novos produtos)
+
+    \item Feedback de recomendação
+ Como recomendador, quero receber feedback sobre as recomendações que enviei para poder fazer melhores recomendações.
+
 	
 \end{itemize}
 
