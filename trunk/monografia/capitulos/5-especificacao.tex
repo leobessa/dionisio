@@ -1,12 +1,37 @@
 \chapter{ESPECIFICAÇÃO DO PROJETO} % (fold)
 \label{cha:especificacao_do_projeto}
 
- O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a várias redes sociais, sendo que uma dessas redes será desenvolvida neste projeto. Além disso, serão desenvolvidos aplicativos para integração às redes sociais existentes.
+ O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a redes sociais e compatível com padrões utilizados na web semântica.
 
+\section{Visão Geral do Sistema} % (fold)
+\label{sec:visao_do_sistema}
+Os principais blocos do sistemas podem ser vistos na Figura~\ref{fig:escopo}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{imagens/Diagrama_Visao_Geral}
+  \caption{\it Diagrama de blocos do sistema}
+  \label{fig:escopo}
+\end{figure}
+
+% Explicar como o sistema de recomendação e a rede social se encaixam
+% laços de amizade
+
+O sistema de recomendação utilizará redes sociais para obter as informações pessoais e as relações de amizade entre usuários. Neste contexto, um usuário é considerado amigo de outro quando eles estabelecem uma conexão direta.
+
+Os usuários podem receber as recomendações dos seus amigos, ou de outras pessoas presentes na rede social. No entanto, as recomendações feitas por amigos serão consideradas, a princípio, mais importantes do que as realizadas por desconhecidos. Além da amizade, haverá uma relação explícita de confiança que será utilizada para determinar maior relevância da recomendação.
+
+% Explicar como a web semantica se encaixa no sistema de recomendação
+
+O sistema de recomendação obtem informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos. Um repositório será implementado para armazenar tais informações, porém qualquer fonte de documentos que utilizem os padrões definidos pelo sistema de recomendação poderá ser utilizada. Desta forma, o sistema se integra ao contexto da web semântica.
+
+
+% section visao_do_sistema (end)
 
 \section{Descrição do Sistema}
 
- Através do sistema os usuários poderão cadastrar produtos e avaliá-los quantitativamente, sendo possível realizar recomendações a outros usuários. Desse modo, o usuário poderá construir a sua reputação. O sistema de recomendação filtra as informações recebidas por todos os usuários, as quais são enviadas por outros usuários, de modo que apenas aquelas relevantes cheguem ao conhecimento das pessoas. As recomendações geradas pelo sistema são baseadas nas opiniões, nas relações sociais entre os usuários e nas relações encontradas entre os produtos. Com base na relação entre usuários, produtos e avaliações o sistema irá inferir as seguintes informações:
+ Através do sistema os usuários poderão cadastrar produtos e avaliá-los quantitativamente, sendo possível realizar recomendações a outros usuários. Estes irão fornecer um feedback de tais recomendações, atualizando o valor da reputação do usuário que a forneceu. O sistema de recomendação filtra as informações recebidas por todos os usuários, de modo que apenas aquelas relevantes cheguem ao conhecimento das pessoas. As recomendações geradas pelo sistema são baseadas nas opiniões, nas relações sociais entre os usuários e nas relações encontradas entre os produtos. Com base na relação entre usuários, produtos e avaliações o sistema irá inferir as seguintes informações:
+ 
 \begin{itemize}
 
  \item Similaridade entre usuários
@@ -25,28 +50,19 @@
 
  Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários.
 
- Ao entrar na rede o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, pode ele mesmo cadastrá-los. Neste cadastro o usuário pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus gostos. Com isso, as pessoas podem recomendá-lo para seus amigos presentes na rede social, sendo que essa recomendação deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
+ Ao entrar na rede, o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, cadastrá-los. Neste cadastro, o usuário pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus interesses. Com isso, as pessoas podem recomendá-lo para seus amigos presentes na rede social, sendo que essa recomendação deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
 
- Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus gostos. Estas informações são utilizadas para verificar a similaridade entre usuários, ou seja, usuários que tenham gostos semelhantes. A avaliação altera o grau de confiança entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a confiança do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de confiança no outro usuário diminua.
+ Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários. A avaliação altera o grau de confiança entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a confiança do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de confiança no outro usuário diminua.
 
- O sistema armazena todas essas informações referentes à avaliação de produtos e de confiança entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar à pessoa apenas informações relevantes. Ou seja, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de confiança diminui e, quando esta diminuir até um limite, o sistema passa a não mostrar mais recomendações desse usuário.
+ O sistema armazena todas essas informações referentes à avaliação de produtos e de confiança entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes. Assim, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de confiança diminui e, quando esta diminuir até um limite, o sistema passa a não mostrar mais recomendações desse usuário.
 
- Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus gostos. Tais recomendações são relativas aos produtos mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{imagens/Diagrama_Visao_Geral}
-  \caption{\it Diagrama de blocos do sistema}
-  \label{fig:escopo}
-\end{figure}
-
-A Figura~\ref{fig:escopo} exibe o diagrama de blocos do sistema.
-
+ Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus interesses. Tais recomendações são relativas aos produtos mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
 
 \section{Funcionalidades principais} % (fold)
 \label{sec:funcionalidades_principais}
 
-Abaixo estão sumarizadas as principais funcionalidades do sistema:
+Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories}:
+% referencia faltando!!!
 
 \begin{itemize}
 
@@ -68,7 +84,7 @@ Abaixo estão sumarizadas as principais funcionalidades do sistema:
     \item Importação de conteúdo em formato aberto
     \subitem Como usuário, quero poder informar uma fonte de conteúdo em formato aberto para que possa adicionar dados externos ao repositório.
 
-    \item Explicação automática ao usuário do porquê daquele item ter sido recomendado
+    \item Explicação da recomendação
     \subitem Como usuário, quero obter a explicação sobre as recomendações recebidas para analisar criticamente a recomendação e me motivar a avaliar o produto.
 
     \item Visualização das avaliações recentes dos amigos
