@@ -1,0 +1,185 @@
+%
+%  untitled
+%
+%  Created by leobessa on 2009-06-21.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%
+\documentclass[]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{Plano do Projeto de Formatura}
+\author{Allan Douglas, Leonardo Bessa e Thiago Andrade  }
+
+\date{23/06/2009}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\maketitle
+
+%\begin{abstract}\end{abstract}
+
+\section{Objetivo} % (fold)
+\label{sec:objetivo}
+% Apresentar de forma precisa e concisa o objetivo do projeto.
+
+ O principal objetivo deste projeto é criar um sistema de recomendação baseado em recursos disponíveis na Web, que possibilite a sugestão de itens confiáveis e relevantes ao usuário.
+
+% section objetivo (end)
+
+\section{Estrutura Analítica do Projeto} % (fold)
+\label{sec:estrutura_analitica_do_projeto}
+
+\begin{enumerate}
+		
+	\item Pesquisa Bibliográfica
+	\begin{enumerate}
+		\item Sistema de Recomendação
+		\begin{enumerate}
+			\item Baseados em Conteúdo
+			\item Filtragem Colaborativa
+			\item Baseados em Confiança
+		\end{enumerate}
+		\item Web Semântica
+		\begin{enumerate}
+		  \item Microformatos
+			\item Resource Description Framework (RDF)
+			\item Web Ontology Language (OWL)
+		\end{enumerate}
+		\item Web Social
+		\begin{enumerate}
+		  \item Padrões de Projeto Sociais
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item Conceituação
+	\begin{enumerate}
+		\item Construir cenários e personas
+		\item Selecionar as soluções possíveis e as funcionalidades necessárias
+		\item Arquitetura da informação
+		\item Avaliar a melhor solução
+	\end{enumerate}
+		
+	\item Desenvolvimento
+	\begin{enumerate}
+		\item Sistema de recomendação
+		\begin{enumerate}
+			\item Captura e Parsing de documentos
+			\item Algoritmo de recomendação
+			\item Interface de consulta de recomendações
+		\end{enumerate}
+		\item Base de documentos semânticos
+		\item Front-End
+		\begin{enumerate}
+			\item Aplicação para rede social
+			\item Camada de Apresentação
+			\item Integração com a base de documentos
+			\item Integração com o Sistema de recomendação
+		\end{enumerate}
+	\end{enumerate}
+	
+\end{enumerate}
+
+
+% section estrutura_analítica_do_projeto (end)
+
+\section{Cronograma} % (fold)
+\label{sec:cronograma}
+
+\begin{enumerate}
+  \item 13 de Julho de 2009
+  \begin{enumerate}
+    \item Entrega das seções sobre RDF e Microformatos
+    \item Entrega do Sistema repositório de documentos Semânticos
+  \end{enumerate}
+  \item 27 de Julho de 2009
+  \begin{enumerate}
+    \item Entrega da seção sobre OWL
+  \end{enumerate}
+  \item 10 de Agosto de 2009
+  \item 24 de Agosto de 2009
+  \item 7 de Setembro de 2009
+  \item 21 de Setembro de 2009
+  \item 5 de Outubro de 2009
+  \item 19 de Outubro de 2009
+  \item 2 de Novembro de 2009
+  \begin{enumerate}
+    \item Entrega do Pôster e Press Release, Página Internet
+  \end{enumerate}
+  \item 16 de Novembro de 2009
+  \item 30 de Novembro de 2009
+  \begin{enumerate}
+    \item Entrega da Monografia
+  \end{enumerate}
+\end{enumerate}
+
+% section cronograma (end)
+
+
+\section{Custos} % (fold)
+\label{sec:custos}
+
+% section custos (end)
+
+
+\section{Estrutura Analítica de Riscos} % (fold)
+\label{sec:estrutura_analitica_de_riscos}
+
+% section estrutura_analítica_de_riscos (end)
+
+\section{Análise SWOT} % (fold)
+\label{sec:analise_swot}
+
+% section análise_swot (end)
+
+\bibliographystyle{plain}
+\bibliography{}
+\end{document}
