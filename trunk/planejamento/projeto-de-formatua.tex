@@ -71,30 +71,84 @@
 \label{sec:objetivo}
 % Apresentar de forma precisa e concisa o objetivo do projeto.
 
- O principal objetivo deste projeto é criar um sistema de recomendação baseado em recursos disponíveis na Web, que possibilite a sugestão de itens confiáveis e relevantes ao usuário.
+O principal objetivo deste projeto é criar um sistema de recomendação baseado em recursos disponíveis na Web, que possibilite a sugestão de itens confiáveis e relevantes ao usuário.
 
 % section objetivo (end)
 
 \section{Justificativa} % (fold)
 \label{sec:objetivos_e_justificativas}
 
-Sistemas de Recomendação sugerem aos usuários itens que eles possam gostar baseado no comportamento prévio do usuário. Ao oferecer valor aos usuários, fazendo suposições pertinentes sobre o tipo de objetos em que estão interessados, é possível conquistar a conﬁança deles. A vantagem para os usuários é a facilidade de encontrar a informação sem ter a árdua tarefa de procurá-la.
+Sistemas de Recomendação sugerem aos usuários itens que eles possam gostar baseado no comportamento prévio do usuário. Ao oferecer valor aos usuários, fazendo suposições pertinentes sobre o tipo de objetos em que estão interessados, é possível conquistar a confiança deles. A vantagem para os usuários é a facilidade de encontrar a informação sem ter a árdua tarefa de procurá-la.
 
-As redes sociais online têm modiﬁcado a forma com que as empresas utilizam a comunicação para o comércio. Pessoas estão utilizando a Web para encontrar outras pessoas com interesses similares, fazer compras de forma mais eﬁciente, aprender sobre produtos e serviços e reclamar sobre produtos malfeitos e serviços pobres.
+As redes sociais online têm modificado a forma com que as empresas utilizam a comunicação para o comércio. Pessoas estão utilizando a Web para encontrar outras pessoas com interesses similares, fazer compras de forma mais eficiente, aprender sobre produtos e serviços e reclamar sobre produtos malfeitos e serviços pobres.
 
-A Web está rapidamente se tornando a mídia mais importante para o marketing. A tendência é que as pessoas, cada vez mais bloqueiem os anúncios indesejados e queiram ter a capacidade de encontrar os produtos relevantes no momento adequado. É nesse contexto que surge a necessidade de uma plataforma que facilite a colaboração e que permita a criação e classiﬁcação de conteúdo pelos consumidores, de forma a permitir uma escolha mais inteligente dos melhores produtos e serviços e ao mesmo tempo criando uma mecanismo de feedback para as empresas interessadas.
+A Web está rapidamente se tornando a mídia mais importante para o marketing. A tendência é que as pessoas, cada vez mais bloqueiem os anúncios indesejados e queiram ter a capacidade de encontrar os produtos relevantes no momento adequado. É nesse contexto que surge a necessidade de uma plataforma que facilite a colaboração e que permita a criação e classificação de conteúdo pelos consumidores, de forma a permitir uma escolha mais inteligente dos melhores produtos e serviços e ao mesmo tempo criando uma mecanismo de feedback para as empresas interessadas.
 
-Devido à grande variedade atual de produtos e serviços, as pessoas têm cada vez mais diﬁculdade nas suas escolhas e na argumentação sobre a possível decisão. Quanto mais produtos similares de fabricantes diferentes ou serviços realizados por diversos prestadores, mais as pessoas se vêem desnorteadas e sem saber se a decisão realizada foi a mais correta.
+Devido à grande variedade atual de produtos e serviços, as pessoas têm cada vez mais dificuldade nas suas escolhas e na argumentação sobre a possível decisão. Quanto mais produtos similares de fabricantes diferentes ou serviços realizados por diversos prestadores, mais as pessoas se vêem desnorteadas e sem saber se a decisão realizada foi a mais correta.
 
 % section objetivos_e_justificativas (end)
 
+\section{Funcionalidades principais} % (fold)
+\label{sec:funcionalidades_principais}
+
+Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories}:
+% referencia faltando!!!
+
+\begin{itemize}
+
+	\item Recomendação de produtos baseada em preferência do usuário
+	\subitem Como usuário, eu quero receber uma lista de produtos que eu provavelemente goste para que eu não precise filtrar os itens que me interessam.
+
+	\item Permitir que o usuário avalie um produto
+  \subitem Como usuário, quero fazer a minha avaliação de produtos para que outros tenham conhecimento da minha opinião.
+
+	\item Permitir que o usuário envie uma recomendação a outro usuário
+  \subitem Como recomendador, quero enviar uma recomendação de produto para outra pessoa para que ela conheça a minha opinião sobre este item.
+
+	\item Exposição das avaliações em formatos abertos
+  \subitem Como agente web, quero obter as avaliações dos usuários em formato padronizado (e aberto) para que possa interpretar estas avaliações.
+
+    \item Cadastro de novos produtos
+    \subitem Como usuário, quero poder cadastrar um novo produto que ainda não está cadastrado.
+    
+    \item Importação de conteúdo em formato aberto
+    \subitem Como usuário, quero poder informar uma fonte de conteúdo em formato aberto para que possa adicionar dados externos ao repositório.
+
+    \item Explicação da recomendação
+    \subitem Como usuário, quero obter a explicação sobre as recomendações recebidas para analisar criticamente a recomendação e me motivar a avaliar o produto.
+
+    \item Visualização das avaliações recentes dos amigos
+    \subitem Como usuário, quero estar ciente sobre as últimas avaliações dos meus amigos para que eu possa saber o que acontece no meu contexto social e conheça novos produtos.
+
+    \item Feedback de recomendação
+    \subitem Como recomendador, quero receber feedback sobre as recomendações que enviei para me incentivar a fazer melhores recomendações.
+
+	
+\end{itemize}
+
+% section funcionalidades_principais(end)
+
+\section{Requisitos não-funcionais} % (fold)
+
+Os principais requisitos não-funcionais do sistema são:
+
+\begin{itemize}
+
+    \item Interface web compatível as últimas versões dos \textit{browsers} Internet Explorer, Mozilla Firefox e Safari.
+    
+    \item \textit{Backend} compatível com servidores Linux.
+
+    \item Tempo médio de resposta menor que 2 segundos para 10 usuários simultâneos quando executado em um servidor com processador Intel Core 2 Duo T7250 ou superior e 2 GB de memória RAM. % esta é a configuração do meu notebook -- Allan
+
+\end{itemize}
+% section RNF (end)
 
 \section{Estrutura Analítica do Projeto} % (fold)
 \label{sec:estrutura_analitica_do_projeto}
 
 \begin{enumerate}
 		
-	\item Pesquisa Bibliográfica / Monografia
+	\item Pesquisa Bibliográfica
 	\begin{enumerate}
 		\item Sistema de Recomendação
 		\begin{enumerate}
@@ -113,16 +167,58 @@ Devido à grande variedade atual de produtos e serviços, as pessoas têm cada v
 		  \item Padrões de Projeto Sociais
 		\end{enumerate}
 	\end{enumerate}
+	
+	\item  Monografia
+	\begin{enumerate}
+		\item Introdução
+		\begin{enumerate}
+		  \item Objetivo
+		  \item Motivação
+		  \item Organização
+		\end{enumerate}
+		\item Aspectos Conceituais
+		\begin{enumerate}
+		  \item Web Social
+		  \item Web Semântica
+		  \item Sistemas de Recomendação
+		\end{enumerate}
+		\item Especificação do Projeto de Formatura
+		\begin{enumerate}
+		  \item Características Funcionais
+		  \item Detalhamento do Software
+		  \item Especificação de Requisitos
+		\end{enumerate}
+		\item Metodologia
+		\begin{enumerate}
+		  \item Concepção
+		  \item Implementação
+		  \item Testes
+		\end{enumerate}
+		\item Projeto e Implementação
+		\item Testes e Avaliação
+		\item Considerações Finais
+		\begin{enumerate}
+		  \item Resultados Atingidos
+		  \item Resultados Não Atingidos (com justificativa)
+		  \item Contribuições
+		  \item Perspectivas de Continuidade
+		  \item Comentários individuais
+		\end{enumerate}
+	\end{enumerate}
 		
 	\item Desenvolvimento
 	\begin{enumerate}
 		\item Sistema de recomendação
 		\begin{enumerate}
-			\item Captura e Parsing de documentos
+			\item Captura e Parsing de documentos semânticos
 			\item Algoritmo de recomendação
 			\item Interface de consulta de recomendações
 		\end{enumerate}
-		\item Base de documentos semânticos
+		\item Repositório de documentos semânticos
+		\begin{enumerate}
+		  \item Inserção/Atualização de Produtos e Avaliações
+		  \item Exposição de Produtos e Avalições
+		\end{enumerate}
 		\item Front-End
 		\begin{enumerate}
 			\item Aplicação para rede social
@@ -133,50 +229,82 @@ Devido à grande variedade atual de produtos e serviços, as pessoas têm cada v
 	\end{enumerate}
 	
 \end{enumerate}
-
-
 % section estrutura_analítica_do_projeto (end)
 
 \section{Cronograma} % (fold)
 \label{sec:cronograma}
 
-\begin{enumerate}
+\begin{itemize}
   \item 13 de Julho de 2009
-  \begin{enumerate}
+  \begin{itemize}
     \item Entrega das seções sobre RDF e Microformatos
-    \item Entrega do Sistema repositório de documentos Semânticos
-  \end{enumerate}
+    \item Entrega Repositório de documentos Semânticos
+  \end{itemize}
+  
   \item 27 de Julho de 2009
-  \begin{enumerate}
+  \begin{itemize}
     \item Entrega da seção sobre OWL
-  \end{enumerate}
+    \item Funcionalidade de Captura e Parsing de documentos semânticos
+  \end{itemize}
+  
   \item 10 de Agosto de 2009
   \begin{itemize}
     \item Apresentação do Calendário do Projeto de Formatura
+    \item Entrega do Capítulo de Aspectos Conceituais
   \end{itemize}
+  
   \item 24 de Agosto de 2009
+  \begin{itemize}
+    \item Finalização do Algoritmo de recomendação
+    \item Entrega do Capítulo de Especificação do Projeto de Formatura
+  \end{itemize}
+  
   \item 7 de Setembro de 2009
   \begin{itemize}
+    \item Entrega Interface de consulta de recomendações
     \item Apresentação da Evolução do Projeto e entrega de documento.
   \end{itemize}
+  
   \item 21 de Setembro de 2009
+  \begin{itemize}
+    \item Entrega do Capítulo de Metodologia
+    \item Implantação do Front-End
+  \end{itemize}
+  
   \item 5 de Outubro de 2009
+  \begin{itemize}
+    \item Entrega do Capítulo de Projeto e Implementação
+    \item Formulação de Testes e de Avaliação
+  \end{itemize}
+  
   \item 19 de Outubro de 2009
+  \begin{itemize}
+    \item Avaliação dos Resultados parciais
+  \end{itemize}
+  
   \item 2 de Novembro de 2009
-  \begin{enumerate}
+  \begin{itemize}
+    \item Entrega do Capítulo de Testes e Avaliação
     \item Apresentação da Evolução do Projeto e entrega de documento.
     \item Entrega do Pôster e Press Release, Página Internet
-  \end{enumerate}
+  \end{itemize}
+  
   \item 16 de Novembro de 2009
+  \begin{itemize}
+    \item Capítulo de Considerações Finais
+    \item Seção sobre Organização na Introdução
+  \end{itemize}
+  
   \item 30 de Novembro de 2009
-  \begin{enumerate}
+  \begin{itemize}
     \item Entrega da Monografia
-  \end{enumerate}
+  \end{itemize}
+  
   \item 8 de Dezembro de 2009
-  \begin{enumerate}
+  \begin{itemize}
     \item Apresentação e Demonstração Prática Perante Banca
-  \end{enumerate}
-\end{enumerate}
+  \end{itemize}
+\end{itemize}
 
 % section cronograma (end)
 
@@ -184,13 +312,17 @@ Devido à grande variedade atual de produtos e serviços, as pessoas têm cada v
 \section{Custos} % (fold)
 \label{sec:custos}
 
-\begin{itemize}
-  \item[\textbf{Desenvolvimento}]
+\begin{description}
+  \item[Desenvolvimento]
   
-  Cada integrante trabalhará quatro horas por semana durante durante três meses, totalizando 144 horas de desenvolvimento. Considerando o valor da hora paga a um desenvolvedor de R\$ 15.00, o custo de desenvolvimento totaliza em R\$ 2.160,00.
+  Cada integrante trabalhará quatro horas por semana durante três meses, totalizando 144 horas de desenvolvimento. Considerando o valor da hora paga a um desenvolvedor WEB de R\$ 15,00, o custo de desenvolvimento totaliza em \textbf{R\$ 2.160,00}.
+  
+  \item[Monografia] 
+  
+  Cada integrante gastará quatro horas por semana durante cinco meses escrevendo a monografia. Dessa forma, podemos contabilizar o gasto utilizando como base o piso salarial de um engenheiro de computação (R\$ 3.720,00), ou seja R\$ 23,25/hora, totalizando um custo de \textbf{R\$ 5.580,00} para a produção da monografia.
   
   
-\end{itemize}
+\end{description}
 
 % section custos (end)
 
@@ -203,45 +335,38 @@ Devido à grande variedade atual de produtos e serviços, as pessoas têm cada v
 \section{Análise SWOT} % (fold)
 \label{sec:analise_swot}
 
-\begin{itemize}
+\begin{description}
   \item Forças
-  \begin{itemize}
-    \item[\textbf{Conhecimento técnico}]
+  \begin{description}
+    \item[Conhecimento técnico] Toda a equipe está familiarizada com a área técnica abordada na elaboração dos trabalho, sendo que muitas das técnicas de projeto e implantação são ensinadas no curso de engenharia de computação. Além disso, todos já realizaram estágios na área de desenvolvimento de software durante a sua carreira acadêmica.
     
-     Toda a equipe está familiarizada com a área técnica abordada na elaboração dos trabalho, sendo que muitas das técnicas de projeto e implantação são ensinadas no curso de engenharia de computação. Além disso, todos já realizaram estágios na área de desenvolvimento de software durante a sua carreira acadêmica.
-    
-    \item[\textbf{Orientação}] 
+    \item[Orientação] 
     
      O projeto é orientado pelo Prof. Dr. Jaime Simão Sichman que obteve formação de Livre-Docência em Inteligência Artificial. Além disso, o projeto conta com a co-orientação da Prof. Dra. Lucia Filgueiras que atua na área de Análise e Projeto de Interfaces Homem-Computador.
      
-  \end{itemize}
+  \end{description}
   
   \item Fraquezas
-  \begin{itemize}
-    \item 
-  \end{itemize}
+  \begin{description}
+    \item[Organização dos Horários] A grade horária do curso de Engenharia de Computação, juntamente com os horários do estágios dificultam a organização do tempo para realização de tarefas em grupo. Isso afeta o tempo das reuniões presenciais, bem como algumas práticas da modelagem ágil, como programação pareada.
+    \item[Criação de Interfaces de Usuário] A equipe apresenta pouca experiência no desenvolvimento de interfaces de usuário ricas para Web.
+  \end{description}
   
   \item Oportunidades
-  \begin{itemize}
-    \item 
-  \end{itemize}
+  \begin{description}
+    \item[Adoção da Web Semântica] O sistema de recomendação obtem informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos. Se as empresas de e-commerce brasileiras adotarem os padrões da Web Semâtinca, os produtos vendidos por estas poderão fazer parte da base de dados do sistema desenvolvido, ampliando o seu alcançe.
+    \item[Redes Sociais]
+         No Brasil, apesar da maioria das empresas não investir em tecnologias de redes sociais, há vários usuários cadastrados em sites de relacionamento e que os acessam diariamente, contribuindo para a elaboração de conteúdo e comunicação via Internet. Essa utilização vem mostrando um crescimento acentuado nos últimos anos, sendo uma grande oportunidade, pois grandes empresas se deram conta disso no restante do mundo e não demorará muito para que as empresas brasileiras se dêem conta disso também, sendo que algumas delas já investem nesse tipo negócio.
+  \end{description}
   
   \item Ameaças
-  \begin{itemize}
-    \item 
-  \end{itemize}
-\end{itemize}
+  \begin{description}
+    \item[Não Aceitação] A aceitação do sistema pode vir de apenas alguns usuários. Caso isso aconteça, o sistema pode continuar sendo utilizado como um canal de divulgação de produtos. No entanto a realização de testes para avaliar a efetividade do sistema fica comprometida.
+  \end{description}
+\end{description}
 
 
 % section análise_swot (end)
-
-\section{Gerenciamento de Configuração} % (fold)
-\label{sec:gerenciamento_de_configuracao}
-
-Todos os arquivos como documentos e código-fontes estarão sob o controle de versão usando um software SVN. Esse software controlará todas mudanças nos arquivos. Ao término de cada ciclo de desenvolvimento será feito um \emph{release} (lançamento) usando os arquivos do repositório de códigos. Os arquivos de um determinado \emph{release} serão marcados (\emph{tagging}) dentro do repositório para que as mudanças a partir de um determinado lançamento possam ser rastreadas.
-
-Será usado também um software para controle de tarefas (\emph{tasks}), que incluirá o controle de defeitos (\emph{bug tracking}). Os arquivos serão modificados para atender às tarefas alocadas nesse \emph{software}. Como a criação de tarefas será feita a partir do EAP e a criação de \emph{bug reports} seguirá o plano de testes, todas as mudanças terão uma causa identificável e rastreável.
-% section gerenciamento_de_configuracao (end)
 
 
 %\bibliographystyle{plain}
