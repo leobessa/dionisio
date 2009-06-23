@@ -75,12 +75,26 @@
 
 % section objetivo (end)
 
+\section{Justificativa} % (fold)
+\label{sec:objetivos_e_justificativas}
+
+Sistemas de Recomendação sugerem aos usuários itens que eles possam gostar baseado no comportamento prévio do usuário. Ao oferecer valor aos usuários, fazendo suposições pertinentes sobre o tipo de objetos em que estão interessados, é possível conquistar a conﬁança deles. A vantagem para os usuários é a facilidade de encontrar a informação sem ter a árdua tarefa de procurá-la.
+
+As redes sociais online têm modiﬁcado a forma com que as empresas utilizam a comunicação para o comércio. Pessoas estão utilizando a Web para encontrar outras pessoas com interesses similares, fazer compras de forma mais eﬁciente, aprender sobre produtos e serviços e reclamar sobre produtos malfeitos e serviços pobres.
+
+A Web está rapidamente se tornando a mídia mais importante para o marketing. A tendência é que as pessoas, cada vez mais bloqueiem os anúncios indesejados e queiram ter a capacidade de encontrar os produtos relevantes no momento adequado. É nesse contexto que surge a necessidade de uma plataforma que facilite a colaboração e que permita a criação e classiﬁcação de conteúdo pelos consumidores, de forma a permitir uma escolha mais inteligente dos melhores produtos e serviços e ao mesmo tempo criando uma mecanismo de feedback para as empresas interessadas.
+
+Devido à grande variedade atual de produtos e serviços, as pessoas têm cada vez mais diﬁculdade nas suas escolhas e na argumentação sobre a possível decisão. Quanto mais produtos similares de fabricantes diferentes ou serviços realizados por diversos prestadores, mais as pessoas se vêem desnorteadas e sem saber se a decisão realizada foi a mais correta.
+
+% section objetivos_e_justificativas (end)
+
+
 \section{Estrutura Analítica do Projeto} % (fold)
 \label{sec:estrutura_analitica_do_projeto}
 
 \begin{enumerate}
 		
-	\item Pesquisa Bibliográfica
+	\item Pesquisa Bibliográfica / Monografia
 	\begin{enumerate}
 		\item Sistema de Recomendação
 		\begin{enumerate}
@@ -98,14 +112,6 @@
 		\begin{enumerate}
 		  \item Padrões de Projeto Sociais
 		\end{enumerate}
-	\end{enumerate}
-	
-	\item Conceituação
-	\begin{enumerate}
-		\item Construir cenários e personas
-		\item Selecionar as soluções possíveis e as funcionalidades necessárias
-		\item Arquitetura da informação
-		\item Avaliar a melhor solução
 	\end{enumerate}
 		
 	\item Desenvolvimento
@@ -145,19 +151,30 @@
     \item Entrega da seção sobre OWL
   \end{enumerate}
   \item 10 de Agosto de 2009
+  \begin{itemize}
+    \item Apresentação do Calendário do Projeto de Formatura
+  \end{itemize}
   \item 24 de Agosto de 2009
   \item 7 de Setembro de 2009
+  \begin{itemize}
+    \item Apresentação da Evolução do Projeto e entrega de documento.
+  \end{itemize}
   \item 21 de Setembro de 2009
   \item 5 de Outubro de 2009
   \item 19 de Outubro de 2009
   \item 2 de Novembro de 2009
   \begin{enumerate}
+    \item Apresentação da Evolução do Projeto e entrega de documento.
     \item Entrega do Pôster e Press Release, Página Internet
   \end{enumerate}
   \item 16 de Novembro de 2009
   \item 30 de Novembro de 2009
   \begin{enumerate}
     \item Entrega da Monografia
+  \end{enumerate}
+  \item 8 de Dezembro de 2009
+  \begin{enumerate}
+    \item Apresentação e Demonstração Prática Perante Banca
   \end{enumerate}
 \end{enumerate}
 
@@ -166,6 +183,14 @@
 
 \section{Custos} % (fold)
 \label{sec:custos}
+
+\begin{itemize}
+  \item[\textbf{Desenvolvimento}]
+  
+  Cada integrante trabalhará quatro horas por semana durante durante três meses, totalizando 144 horas de desenvolvimento. Considerando o valor da hora paga a um desenvolvedor de R\$ 15.00, o custo de desenvolvimento totaliza em R\$ 2.160,00.
+  
+  
+\end{itemize}
 
 % section custos (end)
 
@@ -178,8 +203,47 @@
 \section{Análise SWOT} % (fold)
 \label{sec:analise_swot}
 
+\begin{itemize}
+  \item Forças
+  \begin{itemize}
+    \item[\textbf{Conhecimento técnico}]
+    
+     Toda a equipe está familiarizada com a área técnica abordada na elaboração dos trabalho, sendo que muitas das técnicas de projeto e implantação são ensinadas no curso de engenharia de computação. Além disso, todos já realizaram estágios na área de desenvolvimento de software durante a sua carreira acadêmica.
+    
+    \item[\textbf{Orientação}] 
+    
+     O projeto é orientado pelo Prof. Dr. Jaime Simão Sichman que obteve formação de Livre-Docência em Inteligência Artificial. Além disso, o projeto conta com a co-orientação da Prof. Dra. Lucia Filgueiras que atua na área de Análise e Projeto de Interfaces Homem-Computador.
+     
+  \end{itemize}
+  
+  \item Fraquezas
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  
+  \item Oportunidades
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  
+  \item Ameaças
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{itemize}
+
+
 % section análise_swot (end)
 
-\bibliographystyle{plain}
-\bibliography{}
+\section{Gerenciamento de Configuração} % (fold)
+\label{sec:gerenciamento_de_configuracao}
+
+Todos os arquivos como documentos e código-fontes estarão sob o controle de versão usando um software SVN. Esse software controlará todas mudanças nos arquivos. Ao término de cada ciclo de desenvolvimento será feito um \emph{release} (lançamento) usando os arquivos do repositório de códigos. Os arquivos de um determinado \emph{release} serão marcados (\emph{tagging}) dentro do repositório para que as mudanças a partir de um determinado lançamento possam ser rastreadas.
+
+Será usado também um software para controle de tarefas (\emph{tasks}), que incluirá o controle de defeitos (\emph{bug tracking}). Os arquivos serão modificados para atender às tarefas alocadas nesse \emph{software}. Como a criação de tarefas será feita a partir do EAP e a criação de \emph{bug reports} seguirá o plano de testes, todas as mudanças terão uma causa identificável e rastreável.
+% section gerenciamento_de_configuracao (end)
+
+
+%\bibliographystyle{plain}
+%\bibliography{}
 \end{document}
