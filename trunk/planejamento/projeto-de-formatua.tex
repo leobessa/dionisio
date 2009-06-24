@@ -6,6 +6,10 @@
 %
 \documentclass[]{article}
 
+\usepackage{pst-gantt}
+\usepackage{lscape}
+
+
 % Use utf-8 encoding for foreign characters
 \usepackage[utf8]{inputenc}
 
@@ -321,6 +325,49 @@ Os principais requisitos não-funcionais do sistema são:
   \end{itemize}
 \end{itemize}
 
+\subsection{Gráfico de Gantt}
+
+A seguir está um gráfico de Gantt com as principais atividades.
+
+\definecolor{LightCyan}   {rgb}{0.88,1.,1.}
+\definecolor{Orange}      {rgb}{1.,0.65,0.}
+\definecolor{PaleGreen}   {rgb}{0.6,0.98,0.6}
+\definecolor{Pink}        {rgb}{1.,0.75,0.8}
+\psset{gradmidpoint=0,fillstyle=gradient,gradbegin=LightCyan,gradend=white}
+\newpsstyle{TaskStyleA}{gradbegin=cyan,gradend=blue}
+\newpsstyle{TaskStyleB}{gradbegin=red,gradend=Pink}
+\newpsstyle{TaskStyleC}{gradbegin=yellow,gradend=Orange}
+\newpsstyle{TaskStyleD}{gradbegin=green,gradend=PaleGreen}
+\begin{center}
+\begin{PstGanttChart}[yunit=2.5,xunit=3.5,ChartUnitIntervalName=Mês,
+                      ChartUnitBasicIntervalName=Week,TaskUnitType=Week,
+                      TaskUnitIntervalValue=4,
+                      TaskOutsideLabelMaxSize=14,ChartShowIntervals]{18}{24}
+  \psset{gradangle=90,TaskStyle=TaskStyleA}
+
+  \PstGanttTask[TaskOutsideLabel={Seções sobre RDF e Microformatos}]{1}{2}
+  \PstGanttTask[TaskOutsideLabel={Repositório de documentos Semânticos}]{1}{2}
+  \PstGanttTask[TaskOutsideLabel={Seção sobre OWL}]{2}{2}
+  \PstGanttTask[TaskOutsideLabel={Captura e Parsing de documentos semânticos}]{2}{2}
+  \PstGanttTask[TaskOutsideLabel={Capítulo de Aspectos Conceituais}]{3}{3}
+  \PstGanttTask[TaskOutsideLabel={Algoritmo de recomendação}]{2}{5}
+  \PstGanttTask[TaskOutsideLabel={Capítulo Especificação}]{2}{5}
+  \PstGanttTask[TaskOutsideLabel={Interface de consulta de recomendações}]{5}{4}
+  \PstGanttTask[TaskOutsideLabel={Documento de Evolução do Projeto}]{8}{1}
+  \PstGanttTask[TaskOutsideLabel={Capítulo de Metodologia}]{9}{2}
+  \PstGanttTask[TaskOutsideLabel={Implantação do Front-End}]{6}{5}
+  \PstGanttTask[TaskOutsideLabel={Capítulo de Projeto e Implementação}]{9}{4}
+  \PstGanttTask[TaskOutsideLabel={Formulação de Testes e Avaliação}]{9}{4}
+  \PstGanttTask[TaskOutsideLabel={Avaliação dos Resultados parciais}]{13}{2}
+  \PstGanttTask[TaskOutsideLabel={Capítulo de Testes e Avaliação}]{15}{2}
+  \PstGanttTask[TaskOutsideLabel={Capítulo de Considerações finais}]{16}{2}
+  \PstGanttTask[TaskOutsideLabel={Finalização da Monografia}]{17}{3}
+  \PstGanttTask[TaskOutsideLabel={Apresentação e Demostração Prática}]{18}{4}
+
+  
+\end{PstGanttChart}
+\end{center}
+
 % section cronograma (end)
 
 
@@ -449,9 +496,7 @@ Redes Sociais &  \\
   \end{description}
 \end{description}
 
-
 % section análise_swot (end)
-
 
 %\bibliographystyle{plain}
 %\bibliography{}
