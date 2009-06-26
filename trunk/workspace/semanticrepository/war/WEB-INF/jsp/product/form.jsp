@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false" pageEncoding="UTF-8"%>
 
 <html>
 <body>
@@ -7,7 +7,7 @@
 	<c:forEach var="error" items="${errors}">
 		<li>${error.message } - ${error.category }</li>
 	</c:forEach>
-	<form action="<c:url value="/products"/>" method="post"  >
+	<form action="<c:url value="/products"/>" method="post" accept-charset="utf-8" >
 	<table>
 		<tr>
 			<td>Name:</td>

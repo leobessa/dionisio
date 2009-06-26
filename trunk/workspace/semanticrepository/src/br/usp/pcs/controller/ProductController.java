@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
@@ -37,7 +38,7 @@ public class ProductController {
 
     @Post
     @Path("/products")
-    public void add(Product product) {
+    public void create(Product product) {
         validator.onError().goTo(ProductController.class).form();
         if ("".equals(product.getName())) {
             validator.add(new ValidationMessage("should_not_be_empty", "name"));
@@ -45,27 +46,50 @@ public class ProductController {
         validator.validate();
         repository.persist(product);
         result.include("message", "Added sucessfully!");
-        result.use(logic()).redirectTo(ProductController.class).list();
+        result.use(logic()).redirectTo(ProductController.class).index();
 
     }
 
     @Get
     @Path("/products")
-    public List<Product> list() {
+    public List<Product> index() {
         return repository.listAll();
     }
 
     @Get
     @Path("/products/{product.id}")
-    public void view(Product product) {
+    public void show(Product product) {
         result.include("product", repository.find(product.getId()));
     }
 
     @Delete
     @Path("/products/{product.id}")
-    public void delete(Product product) {
-        repository.remove(product);
-        result.use(logic()).redirectTo(ProductController.class).list();
+    public void destroy(Product product) {
+        Product managedProduct = repository.getReference(product.getId());
+        repository.remove(managedProduct);
+        result.use(logic()).redirectTo(ProductController.class).index();
+    }
+
+    @Get
+    @Path("/products/edit/{product.id}")
+    public void edit(Product product) {
+        show(product);
+    }
+
+    @Put
+    @Path("/products/{product.id}")
+    public void update(Product product) {
+        Product managedProduct = repository.find(product.getId());
+        managedProduct.setBrand(product.getBrand());
+        managedProduct.setCategory(product.getCategory());
+        managedProduct.setDescription(product.getDescription());
+        managedProduct.setName(product.getName());
+        managedProduct.setPhoto(product.getPhoto());
+        managedProduct.setPrice(product.getPrice());
+        managedProduct.setUrl(product.getUrl());
+        repository.merge(managedProduct);
+        result.include("message", "Updated sucessfully!");
+        result.use(logic()).redirectTo(ProductController.class).index();
     }
 
 }

@@ -14,15 +14,25 @@ import br.usp.pcs.model.Product;
 public class ProductRepository {
 
 
+
     private final EntityManager em;
 
     public ProductRepository(EMF emf) {
         this.em = emf.getEntityManager();
     }
 
-    public Product find(Object id) {
+    public Product find(Long id) {
         return em.find(Product.class, id);
     }
+
+    public Product getReference(Long id) {
+        return em.getReference(Product.class, id);
+    }
+
+    public Product merge(Product p) {
+        return em.merge(p);
+    }
+
 
     public void persist(Product p) {
         em.persist(p);

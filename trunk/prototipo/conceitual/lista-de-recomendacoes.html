@@ -5,34 +5,81 @@
 <head> 
   <title>Lista de Recomendações</title> 
   <link rel="stylesheet" type="text/css" href="css/expose-mf.css"/>
+  <!-- Combo-handled YUI CSS files: -->
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/paginator/assets/skins/sam/paginator.css">
+  <!-- Combo-handled YUI JS files: -->
+
+  <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.7.0/build/yahoo-dom-event/yahoo-dom-event.js&2.7.0/build/element/element-min.js&2.7.0/build/paginator/paginator-min.js"></script>
+  <style type="text/css">
+  #content {
+      background: #fff;
+      border: 1px solid #ccc;
+      color: #000;
+      font-family: Times New Roman, serif;
+      padding: 1em 2em;
+  }
+
+  /* hide all pages */
+  #content div {
+      display: none;
+  }
+
+  /* display the current page */
+  #demo .page1 div.page1,
+  #demo .page2 div.page2,
+  #demo .page3 div.page3,
+  #demo .page4 div.page4,
+  #demo .page5 div.page5 {
+      display: block;
+  }
+  </style>
 </head>
 
   <body>
 
-    <h1>Lista de recomendações</h1> 
-    <div id="recomendações">
+        <div id="demo">
+            <h2 class="first">The Monster</h2>
+            <p>By Stephen Crane</p>
 
-      <div class="vevent" id="hcalendar-Falando-em-Java">
-        <a class="url" href="http://www.caelum.com.br/falando-em-java">
-          <abbr class="dtstart" title="2009-05-24T08:00-03:0000">May 24, 2009 08</abbr> – 
-          <abbr class="dtend" title="2009-05-24T18:00-03:00">6pm</abbr> : 
-          <span class="summary">Falando em Java</span> at 
-          <span class="location">Rua São Joaquim, 460 - Liberdade</span>
-        </a>
-        <div class="description">O já consolidado evento organizado pela Caelum chega a sua terceira
-          edição esse ano com duas atrações internacionais e palestras de alto nível.
+            <div id="paging"></div>
+
+            <div id="content" class="page1">
+                <div class="page1" typeof="product:Product"
+                    xmlns:product="http://search.yahoo.com/searchmonkey/product/"
+                    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+                    
+
+                        <span property="product:listPrice">27.99</span>
+                        <span property="product:currency" content="USD" />
+
+                        <span property="rdfs:label">Startech Serial ATA Cable - 45.72cm - Red</span>
+                </div>
+                <div class="page2">
+                    <p>He went on to the lawn, very slowly, and kicking wretchedly at the turf. Presently his father came along with the whirring machine, while the sweet, new grass blades spun from the knives. In a low voice, Jim said, “Pa!”</p>     
+                    <p>The doctor was shaving this lawn as if it were a priest’s chin. All during the season he had worked at it in the coolness and peace of the evenings after supper. Even in the shadow of the cherry-trees the grass was strong and healthy. Jim raised his voice a trifle. “Pa!”</p>     
+                    <p>The doctor paused, and with the howl of the machine no longer occupying the sense, one could hear the robins in the cherry-trees arranging their affairs. Jim’s hands were behind his back, and sometimes his fingers clasped and unclasped. Again he said, “Pa!” The child’s fresh and rosy lip was lowered.</p>     
+                </div>
+                <div class="page3">
+                    <p>The doctor stared down at his son, thrusting his head forward and frowning attentively. “What is it, Jimmie?”</p>     
+                    <p>“Pa!” repeated the child at length. Then he raised his finger and pointed at the flower-bed. “There!”</p>     
+                    <p>“What?” said the doctor, frowning more. “What is it, Jim?”</p>     
+                    <p>After a period of silence, during which the child may have undergone a severe mental tumult, he raised his finger and repeated his former word—“There!” The father had respected this silence with perfect courtesy. Afterward his glance carefully followed the direction indicated by the child’s finger, but he could see nothing which explained to him. “I don’t understand what you mean, Jimmie,” he said.</p>     
+                </div>
+                <div class="page4">
+                    <p>It seemed that the importance of the whole thing had taken away the boy’s vocabulary. He could only reiterate, “There!”</p>     
+                    <p>The doctor mused upon the situation, but he could make nothing of it. At last he said, “Come, show me.”</p>     
+                    <p>Together they crossed the lawn toward the flower-bed. At some yards from the broken peony Jimmie began to lag. “There!” The word came almost breathlessly.</p>     
+                    <p>“Where?” said the doctor.</p>     
+                    <p>Jimmie kicked at the grass. “There!” he replied.</p>     
+                </div>
+                <div class="page5">
+                    <p>The doctor was obliged to go forward alone. After some trouble he found the subject of the incident, the broken flower. Turning then, he saw the child lurking at the rear and scanning his countenance.</p>     
+                    <p>The father reflected. After a time he said, “Jimmie, come here.” With an infinite modesty of demeanour the child came forward. “Jimmie, how did this happen?”</p>     
+                    <p>The child answered, “Now&#8212;I was playin’ train&#8212;and&#8212;now&#8212;I runned over it.”</p>
+                </div>
+            </div>
         </div>
-        <div class="tags">Tags: 
-          <a rel="tag" href="http://eventful.com/events/tags/arquitetura">arquitetura</a>
-          <a rel="tag" href="http://eventful.com/events/tags/caelum"> caelum</a>
-          <a rel="tag" href="http://eventful.com/events/tags/eventos">eventos</a>
-          <a rel="tag" href="http://eventful.com/events/tags/java">java</a>
-          <a rel="tag" href="http://eventful.com/events/tags/palestras">palestras</a>
-          <a rel="tag" href="http://eventful.com/events/tags/tecnologia">tecnologia</a>
-        </div>
-
-      </div>
-
-    </div>
+        <script type="text/javascript" src="js/paging.js"></script>  
+        
   </body> 
 </html>

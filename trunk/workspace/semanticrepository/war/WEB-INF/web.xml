@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
 	<display-name>vraptor-example</display-name>
-
-	<context-param>
-		<param-name>br.com.caelum.vraptor.provider</param-name>
-		<param-value>br.usp.pcs.provider.CustomPicoProvider</param-value>
-	</context-param>
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<el-ignored>false</el-ignored>
+			<scripting-invalid>true</scripting-invalid>
+			<include-prelude>/WEB-INF/jspf/prelude.jspf
+			</include-prelude>
+			<page-encoding>UTF-8</page-encoding>
+		</jsp-property-group>
+	</jsp-config>
+	<listener>
+		<listener-class>
+			br.usp.pcs.provider.GoogleAppEngineContextListener
+		</listener-class>
+	</listener>
 
 	<!-- declaracao do filtro -->
 	<filter>
 		<filter-name>vraptor</filter-name>
-		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>
+		<filter-class>br.com.caelum.vraptor.VRaptor
+		</filter-class>
 	</filter>
 
 	<!-- mapeando o filtro para todas as requisicoes -->
