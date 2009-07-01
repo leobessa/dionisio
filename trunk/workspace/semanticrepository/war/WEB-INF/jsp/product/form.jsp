@@ -11,7 +11,11 @@
 	<table>
 		<tr>
 			<td>Name:</td>
-			<td><input type="text" name="product.name" value="" /> (min length: 5)</td>
+			<td><input type="text" name="Product.name" value="" /> (min length: 5)</td>
+		</tr>
+		<tr>
+			<td>Store Name:</td>
+			<td><input type="text" name="Product.storeName" value="" /></td>
 		</tr>
 		<tr>
 			<td>Brand:</td>

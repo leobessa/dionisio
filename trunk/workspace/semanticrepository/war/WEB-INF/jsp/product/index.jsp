@@ -19,6 +19,7 @@
 			<td>${product.id}</td>
 			<td>${product.name}</td>
 			<td><a href="<c:url value="/products/${product.id}"/>">view</a> |
+			<a href="<c:url value="/products/edit/${product.id}"/>">edit</a> |
 			<a href="<c:url value="/products/${product.id}"/>?_method=DELETE">delete</a>
 			</td>
 		</tr>

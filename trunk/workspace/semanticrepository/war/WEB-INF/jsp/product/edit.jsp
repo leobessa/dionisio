@@ -7,12 +7,16 @@
 	<c:forEach var="error" items="${errors}">
 		<li>${error.message } - ${error.category }</li>
 	</c:forEach>
-	<form action="<c:url value="/products/${product.id}"/>" method="PUT"  accept-charset="utf-8" >
+	<form action="<c:url value="/products/${product.id}"/>" method="PUT"accept-charset="utf-8" >
 	<input type="hidden" name="_method" value="PUT">
 	<table>
 		<tr>
 			<td>Name:</td>
 			<td><input type="text" name="product.name" value="${product.name}" /> (min length: 5)</td>
+		</tr>
+		<tr>
+			<td>Store Name:</td>
+			<td><input type="text" name="Product.storeName" value="${product.storeName}" /></td>
 		</tr>
 		<tr>
 			<td>Brand:</td>

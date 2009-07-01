@@ -1,7 +1,7 @@
 package br.usp.pcs.controller;
 
-import static br.com.caelum.vraptor.view.Results.logic;
-
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
+import br.com.caelum.vraptor.view.Results;
 import br.usp.pcs.dao.ProductRepository;
 import br.usp.pcs.model.Product;
 
@@ -25,7 +26,8 @@ public class ProductController {
 
     private final ProductRepository repository;
 
-    public ProductController(Result result, ProductRepository repository, Validator validator) {
+    public ProductController(Result result, ProductRepository repository,
+            Validator validator) {
         this.result = result;
         this.repository = repository;
         this.validator = validator;
@@ -39,20 +41,35 @@ public class ProductController {
     @Post
     @Path("/products")
     public void create(Product product) {
+        validate(product);
+
+        repository.persist(product);
+        result.include("message", "Added sucessfully!");
+        result.use(Results.logic()).redirectTo(ProductController.class).index();
+    }
+
+    private void validate(Product product) {
         validator.onError().goTo(ProductController.class).form();
         if ("".equals(product.getName())) {
             validator.add(new ValidationMessage("should_not_be_empty", "name"));
         }
+        try {
+            new URL(product.getUrl());
+        } catch (MalformedURLException e) {
+            validator.add(new ValidationMessage("should_be_valid_url", "url"));
+        }
         validator.validate();
-        repository.persist(product);
-        result.include("message", "Added sucessfully!");
-        result.use(logic()).redirectTo(ProductController.class).index();
-
     }
 
     @Get
     @Path("/products")
     public List<Product> index() {
+        return repository.listAll();
+    }
+
+    @Get
+    @Path("/products/store:{string.value}")
+    public List<Product> index(String store) {
         return repository.listAll();
     }
 
@@ -67,7 +84,7 @@ public class ProductController {
     public void destroy(Product product) {
         Product managedProduct = repository.getReference(product.getId());
         repository.remove(managedProduct);
-        result.use(logic()).redirectTo(ProductController.class).index();
+        result.use(Results.logic()).redirectTo(ProductController.class).index();
     }
 
     @Get
@@ -79,6 +96,7 @@ public class ProductController {
     @Put
     @Path("/products/{product.id}")
     public void update(Product product) {
+        validate(product);
         Product managedProduct = repository.find(product.getId());
         managedProduct.setBrand(product.getBrand());
         managedProduct.setCategory(product.getCategory());
@@ -87,9 +105,10 @@ public class ProductController {
         managedProduct.setPhoto(product.getPhoto());
         managedProduct.setPrice(product.getPrice());
         managedProduct.setUrl(product.getUrl());
+        managedProduct.setStoreName(product.getStoreName());
         repository.merge(managedProduct);
         result.include("message", "Updated sucessfully!");
-        result.use(logic()).redirectTo(ProductController.class).index();
+        result.use(Results.logic()).redirectTo(ProductController.class).show(managedProduct);
     }
 
 }

@@ -9,7 +9,6 @@ public class GoogleAppEngineContextListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent arg0) {
         OgnlRuntime.setSecurityManager(null);
-
     }
 
     public void contextDestroyed(ServletContextEvent arg0) {

@@ -13,12 +13,10 @@ import br.usp.pcs.model.Product;
 @RequestScoped
 public class ProductRepository {
 
-
-
     private final EntityManager em;
 
-    public ProductRepository(EMF emf) {
-        this.em = emf.getEntityManager();
+    public ProductRepository(Database database) {
+        this.em = database.getEntityManager();
     }
 
     public Product find(Long id) {
@@ -44,6 +42,13 @@ public class ProductRepository {
 
     public List<Product> listAll() {
         String s = String.format("SELECT p FROM %s p", Product.class.getName());
+        Query query = em.createQuery(s);
+        List<Product> list = query.getResultList();
+        return list;
+    }
+
+    public List<Product> listAllFromStore(String store) {
+        String s = String.format("SELECT p FROM %s p WHERE p.", Product.class.getName());
         Query query = em.createQuery(s);
         List<Product> list = query.getResultList();
         return list;
