@@ -1,0 +1,7 @@
+{% load rabidratings_extras %}
+    <ol>
+    {% for star, product in bestrated %}
+    <li><strong>{{product}}</strong> {% show_rating product.get_ratingtotal %} </li>
+    {% endfor %}
+    </ol>
+

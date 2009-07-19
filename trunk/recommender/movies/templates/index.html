@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load rabidratings_extras %}
+{% block extrahead %}
+<script type="text/javascript" src="{% url static "js/mootools-1.2.js" %}"></script>
+<script type="text/javascript" src="{% url static "js/dionisio.js" %}"></script>
+<link rel="stylesheet" href="{% url static "css/dionisio.css" %}" type="text/css">
+{% rating_header %} 
+<script type="text/javascript">
+    $j(document).ready(function() {
+        dionisio.init({static_url: "{% url static "" %}"});
+        dionisio.show_user_recommendations($j('#user_recommendations'), "{% url ajax_recommendation_list %}");
+        dionisio.show_best_rated($j('#best_rated'), "{% url ajax_best_rated_list %}", "{% url ajax_rate_product %}");
+    });
+</script>
+{% endblock extrahead %}
+{% block content %}
+<p>Hello {{request.user.username}}. <a href="{% url logout %}">logout</a></p>
+    <h1>Your recommendations</h1>
+    <div id="user_recommendations">
+        <div class="ajax_content">Loading...</div>
+        <div class="ajax_loader">&nbsp;</div>
+    </div>
+    <h1>Best Rated Movies</h1>
+    <div id="best_rated">
+        <div class="ajax_content">Loading...</div>
+        <div class="ajax_loader">&nbsp;</div>        
+    </div>
+{% endblock content %}
+

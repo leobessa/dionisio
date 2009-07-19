@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% if saved %}<strong>User Saved</strong>{% endif %}
+<h1 class="alt">Create a new login</h1>
+
+<form method="post">
+<table>
+    {{form}}
+</table>
+<input type="hidden" name="next" value="{{next}}">
+<input type="submit">
+</form>
+{% endblock content %}
+

@@ -1,0 +1,10 @@
+    {% if recommendations %}
+        <ol>
+        {% for star, product in recommendations %}
+        <li><strong>{{product}}</strong><div>Predicted rating: {{star|floatformat:1}}</div></li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <h2 class="alt">No recommendations available, please rate some items</h2>
+    {% endif %}
+

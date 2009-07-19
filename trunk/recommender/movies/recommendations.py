@@ -61,14 +61,50 @@ def sim_pearson(prefs,p1,p2):
   # Sum of the products
   pSum=sum([prefs[p1][it]*prefs[p2][it] for it in si])
   
+  #print 'n', n, 'sum1:', sum1, ' sum2: ', sum2, 'sum1Sq: ', sum1Sq, 'sum2Sq', sum2Sq, 'pSum', pSum
   # Calculate r (Pearson score)
   num=pSum-(sum1*sum2/n)
   den=sqrt((sum1Sq-pow(sum1,2)/n)*(sum2Sq-pow(sum2,2)/n))
-  if den==0: return 0
+  #print 'num:', num, 'den:', den
+  if den==0: den = 1e-6
 
   r=num/den
 
   return r
+
+def sim_pearson2(prefs,p1,p2):
+  # Get the list of mutually rated items
+  si={}
+  for item in prefs[p1]: 
+    if item in prefs[p2]: si[item]=1
+
+  # if they are no ratings in common, return 0
+  if len(si)==0: return 0
+
+  # Sum calculations
+  n=float(len(si))
+  
+  sum_sq_x = 0.0
+  sum_sq_y = 0.0
+  sum_coproduct = 0.0
+  x = prefs[p1]
+  y = prefs[p2]
+  mean_x = x[si.keys()[0]]
+  mean_y = y[si.keys()[0]]
+  for i in range(2, int(n)+1):
+    sweep = (i - 1.0) / i
+    delta_x = x[si.keys()[i-1]] - mean_x
+    delta_y = y[si.keys()[i-1]] - mean_y
+    sum_sq_x += delta_x * delta_x * sweep
+    sum_sq_y += delta_y * delta_y * sweep
+    sum_coproduct += delta_x * delta_y * sweep
+    mean_x += delta_x / i
+    mean_y += delta_y / i 
+  pop_sd_x = sqrt( sum_sq_x/n )
+  pop_sd_y = sqrt( sum_sq_y/n )
+  cov_x_y = sum_coproduct/n
+  correlation = cov_x_y / ((pop_sd_x * pop_sd_y)+1e-6)
+  return correlation
 
 # Returns the best matches for person from the prefs dictionary. 
 # Number of results and similarity function are optional params.
