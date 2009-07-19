@@ -14,9 +14,9 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-     (r'^admin/', include(admin.site.urls)),
+     (r'^recommender/admin/', include(admin.site.urls)),
 
-    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    (r'^recommender/accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^recommender/movies/', include('recommender.movies.urls')),
     url(r'^static/(.*)$', 'django.views.static.serve',
      {'document_root': settings.MEDIA_ROOT}, name='static'),

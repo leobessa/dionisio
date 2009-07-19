@@ -50,7 +50,7 @@ MEDIA_URL = '/static/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/recommender/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'rc))g=nz+h3%j-axficucp3x+wig8@f7u#bvs*o&=v4_%-+g7r'
@@ -73,6 +73,7 @@ MIDDLEWARE_CLASSES = (
 
 INTERNAL_IPS = ['127.0.0.1']
 LOGIN_REDIRECT_URL = '/recommender/movies/'
+LOGIN_URL = '/recommender/accounts/login/'
 
 ROOT_URLCONF = 'recommender.urls'
 

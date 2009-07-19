@@ -6,9 +6,6 @@ from django.core.urlresolvers import reverse
 
 from movies.models import User, Rating, Product, RatingTotal
 
-class UserForm(ModelForm):
-    class Meta:
-        model = User
 
 @login_required
 def index(request):
@@ -20,7 +17,7 @@ def index(request):
 def create_login(request):
     from django.contrib.auth.forms import UserCreationForm
     params = request.GET or request.POST
-    next = params.get('next', reverse(index))
+    next = params.get('next', '').strip() or reverse(index)
     if request.method == 'GET':
         form = UserCreationForm()
     else:
@@ -56,7 +53,7 @@ def ajax_rate_product(request):
     user = User.get_by_login(request.user)
     user.rate_product(product_id, rating_percent)
     rating_context = show_rating(Context(), product.ratingtotal)
-    return HttpResponse(render_to_string('rabidratings/rating_info.html', rating_context))
+    return render_to_response('rabidratings/rating_info.html', rating_context)
 
 def ajax_recommendation_list(request):
     user = User.get_by_login(request.user)
@@ -64,6 +61,6 @@ def ajax_recommendation_list(request):
     return render_to_response('recommendation_list.html', locals())
 
 def ajax_best_rated_list(request):
-    bestrated = RatingTotal.best_rated(100)
+    bestrated = RatingTotal.best_rated(1000)
     return render_to_response('best_rated_list.html', locals())
 
