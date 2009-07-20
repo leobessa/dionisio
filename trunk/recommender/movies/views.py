@@ -56,6 +56,8 @@ def ajax_rate_product(request):
     return render_to_response('rabidratings/rating_info.html', rating_context)
 
 def ajax_recommendation_list(request):
+    if not request.user.is_authenticated():
+        return HttpResponse('This operation needs authentication')
     user = User.get_by_login(request.user)
     recommendations = user.get_recommendations()
     return render_to_response('recommendation_list.html', locals())
