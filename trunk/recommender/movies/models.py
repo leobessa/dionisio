@@ -36,12 +36,22 @@ class User(models.Model):
     def get_by_login(cls, user):
         return cls.objects.filter(django_user=user)[0]
 
-    def get_recommendations(self):
-        from recommendations import getRecommendations
+    def get_recommendations(self, similarity='pearson'):
+        from recommendations import getRecommendations, get_similarity
+        sim = get_similarity(similarity)
         return [
                 (star, Product.get_by_id(productid)) 
-                for star, productid in getRecommendations(UsersDictAdaptor(User.objects.all()), self.id)
+                for star, productid in getRecommendations(UsersDictAdaptor(User.objects.all()), self.id, similarity=sim)
                 ]
+
+    def get_similar_users(self, n=-1, similarity='pearson'):
+        from recommendations import topMatches, get_similarity
+        sim = get_similarity(similarity)
+        return [
+                (correlation, User.objects.get(id=userid))
+                for correlation, userid in topMatches(UsersDictAdaptor(User.objects.all()), self.id, n=n, similarity=sim)
+                ]
+
     def rate_product(self, product_id, rating_percent):
         return Rating.update_or_new(Product.get_by_id(product_id), self, rating_percent)
 

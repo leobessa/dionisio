@@ -1,7 +1,7 @@
     {% if recommendations %}
         <ol>
         {% for star, product in recommendations %}
-        <li><strong>{{product}}</strong><div>Predicted rating: {{star|floatformat:1}}</div></li>
+        <li><strong>{{product}}</strong><div>Predicted rating: <strong>{{star|floatformat:1}}</strong></div></li>
         {% endfor %}
         </ol>
     {% else %}

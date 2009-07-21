@@ -66,7 +66,7 @@ def sim_pearson(prefs,p1,p2):
   num=pSum-(sum1*sum2/n)
   den=sqrt((sum1Sq-pow(sum1,2)/n)*(sum2Sq-pow(sum2,2)/n))
   #print 'num:', num, 'den:', den
-  if den==0: den = 1e-6
+  if den==0: return 0
 
   r=num/den
 
@@ -108,7 +108,7 @@ def sim_pearson2(prefs,p1,p2):
 
 # Returns the best matches for person from the prefs dictionary. 
 # Number of results and similarity function are optional params.
-def topMatches(prefs,person,n=5,similarity=sim_pearson):
+def topMatches(prefs,person,n=-1,similarity=sim_pearson):
   scores=[(similarity(prefs,person,other),other) 
                   for other in prefs if other!=person]
   scores.sort()
@@ -214,3 +214,8 @@ def loadMovieLens(path='/data/movielens'):
     prefs.setdefault(user,{})
     prefs[user][movies[movieid]]=float(rating)
   return prefs
+
+
+def get_similarity(name):
+  table = {'pearson': sim_pearson, 'distance': sim_distance}
+  return table[name]

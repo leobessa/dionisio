@@ -9,21 +9,35 @@
     $j(document).ready(function() {
         dionisio.init({static_url: "{% url static "" %}"});
         dionisio.show_user_recommendations($j('#user_recommendations'), "{% url ajax_recommendation_list %}");
+        dionisio.show_similar_users($j('#similar_users'), "{% url ajax_similar_users_list %}");        
         dionisio.show_best_rated($j('#best_rated'), "{% url ajax_best_rated_list %}", "{% url ajax_rate_product %}");
     });
 </script>
 {% endblock extrahead %}
 {% block content %}
-<p>Hello {{request.user.username}}. <a href="{% url logout %}">logout</a></p>
+<div class="span-24">
+    <p>Hello {{request.user.username}}. <a href="{% url logout %}">logout</a></p>
+</div>
+<div class="span-13 colborder">
     <h1>Your recommendations</h1>
     <div id="user_recommendations">
         <div class="ajax_content">Loading...</div>
         <div class="ajax_loader ajax_loading">&nbsp;</div>
     </div>
+</div>
+<div class="span-10 last">
+    <h1>Similar users</h1>
+    <div id="similar_users">
+        <div class="ajax_content">Loading...</div>
+        <div class="ajax_loader ajax_loading">&nbsp;</div>
+    </div>
+</div>
+<div class="span-24">
     <h1>Best Rated Movies</h1>
     <div id="best_rated">
         <div class="ajax_content">Loading...</div>
         <div class="ajax_loader ajax_loading">&nbsp;</div>        
     </div>
+</div>
 {% endblock content %}
 

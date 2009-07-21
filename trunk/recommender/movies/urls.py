@@ -9,5 +9,6 @@ urlpatterns = patterns('movies.views',
     url(r'^ajax_rate_product/$', 'ajax_rate_product', name='ajax_rate_product'),
     url(r'^ajax_recommendation_list/$', 'ajax_recommendation_list', name='ajax_recommendation_list'),
     url(r'^ajax_best_rated_list/$', 'ajax_best_rated_list', name='ajax_best_rated_list'),
+    url(r'^ajax_similar_users_list/$', 'ajax_similar_users_list', name='ajax_similar_users_list'),
     
 )

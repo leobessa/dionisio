@@ -1,0 +1,10 @@
+    {% if similar_users %}
+        <ol>
+        {% for correlation, user in similar_users %}
+        <li><strong>{{user}}</strong><div>Correlation score: <strong>{{correlation|floatformat:1}}</strong></div></li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <h2 class="alt">No similar users found, please rate some items</h2>
+    {% endif %}
+
