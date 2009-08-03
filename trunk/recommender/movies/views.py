@@ -9,9 +9,6 @@ from movies.models import User, Rating, Product, RatingTotal
 
 @login_required
 def index(request):
-    #user = User.get_by_login(request.user)
-    #recommendations = user.get_recommendations()
-    #bestrated = RatingTotal.best_rated(100)
     return render_to_response('index.html', locals())
 
 def create_login(request):
@@ -55,11 +52,11 @@ def ajax_rate_product(request):
     rating_context = show_rating(Context(), product.ratingtotal)
     return render_to_response('rabidratings/rating_info.html', rating_context)
 
-def ajax_recommendation_list(request):
+def ajax_recommendation_list(request, type='user_similarity'):
     if not request.user.is_authenticated():
         return HttpResponse('This operation needs authentication')
     user = User.get_by_login(request.user)
-    recommendations = user.get_recommendations()
+    recommendations = user.get_recommendations(type=type)
     return render_to_response('recommendation_list.html', locals())
 
 def ajax_best_rated_list(request):

@@ -36,20 +36,36 @@ class User(models.Model):
     def get_by_login(cls, user):
         return cls.objects.filter(django_user=user)[0]
 
-    def get_recommendations(self, similarity='pearson'):
-        from recommendations import getRecommendations, get_similarity
-        sim = get_similarity(similarity)
-        return [
-                (star, Product.get_by_id(productid)) 
-                for star, productid in getRecommendations(UsersDictAdaptor(User.objects.all()), self.id, similarity=sim)
+    @classmethod
+    def get_users_ratings_dict(cls):
+        return UsersDictAdaptor(User.objects.all())
+
+    def get_recommendations(self, type='user_similarity', similarity='pearson'):
+        from recommendations import getRecommendations, calculateSimilarItems, get_similarity, getRecommendedItems
+        users_prefs = User.get_users_ratings_dict()
+        if type == 'user_similarity':
+            sim = get_similarity(similarity)
+            return [
+                (star, Product.get_by_id(productid))
+                for star, productid in getRecommendations(users_prefs, self.id, similarity=sim)
                 ]
+        elif type == 'item_similarity':
+            # similar_items = calculateSimilarItems(users_prefs)
+            similar_items = ItemSimilarity.get_similarity_dict()
+            return [
+                (star, Product.get_by_id(productid))
+                for star, productid in getRecommendedItems(users_prefs, similar_items, self.id)
+                ]
+        else:
+            raise ValueError('Unknown recommendation type %s' % type)
 
     def get_similar_users(self, n=-1, similarity='pearson'):
         from recommendations import topMatches, get_similarity
+        users_prefs = User.get_users_ratings_dict()        
         sim = get_similarity(similarity)
         return [
                 (correlation, User.objects.get(id=userid))
-                for correlation, userid in topMatches(UsersDictAdaptor(User.objects.all()), self.id, n=n, similarity=sim)
+                for correlation, userid in topMatches(users_prefs, self.id, n=n, similarity=sim)
                 ]
 
     def rate_product(self, product_id, rating_percent):
@@ -158,6 +174,87 @@ class RatingTotal(models.Model):
             return round(float(self.total_rating)/self.total_votes, 0)
         return 0
 
+class ItemSimilarity(models.Model):
+    product = models.ForeignKey(Product)
+    score = models.FloatField()
+    similar_product = models.ForeignKey(Product, related_name='itemsimilarity_similar_set')
+
+    @classmethod
+    def get_similarity_dict(cls):
+        return ItemSimilarityDictAdaptor(cls.objects.all())
+
+
+from UserDict import DictMixin
+
+class RatingsDictAdaptor(DictMixin):
+    def __init__(self, ratings_dataset):
+        self.ratings_dataset = ratings_dataset
+        self._keys = None
+        self._ratings = {}
+    def __getitem__(self, product_id):
+        if product_id not in self.keys(): raise KeyError(product_id)
+        if product_id not in self._ratings:
+            self._ratings[product_id] = self.ratings_dataset.filter(product=product_id)[0].stars
+        return self._ratings[product_id]
+    def __setitem__(self, key, value):
+        raise NotImplementedError
+    def __delitem__(self, key):
+        raise NotImplementedError    
+    def keys(self):
+        if not self._keys:
+            self._keys = [ rating.product.id for rating in self.ratings_dataset ]
+        return self._keys
+    def has_key(self, key):
+         return key in self.keys()
+
+class UsersDictAdaptor(DictMixin):
+    def __init__(self, user_dataset):
+        self.user_dataset = user_dataset
+        self._ratings = {}
+        self._keys = None
+    def __getitem__(self, key):
+        if key not in self.keys(): raise KeyError(key)
+        if key not in self._ratings:
+            self._ratings[key] = RatingsDictAdaptor(self.user_dataset.get(id=key).rating_set.all())
+        return self._ratings[key]
+    def __setitem__(self, key, value):
+        raise NotImplementedError
+    def __delitem__(self, key):
+        raise NotImplementedError    
+    def keys(self):
+        if not self._keys:
+            self._keys = [ user.id for user in self.user_dataset ]
+        return self._keys
+    def has_key(self, key):
+         return key in self.keys()
+
+class ItemSimilarityDictAdaptor(DictMixin):
+    def __init__(self, itemsimilarity_dataset):
+        self.itemsimilarity_dataset = itemsimilarity_dataset
+        self._d = {}
+        self._keys = None
+    def __getitem__(self, key):
+        if key not in self.keys(): raise KeyError(key)        
+        if key not in self._d:
+            self._d[key] = []
+            objs = self.itemsimilarity_dataset.filter(product=key)
+            for obj in objs:
+                self._d[key].append((float(obj.score), obj.similar_product.id))
+        return self._d[key]
+    def __setitem__(self, key, value):
+        raise NotImplementedError
+    def __delitem__(self, key):
+        raise NotImplementedError    
+    def keys(self):
+        if not self._keys:
+            self._keys = [ itemsimilarity.product.id for itemsimilarity in self.itemsimilarity_dataset ]
+        return self._keys
+    def has_key(self, key):
+         return key in self.keys()
+
+from django.db import transaction
+
+@transaction.commit_on_success
 def reset_ratingtotal():
     RatingTotal.objects.all().delete()
     products_stars = {}
@@ -171,152 +268,41 @@ def reset_ratingtotal():
         rt = RatingTotal(product=product,
                 total_rating=products_stars[product], total_votes=products_nratings[product])
         rt.save()
+        del rt
 
-class RatingsDictAdaptor(dict):
-    def __init__(self, ratings_dataset):
-        self.ratings_dataset = ratings_dataset
-        self._keys = None
-        self._ratings = {}
-    # first level definitions should be implemented by the sub-class
-    def __getitem__(self, product_id):
-        if product_id not in self._ratings:
-            self._ratings[product_id] = self.ratings_dataset.filter(product=product_id)[0].stars
-        return self._ratings[product_id]
-    def __setitem__(self, key, value):
-        raise NotImplementedError
-    def __delitem__(self, key):
-        raise NotImplementedError    
-    def keys(self):
-        if not self._keys:
-            self._keys = [ rating.product.id for rating in self.ratings_dataset ]
-        return self._keys
-    
-    # second level definitions which assume only getitem and keys
-    def has_key(self, key):
-         return key in self.keys()
-    def __iter__(self):
-        for k in self.keys():
-            yield k
+@transaction.commit_on_success
+def reset_ratingtotal2():
+    RatingTotal.objects.all().delete()
+    for rating in Rating.objects.all():
+        RatingTotal.add_rating(rating)
 
-    # third level uses second level instead of first
-    def __contains__(self, key):
-        return self.has_key(key)            
-    def iteritems(self):
-        for k in self:
-            yield (k, self[k])
-
-    # fourth level uses second and third levels instead of first
-    def iterkeys(self):
-        return self.__iter__()
-    def itervalues(self):
-        for _, v in self.iteritems():
-            yield v
-    def values(self):
-        return list(self.itervalues())
-    def items(self):
-        return list(self.iteritems())
-    def clear(self):
-        for key in self.keys():
-            del self[key]
-    def setdefault(self, key, default):
-        if key not in self:
-            self[key] = default
-            return default
-        return self[key]
-    def popitem(self):
-        key = self.keys()[0]
-        value = self[key]
-        del self[key]
-        return (key, value)
-    def update(self, other):
-        for key in other.keys():
-            self[key] = other[key]
-    def get(self, key, default):
-        if key in self:
-            return self[key]
-        return default
-    def __repr__(self):
-        return repr(dict(self.items()))
+@transaction.commit_on_success
+def reset_ratingtotal3():
+    from django.db import connection
+    cursor = connection.cursor()
+    RatingTotal.objects.all().delete()
+    cursor.execute('select product_id, sum(stars), count(*) from movies_rating group by product_id')
+    for product_id, total_rating, total_votes in cursor.fetchall():
+        product = Product(id=product_id)
+        rt = RatingTotal(product=product, total_rating=total_rating, total_votes=total_votes)
+        rt.save()
+        del rt, product
 
 
-class UsersDictAdaptor(dict):
-    def __init__(self, user_dataset):
-        self.user_dataset = user_dataset
-        self._ratings = {}
-        self._keys = None
-    # first level definitions should be implemented by the sub-class
-    def __getitem__(self, key):
-        if key not in self._ratings:
-            self._ratings[key] = RatingsDictAdaptor(self.user_dataset.get(id=key).rating_set.all())
-        return self._ratings[key]
-    def __setitem__(self, key, value):
-        raise NotImplementedError
-    def __delitem__(self, key):
-        raise NotImplementedError    
-    def keys(self):
-        if not self._keys:
-            self._keys = [ user.id for user in self.user_dataset ]
-        return self._keys
-    
-    # second level definitions which assume only getitem and keys
-    def has_key(self, key):
-         return key in self.keys()
-    def __iter__(self):
-        for k in self.keys():
-            yield k
-
-    # third level uses second level instead of first
-    def __contains__(self, key):
-        return self.has_key(key)            
-    def iteritems(self):
-        for k in self:
-            yield (k, self[k])
-
-    # fourth level uses second and third levels instead of first
-    def iterkeys(self):
-        return self.__iter__()
-    def itervalues(self):
-        for _, v in self.iteritems():
-            yield v
-    def values(self):
-        return list(self.itervalues())
-    def items(self):
-        return list(self.iteritems())
-    def clear(self):
-        for key in self.keys():
-            del self[key]
-    def setdefault(self, key, default):
-        if key not in self:
-            self[key] = default
-            return default
-        return self[key]
-    def popitem(self):
-        key = self.keys()[0]
-        value = self[key]
-        del self[key]
-        return (key, value)
-    def update(self, other):
-        for key in other.keys():
-            self[key] = other[key]
-    def get(self, key, default):
-        if key in self:
-            return self[key]
-        return default
-    def __repr__(self):
-        return repr(dict(self.items()))
-
-
+@transaction.commit_on_success
 def fill_movies(movielens_filename):
+    Product.objects.all().delete()
     for line in file(movielens_filename):
         id, name, type = line.split('::')
         product = Product(id=id, name=name, type=type)
         product.save()
 
+@transaction.commit_on_success
 def fill_users_ratings(movielens_filename):
     last_user = None
     nratings = 0
     nusers = 0
-    #TODO: colocar tudo em uma transacao
+    Rating.objects.all().delete()
     for line in file(movielens_filename):
         user_id, movie_id, stars, timestamp = line.split('::')
         if not last_user or last_user.id != user_id:
@@ -325,7 +311,7 @@ def fill_users_ratings(movielens_filename):
             nusers += 1
         #movie = Product.objects.only('id').get(id=movie_id)
         movie = Product(id=movie_id) # create a temporary instance
-        #FIXME: usar o .new aqui
+        #FIXME: usar o .new aqui (ou talvez nao, mas nao esquecer de atualizar o RatingTotal)
         rating = Rating(stars=stars, user=last_user, product=movie, timestamp=timestamp)
         rating.save()
         del movie
@@ -333,4 +319,20 @@ def fill_users_ratings(movielens_filename):
         nratings += 1
         if nratings % 10000 == 0:
             print 'Ratings: %d, Users: %d' % (nratings, nusers)
+
+
+@transaction.commit_on_success
+def calculate_similar_items():
+    from recommendations import calculateSimilarItems
+    users_prefs = User.get_users_ratings_dict()
+    similar_dict = calculateSimilarItems(users_prefs)
+    ItemSimilarity.objects.all().delete()
+    for item, similar_items in similar_dict.items():
+        for score, similar_item in similar_items:
+            product = Product(id=item)
+            similar_product = Product(id=similar_item)
+            itemsimilarity = ItemSimilarity(product=product, similar_product=similar_product, score=score)
+            itemsimilarity.save()
+            del product, similar_product, itemsimilarity
+
 
