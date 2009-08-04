@@ -194,7 +194,7 @@ class RatingsDictAdaptor(DictMixin):
     def __getitem__(self, product_id):
         if product_id not in self.keys(): raise KeyError(product_id)
         if product_id not in self._ratings:
-            self._ratings[product_id] = self.ratings_dataset.filter(product=product_id)[0].stars
+            self._ratings[product_id] = float(self.ratings_dataset.filter(product=product_id)[0].stars)
         return self._ratings[product_id]
     def __setitem__(self, key, value):
         raise NotImplementedError
@@ -215,7 +215,11 @@ class UsersDictAdaptor(DictMixin):
     def __getitem__(self, key):
         if key not in self.keys(): raise KeyError(key)
         if key not in self._ratings:
-            self._ratings[key] = RatingsDictAdaptor(self.user_dataset.get(id=key).rating_set.all())
+            d = {}
+            for rating in self.user_dataset.get(id=key).rating_set.all():
+                #self._ratings[key] = RatingsDictAdaptor(self.user_dataset.get(id=key).rating_set.all())
+                d[rating.product.id] = float(rating.stars)
+            self._ratings[key] = d
         return self._ratings[key]
     def __setitem__(self, key, value):
         raise NotImplementedError
@@ -223,7 +227,7 @@ class UsersDictAdaptor(DictMixin):
         raise NotImplementedError    
     def keys(self):
         if not self._keys:
-            self._keys = [ user.id for user in self.user_dataset ]
+            self._keys = [ user.id for user in self.user_dataset.all() ]
         return self._keys
     def has_key(self, key):
          return key in self.keys()
@@ -247,7 +251,7 @@ class ItemSimilarityDictAdaptor(DictMixin):
         raise NotImplementedError    
     def keys(self):
         if not self._keys:
-            self._keys = [ itemsimilarity.product.id for itemsimilarity in self.itemsimilarity_dataset ]
+            self._keys = [ i[0] for i in self.itemsimilarity_dataset.values_list('product_id').distinct() ]
         return self._keys
     def has_key(self, key):
          return key in self.keys()
@@ -324,9 +328,9 @@ def fill_users_ratings(movielens_filename):
 @transaction.commit_on_success
 def calculate_similar_items():
     from recommendations import calculateSimilarItems
+    ItemSimilarity.objects.all().delete()    
     users_prefs = User.get_users_ratings_dict()
     similar_dict = calculateSimilarItems(users_prefs)
-    ItemSimilarity.objects.all().delete()
     for item, similar_items in similar_dict.items():
         for score, similar_item in similar_items:
             product = Product(id=item)
