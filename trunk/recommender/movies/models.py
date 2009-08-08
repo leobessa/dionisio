@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User as DjangoUser
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.cache import cache
 
 MAX_STARS = 5
 
@@ -37,20 +39,25 @@ class User(models.Model):
         return cls.objects.filter(django_user=user)[0]
 
     @classmethod
-    def get_users_ratings_dict(cls):
-        return UsersDictAdaptor(User.objects.all())
+    def get_users_ratings_dict(cls, lazy_evaluation=True):
+        cache_key = 'all_users_ratings_dict' + str(lazy_evaluation)
+        dict = cache.get(cache_key)
+        if dict is None:
+            dict = UsersDictAdaptor(User.objects.all(), lazy_evaluation, Rating.objects.all())
+        cache.add(cache_key, dict, 60)
+        return dict
 
     def get_recommendations(self, type='user_similarity', similarity='pearson'):
         from recommendations import getRecommendations, calculateSimilarItems, get_similarity, getRecommendedItems
-        users_prefs = User.get_users_ratings_dict()
         if type == 'user_similarity':
+            users_prefs = User.get_users_ratings_dict(lazy_evaluation=False)
             sim = get_similarity(similarity)
             return [
                 (star, Product.get_by_id(productid))
                 for star, productid in getRecommendations(users_prefs, self.id, similarity=sim)
                 ]
         elif type == 'item_similarity':
-            # similar_items = calculateSimilarItems(users_prefs)
+            users_prefs = User.get_users_ratings_dict(lazy_evaluation=True)
             similar_items = ItemSimilarity.get_similarity_dict()
             return [
                 (star, Product.get_by_id(productid))
@@ -61,7 +68,7 @@ class User(models.Model):
 
     def get_similar_users(self, n=-1, similarity='pearson'):
         from recommendations import topMatches, get_similarity
-        users_prefs = User.get_users_ratings_dict()        
+        users_prefs = User.get_users_ratings_dict(lazy_evaluation=False)
         sim = get_similarity(similarity)
         return [
                 (correlation, User.objects.get(id=userid))
@@ -186,39 +193,27 @@ class ItemSimilarity(models.Model):
 
 from UserDict import DictMixin
 
-class RatingsDictAdaptor(DictMixin):
-    def __init__(self, ratings_dataset):
-        self.ratings_dataset = ratings_dataset
-        self._keys = None
-        self._ratings = {}
-    def __getitem__(self, product_id):
-        if product_id not in self.keys(): raise KeyError(product_id)
-        if product_id not in self._ratings:
-            self._ratings[product_id] = float(self.ratings_dataset.filter(product=product_id)[0].stars)
-        return self._ratings[product_id]
-    def __setitem__(self, key, value):
-        raise NotImplementedError
-    def __delitem__(self, key):
-        raise NotImplementedError    
-    def keys(self):
-        if not self._keys:
-            self._keys = [ rating.product.id for rating in self.ratings_dataset ]
-        return self._keys
-    def has_key(self, key):
-         return key in self.keys()
-
 class UsersDictAdaptor(DictMixin):
-    def __init__(self, user_dataset):
+    def __init__(self, user_dataset, lazy_evaluation, rating_dataset):
         self.user_dataset = user_dataset
         self._ratings = {}
         self._keys = None
+        if not lazy_evaluation: # get all
+            results = rating_dataset.all().values_list('user_id', 'product_id', 'stars')
+            d = {}
+            for user_id, product_id, stars in results:
+                d.setdefault(user_id, {})
+                d[user_id][product_id] = stars
+            self._ratings = d
     def __getitem__(self, key):
-        if key not in self.keys(): raise KeyError(key)
         if key not in self._ratings:
             d = {}
-            for rating in self.user_dataset.get(id=key).rating_set.all():
-                #self._ratings[key] = RatingsDictAdaptor(self.user_dataset.get(id=key).rating_set.all())
-                d[rating.product.id] = float(rating.stars)
+            try:
+                user = self.user_dataset.get(id=key)
+            except ObjectDoesNotExist:
+                raise KeyError(key)
+            for product_id, stars in user.rating_set.all().values_list('product_id', 'stars'):
+                d[product_id] = float(stars)
             self._ratings[key] = d
         return self._ratings[key]
     def __setitem__(self, key, value):
@@ -227,7 +222,7 @@ class UsersDictAdaptor(DictMixin):
         raise NotImplementedError    
     def keys(self):
         if not self._keys:
-            self._keys = [ user.id for user in self.user_dataset.all() ]
+            self._keys = [ i[0] for i in self.user_dataset.all().values_list('id') ]
         return self._keys
     def has_key(self, key):
          return key in self.keys()
@@ -240,10 +235,8 @@ class ItemSimilarityDictAdaptor(DictMixin):
     def __getitem__(self, key):
         if key not in self.keys(): raise KeyError(key)        
         if key not in self._d:
-            self._d[key] = []
-            objs = self.itemsimilarity_dataset.filter(product=key)
-            for obj in objs:
-                self._d[key].append((float(obj.score), obj.similar_product.id))
+            scores_similar_products = self.itemsimilarity_dataset.filter(product=key).values_list('score', 'similar_product_id')
+            self._d[key] = scores_similar_products
         return self._d[key]
     def __setitem__(self, key, value):
         raise NotImplementedError
@@ -329,7 +322,7 @@ def fill_users_ratings(movielens_filename):
 def calculate_similar_items():
     from recommendations import calculateSimilarItems
     ItemSimilarity.objects.all().delete()    
-    users_prefs = User.get_users_ratings_dict()
+    users_prefs = User.get_users_ratings_dict(lazy_evaluation=False)
     similar_dict = calculateSimilarItems(users_prefs)
     for item, similar_items in similar_dict.items():
         for score, similar_item in similar_items:

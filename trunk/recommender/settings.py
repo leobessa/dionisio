@@ -1,7 +1,6 @@
 # Django settings for recommender project.
 
-#DEBUG = True
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -94,3 +93,6 @@ INSTALLED_APPS = (
     'recommender.movies',
 #    'debug_toolbar',
 )
+
+CACHE_BACKEND = 'locmem:///'
+
