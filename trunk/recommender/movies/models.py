@@ -39,12 +39,17 @@ class User(models.Model):
         return cls.objects.filter(django_user=user)[0]
 
     @classmethod
-    def get_users_ratings_dict(cls, lazy_evaluation=True):
+    def get_users_ratings_dict(cls, lazy_evaluation=True, try_cache=True):
+        # We are caching lazy_evaluation results but we are avoiding to get the cached result
+        # because in fact it can decrease the performance
         cache_key = 'all_users_ratings_dict' + str(lazy_evaluation)
-        dict = cache.get(cache_key)
+        if not lazy_evaluation and try_cache:
+            dict = cache.get(cache_key)
+        else:
+            dict = None
         if dict is None:
             dict = UsersDictAdaptor(User.objects.all(), lazy_evaluation, Rating.objects.all())
-        cache.add(cache_key, dict, 60)
+        cache.set(cache_key, dict, 60)
         return dict
 
     def get_recommendations(self, type='user_similarity', similarity='pearson'):
@@ -150,7 +155,11 @@ class RatingTotal(models.Model):
                 ]
         rank.sort()
         rank.reverse()
-        return rank[:n]
+        n = int(n)
+        if n > 0:
+            return rank[:n]
+        else:
+            return rank
 
     @classmethod
     def add_rating(cls, rating_obj):

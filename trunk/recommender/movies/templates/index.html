@@ -12,6 +12,10 @@
         dionisio.show_user_recommendations($j('#recommendations_item_similarity'), "{% url ajax_recommendation_list "item_similarity" %}");
         dionisio.show_similar_users($j('#similar_users'), "{% url ajax_similar_users_list %}");        
         dionisio.show_best_rated($j('#best_rated'), "{% url ajax_best_rated_list %}", "{% url ajax_rate_product %}");
+        // Too much load for current browsers, let's disable it for now
+        //$j('#show_all_best_rated').click(function(event) {
+        //    dionisio.show_best_rated($j('#best_rated'), "{% url ajax_best_rated_list 0 %}", "{% url ajax_rate_product %}");
+        //});
     });
 </script>
 {% endblock extrahead %}

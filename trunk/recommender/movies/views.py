@@ -59,14 +59,14 @@ def ajax_recommendation_list(request, type='user_similarity'):
     recommendations = user.get_recommendations(type=type)
     return render_to_response('recommendation_list.html', locals())
 
-def ajax_best_rated_list(request):
-    bestrated = RatingTotal.best_rated(1000)
+def ajax_best_rated_list(request, n=100):
+    bestrated = RatingTotal.best_rated(n)
     return render_to_response('best_rated_list.html', locals())
 
-def ajax_similar_users_list(request):
+def ajax_similar_users_list(request, n=100):
     if not request.user.is_authenticated():
         return HttpResponse('This operation needs authentication')
     user = User.get_by_login(request.user)
-    similar_users = user.get_similar_users(n=100)
+    similar_users = user.get_similar_users(n=n)
     return render_to_response('similar_users_list.html', locals())
 
