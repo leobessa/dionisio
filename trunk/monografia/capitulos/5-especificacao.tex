@@ -21,9 +21,11 @@ O sistema de recomendação utilizará redes sociais para obter as informações
 
 Os usuários podem receber as recomendações dos seus amigos, ou de outras pessoas presentes na rede social. No entanto, as recomendações feitas por amigos serão consideradas, a princípio, mais importantes do que as realizadas por desconhecidos. Além da amizade, haverá uma relação explícita de confiança que será utilizada para determinar maior relevância da recomendação.
 
+% TODO: introduzir o conceito de reputação entre usuários (na descrição do sistema é citado)
+
 % Explicar como a web semantica se encaixa no sistema de recomendação
 
-O sistema de recomendação obtem informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos. Um repositório será implementado para armazenar tais informações, porém qualquer fonte de documentos que utilizem os padrões definidos pelo sistema de recomendação poderá ser utilizada. Desta forma, o sistema se integra ao contexto da web semântica.
+O sistema de recomendação obtém informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos. Um repositório será implementado para armazenar tais informações, porém qualquer fonte de documentos que utilizem os padrões definidos pelo sistema de recomendação poderá ser utilizada. Desta forma, o sistema se integra ao contexto da web semântica.
 
 
 % section visao_do_sistema (end)
@@ -50,13 +52,13 @@ O sistema de recomendação obtem informações a partir de documentos semantica
 
  Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários.
 
- Ao entrar na rede, o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, cadastrá-los. Neste cadastro, o usuário pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus interesses. Com isso, as pessoas podem recomendá-lo para seus amigos presentes na rede social, sendo que essa recomendação deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
+ Ao entrar na rede, o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, cadastrá-los. Neste cadastro, ele pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus interesses. Com isso, as pessoas podem recomendar os produtos para seus amigos presentes na rede social, sendo que esta deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
 
- Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários. A avaliação altera o grau de confiança entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a confiança do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de confiança no outro usuário diminua.
+ Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários. A avaliação altera o grau de reputação entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a reputação do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de reputação no outro usuário diminua.
 
- O sistema armazena todas essas informações referentes à avaliação de produtos e de confiança entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes. Assim, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de confiança diminui e, quando esta diminuir até um limite, o sistema passa a não mostrar mais recomendações desse usuário.
+ O sistema armazena todas essas informações referentes à avaliação de produtos e de confiançae reputação entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes. Assim, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de reputação diminui e, quando esta diminuir até um limite, o sistema passa a não mostrar mais recomendações dele.
 
- Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus interesses. Tais recomendações são relativas aos produtos mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de confiança.
+ Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus interesses. Tais recomendações são relativas aos produtos mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de reputação.
 
 \section{Funcionalidades principais} % (fold)
 \label{sec:funcionalidades_principais}
