@@ -9,6 +9,7 @@ from movies.models import User, Rating, Product, RatingTotal
 
 @login_required
 def index(request):
+    user = User.get_by_login(request.user)
     return render_to_response('index.html', locals())
 
 def create_login(request):
@@ -70,3 +71,20 @@ def ajax_similar_users_list(request, n=100):
     similar_users = user.get_similar_users(n=n)
     return render_to_response('similar_users_list.html', locals())
 
+def ajax_socialsite_auth(request):
+    if not request.user.is_authenticated():
+        user_id = ''
+    else:
+        user_id = User.get_by_login(request.user).id
+
+    json = """
+{
+  'timeout': 30,
+  'assertions': {
+    'viewer': {
+      'id': '%s'
+    }
+  }
+}
+    """ % user_id
+    return HttpResponse(json, mimetype='application/json')

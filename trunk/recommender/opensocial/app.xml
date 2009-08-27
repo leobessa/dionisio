@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Gifts part 8 - Crossing the Streams">
+      <Require feature="opensocial-0.8"/>
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+    <script src="http://alldouglas.net/opensocial/app.js"></script>
+    <script>
+        alert('ola4.1');
+        var givenGifts = {};
+
+function giveGift() {
+  var nut = document.getElementById('nut').value;
+  var friend = document.getElementById('person').value;
+  
+  givenGifts[friend] = nut;
+  var json = gadgets.json.stringify(givenGifts);
+  
+  var req = opensocial.newDataRequest();
+  req.add(req.newUpdatePersonAppDataRequest(opensocial.DataRequest.PersonId.VIEWER, 'gifts', json));
+  req.send();
+}
+
+function makeOptionsMenu() {
+  var options = ['a cashew nut', 'a peanut', 'a hazelnut', 'a red pistachio nut'];
+                 
+  var html = new Array();
+  html.push('<select id="nut">');
+  for (var i = 0; i < options.length; i++) {
+    html.push('<option value="' + i + '">' + options[i] + '</option>');
+  }
+  html.push('</select>');
+  document.getElementById('gifts').innerHTML = html.join('');
+}
+
+function loadFriends() {
+  var req = opensocial.newDataRequest();
+  req.add(req.newFetchPersonRequest('VIEWER'), 'viewer');
+  req.add(req.newFetchPeopleRequest('VIEWER_FRIENDS'), 'viewerFriends');
+  req.send(onLoadFriends);
+}
+
+function onLoadFriends(data) {
+  var viewer = data.get('viewer').getData();
+  var viewerFriends = data.get('viewerFriends').getData();
+  
+  html = new Array();
+  html.push('<select id="person">');
+  viewerFriends.each(function(person) {
+    html.push('<option value="' + person.getId() + '">' + person.getDisplayName() + "</option>");
+  });
+  html.push('</select>');
+  document.getElementById('friends').innerHTML = html.join('');
+}
+
+function init() {
+    alert('hello_init');
+    //var params = {};
+    //params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;
+    //var url = 'http://alldouglas.net/f/recommender/movies/ajax_recommendation_list/item_similarity/';
+    //var callback = function(obj) {
+    //    alert(obj.text);
+    //};
+
+    //gadgets.io.makeRequest(url, callback, params);
+
+  loadFriends();
+  
+  makeOptionsMenu();
+}
+        gadgets.util.registerOnLoadHandler(init);
+
+      </script>
+
+      <div id='main'>
+        <div id='give'>
+          <form id='gift_form'>
+            Give <span id='gifts'></span> to <span id='friends'></span>. <a href="javascript:void(0);" onclick='giveGift();'>Give!</a>
+          </form>
+        </div>
+        <div id='given'></div>
+        <div id='received'</div>
+      </div>
+    ]]>
+  </Content>
+</Module>

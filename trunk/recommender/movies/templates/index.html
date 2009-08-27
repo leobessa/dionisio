@@ -4,6 +4,24 @@
 <script type="text/javascript" src="{% url static "js/mootools-1.2.js" %}"></script>
 <script type="text/javascript" src="{% url static "js/dionisio.js" %}"></script>
 <link rel="stylesheet" href="{% url static "css/dionisio.css" %}" type="text/css">
+    <script type="text/javascript"
+      src="http://alldouglas.net:38080/socialsite/js/consumer.jsp"></script>
+    <script type="text/javascript">
+      socialsite.setContext({
+        'assertions': {
+          'owner': {
+          'id': '{{user.id}}'
+          }
+        },
+        'delegate': {
+          'method': 'GET',
+          'url': '{% url ajax_socialsite_auth %}',
+          'headers': {
+            'cookie': document.cookie
+          }
+        }
+      });
+    </script>
 {% rating_header %} 
 <script type="text/javascript">
     $j(document).ready(function() {
@@ -22,6 +40,12 @@
 {% block content %}
 <div class="span-24">
     <p>Hello {{request.user.username}}. <a href="{% url logout %}">logout</a></p>
+</div>
+<div class="span-24">
+    <script type="text/javascript">
+        socialsite.addGadget({'spec':'/local_gadgets/dashboard.xml', 'removable':false});
+    </script>
+
 </div>
 <div class="span-24">
     <h1>Your recommendations</h1>    

@@ -40,16 +40,16 @@ class User(models.Model):
 
     @classmethod
     def get_users_ratings_dict(cls, lazy_evaluation=True, try_cache=True):
-        # We are caching lazy_evaluation results but we are avoiding to get the cached result
-        # because in fact it can decrease the performance
-        cache_key = 'all_users_ratings_dict' + str(lazy_evaluation)
+        def get_new_dict(lazy_evaluation):
+            return UsersDictAdaptor(User.objects.all(), lazy_evaluation, Rating.objects.all())
         if not lazy_evaluation and try_cache:
+            cache_key = 'all_users_ratings_dict'
             dict = cache.get(cache_key)
+            if dict is None:
+                dict = get_new_dict(lazy_evaluation)
+                cache.set(cache_key, dict, 60)
         else:
-            dict = None
-        if dict is None:
-            dict = UsersDictAdaptor(User.objects.all(), lazy_evaluation, Rating.objects.all())
-        cache.set(cache_key, dict, 60)
+            dict = get_new_dict(lazy_evaluation)
         return dict
 
     def get_recommendations(self, type='user_similarity', similarity='pearson'):

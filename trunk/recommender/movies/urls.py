@@ -13,5 +13,5 @@ urlpatterns = patterns('movies.views',
     url(r'^ajax_best_rated_list/$', 'ajax_best_rated_list', name='ajax_best_rated_list'),
     url(r'^ajax_similar_users_list/(?P<n>[0-9]+)/$$', 'ajax_similar_users_list', name='ajax_similar_users_list'),
     url(r'^ajax_similar_users_list/$', 'ajax_similar_users_list', name='ajax_similar_users_list'),
-    
+    url(r'^ajax_socialsite_auth/$', 'ajax_socialsite_auth', name='ajax_socialsite_auth'),
 )
