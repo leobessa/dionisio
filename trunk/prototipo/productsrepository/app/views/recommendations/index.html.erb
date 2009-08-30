@@ -1,0 +1,15 @@
+<% title "Product Recommendations" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Recommendation Score</th>
+  </tr>
+  <% for product in @recommendations %>
+    <tr>
+      <td><%=h product.name %></td>
+      <td><%=h product.recommendation_score %></td>
+      <td><%= link_to "Show", product %></td>
+    </tr>
+  <% end %>
+</table>

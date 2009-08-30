@@ -1,0 +1,12 @@
+<% title "Recommendation" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @recommendation.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_recommendation_path(@recommendation) %> |
+  <%= link_to "Destroy", @recommendation, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", recommendations_path %>
+</p>

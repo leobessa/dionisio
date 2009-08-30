@@ -1,0 +1,28 @@
+<h1>Editing review</h1>
+
+<% form_for(:product,@review) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :product_id %><br />
+    <%= link_to h(@product), :controller => "products", :action => "show", :id => @product %>
+  </p>
+  <p>
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating %>
+  </p>
+  <p>
+    <%= f.label :summary %><br />
+    <%= f.text_field :summary %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', product_review_path(@review.product,@review) %> |
+<%= link_to 'Back', product_reviews_path(@review.product) %>

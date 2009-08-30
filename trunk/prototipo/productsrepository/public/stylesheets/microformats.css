@@ -1,0 +1,96 @@
+/* part 1: centering and sizing the review */
+
+.hreview {
+	width: 500px;
+	margin: 30px auto;
+	text-align: justify;
+}
+
+p + p {
+	text-indent: 20px;
+}
+
+.brief {
+	line-height: 1.15;
+}
+
+.item .fn {
+	font-size: 120%;
+}
+
+.summary {
+	font-style: italic;
+}
+
+
+/* part 2: sizing and floating the image */
+
+.item img {
+	width: 75px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+
+/* part 3: styling the review description */
+
+.description {
+	font-family: "Verdana" sans-serif;
+	line-height: 1.6;
+}
+
+
+/* part 4: the rating system */
+
+.rating  {
+	clear: both;
+	margin-bottom: 10px;
+	width: 75px;
+	background: url(/images/star_gray.gif) 0 0 repeat-x;
+	text-indent: -9999px;
+}
+
+.rating div {
+	height: 15px;
+	background: url(/images/star_yellow.gif) 0 0 repeat-x;
+}
+
+.rating div[title = "1"] {
+	width: 20%;
+}
+
+.rating div[title = "1.5"] {
+	width: 30%;
+}
+.rating div[title = "2"] {
+	width: 40%;
+}
+
+.rating div[title = "2.5"] {
+	width: 50%;
+}
+
+.rating div[title = "3"] {
+	width: 60%;
+}
+
+.rating div[title = "3.5"] {
+	width: 70%;
+}
+
+.rating div[title = "4"] {
+	width: 80%;
+}
+
+.rating div[title = "4.5"] {
+	width: 90%;
+}
+
+
+/* for stars page */
+
+#stars {
+	margin: 100px;
+}
+

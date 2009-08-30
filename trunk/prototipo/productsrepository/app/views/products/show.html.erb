@@ -1,0 +1,38 @@
+<h1>Product</h1>
+
+<div class="hproduct">
+<h2 class="fn"><%=h @product.name %></h2>
+
+<p>
+  <span class="url"><%= link_to "Permalink", product_url(@product) %></span>
+</p>
+
+<p>
+  <b>Brand:</b>
+  <span class = "brand"><%=h @product.brand %></span>
+</p>
+
+<p>
+  <b>Category:</b>
+   <span class="category"><%=h @product.category %></span>
+</p>
+
+<p>
+  <b>Description:</b>
+  <span class="description"><%=h @product.description %></span>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <img class="photo" width="90" height="90" src="<%=h @product.photo %>" alt="<%=h @product.name %>" title="<%=h @product.name %>" />
+</p>
+   
+</div>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %> |
+<%= link_to 'Offers', product_offers_path(@product) %> |
+<%= link_to 'Make a review', new_product_review_path(@product) %> |
+<%= link_to 'Show reviews', product_reviews_path(@product) %>
+

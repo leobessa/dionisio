@@ -1,0 +1,22 @@
+<h1>Listing businesses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+  </tr>
+
+<% @businesses.each do |business| %>
+  <tr>
+    <td><%=h business.name %></td>
+    <td><%=h business.url %></td>
+    <td><%= link_to 'Show', business %></td>
+    <td><%= link_to 'Edit', edit_business_path(business) %></td>
+    <td><%= link_to 'Destroy', business, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New business', new_business_path %>

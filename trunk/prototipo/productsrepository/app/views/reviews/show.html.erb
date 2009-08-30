@@ -1,0 +1,30 @@
+<h1>Product Review</h1>
+
+<div class="hreview"> 
+     <div class="brief"> 
+         <div class="item">
+           <a class="url fn" href="<%= product_url(@review.product)%>">
+             <img src="<%=h @review.product.photo %>" alt="<%=h @review.product.photo_alt %>" class="cover" />
+              <%=h @review.product %>
+            </a>
+         </div><!--end item--> 
+     <p class="summary"> 
+         <%=h @review.summary %>
+     </p> 
+     <div class="reviewer vcard fn"> 
+         <%= link_to h(@review.user), :controller => "users", :action => "show", :id => @review.user_id %>
+     </div> 
+     <abbr class="dtreviewed" title="<%=h @review.created_at.strftime("%Y%m%d")%>">
+      <%=h @review.created_at.to_s(:standard) %>
+    </abbr> 
+     </div><!--end brief--> 
+     <%= render :partial => 'rating_stars', :locals => { :review => @review } %><!--end rating--> 
+     <div class="description"> 
+          <p> 
+            <%=h @review.description %>
+          </p> 
+     </div><!--end description--> 
+</div><!--end hreview-->
+
+<%= link_to 'Edit', edit_product_review_path(@review.product,@review) %> |
+<%= link_to 'Back', product_reviews_path %>

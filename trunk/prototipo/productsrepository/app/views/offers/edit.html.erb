@@ -1,0 +1,44 @@
+<h1>Editing offer</h1>
+
+<% form_for([@offer.product,@offer]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :list_price %><br />
+    <%= f.text_field :list_price %>
+  </p>
+  <p>
+    <%= f.label :brand %><br />
+    <%= f.text_field :brand %>
+  </p>
+  <p>
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.label :img_src %><br />
+    <%= f.text_field :img_src %>
+  </p>
+  <p>
+    <%= f.label :img_alt %><br />
+    <%= f.text_field :img_alt %>
+  </p>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </p>
+  <p>
+    <%= f.label :currency %><br />
+    <%= f.text_field :currency %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', product_offer_path(@offer.product,@offer) %> |
+<%= link_to 'Back', product_offers_path(@offer.product) %>

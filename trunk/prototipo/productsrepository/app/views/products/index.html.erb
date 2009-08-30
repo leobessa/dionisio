@@ -1,0 +1,45 @@
+<h1>Listing products</h1>
+
+<table border="0" cellpadding="0" cellspacing="0" style="display:inline-table;" id="sortby-inline"> 
+  <% @products.each do |product| %>
+    <tr valign="top" id="res0"> 
+      <td class="ol ps-rimg"> 
+        <a href="<%=h product_path(product)%>" >
+          <img width="90" height="90" src="<%=h product.photo %>"  alt="<%=h product.name %>" title="<%=h product.name %>" />
+        </a> 
+      </td> 
+      <td class="ol ps-rcont"> 
+        <h2><a href="<%=h product_path(product)%>" class="ps-large-t"><%=h product.name %></a></h2> 
+        <span class="ps-gray-t"><%=h product.category %></span><br> 
+        <%=h truncate(product.description, :length => 200 ) %>
+        <br/> 
+        <div class="rating"> 
+          <div title="<%=h product.reviews.average(:rating) %>"> 
+            <%=h product.reviews.average(:rating) %> out of 5 
+          </div> 
+        </div>
+        &nbsp;
+       <a href="<%=h product_reviews_path(product)%>" class="fl" id="res0rev">
+        <%=h product.reviews.size %> reviews
+       </a>   |
+        <%= link_to 'Make a review', new_product_review_path(product) %>
+       </td> 
+       <td class="ol ps-rprice">&nbsp;</td> 
+       <td class="ol ps-rprice-ts"> 
+       <nobr id="price0">
+         <span class="main-price">
+         <%=h number_to_currency( product.offers.average(:list_price).to_f / 100.0, :unit => "R$", :separator => ",", :delimiter =>"") %><br> 
+       <nobr>
+         <span class="ps-num-stores">from <%=h product.offers.count %> sellers</span>
+         <table border="0" cellspacing="0" cellpadding="0" class="ps-sprite ps-sprite-cart" style="display:inline-table;">
+           <tr><td><p></p></td></tr></table></nobr><br/> 
+       <input type="button" onclick="window.location='<%=h product_offers_url(product)%>'" value="Compare prices" id="price-but0"/> 
+       </td> 
+       </tr>
+<% end %>
+</table>
+<br />
+<%= will_paginate @products %>
+<br />
+
+<%= link_to 'New product', new_product_path %>
