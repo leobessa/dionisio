@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  
-  map.root :controller => "products" 
+  map.resources :friendships
+   
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   
@@ -9,13 +9,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |users|
     users.resources :recommendations
   end
-
+  
   map.resources :businesses
 
   map.resources :products do |products|
     products.resources :reviews
     products.resources :offers
   end
+  
+  map.root :products
 
   # The priority is based upon order of creation: first created -> highest priority.
 

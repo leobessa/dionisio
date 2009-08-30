@@ -1,5 +1,6 @@
-<h1>Listing users</h1>
+<% title "User List" %> 
 
+<h2>Search box</h2>
 <div id="search_box">
   <% form_tag users_path, :method => 'get' do %>
     <p>
@@ -9,23 +10,21 @@
   <% end %>
 </div>
 
-
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Email</th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%=h user.username %></td>
-    <td><%=h user.email %></td>
-
-    <td><%= link_to 'Show', user %></td>
-  </tr>
+<div id="users">
+<% for user in @users %>
+  <div class="user">
+    <p>
+      <strong><%=h user.username %></strong>
+      <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+      <div class="clear"></div>
+    </p>
+  </div>
 <% end %>
-</table>
+</div>
 
 <br />
 <%= will_paginate @users %>
-<br />
+<br />          
+
+
+ 

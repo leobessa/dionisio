@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.find_all_by_product_id(params[:product_id])
+    @reviews = Review.find_all_by_product_id(params[:product_id], :include => "user" )
     
     respond_to do |format|
       format.html # index.html.erb

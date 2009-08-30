@@ -13,4 +13,9 @@ end
 
 Factory.define :product do |f|
   f.name { |n| "Mr. Foo#{n}" }
+end    
+
+Factory.define :friendship do |f|
+  f.sequence(:user_id) { |n| n }
+  f.sequence(:friend_id) { |n| n }
 end

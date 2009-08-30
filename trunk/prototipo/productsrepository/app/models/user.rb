@@ -2,7 +2,12 @@ class User < ActiveRecord::Base
   include Recommender::ActiveRecordBased
   acts_as_authentic
   has_many :reviews
-  has_many :products, :through => :reviews
+  has_many :products, :through => :reviews  
+  
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
 #  acts_as_recommendable :products, :through => :reviews
   
