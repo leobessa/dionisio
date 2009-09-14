@@ -1,0 +1,61 @@
+
+Será feito um experimento para teste do Sistema de Recomendação de Produtos Dionisio.
+
+Dionisio é um Sistema que armazena informações sobre produtos e pessoas. As pessoas podem formar uma rede social de amigos e avaliar os produtos, fazendo recomendações para outras pessoas conhecidas ou desconhecidas. A partir das avaliações das pessoas e as relações sociais o sistema gera listas de recomendações de produtos com o objetivo de trazer ajudar as pessoas a encontrar produtos que elas ainda não conhecem mas possuem grande probabilidade de gostar.
+
+O experimento consistirá de um período de uso do sistema por um grupo de pessoas. Serão 12 grupos com 5 pessoas cada um. Os grupos serão formados da seguinte forma:
+- Inicialmente serão convidadas 12 pessoas de diferentes faixas etárias.
+- Será passado um endereço de internet (URL) para cada uma das pessoas poderem se cadastrar no sistema
+- Será pedido a cada uma dessas pessoas que convide amigos ou conhecidos para completar um grupo de 5 pessoas, usando uma ferramenta do próprio sistema.
+
+O cadastro no sistema consiste de um série de formulários que visam extrair informações demográficas e pessoais. Serão pedidas as seguintes informações:
+- Nome
+- Sexo (masculino ou feminino)
+- Data de nascimento
+- Escolaridade
+- Foto
+
+Será pedido também que elas avaliem em uma escala de 1 a 10, quais são os produtos que elas possuem o maior interesse para obter recomendações, como:
+  - Roupas
+  - Músicas
+  - Filmes
+  - Eletrônicos
+  - Livros
+
+Depois do cadastro dessas informações iniciais será pedido que cada pessoe avalie as outras pessoas de seu grupo, fornecendo as seguintes informações sobre a outra pessoa:
+
+  - O quanto ela conhece a outra pessoa. As opções são:
+    - Não conhece
+    - Conhece pouco
+    - Conhece bastante
+    - Melhor amiga
+
+  - O quanto ela confia na outra pessoa para a recomendação de produtos em geral:
+    - Não confia
+    - Confia um pouco
+    - Confia muito
+    - Confia completamente
+
+Após o levantamento dessas informações será pedido que cada usuário avalie uma série de produtos aleatórios. Cada produto será apresentado através de um foto e uma descrição. Será pedido que o usuário escolha em uma escala de 1 a 5 o quanto ele gosta daquele produto caso ele o conheça. Se o usuário não conhecer o produto ele deverá escolher a opção "não conheço".
+
+Feita essa avaliação, começará o uso pleno do sistema pelo usuário. Dentro do sistema as pessoas terão as seguintes opções:
+    1) Ver listas de recomendações
+    2) Procurar por produtos
+    3) Fazer uma recomendação
+    4) Ver lista de pessoas
+
+Ao acionar a primeira opção será mostrado ao usuário uma série de diferentes listagens de produtos recomendados. Para cada produto recomendado, o usuário terá a opção de avaliar:
+    - O quanto ele gostou daquela recomendação, em uma escala de 1 a 5.
+    - Opcionalmente, o quanto ele gosta daquele produto.
+
+Uma destas listagens será composta pelas recomendações feitas por outras pessoas. Neste caso também será mostrado além do produto recomendado, quem fez a recomendação e uma justificativa do recomendado para aquela recomendação.
+
+Ao acionar a segunda opção, o usuário poderá ver os diferentes produtos cadastrados no sistema, podendo filtrá-los através de diferentes critérios.
+
+Ao acionar a terceira opção, o usuário poderá fazer uma busca de um produto para recomendar a uma ou mais pessoas cadastradas no sistema. A recomendação consistirá de um produto e de uma justificativa do porquê aquele produto estar sendo recomendado.
+
+Ao acionar a quarta opção o usuário poderá ver a lista das pessoas conhecidas ou desconhecidas. Inicialmente apenas as pessoas de seu grupo estarão na lista de conhecidos. Mas ele poderá escolher uma outra pessoa para entrar em sua lista de conhecidos fazendo um pedido de amizade.
+
+A lista de pessoas possue um atalho para o perfil de cada usuário. Este perfil é composto do nome, idade, sexo, foto da pessoa e uma lista dos produtos avaliados por essa pessoa.
+
+O sistema estará disponível por um período de 1 mês, sendo que ao final o mesmo será desativado e sua base de dados será analisado de forma anônima para se medir qual foi a eficácia das recomendações feitas pelos sistema e entre os usuários do sistema.
