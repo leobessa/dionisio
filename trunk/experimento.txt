@@ -50,7 +50,7 @@ Ao acionar a primeira opção será mostrado ao usuário uma série de diferente
 
 Uma destas listagens será composta pelas recomendações feitas por outras pessoas. Neste caso também será mostrado além do produto recomendado, quem fez a recomendação e uma justificativa do recomendado para aquela recomendação.
 
-Ao acionar a segunda opção, o usuário poderá ver os diferentes produtos cadastrados no sistema, podendo filtrá-los através de diferentes critérios.
+Ao acionar a segunda opção, o usuário poderá ver os diferentes produtos cadastrados no sistema, podendo filtrá-los através de diferentes critérios. Haverá também uma listagem ordenada dos produtos mais bem avaliados nas diferentes categorias de produtos.
 
 Ao acionar a terceira opção, o usuário poderá fazer uma busca de um produto para recomendar a uma ou mais pessoas cadastradas no sistema. A recomendação consistirá de um produto e de uma justificativa do porquê aquele produto estar sendo recomendado.
 
