@@ -15,11 +15,14 @@
         <span class="ps-gray-t"><%=h product.category %></span><br> 
         <%=h truncate(product.description, :length => 200 ) %>
         <br/> 
-        <div class="rating"> 
-          <div title="<%=h product.reviews.average(:rating) %>"> 
-            <%=h number_with_precision(product.reviews.average(:rating),1) %> out of 5 
-          </div> 
-        </div>
+        <ul class='star-rating'> 
+          <%= rating_tag(product.reviews.average(:rating))%>
+          	  <li><a href='#' title='1 star out of 5' class='one-star'>1</a></li>
+            	<li><a href='#' title='2 stars out of 5' class='two-stars'>2</a></li>
+            	<li><a href='#' title='3 stars out of 5' class='three-stars'>3</a></li>
+            	<li><a href='#' title='4 stars out of 5' class='four-stars'>4</a></li>
+            	<li><a href='#' title='5 stars out of 5' class='five-stars'>5</a></li>      
+        </ul>
         &nbsp;
        <a href="<%=h product_reviews_path(product)%>" class="fl" id="res0rev">
         <%=h product.reviews.size %> reviews
