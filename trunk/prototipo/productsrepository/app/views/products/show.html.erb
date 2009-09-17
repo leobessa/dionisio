@@ -34,5 +34,6 @@
 <%= link_to 'Back', products_path %> |
 <%= link_to 'Offers', product_offers_path(@product) %> |
 <%= link_to 'Make a review', new_product_review_path(@product) %> |
-<%= link_to 'Show reviews', product_reviews_path(@product) %>
+<%= link_to 'Show reviews', product_reviews_path(@product) %> |
+<%= link_to "Recommend it!", new_product_user_recommendation_path(@product) %>
 
