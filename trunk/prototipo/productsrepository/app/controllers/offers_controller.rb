@@ -39,8 +39,9 @@ class OffersController < ApplicationController
 
   # POST /offers
   # POST /offers.xml
-  def create
-    @offer = Offer.new(params[:offer])
+  def create  
+     @offer = Offer.new(params[:offer])
+            
 
     respond_to do |format|
       if @offer.save

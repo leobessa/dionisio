@@ -1,3 +1,5 @@
+<%= render :partial => 'categories_menu' %>
+
 <h1>Listing products</h1>
 
 <table border="0" cellpadding="0" cellspacing="0" style="display:inline-table;" id="sortby-inline"> 
@@ -15,7 +17,7 @@
         <br/> 
         <div class="rating"> 
           <div title="<%=h product.reviews.average(:rating) %>"> 
-            <%=h product.reviews.average(:rating) %> out of 5 
+            <%=h number_with_precision(product.reviews.average(:rating),1) %> out of 5 
           </div> 
         </div>
         &nbsp;

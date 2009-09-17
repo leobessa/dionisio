@@ -61,14 +61,20 @@ class SubmarinoCrawler
       end 
     end
     @products
+  end    
+  
+  def matches_offer(url)
+    regex = /(.*\/produto\/\d*\/\d*)/
+    url =~ regex
   end
 
-  def import_offer(url)
+  def import_offer(url, options = {:save => true})
     regex = /(.*\/produto\/\d*\/\d*)/
     url =~ regex
     puts "Loading #{$1}"
     p = @parser.fetch_offer(URI.parse($1))
-    p.save
+    p.save if options[:save]
+    p
   end
 
   def import_offers
@@ -81,6 +87,6 @@ class SubmarinoCrawler
         puts e.backtrace.inspect  
       end
     end
-  end   
+  end
 
 end

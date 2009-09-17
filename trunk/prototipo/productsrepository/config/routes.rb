@@ -3,12 +3,22 @@ ActionController::Routing::Routes.draw do |map|
    
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
+                                                                                     
+  map.with_options :controller => 'products', :action => 'index' do |products| 
+    Category.all.each do |category|
+      name = category.name.parameterize  
+      method_name = category.name.parameterize('_')                             
+      products.send(method_name,name,:category_id => category.id)
+    end
+  end
   
   map.resources :user_sessions
 
   map.resources :users do |users|
     users.resources :recommendations
-  end
+  end  
+  
+  map.resources :categories, :only => :show
   
   map.resources :businesses
 

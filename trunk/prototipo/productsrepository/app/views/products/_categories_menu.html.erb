@@ -1,0 +1,5 @@
+<div id="categories_meny">
+  <% Category.all.each do |category| %>
+    <%= link_to category.name, send("#{category.name.parameterize('_')}_path") %>
+  <% end %> 
+</div>
