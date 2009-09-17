@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  recommender_id: 1
+  target_user_id: 1
+  product_id: 1
+  vote: 1
+
+two:
+  recommender_id: 1
+  target_user_id: 1
+  product_id: 1
+  vote: 1

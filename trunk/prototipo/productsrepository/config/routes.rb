@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :user_recommendations
+
   map.resources :friendships
    
   map.login 'login', :controller => 'user_sessions', :action => 'new'
@@ -25,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :products do |products|
     products.resources :reviews
     products.resources :offers
+    products.resources :user_recommendations
   end
   
   map.root :products
