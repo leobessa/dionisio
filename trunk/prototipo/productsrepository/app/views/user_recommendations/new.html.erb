@@ -7,24 +7,20 @@
     <%= current_user.username %>
   </p>
   <p>
-    <%= f.label :product_id %><br />
-    <%= link_to h(@product.name), :controller => "products", :action => "show", :id => @product %>
+    <%= f.label :product_id %><br />     
+    <%= link_to @product.name, @product %>
+    <%= f.hidden_field :product_id, :value => @product.id  %>
   </p>
   <p>   
-    <% i = 0%>  
     <%= f.label 'I recommend it to...' %><br />
-    <table border="0" cellspacing="5" cellpadding="5"> 
-    <% current_user.friends.each do |friend|%>
-      
-        <%= i = i + 1; "<tr>" if (i % 10 == 0) %>  
-          <td>
-            <%= check_box_tag "user[#{friend.id}]", "#{friend.username}", false %>  
-            <%= friend.username %>
-          </td>
-        <%= i = i + 1; "<tr/>" if (i % 10 == 0) %>  
-              
+    <div> 
+    <% current_user.friends.each do |friend| -%>
+      <td>
+        <%= check_box_tag "targert_users[]", "#{friend.id}", false %>  
+        <%= friend.username %>  
+      </td>              
     <% end -%> 
-    </table>
+    </div>
   </p>
   <p>
     <%= f.submit 'Recommend!' %>

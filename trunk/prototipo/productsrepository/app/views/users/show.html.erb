@@ -22,7 +22,7 @@
   <% end %>
 </ul>
 
-<h2>Product Recommendations</h2>
+<h2>System Product Recommendations</h2>
 
 <table>
   <tr>
@@ -36,4 +36,15 @@
       <td><%= link_to "Show", product %></td>
     </tr>
   <% end %>
-</table>
+</table> 
+
+<h2>Friend's Product Recommendations</h2>
+<ul id="user_recommendations">
+<% UserRecommendation.for(current_user).each do |user_recommendation|%>
+  <li class="username">
+    <%= link_to "#{user_recommendation.product}", user_recommendation.product %>
+    recommended by
+    <%=h user_recommendation.recommender %>
+    </li>
+  <% end -%>
+</ul>

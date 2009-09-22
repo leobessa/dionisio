@@ -24,7 +24,7 @@
 
 <p>
   <b>Photo:</b>
-  <img class="photo" width="90" height="90" src="<%=h @product.photo %>" alt="<%=h @product.name %>" title="<%=h @product.name %>" />
+  <img class="photo" width="90" height="90" src="<%=h @product.photo %>" alt="<%=h @product.photo_alt %>" title="<%=h @product.name %>" />
 </p>
    
 </div>
@@ -35,5 +35,9 @@
 <%= link_to 'Offers', product_offers_path(@product) %> |
 <%= link_to 'Make a review', new_product_review_path(@product) %> |
 <%= link_to 'Show reviews', product_reviews_path(@product) %> |
-<%= link_to "Recommend it!", new_product_user_recommendation_path(@product) %>
+<%= link_to "Recommend it!", new_product_user_recommendation_path(@product) %>   
+                   
+<% if current_user  %>
+    <%= render :partial => 'user_recommendations' %>
+<% end -%>
 
