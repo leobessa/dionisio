@@ -1,0 +1,227 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[brazilian,english]{babel}
+\usepackage{indentfirst}
+\usepackage{a4wide}
+\usepackage[section]{placeins}
+\usepackage[utf8]{inputenc}
+% \usepackage[Conny]{fncychap}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{type1cm}
+\usepackage{courier}
+\usepackage[scaled]{helvet}
+\usepackage{epigraph}
+\renewcommand*\familydefault{\sfdefault}
+
+\hyphenation{
+  es-ta-be-le-ci-do
+  a-de-qua-da-men-te
+  pro-ble-mas
+  di-men-sio-na-men-to
+  mo-de-lo
+}
+
+% Controlar linhas orfas e viuvas
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Formatar notas de rodape
+\usepackage[hang]{footmisc}
+\setlength{\footnotemargin}{1em}
+
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+\usepackage[left=3cm,top=3cm,right=2cm,bottom=2cm,includehead,ignoremp]{geometry}
+
+\usepackage[small]{titlesec}
+% \titlespacing{\chapter}{0pt}{-50pt}{*20}[0pt]
+\titlespacing{\chapter}{0pt}{*-10}{*5}
+
+% Running Headers and footers
+\usepackage{fancyhdr}
+% \pagestyle{fancy}
+\pagestyle{headings}
+% Redefine plain page style
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhead[LE,RO]{\thepage}
+}
+
+\linespread{1.3}
+%\pdfpagewidth=\paperwidth
+%\pdfpageheight=\paperheight
+
+% Para habilitar cálculos em dimensões
+\usepackage{calc}
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+%\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\title{Dionisio}
+\author{Allan Douglas R. de Oliveira \\ allandouglas@gmail.com \and
+Leonardo Nicacio Bessa \\ leobessa@gmail.com \and
+Thiago Rodrigues Andrade \\ suffragium@gmail.com}
+\date{2009-09}
+
+\usepackage[absolute]{textpos}
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.png, .pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+%\maketitle
+
+\pagestyle{empty}
+\section{Definições}
+
+\paragraph{Confiança:} grau atribuído por um usuário para outro usuário que significa o quanto o primeiro confia que os produtos recomendados pelo segundo são de fato desejáveis para ele ("eu acho que ele sabe do que eu gosto"). Possui 4 níveis: x,y,z,w
+
+\paragraph{Amizade:} grau atribuído por um usuário para outro usuário que significa o quanto o primeiro conhece as preferências do segundo ("eu sei do que ele gosta"). Possui 4 níveis: x,y,z,w
+
+\paragraph{Opinião:} grau atribuído por um usuário para um produto, que significa o quanto o usuário gosta do produto ("eu gosto desta coisa"). Tem 6 níveis, sendo o primeiro indicativo de "não conheço este produto".
+
+\paragraph{Perfil:} conjunto de opiniões de um usuário.
+
+\paragraph{Relevância:} opinião prevista pelo sistema para um produto ainda não avaliado pelo usuário.
+
+\paragraph{Recomendação:} mensagem de um usuário a outro fazendo referência a um produto cadastrado no sistema. As recomendações podem ser avaliadas pelo usuário receptor em dois níveis, sendo um positivo e outro negativo.
+
+\paragraph{Serendipidade:} mudança da opinião de um usuário sobre um produto de "não conheço este produto" para "eu gosto" após receber recomendação daquele produto.
+
+\paragraph{Similaridade:} correlação entre dois produtos ou usuários.
+
+\section{Descrição do Sistema}
+\label{descricao}
+
+Ao entrar no sistema, o usuário terá a opção de se cadastrar informando os seguintes dados: nome, login, e-mail, sexo, data de nascimento e foto.
+
+Após o cadastro será  pedido que ele procure pessoas conhecidas na rede e os adicione como amigos da rede social indicando, em uma escala de 4 níveis, o quanto ela conhece a outra pessoa e o quanto ela confia nela para a recomendação de produtos em geral.
+
+Cada pessoa adicionada como amiga receberá uma mensagem de solicitação de amizade. Caso a pessoa aceite o pedido de amizade, deverá avaliar da mesma forma o usuário solicitante.
+
+Será pedido que o usuário busque no sistema produtos e os avalie. Nesse caso, para que o algoritmo de recomendação funcione da melhor maneira, é necessário que o usuário avalie 10 produtos que ele gosta e outros 10 que não gosta.
+
+Cada produto será  apresentado através de uma foto, uma descrição e os comentários (reviews) que os outros usuários fizeram sobre ele. Será pedido que o usuário escolha em uma escala de 1 a 5 o quanto ele gosta daquele produto, caso ele o conheça. O usuário também poderá fazer comentários sobre o produto. Para encontrar os produtos para avaliá-los, ele buscará o produto pelo nome ou navegará nas listas de categorias.
+
+Na tela principal (quando o usuário está logado), serão apresentados os seguintes itens:
+
+\begin{itemize}
+    \item Informações pessoais do usuário
+    \item Lista resumida de amigos
+    \item Listas de produtos recomendados pelo sistema
+    \item Listas de produtos recomendados por outros usuários
+    \item Área de busca básica de produtos
+\end{itemize}
+
+As seguintes listas de recomendações estarão disponíveis na tela principal:
+
+\begin{itemize}
+    \item Recomendações diretas
+    \item Recomendações do sistema
+    \item Produtos mais bem avaliados/novos
+\end{itemize}
+
+As recomendações do sistema podem ser feitas segundo os seguintes algoritmos:
+
+\begin{itemize}
+    \item Recomendação por similaridade entre perfis
+    \item Recomendação por similaridade entre produtos
+    \item Recomendação pelo parâmetro de "confiança"
+\end{itemize}
+
+A explicação dos algoritmos está na seção \ref{algoritmos}.
+
+Para realizar uma recomendação, o usuário entra na descrição do produto e escolhe para quais amigos ele o recomendará.
+
+Ao receber uma recomendação, o usuário deverá avaliar se gostou ou não da recomendação e avaliar o produto em uma escala de 1 a 5, sendo 1 não gostar e 5 gostar muito. Caso o usuário não conheça o produto, informar isso e não avaliá-lo. Há a possibilidade do usuário gostar da recomendação mesmo desconhecendo o produto.
+
+Ao informar se conhece ou não o produto, a serendipidade poderá ser calculada. Sabendo se o usuário aprovou ou rejeitou a recomendação, o sistema atualiza o parâmetro de confiança entre o que recomenda e o que recebeu a recomendação. As recomendações diretas exibidas serão ordenadas de acordo com este parâmetro, portanto, se ele for muito baixo, a recomendação não terá muito destaque frente às outras. Ao avaliar o produto, o perfil do usuário é atualizado.
+
+Caso o mesmo produto seja recomendado por mais de uma pessoa, ele aparece apenas uma vez na lista mantendo a ordem de relevância. O parâmetro de confiança do usuário em relação a cada pessoa que recomendou o produto será atualizado.
+
+O usuário que recomendou o produto poderá ver se a recomendação foi aceita ou não e qual foi a avaliação dada pelo usuário recomendado.
+
+O parâmetro de confiança entre os usuários não é exposto em nenhum momento no sistema.
+
+\section{Algoritmos de recomendação}
+\label{algoritmos}
+
+Os três algoritmos básicos de recomendação são parecidos e seguem a seguinte estrutura.
+
+Para cada item do sistema não avaliado pelo usuário a quem se deseja recomendar itens, é calculada a "pontuação" desse item para este usuário. Os itens são ordenados segundo esta pontuação e os "top" itens são mostrados ao usuário. Para cada algoritmo, o que muda é o parâmetro usado como pontuação.
+
+\subsection{Recomendação por similaridade entre perfis}
+
+Neste caso a pontuação de um item é a média aritmética ponderada entre os \textit{ratings} (avaliações) do item pelos usuários e a similaridade entre estes usuários e aquele usuário a quem se deseja fazer a recomendação do item.
+
+A similaridade entre dois usuários é dada pela coeficiente de correlação de Pearson calculado sobre a avaliação feita por estes usuários aos mesmos itens. Usuários que avaliarem os mesmos itens da mesma maneira (notas parecidas) são considerados semelhantes.
+
+\subsection{Recomendação por similaridade entre itens}
+
+Neste caso a pontuação de um item é a média aritmética ponderada entre os \textit{ratings} dos itens já avaliados pelo usuário a quem se deseja recomendar e a similaridade entre esses itens e o item já avaliado.
+
+A similaridade entre dois itens é dada pelo coeficiente de correlação de Pearson calculado sobre a avaliação feita pelos usuários aos dois itens. Se os usuários em geral avaliarem os dois itens de forma parecida (se quem deu nota alta/baixa para um item também deu nota alta/baixa para o outro), então os dois itens são considerados similares.
+
+\subsection{Recomendação através do parâmetro de confiança}
+
+Este é o algoritmo que precisa ser avaliado no experimento, pois sua idéia é relativamente nova na literatura.
+
+Este algoritmo é idêntico ao algoritmo de similaridade entre perfis, mas substituindo a similaridade entre usuários pelo parâmetro de confiança entre o usuário a quem se deseja recomendar e os demais usuários.
+
+A forma como o parâmetro de confiança varia já foi explicada na seção \ref{descricao} acima e se baseia na avaliação positiva ou negativa das recomendações diretas feitas ao usuário.
+
+\section{Parâmetros medidos no sistema}
+
+\subsection{Erro na avaliação prevista do produto}
+
+Medir a diferença entre a avaliação do produto prevista pelo sistema.
+
+\subsection{Taxa de rejeição de recomendações}
+
+Este parâmetro será  medido sobre as recomendações feitas pelo sistema e também pelas recomendações feitas por outros usuários.
+
+\subsection{Taxa de serendipidade}
+
+Taxa de recomendações de produtos previamente desconhecidos ao usuário que ele gostou. Este parâmetro também será medido sobre as recomendações feitas pelo sistema e as feitas por outros usuários.
+
+\subsection{Análise das medidas}
+
+Nas medidas calculadas sobre as recomendações feitas por outros usuários, os graus de confiança e de amizade serão analisados posteriormente para verificar a influência sobre o parâmetro.
+
+\end{document}
