@@ -1,6 +1,5 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require 'open-uri'
-require 'fakeweb'
 
 Given /^the uri '(.*)' is at the '(.*)' file$/ do |link,file_name|
     FakeWeb.allow_net_connect = false 

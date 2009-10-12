@@ -13,7 +13,7 @@ module NavigationHelpers
     when /^"(.*)" product page$/i
          product_path(Product.find_by_name($1))
     when /^"(.*)" recommendations page$/i  
-          user_recommendations_path(User.find_by_username($1).id)
+          "/users/#{User.find_by_username($1).id}/recommendations"
          
     # Add more mappings here.
     # Here is a more fancy example:
