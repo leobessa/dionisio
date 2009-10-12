@@ -25,7 +25,11 @@ class SubmarinoOfferParser
     end
     
     product.photo = offer.img_src unless product.photo 
-    
+
+    begin
+        popularity_str = doc.xpath(to(:popularity)).text
+        product.popularity = Integer(popularity_str.scan(/\d+/)[0])
+    end
     offer.product = product
     
     offer.business = @business
@@ -46,6 +50,7 @@ class SubmarinoOfferParser
     # offer.store_code = doc.xpath(to(:store_code)).text.sub(/Cod. do Produto:/, '').strip.to_i
     
     offer
+
     end
 
    private
@@ -59,7 +64,7 @@ class SubmarinoOfferParser
      paths[:baseImg] = "#{root_path}/div[@id='area133']/div[@class='boxProductPics']/div[@class='productPicFull' and position()=1]/a[@class='lightwindow']/img[@id='baseImg']"
      paths[:category] = "//html/body/div[@id='page']/div[@id='content']/div[@id='area1']/div[@id='area1A']/div[@id='area1B']/div[@id='area1C']/div[@id='area13']/div[@id='area131']/div[@class='breadcrumbBox' and position()=2]/ul[@class='breadcrumb']/li[1]/a"
      paths[:availability] = "#{root_path}/div[@id='area134']/div[3]/div[@class='unavailableProduct']/div[@class='roundCornerTL']/div[@class='roundCornerTR']/div[@class='roundCornerBL']/div[@class='roundCornerBR']/div[@id='_form']/h3[@class='title18']"
-     
+     paths[:popularity] = "//div[@id='comp_list']/div/div/span[@class='avail']"
      
      paths[target]
    end
