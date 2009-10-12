@@ -4,8 +4,8 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :product_id %><br />
-    <%= link_to h(@product), :controller => "products", :action => "show", :id => @product %>
+    <%= f.label :product_id %><br />    
+    <%= link_to h(@product), @product %>
   </p>
   <p>
     <%= f.label :rating %><br />

@@ -12,7 +12,7 @@ class UserRecommendationsController < ApplicationController
           @user_recommendation.target_user_id = target 
           @user_recommendation.save
         end
-        flash[:notice] = "Recommendation was successfully send."
+        flash[:notice] = "Recommendation was successfully sent."
         redirect_to @user_recommendation.product
     end 
   end                                                                   

@@ -11,7 +11,9 @@
   
   %body
     #container
-      #user_nav
+      #user_nav        
+        = link_to "Home", root_path 
+        |
         - if current_user
           %strong
             %span#user_email

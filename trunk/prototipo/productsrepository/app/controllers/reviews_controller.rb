@@ -30,8 +30,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   # GET /reviews/new.xml
-  def new
-    @review = Review.new
+  def new             
+    @review = Review.new(params[:review])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @review }

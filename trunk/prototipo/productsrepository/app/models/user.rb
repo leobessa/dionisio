@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base           
-  include Recommender::ActiveRecordBased
+  include Recommender::ActiveRecordBased    
+  default_scope :order => :username
   acts_as_authentic
   has_many :reviews
   has_many :products, :through => :reviews  
