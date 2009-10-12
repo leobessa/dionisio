@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
       name = category.name.parameterize  
       method_name = category.name.parameterize('_')                             
       products.send(method_name,name,:category_id => category.id)
-    end
+    end if Category.table_exists?
   end
   
   map.resources :user_sessions
@@ -26,7 +26,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :products do |products|
     products.resources :reviews
-    products.resources :offers
     products.resources :user_recommendations
   end
   

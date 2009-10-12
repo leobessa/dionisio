@@ -2,8 +2,8 @@
 
 <h1>Listing products</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" style="display:inline-table;" id="sortby-inline"> 
-  <% @products.each do |product| %>
+ 
+<% @products.each do |product| %>
     <tr valign="top" id="res0"> 
       <td class="ol ps-rimg"> 
         <a href="<%=h product_path(product)%>" >
@@ -38,16 +38,19 @@
          <span class="main-price">
          <%=h number_to_currency( product.offers.average(:list_price).to_f / 100.0, :unit => "R$", :separator => ",", :delimiter =>"") %><br> 
        <nobr>
-         <span class="ps-num-stores">from <%=h product.offers.count %> sellers</span>
          <table border="0" cellspacing="0" cellpadding="0" class="ps-sprite ps-sprite-cart" style="display:inline-table;">
            <tr><td><p></p></td></tr></table></nobr><br/> 
-       <input type="button" onclick="window.location='<%=h product_offers_url(product)%>'" value="Compare prices" id="price-but0"/> 
-       </td> 
+       
+       </td>  
        </tr>
-<% end %>
+       
+<% end %>   
+
 </table>
-<br />
-<%= will_paginate @products %>
+<br />                     
+<div id="products_pagination">
+  <%= will_paginate @products %>  
+</div>
 <br />
 
 <%= link_to 'New product', new_product_path %>

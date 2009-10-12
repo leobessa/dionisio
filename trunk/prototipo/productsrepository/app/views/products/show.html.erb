@@ -1,42 +1,16 @@
 <h1>Product</h1>
 
-<div class="hproduct">
-<h2 class="fn"><%=h @product.name %></h2>
+<%= render :partial => 'hproduct', :locals => { :product => @product } %>
+               
+<div id="product-nav-bar" >
+  <%= link_to 'Back', products_path %> |
+  <%= link_to 'Make a review', new_product_review_path(@product) %> |
+  <%= link_to 'Show reviews', product_reviews_path(@product) %> |
+  <%= link_to "Recommend it!", new_product_user_recommendation_path(@product) %>   
 
-<p>
-  <span class="url"><%= link_to "Permalink", product_url(@product) %></span>
-</p>
-
-<p>
-  <b>Brand:</b>
-  <span class = "brand"><%=h @product.brand %></span>
-</p>
-
-<p>
-  <b>Category:</b>
-   <span class="category"><%=h @product.category %></span>
-</p>
-
-<p>
-  <b>Description:</b>
-  <span class="description"><%=h @product.description %></span>
-</p>
-
-<p>
-  <b>Photo:</b>
-  <img class="photo" width="90" height="90" src="<%=h @product.photo %>" alt="<%=h @product.photo_alt %>" title="<%=h @product.name %>" />
-</p>
-   
+  <% if current_user  %>
+      <%= render :partial => 'user_recommendations' %>
+  <% end -%>  
 </div>
 
-
-<%= link_to 'Back', products_path %> |
-<%= link_to 'Offers', product_offers_path(@product) %> |
-<%= link_to 'Make a review', new_product_review_path(@product) %> |
-<%= link_to 'Show reviews', product_reviews_path(@product) %> |
-<%= link_to "Recommend it!", new_product_user_recommendation_path(@product) %>   
-                   
-<% if current_user  %>
-    <%= render :partial => 'user_recommendations' %>
-<% end -%>
 
