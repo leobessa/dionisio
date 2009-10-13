@@ -31,18 +31,20 @@
         </ul>
         <p><%= link_to "Find Friends", users_path %></p>      
       </div>
-      <div id="system_recommendations">
-          <% for product in @user.recommended_products %>
-            <%= render :partial => 'products/hproduct', :locals => { :product => product } %>
-            <span style="display: none"><%=h product.recommendation_score %></span>
-            <hr>
+      <div id="system_recommendations" class="recommendations">
+          <% for product in @user.recommended_products %> 
+            <div class="recommendation">  
+              <%= render :partial => 'products/definition_list', :locals => { :product => product } %>
+              <span style="display: none"><%=h product.recommendation_score %></span>
+            </div>
           <% end -%>
       </div>
-      <div id="user_recommendations">
+      <div id="user_recommendations" class="recommendations">  
         <% UserRecommendation.for(current_user).each do |user_recommendation|%> 
-        <%= render :partial => 'products/hproduct', :locals => { :product => user_recommendation.product } %> 
-         <span>recommended by <%=h user_recommendation.recommender %></span>
-         <hr>
+        <div class="recommendation">
+          <%= render :partial => 'products/definition_list', :locals => { :product => user_recommendation.product } %>  
+          <span class="recommender">recommended by <%=h user_recommendation.recommender %></span>
+        </div>
         <% end -%>
       </div>
   </div>                    

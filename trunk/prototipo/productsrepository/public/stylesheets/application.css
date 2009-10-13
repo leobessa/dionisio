@@ -138,15 +138,45 @@ line-height:28px;
 padding:7px 0 5px 12px;
 }
        
-.ui-tabs .ui-tabs-hide {
-     display: none;
-}
-
 .hproduct{  
-	margin-bottom: 10px; margin-top: 10px; height: 200px; width: 770px;  
+	margin:10px 10px 10px 10px;
+	height: 150px; width: 700px;  
 }               
 
 .hproduct .photo { 
 	float:left;
 	margin:0px 0px 15px 20px; 
+}    
+
+* html dd {height:1%} 
+
+.recommender{
+	color:red;
+} 
+
+.recommendation{
+	padding-bottom: 15px;
+}
+
+.recommendations{
+	width:660px;
+	margin:10px auto;
+}
+.recommendations dl{
+	width:760px;
+	margin:0 auto;
+	border-bottom:1px dashed #ccc;
+	padding:10px;
+	overflow:hidden;
+	background:#f2f2f2;
+}
+.recommendations dd{overflow:auto} 
+.recommendations dt strong{
+	float:right;
+	padding:0 0 0 20px;
+}
+.recommendations dt img{
+	float:left;
+	margin:0 10px 0 0;
+	border:1px solid #000;
 }

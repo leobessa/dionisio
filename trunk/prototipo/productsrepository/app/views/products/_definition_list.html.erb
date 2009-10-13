@@ -1,0 +1,12 @@
+<dl class="hproduct">  
+  <dt>
+    <span class="photo">
+      <img width="90" height="90" src="<%=h product.photo %>"  alt="<%=h product.name %>" title="<%=h product.name %>" />
+    </span>
+    <span class="fn"><%= link_to product.name, product_url(product) %></span>
+    <strong class="category"><%=h product.category %></strong>
+  </dt>
+  <dd class="description">
+    <p><%=h product.description %></p>
+  </dd>
+</dl>
