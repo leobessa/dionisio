@@ -76,13 +76,4 @@
 /* remove halo effect in firefox   */
 a:active{
 	outline: none;
-}       
-
-.hproduct{  
-	margin-bottom: 10px; margin-top: 10px; height: 200px; width: 800px;  
-}               
-
-.hproduct .photo { 
-	float:right;
-	margin:0px 0px 15px 20px; 
 }

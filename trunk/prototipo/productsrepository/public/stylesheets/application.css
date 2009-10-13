@@ -127,4 +127,26 @@ a {
 
 #user_nav {
   float: right;
-  font-size: 12px; }
+  font-size: 12px; 
+}
+
+#user_profile h1 {
+font-family:Tahoma,Verdana,Arial,Sans-Serif;
+font-size:24px;
+font-weight:400;
+line-height:28px;
+padding:7px 0 5px 12px;
+}
+       
+.ui-tabs .ui-tabs-hide {
+     display: none;
+}
+
+.hproduct{  
+	margin-bottom: 10px; margin-top: 10px; height: 200px; width: 770px;  
+}               
+
+.hproduct .photo { 
+	float:left;
+	margin:0px 0px 15px 20px; 
+}

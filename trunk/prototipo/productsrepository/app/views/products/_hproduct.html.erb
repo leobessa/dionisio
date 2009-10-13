@@ -1,26 +1,24 @@
 <div class="hproduct">  
   <div class="title">
-    <h2 class="fn"><%=h @product.name %></h2>   
+    <h2 class="fn"><%=h product.name %></h2>   
   </div>   
-  <b>Description:</b>
-  <div class="description">
-    <p>
-      <%=h @product.description %>
-    </p>  
-  </div>
   <div class="photo">
     <img width="90" height="90" src="<%=h product.photo %>"  alt="<%=h product.name %>" title="<%=h product.name %>" /> 
   </div>
-  
-<p>
-  <b>Brand:</b>
-  <span class = "brand"><%=h @product.brand %></span>
-</p>
+  <b>Description:</b>
+  <div class="description">
+    <p>
+      <%=h product.description %>
+    </p>  
+  </div>
+  <p>
+    <b>Brand:</b>
+    <span class = "brand"><%=h product.brand %></span>
+  </p>
 
-<p>
-  <b>Category:</b>
-   <span class="category"><%=h @product.category %></span>
-</p>        
-<span class="url"><%= link_to "Permalink", product_url(@product) %></span> 
-   
+  <p>
+    <b>Category:</b>
+     <span class="category"><%=h product.category %></span>
+  </p>        
+  <span class="url"><%= link_to "Permalink", product_url(product) %></span> 
 </div> 

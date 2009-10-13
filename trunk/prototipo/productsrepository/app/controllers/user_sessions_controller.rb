@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Successfully logged in."
-      redirect_to (session[:restricted_url_to_access] || root_url)
+      redirect_to (session[:restricted_url_to_access] || @user_session.user)
     else
       flash[:notice] = t(:login_failed)
       render :action => 'new'

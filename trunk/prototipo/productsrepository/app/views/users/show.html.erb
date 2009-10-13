@@ -1,50 +1,50 @@
-<% title "My Profile" %>
- 
-<p>Username: <%=h @user.username %></p>
- 
- 
-<h2>Friends</h2>
-<ul>
-  <% for friendship in @user.friendships %>
-    <li>
-      <%=h friendship.friend.username %>
-      (<%= link_to "remove", friendship, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
- 
-<p><%= link_to "Find Friends", users_path %></p>
- 
-<h2>Friended by Users</h2>
-<ul>
-  <% for user in @user.inverse_friends %>
-    <li><%=h user.username %></li>
-  <% end %>
-</ul>
+<% content_for :head do %>    
+<link type="text/css" href="http://jqueryui.com/latest/themes/base/ui.all.css" rel="stylesheet" />
+<script type="text/javascript" src="http://jqueryui.com/latest/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.core.js"></script>
+<script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.tabs.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#tabs').tabs();
+  });
+  </script>
+<% end -%>
 
-<h2>System Product Recommendations</h2>
+<div id="user_profile">
+  
+  <h1>Welcome, <%=h @user.username %></h1>
+ 
+  <div id="tabs">
+      <ul>
+          <li><a href="#system_recommendations"><span>System Product Recommendations</span></a></li> 
+          <li><a href="#user_recommendations"><span>Friend's Product Recommendations</span></a></li> 
+          <li><a href="#friends"><span>Friends</span></a></li>
+      </ul>
+      <div id="friends">
+        <ul>
+          <% for friendship in @user.friendships %>
+            <li>
+              <%=h friendship.friend.username %>
+              (<%= link_to "remove", friendship, :method => :delete %>)
+            </li>
+          <% end -%>
+        </ul>
+        <p><%= link_to "Find Friends", users_path %></p>      
+      </div>
+      <div id="system_recommendations">
+          <% for product in @user.recommended_products %>
+            <%= render :partial => 'products/hproduct', :locals => { :product => product } %>
+            <span style="display: none"><%=h product.recommendation_score %></span>
+            <hr>
+          <% end -%>
+      </div>
+      <div id="user_recommendations">
+        <% UserRecommendation.for(current_user).each do |user_recommendation|%> 
+        <%= render :partial => 'products/hproduct', :locals => { :product => user_recommendation.product } %> 
+         <span>recommended by <%=h user_recommendation.recommender %></span>
+         <hr>
+        <% end -%>
+      </div>
+  </div>                    
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Recommendation Score</th>
-  </tr>
-  <% for product in @user.recommended_products %>
-    <tr>
-      <td><%=h product.name %></td>
-      <td><%=h product.recommendation_score %></td>
-      <td><%= link_to "Show", product %></td>
-    </tr>
-  <% end %>
-</table> 
-
-<h2>Friend's Product Recommendations</h2>
-<ul id="user_recommendations">
-<% UserRecommendation.for(current_user).each do |user_recommendation|%>
-  <li class="username">
-    <%= link_to "#{user_recommendation.product}", user_recommendation.product %>
-    recommended by
-    <%=h user_recommendation.recommender %>
-    </li>
-  <% end -%>
-</ul>
+</div>
