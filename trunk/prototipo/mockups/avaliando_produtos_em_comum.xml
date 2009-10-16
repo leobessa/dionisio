@@ -1,0 +1,93 @@
+<mockup version="1.0" skin="sketch" measuredW="506" measuredH="485" mockupW="464" mockupH="469">
+  <controls>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Title" x="32" y="6" w="-1" h="-1" measuredW="449" measuredH="56" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Bem%20vindo%2C%20Jo%E3o%20da%20Silva</text>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::Alert" x="32" y="69" w="464" h="65" measuredW="200" measuredH="84" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Etapa%201%0AAvalie%20os%2020%20produtos%20listados%20abaixo.</text>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Accordion" x="32" y="149" w="464" h="326" measuredW="198" measuredH="218" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cole%E7%E3o%20Harry%20Potter%0AO%20Pequeno%20Pr%EDncipe%0APlaystation%203%20PS3%20HD%2080GB%0ACD%20Sertanejo%20Rom%E2ntico%20-%20BOX%204%20CDs</text>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Paragraph" x="190" y="188" w="297" h="142" measuredW="200" measuredH="140" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cole%E7%E3o%20Completa%20Harry%20Potter%20-%20Oito%20livros%20do%20bruxinho%20mais%20famoso%20do%20mundo.%0A%20%0AHarry%20Potter%20e%20a%20Pedra%20Filosofal%3A%20Prepare-se%20para%20entrar%20no%20mundo%20da%20magia%2C%20sonhar%20com%20os%20feiti%E7os%20que%20s%F3%20se%20aprendem%20em%20Hogwarts%20e%20detestar%20uma%20fam%EDlia%20adotiva.%20%28...%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::Image" x="43" y="186" w="-1" h="-1" measuredW="141" measuredH="144" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="__group__" x="259" y="352" w="-1" h="-1" measuredW="120" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="74" controlTypeID="com.balsamiq.mockups::Icon" x="0" y="0" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="0" locked="false" isInGroup="81">
+          <controlProperties>
+            <icon>StarIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="76" controlTypeID="com.balsamiq.mockups::Icon" x="24" y="0" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="1" locked="false" isInGroup="81">
+          <controlProperties>
+            <icon>StarIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="77" controlTypeID="com.balsamiq.mockups::Icon" x="72" y="0" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="2" locked="false" isInGroup="81">
+          <controlProperties>
+            <icon>StarIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="79" controlTypeID="com.balsamiq.mockups::Icon" x="96" y="0" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="3" locked="false" isInGroup="81">
+          <controlProperties>
+            <icon>StarIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="80" controlTypeID="com.balsamiq.mockups::Icon" x="48" y="0" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="4" locked="false" isInGroup="81">
+          <controlProperties>
+            <icon>StarIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::CheckBox" x="52" y="355" w="-1" h="-1" measuredW="97" measuredH="18" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>N%E3o%20conhe%E7o</text>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Label" x="211" y="352" w="-1" h="-1" measuredW="33" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ruim</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Label" x="388" y="352" w="-1" h="-1" measuredW="63" measuredH="23" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Excelente</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Label" x="451" y="155" w="-1" h="-1" measuredW="33" measuredH="23" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Livro*</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::Label" x="449" y="395" w="-1" h="-1" measuredW="33" measuredH="23" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Livro*</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Label" x="447" y="421" w="-1" h="-1" measuredW="38" measuredH="23" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Game*</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Label" x="463" y="449" w="-1" h="-1" measuredW="22" measuredH="23" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*CD*</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
