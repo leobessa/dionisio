@@ -1,0 +1,12 @@
+# Logfile created on Fri Oct 16 20:24:18 -0300 2009REQUESTING PAGE: GET /admins/sign_in with {} and HTTP headers {}
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-17 16:53:49) [GET]
+Rendering sessions/new
+Completed in 48ms (View: 27, DB: 0) | 200 OK [http://www.example.com/admins/sign_in]
+REQUESTING PAGE: GET /admins/sign_in with {} and HTTP headers {}
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-17 16:55:17) [GET]
+Rendering sessions/new
+Completed in 18ms (View: 11, DB: 0) | 200 OK [http://www.example.com/admins/sign_in]
