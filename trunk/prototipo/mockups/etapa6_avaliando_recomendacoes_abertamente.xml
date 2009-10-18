@@ -1,0 +1,241 @@
+<mockup version="1.0" skin="sketch" measuredW="975" measuredH="756" mockupW="932" mockupH="736">
+  <controls>
+    <control controlID="193" controlTypeID="__group__" x="42" y="587" w="-1" h="-1" measuredW="444" measuredH="120" zOrder="8" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="172" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="444" h="120" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="193">
+          <controlProperties>
+            <text>Avalia%E7%E3o%20da%20Produto</text>
+          </controlProperties>
+        </control>
+        <control controlID="173" controlTypeID="com.balsamiq.mockups::CheckBox" x="15" y="29" w="97" h="18" measuredW="97" measuredH="18" zOrder="1" locked="false" isInGroup="193">
+          <controlProperties>
+            <text>N%E3o%20conhe%E7o</text>
+          </controlProperties>
+        </control>
+        <control controlID="174" controlTypeID="com.balsamiq.mockups::Label" x="65" y="65" w="33" h="23" measuredW="33" measuredH="23" zOrder="2" locked="false" isInGroup="193">
+          <controlProperties>
+            <text>Ruim</text>
+          </controlProperties>
+        </control>
+        <control controlID="175" controlTypeID="com.balsamiq.mockups::Label" x="299" y="65" w="70" h="23" measuredW="70" measuredH="23" zOrder="3" locked="false" isInGroup="193">
+          <controlProperties>
+            <text>Execelente</text>
+          </controlProperties>
+        </control>
+        <control controlID="176" controlTypeID="com.balsamiq.mockups::Icon" x="112" y="56" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="4" locked="false" isInGroup="193">
+          <controlProperties>
+            <icon>StarIcon%7Cmedium</icon>
+            <color>11776947</color>
+          </controlProperties>
+        </control>
+        <control controlID="177" controlTypeID="com.balsamiq.mockups::Icon" x="144" y="56" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="5" locked="false" isInGroup="193">
+          <controlProperties>
+            <icon>StarIcon%7Cmedium</icon>
+            <color>11776947</color>
+          </controlProperties>
+        </control>
+        <control controlID="178" controlTypeID="com.balsamiq.mockups::Icon" x="177" y="56" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="6" locked="false" isInGroup="193">
+          <controlProperties>
+            <icon>StarIcon%7Cmedium</icon>
+            <color>11776947</color>
+          </controlProperties>
+        </control>
+        <control controlID="179" controlTypeID="com.balsamiq.mockups::Icon" x="212" y="56" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="7" locked="false" isInGroup="193">
+          <controlProperties>
+            <icon>StarIcon%7Cmedium</icon>
+            <color>11776947</color>
+          </controlProperties>
+        </control>
+        <control controlID="180" controlTypeID="com.balsamiq.mockups::Icon" x="246" y="56" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="8" locked="false" isInGroup="193">
+          <controlProperties>
+            <icon>StarIcon%7Cmedium</icon>
+            <color>11776947</color>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="194" controlTypeID="com.balsamiq.mockups::Accordion" x="33" y="205" w="464" h="541" measuredW="150" measuredH="148" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cole%E7%E3o%20Harry%20Potter%0ADVD%20Harry%20Potter</text>
+      </controlProperties>
+    </control>
+    <control controlID="195" controlTypeID="com.balsamiq.mockups::Label" x="458" y="721" w="31" h="25" measuredW="31" measuredH="23" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*DVD*</text>
+      </controlProperties>
+    </control>
+    <control controlID="213" controlTypeID="__group__" x="42" y="397" w="-1" h="-1" measuredW="445" measuredH="89" zOrder="10" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="209" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="445" h="89" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="213">
+          <controlProperties>
+            <text>Avalia%E7%E3o%20da%20Recomenda%E7%E3o</text>
+          </controlProperties>
+        </control>
+        <control controlID="197" controlTypeID="com.balsamiq.mockups::IconLabel" x="104" y="27" w="52" h="-1" measuredW="52" measuredH="47" zOrder="1" locked="false" isInGroup="213">
+          <controlProperties>
+            <text>Sistema</text>
+            <icon>ScreenIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="210" controlTypeID="__group__" x="171" y="26" w="261" h="48" measuredW="261" measuredH="48" zOrder="2" locked="false" isInGroup="213">
+          <groupChildrenDescriptors>
+            <control controlID="200" controlTypeID="com.balsamiq.mockups::RadioButton" x="161" y="2" w="42" h="18" measuredW="42" measuredH="18" zOrder="0" locked="false" isInGroup="206">
+              <controlProperties>
+                <text>Sim</text>
+              </controlProperties>
+            </control>
+            <control controlID="201" controlTypeID="com.balsamiq.mockups::RadioButton" x="218" y="4" w="43" h="18" measuredW="43" measuredH="18" zOrder="1" locked="false" isInGroup="206">
+              <controlProperties>
+                <text>N%E3o</text>
+              </controlProperties>
+            </control>
+            <control controlID="202" controlTypeID="com.balsamiq.mockups::RadioButton" x="161" y="28" w="42" h="18" measuredW="42" measuredH="18" zOrder="2" locked="false" isInGroup="206">
+              <controlProperties>
+                <text>Sim</text>
+              </controlProperties>
+            </control>
+            <control controlID="203" controlTypeID="com.balsamiq.mockups::RadioButton" x="218" y="30" w="43" h="18" measuredW="43" measuredH="18" zOrder="3" locked="false" isInGroup="206">
+              <controlProperties>
+                <text>N%E3o</text>
+              </controlProperties>
+            </control>
+            <control controlID="204" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="157" h="23" measuredW="157" measuredH="23" zOrder="4" locked="false" isInGroup="206">
+              <controlProperties>
+                <text>Gostou%20da%20recomenda%E7%E3o%3F</text>
+              </controlProperties>
+            </control>
+            <control controlID="205" controlTypeID="com.balsamiq.mockups::Label" x="0" y="25" w="143" h="23" measuredW="131" measuredH="23" zOrder="5" locked="false" isInGroup="206">
+              <controlProperties>
+                <text>Ela%20lhe%20surpreendeu%3F</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="211" controlTypeID="com.balsamiq.mockups::Label" x="19" y="27" w="77" h="23" measuredW="77" measuredH="23" zOrder="3" locked="false" isInGroup="213">
+          <controlProperties>
+            <text>Enviada%20por%3A</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="214" controlTypeID="__group__" x="41" y="494" w="-1" h="-1" measuredW="445" measuredH="85" zOrder="11" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="208" controlTypeID="__group__" x="0" y="0" w="445" h="85" measuredW="445" measuredH="85" zOrder="0" locked="false" isInGroup="214">
+          <groupChildrenDescriptors>
+            <control controlID="199" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="445" h="85" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="207">
+              <controlProperties>
+                <text>Avalia%E7%E3o%20da%20Recomenda%E7%E3o</text>
+              </controlProperties>
+            </control>
+            <control controlID="206" controlTypeID="__group__" x="173" y="22" w="261" h="48" measuredW="261" measuredH="48" zOrder="1" locked="false" isInGroup="207">
+              <groupChildrenDescriptors>
+                <control controlID="200" controlTypeID="com.balsamiq.mockups::RadioButton" x="161" y="2" w="42" h="18" measuredW="42" measuredH="18" zOrder="0" locked="false" isInGroup="206">
+                  <controlProperties>
+                    <text>Sim</text>
+                  </controlProperties>
+                </control>
+                <control controlID="201" controlTypeID="com.balsamiq.mockups::RadioButton" x="218" y="4" w="43" h="18" measuredW="43" measuredH="18" zOrder="1" locked="false" isInGroup="206">
+                  <controlProperties>
+                    <text>N%E3o</text>
+                  </controlProperties>
+                </control>
+                <control controlID="202" controlTypeID="com.balsamiq.mockups::RadioButton" x="161" y="28" w="42" h="18" measuredW="42" measuredH="18" zOrder="2" locked="false" isInGroup="206">
+                  <controlProperties>
+                    <text>Sim</text>
+                  </controlProperties>
+                </control>
+                <control controlID="203" controlTypeID="com.balsamiq.mockups::RadioButton" x="218" y="30" w="43" h="18" measuredW="43" measuredH="18" zOrder="3" locked="false" isInGroup="206">
+                  <controlProperties>
+                    <text>N%E3o</text>
+                  </controlProperties>
+                </control>
+                <control controlID="204" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="157" h="23" measuredW="157" measuredH="23" zOrder="4" locked="false" isInGroup="206">
+                  <controlProperties>
+                    <text>Gostou%20da%20recomenda%E7%E3o%3F</text>
+                  </controlProperties>
+                </control>
+                <control controlID="205" controlTypeID="com.balsamiq.mockups::Label" x="0" y="25" w="143" h="23" measuredW="131" measuredH="23" zOrder="5" locked="false" isInGroup="206">
+                  <controlProperties>
+                    <text>Ela%20lhe%20surpreendeu%3F</text>
+                  </controlProperties>
+                </control>
+              </groupChildrenDescriptors>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="198" controlTypeID="com.balsamiq.mockups::IconLabel" x="113" y="22" w="39" h="-1" measuredW="39" measuredH="47" zOrder="1" locked="false" isInGroup="214">
+          <controlProperties>
+            <text>Bruna</text>
+            <icon>EmoticonIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="212" controlTypeID="com.balsamiq.mockups::Label" x="19" y="22" w="77" h="23" measuredW="77" measuredH="23" zOrder="2" locked="false" isInGroup="214">
+          <controlProperties>
+            <text>Enviada%20por%3A</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="215" controlTypeID="com.balsamiq.mockups::StickyNote" x="508" y="349" w="457" h="230" measuredW="109" measuredH="123" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Como%20vamos%20fazer%20a%20avalia%E7%E3o%20aberta%3F%0A%20%0AQuais%20s%E3o%20as%20perguntas%20a%20serem%20feitas%20para%20avaliar%20a%20recomenda%E7%E3o%3F%0A%20%0ASugest%F5es%3A%0A1.%20O%20fato%20desta%20pessoa/sistema%20ter%20lhe%20recomendado%20o%20surpreendeu%3F%0A2.%20O%20fato%20desta%20pessoa/sistma%20ter%20lhe%20reomendado%20tornou%20o%20produto%20mais%20interessante%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="218" controlTypeID="com.balsamiq.mockups::StickyNote" x="508" y="134" w="457" h="112" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>D%FAvida%20do%20L%E9o%3A%0A%20%0APrecisamos%20orientar%20os%20participantes%20a%20desconsiderar%20a%20etapa%20cega%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="219" controlTypeID="com.balsamiq.mockups::StickyNote" x="513" y="583" w="446" h="123" measuredW="109" measuredH="123" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Vamos%20manter%20a%20avalia%E7%E3o%20de%20produto%3F%20Ou%20perguntar%20novamente%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Alert" x="33" y="10" w="475" h="84" measuredW="200" measuredH="141" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Etapa%206%0AAvalie%20as%20recomenda%E7%F5es%20e%20os%20produtos%20recebidos.%20Nesta%20etapa%20voc%EA%20pode%20visualizar%20quem%20lhe%20enviou%20a%20recomenda%E7%E3o.</text>
+      </controlProperties>
+    </control>
+    <control controlID="169" controlTypeID="__group__" x="523" y="18" w="-1" h="-1" measuredW="368" measuredH="104" zOrder="4" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="148" controlTypeID="com.balsamiq.mockups::Alert" x="0" y="0" w="368" h="104" measuredW="200" measuredH="84" zOrder="0" locked="false" isInGroup="169">
+          <controlProperties>
+            <text>Progresso%20na%20etapa%0AVoc%EA%20j%E1%20avaliou%205%20de%2015%20recomenda%E7%F5es.</text>
+          </controlProperties>
+        </control>
+        <control controlID="147" controlTypeID="com.balsamiq.mockups::ProgressBar" x="27" y="69" w="314" h="20" measuredW="100" measuredH="20" zOrder="1" locked="false" isInGroup="169">
+          <controlProperties>
+            <indeterminate>false</indeterminate>
+            <scrollBarValue>27</scrollBarValue>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="181" controlTypeID="com.balsamiq.mockups::Paragraph" x="190" y="240" w="297" h="142" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cole%E7%E3o%20Completa%20Harry%20Potter%20-%20Oito%20livros%20do%20bruxinho%20mais%20famoso%20do%20mundo.%0A%20%0AHarry%20Potter%20e%20a%20Pedra%20Filosofal%3A%20Prepare-se%20para%20entrar%20no%20mundo%20da%20magia%2C%20sonhar%20com%20os%20feiti%E7os%20que%20s%F3%20se%20aprendem%20em%20Hogwarts%20e%20detestar%20uma%20fam%EDlia%20adotiva.%20%28...%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="182" controlTypeID="com.balsamiq.mockups::Image" x="43" y="238" w="141" h="144" measuredW="141" measuredH="144" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="119" controlTypeID="com.balsamiq.mockups::Alert" x="33" y="94" w="474" h="84" measuredW="283" measuredH="103" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Como%20avaliar%20as%20recomenda%E7%F5es%3F%0AUma%20boa%20recomenda%E7%E3o%20%E9%20a%20indica%E7%E3o%20de%20um%20produto%20que%20voc%EA%20provavelmente%20goste%20e%20ainda%20n%E3o%20conhece.</text>
+      </controlProperties>
+    </control>
+    <control controlID="120" controlTypeID="com.balsamiq.mockups::Title" x="33" y="172" w="-1" h="-1" measuredW="378" measuredH="37" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Lista%20de%20recomenda%E7%F5es%20recebidas</text>
+        <size>24</size>
+      </controlProperties>
+    </control>
+    <control controlID="183" controlTypeID="com.balsamiq.mockups::Label" x="458" y="211" w="33" h="23" measuredW="33" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Livro*</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
