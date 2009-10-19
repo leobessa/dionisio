@@ -9,12 +9,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091017181022) do
+ActiveRecord::Schema.define(:version => 20091019014857) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.string   "recipient_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "encrypted_password"
+    t.string   "password_salt"
+    t.string   "reset_password_token"
+    t.integer  "invitation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

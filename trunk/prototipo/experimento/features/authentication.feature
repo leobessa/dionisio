@@ -4,7 +4,7 @@ Funcionalidade: Autenticação
   Como administrador do exeperimento
   Eu quero que os participantes se identifiquem através de login e senha
 
-  
+@wip  
 Cenário: Fazendo login
   Dado que existe um participante habilitado com e-mail "foo@email.com" e senha "qwerty"
   E que estou deslogado

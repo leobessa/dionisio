@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /página de login de adminstrador/
       new_admin_session_path
+    when /página de envio de convites/
+      new_invitation_path
     
     # Add more mappings here.
     # Here is a more fancy example:

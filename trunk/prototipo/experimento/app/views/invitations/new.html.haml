@@ -1,0 +1,12 @@
+- title "Novo envio de convite"
+
+- form_for @invitation do |f|
+  = f.error_messages
+  %p
+    = f.label :recipient_email, 'email'
+    %br
+    = f.text_field :recipient_email
+  %p
+    = f.submit "Enviar convite"
+
+

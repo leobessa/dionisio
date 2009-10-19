@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   
   # é preciso baixar e instalar o warden manualmente!
   config.gem "warden", :lib => "warden", :version => "0.4.0", :source => "http://gems.github.com"
+  config.gem 'haml'
   
 
   # Only load the plugins named here, in the order given (default is alphabetical).
@@ -41,5 +42,5 @@ Rails::Initializer.run do |config|
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
+  config.i18n.default_locale = 'pt-BR'
 end

@@ -4,15 +4,15 @@ Funcionalidade: Restrição de cadastro através de convite
  Como responsável pelo experimento
  Quero enviar convites para os participantes
  
- @wip
  Cenário: Envio de convite para participante
    Dado que estou logado como adminstrador
-   E estou na pagina de envio de convites
-   E preencho "e-mail" com "convidado@email.com"
+   E estou na página de envio de convites
+   E preencho "email" com "convidado@email.com"
    E aperto "Enviar convite"
    Então devo ver "Convite enviado para convidado@email.com"
    E um e-mail deve ter sido enviado para "convidado@email.com"
- 
+   
+ @wip
  Cenário: Casdastro de participante convidado
    Dado que que recebi um convite no e-mail "joao@email.com.br"
    Quando clicar no link "cadastrar" enviado no e-mail

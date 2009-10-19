@@ -4,16 +4,16 @@
   <p><%= f.label :email %></p>
   <p><%= f.text_field :email %></p>
 
-  <p><%= f.label :password %></p>
+  <p><%= f.label :password, 'Senha' %></p>
   <p><%= f.password_field :password %></p>
 
-  <p><%= f.submit "Sign in" %></p>
+  <p><%= f.submit "Entrar" %></p>
 <% end -%>
 
 <%- if devise_mapping.recoverable? %>
-  <%= link_to "Forgot password?", new_password_path(resource_name) %><br />
+  <%= link_to "Esqueceu a senha?", new_password_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <%= link_to "Não recebeu as instruções para confirmação?", new_confirmation_path(resource_name) %><br />
 <% end -%>

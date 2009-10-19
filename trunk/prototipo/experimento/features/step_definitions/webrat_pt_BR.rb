@@ -3,7 +3,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 # Commonly used webrat steps
 # http://github.com/brynary/webrat
 
-Given /^I am on (.+)$/ do |page_name|
+Dado /^estou na (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
@@ -11,7 +11,7 @@ When /^que fui para a (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^I press "([^\"]*)"$/ do |button|
+Dado /^aperto "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
@@ -23,7 +23,7 @@ When /^I follow "([^\"]*)" within "([^\"]*)"$/ do |link, parent|
   click_link_within(parent, link)
 end
 
-When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
+Dado /^preencho "([^\"]*)" com "([^\"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
@@ -115,7 +115,7 @@ When /^I attach the file at "([^\"]*)" to "([^\"]*)"$/ do |path, field|
   attach_file(field, path)
 end
 
-Then /^I should see "([^\"]*)"$/ do |text|
+Então /^devo ver "([^\"]*)"$/  do |text|
   response.should contain(text)
 end
 
@@ -124,7 +124,7 @@ Then /^I should see "([^\"]*)" within "([^\"]*)"$/ do |text, selector|
     content.should contain(text)
   end
 end
-
+ 
 Then /^I should see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
   response.should contain(regexp)
