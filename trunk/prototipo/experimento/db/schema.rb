@@ -12,9 +12,9 @@
 ActiveRecord::Schema.define(:version => 20091019204450) do
 
   create_table "admins", :force => true do |t|
-    t.string   "email"
-    t.string   "encrypted_password"
-    t.string   "password_salt"
+    t.string   "email",              :null => false
+    t.string   "encrypted_password", :null => false
+    t.string   "password_salt",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

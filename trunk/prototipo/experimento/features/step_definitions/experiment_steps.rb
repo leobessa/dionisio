@@ -1,5 +1,5 @@
 Dado /^que estou logado como adminstrador$/ do 
-  Admin.find_or_create_by_email("admin@email.com").update_attribute(:password,"adminadmin")
+  Factory.create :admin, :email => "admin@email.com", :password => "adminadmin"
   Dado %q{que fui para a página de login de adminstrador}
   E %q{preencho "email" com "admin@email.com"}
   E %q{preencho "Senha" com "adminadmin"}

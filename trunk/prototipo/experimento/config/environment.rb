@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   
   # é preciso baixar e instalar o warden manualmente!
   config.gem "warden", :lib => "warden", :version => "0.4.0", :source => "http://gems.github.com"
+  config.gem "rails_warden"
   config.gem 'haml'
   
 

@@ -1,16 +1,15 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe UsersController do
-  fixtures :all
-  integrate_views
+  integrate_views 
   
-  it "index action should render index template" do
-    get :index
-    response.should render_template(:index)
+  before(:each) do
+    @controller.stub(:admin_signed_in?, false)
+    @controller.stub(:user_signed_in?, false)
   end
   
-  it "show action should render show template" do
-    get :show, :id => User.first
+  it "show action should render show template" do 
+    get :show, :id => Factory.create(:user)
     response.should render_template(:show)
   end
   
@@ -20,38 +19,20 @@ describe UsersController do
   end
   
   it "create action should render new template when model is invalid" do
-    User.any_instance.stubs(:valid?).returns(false)
+    @user = mock_model User, Factory.attributes_for(:user)
+    User.should_receive(:new).once.and_return(@user)
+    @user.should_receive(:save).and_return(false)   
+    @user.stub!(:invitation_token,'aaa')
     post :create
     response.should render_template(:new)
   end
   
-  it "create action should redirect when model is valid" do
-    User.any_instance.stubs(:valid?).returns(true)
+  it "create action should redirect when model is valid" do 
+    @user = mock_model User
+    User.should_receive(:new).and_return(@user)
+    @user.should_receive(:save).and_return(true)
     post :create
     response.should redirect_to(user_url(assigns[:user]))
   end
   
-  it "edit action should render edit template" do
-    get :edit, :id => User.first
-    response.should render_template(:edit)
-  end
-  
-  it "update action should render edit template when model is invalid" do
-    User.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => User.first
-    response.should render_template(:edit)
-  end
-  
-  it "update action should redirect when model is valid" do
-    User.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => User.first
-    response.should redirect_to(user_url(assigns[:user]))
-  end
-  
-  it "destroy action should destroy model and redirect to index action" do
-    user = User.first
-    delete :destroy, :id => user
-    response.should redirect_to(users_url)
-    User.exists?(user.id).should be_false
-  end
 end
