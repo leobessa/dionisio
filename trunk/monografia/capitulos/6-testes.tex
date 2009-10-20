@@ -4,28 +4,28 @@
 \section{Descrição do Experimento}
 \label{cha:descricao_do_experimento}
 
- Inicialmente 12 pessoas serão convidadas a participar do experimento. Cada uma das 12 pessoas deverá convidar outras 4 pessoas para formarem um grupo de amigos. Sendo assim, formam-se 12 grupos de 5 amigos, totalizando 60 pessoas. Cada pessoa que participar de um grupo de amigos deverá concordar em ser definida como amigo de todos no grupo, ou seja, todas as pessoas pertencentes a um mesmo grupo de amigos se conhecem e se consideram amigas.
+ Inicialmente 12 pessoas serão convidadas a participar do experimento. Cada uma das 12 pessoas deverá convidar outras 4 pessoas para formarem um grupo de amigos. Sendo assim, formam-se 12 grupos de 5 amigos, totalizando 60 pessoas. Cada pessoa que participar de um grupo de amigos deverá concordar em ser definida como amiga de todos no grupo, ou seja, todas as pessoas pertencentes a um mesmo grupo de amigos se conhecem e se consideram amigas.
 
- Cada uma das 12 pessoas receberá 5 Termos de Consentimento Livre e Esclarecido (TCLE) para que seja lido e assinado por todos que concordaram em participar do grupo e, sendo assim, do experimento. Após ler e assinar o TCLE a pessoa torna-se um participante do experimento e deve informar o seu e-mail para a pessoa que lhe convidou. De posse dos e-mails de todos presentes no grupo de amigos, cada uma das 12 pessoas deverá enviá-los aos moderadores do experimento.
+ Cada uma das 12 pessoas receberá 5 Termos de Consentimento Livre e Esclarecido (TCLE) para que seja lido e assinado por todos que concordaram em participar do grupo e, sendo assim, do experimento. Após ler e assinar o TCLE a pessoa torna-se um participante do experimento e deve informar o seu e-mail para a pessoa que lhe convidou. De posse dos e-mails de todos presentes no grupo de amigos, cada uma das 12 pessoas deverá enviá-los aos pesquisadores.
 
- Um e-mail será enviado a cada um dos 60 participantes com um endereço da internet para que o participante possa se cadastrar no sistema do experimento. Os grupos de amigos já serão formados no sistema com base nos endereços de e-mail enviados por cada uma das 12 pessoas que foram incialmente convidadas a participar. Os participantes deverão informar os seguintes dados no cadastro:
+ Um e-mail será enviado a cada um dos 60 participantes com um endereço da internet para que ele possa se cadastrar no sistema do experimento. Os grupos de amigos já serão formados no sistema com base nos endereços de e-mail enviados por cada uma das 12 pessoas que foram incialmente convidadas a participar. Os participantes deverão informar os seguintes dados no cadastro:
 
 \begin{itemize}
 	\item Nome
 	\item Sexo
-	\item Faixa etária (até 10 anos; 10 a 20 anos; 20 a 30 anos; 30 a 40 anos; 40 a 50 anos; 50 a 60 anos; mais de 60 anos)
+	\item Faixa etária (18-25, 26-30, 30-40, +40)
 	\item Foto (Não obrigatório. Caso queira, o participante poderá escolher uma foto sua para representar o seu perfil no sistema.)
 \end{itemize}
 
- Após isso, o participante deverá escolher a opção de salvar os seus dados e então será remetido a outra página do sistema que mostrará uma lista com 20 produtos escolhidos pelos moderadores. Tais produtos serão escolhidos com base na sua popularidade definida no site www.submarino.com. O participante deverá avaliar TODOS os 20 produtos para passar para a próxima fase do experimento.
+ Após isso, o participante deverá escolher a opção de salvar os seus dados e então será remetido a outra página do sistema que mostrará uma lista com 20 produtos escolhidos pelos pesquisadores. Tais produtos serão escolhidos com base na sua popularidade definida no site www.submarino.com. O participante deverá avaliar TODOS os 20 produtos para passar para a próxima fase do experimento.
 
  Avaliar um produto significa dizer o quanto o participante acha aquele produto relevante para si, ou seja, o quanto ele gosta do produto. A avaliação é feita por meio da atribuição de uma nota de 1 a 5, sendo 1 o produto ser irrelevante ou inútil ao participante e 5 o produto ser completamente relevante ou muito útil a ele. 
 
- Caso o participante não conheça o produto, ou seja, não tivesse ouvido falar daquele produto ou não tivesse conhecimento suficiente para reconhecê-lo até o instante em que o produto lhe foi apresentado pelo sistema, ele deve escolher a opção "Não conheço", Neste caso a opção de avaliar o produto será desabilitada, pois não é de interesse do sistema saber da opinião do participante sobre um produto que ele não tem conhecimento algum.
+ Caso o participante não conheça o produto, ou seja, não tivesse ouvido falar daquele produto ou não tivesse conhecimento suficiente para reconhecê-lo, até o instante em que o produto lhe foi apresentado pelo sistema, ele deve escolher a opção "Não conheço", Neste caso a opção de avaliar o produto será desabilitada, pois não é de interesse do sistema saber da opinião do participante sobre um produto que ele não tem conhecimento algum.
 
- Selecionando a opção "Não conheço", o sistema não atribuirá nota à avaliação do produto na base de dados do participante, marcando apenas com uma flag booleana que o participante não conhece o produto. Um produto que não é conhecido pelo usuário, e sendo assim não avaliado pelo mesmo, não deverá ser utilizado no algoritmo de recomendação, porém a informação de não conhecimento por parte do usuário deverá ser guardada na base de dados para posterior análise. Além disso, o participante poderá avaliar o produto posteriormente, caso tenha procurado saber a respeito do mesmo.
+ Selecionando a opção "Não conheço", o sistema não atribuirá nota à avaliação do produto na base de dados do participante, marcando apenas com uma flag booleana indicando que o participante não conhece o produto. Um produto que não é conhecido pelo usuário, e sendo assim não avaliado pelo mesmo, não deverá ser utilizado no algoritmo de recomendação, porém a informação de não conhecimento por parte do usuário deverá ser guardada na base de dados para posterior análise. Além disso, o participante poderá avaliar o produto posteriormente, caso tenha procurado saber a respeito do mesmo.
 
- Terminadas as avaliações dos 20 produtos, o participante verá uma listagem aleatória dos produtos cadastrados no sistema. O participante deverá procurar apenas 10 produtos de sua escolha e avaliá-los da mesma forma como feito anteriormente com os 20 produtos. Neste caso, o participante deverá avaliar apenas produtos de seu conhecimento, sendo que a opção de "Não conheço" não estará disponível.
+ Terminadas as avaliações dos 20 produtos, o participante verá uma listagem aleatória dos produtos cadastrados no sistema. Ele deverá procurar e avaliar - a avaliação deve ser feita da mesma forma como anteriormente - 10 produtos de sua escolha. Neste caso, o participante deverá avaliar apenas produtos de seu conhecimento, sendo que a opção de "Não conheço" não estará disponível.
 
  Os produtos poderão ser localizados a partir da filtragem de categorias e de um campo de busca por texto, onde o participante digita o nome do produto e o sistema o procura na base de dados, atualizando a lista com os resultados obtidos. As categorias de produtos presentes no sistema são:
 
@@ -37,9 +37,11 @@
 	\item Livros
 \end{itemize}
 
- Para facilidade do participante, o sistema exibirá na página o número de produtos restantes a serem avaliados.
+ Para facilidade do participante, o sistema exibirá na tela o número de produtos restantes a serem avaliados.
+
+ O sistema aguardará todos os participantes avaliarem os 20 produtos escolhidos pelos pesquisadores e os 10 produtos escolhidos por eles. Somente quando todos terminarem as etapas de avaliação de produtos que a etapa seguinte estará disponível. Esse sincronismo é necessário porque o sistema precisa que todas as informações de todos os participantes estejam disponíveis na base de dados. Neste meio tempo, o participante que já finalizou as suas tarefas receberá uma mensagem do sistema indicando que ele receberá um e-mail quando a próxima etapa estiver liberada.
  
- Assim que os 10 produtos forem avaliados, o sistema mostrará as fotos com o nome dos 4 amigos do grupo do participante e uma área com listagem aleatória de produtos cadastrados no sistema. Será solicitado ao participante que ele realize 5 recomendações a cada um dos quatro amigos do seu grupo, totalizando assim 20 recomendações a serem feitas. Para isso, o participante localiza um produto no sistema e escolhe a opção de recomendar a uma pessoa. Desse modo, será exibida a tela de recomendação de produto, com as informações do produto escolhido e uma lista com seus quatro amigos. O participante escolhe para quais amigos ele recomendará aquele produto e confirma a recomendação.
+ Assim que os todos os produtos forem avaliados, o sistema mostrará as fotos com o nome dos 4 amigos do grupo do participante e uma área com listagem aleatória de produtos cadastrados no sistema. Será solicitado ao participante que ele realize 5 recomendações a cada um dos quatro amigos do seu grupo, totalizando assim 20 recomendações a serem feitas. Para isso, o participante localiza um produto no sistema e escolhe a opção de recomendar a uma pessoa. Desse modo, será exibida a tela de recomendação de produto, com as informações do produto escolhido e uma lista com seus quatro amigos. O participante escolhe para quais amigos ele recomendará aquele produto e confirma a recomendação.
  
  O propósito das recomendações é que apenas boas recomendações sejam realizadas pelos participantes. Uma boa recomendação é a indicação de um produto que o participante acha que seu amigo gostará e será relevante a ele naquele momento.
 
