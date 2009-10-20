@@ -1,15 +1,33 @@
 - form_for @user do |f|
   = f.error_messages
   %p
-    = f.label :email
+    = f.label :email 
+    %br              
+    = content_tag :strong, @user.email
+    = f.hidden_field :email
+  %p
+    = f.label :name, 'Nome'
     %br
-    = f.text_field :email
+    = f.text_field :name
+  %p 
+    = f.label :age_group, 'Faixa etária'
+    %br
+    - User.age_groups.each do |age_group|
+      = f.radio_button :age_group, age_group
+      = f.label "age_group_#{age_group.parameterize('_')}", age_group
+  %p 
+    = f.label :sex, 'Sexo'
+    %br
+    = f.radio_button :sex, 'M'
+    = f.label :sex_m, 'Masculino'
+    = f.radio_button :sex, 'F'
+    = f.label :sex_f, 'Feminino'
   %p
     = f.label :password, 'Senha'
     %br
     = f.password_field :password
   %p
-    = f.label :password_confirmation, 'Confimação de Senha'
+    = f.label :password_confirmation, 'Confirmação da senha'
     %br
     = f.password_field :password_confirmation
   %p

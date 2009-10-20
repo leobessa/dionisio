@@ -11,7 +11,7 @@ When /^I go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^apertei o botão "([^\"]*)"$/ do |button|
+When /^click "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
@@ -23,7 +23,7 @@ When /^I follow "([^\"]*)" within "([^\"]*)"$/ do |link, parent|
   click_link_within(parent, link)
 end
 
-When /^preenchi "([^\"]*)" com "([^\"]*)"$/ do |field, value|
+When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 

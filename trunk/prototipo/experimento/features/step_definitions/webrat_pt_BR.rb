@@ -42,13 +42,13 @@ end
 # TODO: Add support for checkbox, select og option
 # based on naming conventions.
 #
-When /^I fill in the following:$/ do |fields|
+Quando /^preencho o formulário com:$/ do |fields|
   fields.rows_hash.each do |name, value|
     When %{I fill in "#{name}" with "#{value}"}
   end
 end
 
-When /^I select "([^\"]*)" from "([^\"]*)"$/ do |value, field|
+When /^seleciono "([^\"]*)" na "([^\"]*)"$/ do |value, field|
   select(value, :from => field)
 end
 
@@ -107,7 +107,7 @@ When /^I uncheck "([^\"]*)"$/ do |field|
   uncheck(field)
 end
 
-When /^I choose "([^\"]*)"$/ do |field|
+When /^escolho a opção "([^\"]*)"$/ do |field|
   choose(field)
 end
 
@@ -175,10 +175,27 @@ Then /^the "([^\"]*)" checkbox should not be checked$/ do |label|
   field_labeled(label).should_not be_checked
 end
 
-Then /^I should be on (.+)$/ do |page_name|
+Then /^devo estar na (.+)$/ do |page_name|
   URI.parse(current_url).path.should == path_to(page_name)
 end
 
 Then /^show me the page$/ do
   save_and_open_page
+end       
+
+# email_spec
+Então /^devo receber um email$/ do
+  Then "I should receive an email"
+end
+
+Quando /^abrir o email$/ do
+  When "I open the email"
+end
+   
+Então /^devo ver "([^\"]*)" no corpo do email$/ do |text|
+  Then %Q|I should see "#{text}" in the email body|
+end
+
+Então /^clicar no link "([^\"]*)" do email$/ do |text|
+  Then %Q|I follow "#{text}" in the email|
 end

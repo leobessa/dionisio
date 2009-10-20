@@ -1,1 +1,9 @@
-tmp/
+log/*.log
+tmp/**/*
+doc/api
+doc/app
+db/*.sqlite3
+doc/rspec_results.html
+spec/*.txt
+spec/*.html
+tmp/*.pid

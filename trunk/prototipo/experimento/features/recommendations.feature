@@ -4,7 +4,7 @@ Funcionalidade: Recomendação de produtos
   Como um potencial consumidor
   Eu quero receber recomendações de produtos que eu provavelmente goste
   
-  @etapa_1  @wip
+  @wip
   Cenário: Avaliando 20 produtos para o mecanismo de filtragem colaborativa
     Dado que sou um participante na etapa 1
     Quando vou para a página principal

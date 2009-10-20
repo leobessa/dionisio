@@ -127,7 +127,8 @@ pt-BR:
           one: "Não foi possível gravar {{model}}: 1 erro"
           other: "Não foi possível gravar {{model}}: {{count}} erros."
         body: "Por favor, verifique o(s) seguinte(s) campo(s):"
-      messages:
+      messages:  
+        record_invalid: "não é valido"
         inclusion: "não está incluído na lista"
         exclusion: "não está disponível"
         invalid: "não é válido"

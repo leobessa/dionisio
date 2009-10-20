@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require 'cucumber/rails/world'
+require 'email_spec/cucumber'
 
 # Whether or not to run each scenario within a database transaction.
 #

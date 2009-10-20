@@ -10,10 +10,14 @@ module NavigationHelpers
     
     when /the homepage/
       '/'
+    when /página principal/
+      root_path
     when /página de login de adminstrador/
       new_admin_session_path
     when /página de envio de convites/
       new_invitation_path
+    when /página de cadastro de participante/
+      signup_path
     
     # Add more mappings here.
     # Here is a more fancy example:
