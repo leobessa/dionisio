@@ -1,4 +1,4 @@
-# language pt             
+# language: pt             
 Funcionalidade: Recomendação de produtos
   Para encontrar produtos relevantes
   Como um potencial consumidor

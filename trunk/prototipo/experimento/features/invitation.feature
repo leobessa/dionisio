@@ -1,4 +1,4 @@
-# language pt
+# language: pt
 Funcionalidade: Restrição de cadastro através de convite
  Para restringir o acesso ao experimento
  Como responsável pelo experimento

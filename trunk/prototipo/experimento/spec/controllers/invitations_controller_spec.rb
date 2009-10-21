@@ -7,7 +7,7 @@ describe InvitationsController do
 
   before(:each) do   
      @attributes = {'recipient_email' => "joe@email.com"}
-     @controller.should_receive(:sign_in_admin!).and_return(true)
+     @controller.should_receive(:authenticate_admin!).and_return(true)
      @controller.stub(:admin_signed_in?, true)
      @controller.stub(:user_signed_in?, false)
      @invitation = mock_model Invitation, @attributes   
