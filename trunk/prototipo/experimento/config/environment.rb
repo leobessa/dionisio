@@ -20,12 +20,11 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"                                                        
   
-  # é preciso baixar e instalar o warden manualmente!
-  config.gem "warden", :lib => "warden", :version => "0.4.0", :source => "http://gems.github.com"
-  config.gem "rails_warden"
+  # é preciso baixar e instalar o warden manualmente! 
+  config.gem 'warden', :version => '0.4.0'
+  #config.gem 'devise', :version => '0.1.0'
   config.gem 'haml'
   
-
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

@@ -3,11 +3,15 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 # Commonly used webrat steps
 # http://github.com/brynary/webrat
 
+Dado /^que estou na (.+)$/ do |page_name|
+  visit path_to(page_name)
+end
+
 Dado /^estou na (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^que fui para a (.+)$/ do |page_name|
+Quando /^eu vou para a (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
@@ -119,7 +123,7 @@ Então /^devo ver "([^\"]*)"$/  do |text|
   response.should contain(text)
 end
 
-Then /^I should see "([^\"]*)" within "([^\"]*)"$/ do |text, selector|
+Then /^devo ver "([^\"]*)" em "([^\"]*)"$/ do |text, selector|
   within(selector) do |content|
     content.should contain(text)
   end

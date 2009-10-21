@@ -18,7 +18,8 @@ module NavigationHelpers
       new_invitation_path
     when /página de cadastro de participante/
       signup_path
-    
+    when /página de login/
+      new_user_session_path
     # Add more mappings here.
     # Here is a more fancy example:
     #
