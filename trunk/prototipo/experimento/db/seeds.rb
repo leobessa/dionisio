@@ -5,3 +5,8 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+                                
+Stage.destroy_all
+(1..6).each do |number|
+  Stage.create :number => number, :enabled => (number == 1)
+end              
