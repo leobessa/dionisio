@@ -6,7 +6,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  filter_parameter_logging :password, :password_confirmation
+  #filter_parameter_logging :password, :password_confirmation
   
   helper_method :current_user
+     
+  before_filter :verify_completed_stage, :if => :user_signed_in?
+  
+  private 
+  def verify_completed_stage      
+    current_user.advance_stage if current_user.completed_stage?
+  end
+  
 end

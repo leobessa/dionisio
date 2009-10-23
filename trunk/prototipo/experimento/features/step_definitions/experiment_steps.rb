@@ -6,10 +6,10 @@ Dado /^que estou logado como adminstrador$/ do
   E %q{aperto "Entrar"}
 end
 
-Dado /^que estou logado$/ do 
+Dado /^que estou logado$/ do
   Dado %Q{que estou na página de login de usuário}
-  E %Q{preencho "E-mail" com "#{@user.email}"}
-  E %Q{preencho "Senha" com "#{@password}"}
+  E %Q{preencho "E-mail" com "user@email.com"}
+  E %Q{preencho "Senha" com "secret"}
   E %q{aperto "Entrar"}
 end
 
@@ -33,29 +33,26 @@ Dado /^que estou deslogado$/ do
 end          
 
 Dado /^que estou na etapa (\d+)$/ do |number|
-  @user.update_attribute(:stage,Stage.find_by_number(number))
-end
-
-Dado /^que sou o usuário "([^\"]*)" com senha "([^\"]*)"$/ do |email, password|
-  @user = Factory.create :user, :email => email, :password => password
-  @password = password
+  User.find_by_email("user@email.com").update_attribute(:stage,Stage.find_by_number(number))
 end
 
 Dado /^que a etapa (\d+) está habilitada$/ do |number|
   Stage.find_by_number(number).update_attribute :enabled, true
 end
 
-Então /^devo ver 20 produtos a serem avaliados$/ do
-  response.should have_selector("dd",:class => 'product', :count => 20)
+Então /^devo ver os produtos a serem avaliados inicialmente$/ do
+   Product.find_all_by_selected(true).each do |p|
+    response.should have_selector("#product_#{p.id}")
+   end
 end
 
 Dado /^que existem 20 produtos pre\-selecionados$/ do
   20.times { Factory :product, :selected => true}
 end  
 
-Quando /^eu avaliar todos os 20 produtos$/ do
-  Product.find_by_selected(true) do                                   
-    rate = (1..5).to_a.rand
-    click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}"
+Quando /^eu avaliar todos produtos previamente selecionados$/ do
+  Product.find_all_by_selected(true).each do |product|                                  
+    rate = 3
+    click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}", :wait_for => :ajax
   end
 end

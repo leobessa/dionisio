@@ -5,8 +5,7 @@ Funcionalidade: Autenticação
   Eu quero que os participantes se identifiquem através de login e senha
   
 Cenário: Fazendo login
-  Dado que sou o usuário "foo@email.com" com senha "secret"
-  E que estou logado
-  Então devo ver "foo@email.com"
-  E devo ver "Sair" em "#user_nav"
+  Dado que estou logado
+  Então devo ver "user@email.com"
+  E devo ver "Sair"
   
