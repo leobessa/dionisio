@@ -29,3 +29,5 @@ config.action_mailer.delivery_method = :test
 
 config.gem 'bmabey-email_spec',       :vesion => '0.3.4',  :lib => 'email_spec', :source => "http://gems.github.com" 
 config.gem "thoughtbot-factory_girl", :vesion => '1.2.2',  :lib => "factory_girl", :source => "http://gems.github.com"
+config.gem "populator", :lib => 'populator', :version => "0.2.5"
+config.gem "faker", :lib => "faker", :version => "0.3.1"

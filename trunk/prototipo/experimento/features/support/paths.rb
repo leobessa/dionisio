@@ -8,17 +8,16 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
     
-    when /the homepage/
-      '/'
-    when /página principal/
+
+    when /principal/
       root_path
-    when /página de login de adminstrador/
+    when /de login de adminstrador/
       new_admin_session_path
-    when /página de envio de convites/
+    when /de envio de convites/
       new_invitation_path
-    when /página de cadastro de participante/
+    when /de cadastro de participante/
       signup_path
-    when /página de login/
+    when /de login/
       new_user_session_path
     # Add more mappings here.
     # Here is a more fancy example:

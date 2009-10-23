@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091019204450) do
+ActiveRecord::Schema.define(:version => 20091023002057) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :null => false
@@ -19,10 +19,37 @@ ActiveRecord::Schema.define(:version => 20091019204450) do
     t.datetime "updated_at"
   end
 
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "invitations", :force => true do |t|
     t.string   "recipient_email"
     t.string   "token"
     t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "path"
+    t.string   "img_src"
+    t.string   "img_alt"
+    t.string   "brand"
+    t.integer  "category_id"
+    t.boolean  "selected"
+    t.decimal  "price",       :precision => 10, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stages", :force => true do |t|
+    t.integer  "number"
+    t.boolean  "enabled"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20091019204450) do
     t.string   "name"
     t.string   "age_group"
     t.string   "sex"
+    t.integer  "stage_id"
   end
 
 end

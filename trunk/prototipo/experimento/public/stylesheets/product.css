@@ -1,0 +1,142 @@
+* { margin: 0; padding: 0; }
+
+body {padding: 10px;line-height: 1.5em;  
+  
+color: #444;  
+  
+font-family: "Georgia", times, serif;  
+  
+}  
+   
+  
+#productList {  
+  
+float: left;  
+  
+}  
+  
+#productList dl {  
+  
+float: left;  
+  
+width: 620px; /* the width of the entire definition list */  
+  
+position: relative;  
+  
+}  
+  
+#productList dl dt {  
+  
+float: right;  
+  
+width: 275px; /* dl width, minus margins and image width */  
+  
+margin-left: 20px;  
+  
+margin-right: 125px; /* IE6 Double-Margin Bug in IE conditional */  
+  
+font-size: 125%;  
+  
+color: #076F57;  
+  
+padding-bottom: .75em;  
+  
+}  
+  
+#productList dl dt em {  
+  
+float: left;  
+  
+width: 100px;  
+  
+}  
+  
+#productList dl dd {  
+  
+float: left;  
+  
+margin-left: 20px;  
+  
+width: 400px; /* dl width, minus margins image width */  
+  
+}  
+  
+#productList dl dd.product {  
+  
+margin-left: 0;  
+  
+float: left;  
+  
+width: 200px; /* image width */  
+  
+}  
+  
+#productList dl dd.product blockquote {  
+  
+font-style: italic;  
+  
+}  
+  
+#productList dl dd.product blockquote em {  
+  
+display: block;  
+  
+font-style: normal;  
+  
+font-weight: bold;  
+  
+}  
+  
+#productList dl dd.product img {  
+  
+height: 200px;  
+  
+width: 200px;  
+  
+}  
+  
+#productList dl dd ul {  
+  
+text-align: right;  
+  
+}  
+  
+#productList dl dd ul li {  
+  
+list-style: none;  
+  
+display: inline;  
+  
+}  
+  
+#productList dl dd ul li.brand {  
+  
+position: absolute;  
+  
+top: 0;  
+  
+left: 495px; /* image width plus dt left margin plus dt width */  
+  
+font-size: 150%;  
+  
+color: #CF4040;  
+  
+width: 125px; /* dt right margin value */  
+  
+text-align: right;  
+  
+}  
+  
+#productList dl dd ul li a {  
+  
+padding: 5px;  
+  
+}  
+  
+#productList dl dd ul li a:hover {  
+  
+text-decoration: none;  
+  
+background: #EFFBFF;  
+  
+}

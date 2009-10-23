@@ -3,15 +3,15 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 # Commonly used webrat steps
 # http://github.com/brynary/webrat
 
-Dado /^que estou na (.+)$/ do |page_name|
+Dado /^que estou na página (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Dado /^estou na (.+)$/ do |page_name|
+Dado /^estou na página (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Quando /^eu vou para a (.+)$/ do |page_name|
+Quando /^eu vou para a página (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 

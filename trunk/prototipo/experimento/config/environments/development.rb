@@ -17,3 +17,5 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 config.gem "thoughtbot-factory_girl",   :lib => "factory_girl"
+config.gem "populator", :lib => 'populator', :version => "0.2.5"
+config.gem "faker", :lib => "faker", :version => "0.3.1"

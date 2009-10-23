@@ -12,9 +12,11 @@ class User < ActiveRecord::Base
   validates_inclusion_of :age_group, :in => User.age_groups  
   validates_inclusion_of :sex, :in => %w(M F)
   belongs_to :invitation
+  belongs_to :stage
 
   attr_accessible :email, :name, :password, :password_confirmation, :invitation_token,
                   :age_group, :sex
+                  
   
   def invitation_token
     invitation.token if invitation
@@ -22,6 +24,11 @@ class User < ActiveRecord::Base
   
   def invitation_token=(token)
     self.invitation = Invitation.find_by_token(token)
+  end             
+  
+  before_create :set_stage_to_one
+  def set_stage_to_one
+     stage = Stage.find_by_number!(1)
   end
 
 end

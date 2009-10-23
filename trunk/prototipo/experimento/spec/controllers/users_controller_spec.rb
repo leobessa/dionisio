@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe UsersController do
-  integrate_views 
+  integrate_views
   
   before(:each) do
     @controller.stub(:admin_signed_in?, false)

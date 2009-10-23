@@ -6,11 +6,10 @@ Dado /^que estou logado como adminstrador$/ do
   E %q{aperto "Entrar"}
 end
 
-Dado /^que estou logado como usuário "([^\"]*)"$/ do |email|
-  Factory.create :user, :email => email, :password => "secret"
-  Dado %q{que estou na página de login de usuário}
-  E %Q{preencho "E-mail" com "#{email}"}
-  E %q{preencho "Senha" com "secret"}
+Dado /^que estou logado$/ do 
+  Dado %Q{que estou na página de login de usuário}
+  E %Q{preencho "E-mail" com "#{@user.email}"}
+  E %Q{preencho "Senha" com "#{@password}"}
   E %q{aperto "Entrar"}
 end
 
@@ -31,4 +30,25 @@ end
 
 Dado /^que estou deslogado$/ do
   visit destroy_user_session_path
+end          
+
+Dado /^que estou na etapa (\d+)$/ do |number|
+  @user.update_attribute(:stage,Stage.find_by_number(number))
+end
+
+Dado /^que sou o usuário "([^\"]*)" com senha "([^\"]*)"$/ do |email, password|
+  @user = Factory.create :user, :email => email, :password => password
+  @password = password
+end
+
+Dado /^que a etapa (\d+) está habilitada$/ do |number|
+  Stage.find_by_number(number).update_attribute :enabled, true
+end
+
+Então /^devo ver 20 produtos a serem avaliados$/ do
+  response.should have_selector("dd",:class => 'product', :count => 20)
+end
+
+Dado /^que existem 20 produtos pre\-selecionados$/ do
+  20.times { Factory :product, :selected => true}
 end

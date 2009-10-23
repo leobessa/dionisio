@@ -1,0 +1,17 @@
+- title "Listagem de produtos"
+- content_for :head do
+  = stylesheet_link_tag 'product'
+#productList
+  - products.each do |product|
+    %dl
+      %dt= product.name
+      %dd.product
+        %img{:src => "#{product.img_src}",:alt => "#{product.img_alt}", :width => 200, :height => 200 }
+        %blockquote
+          %p= product.price
+      %dd
+        %p= product.description
+        %ul
+          %li.brand= product.brand
+          <li><a href="#" title="Add this item to your cart">Add to Cart</a></li>  
+          <li><a href="#" title="Finished shopping? Time to checkout!">Checkout</a></li>
