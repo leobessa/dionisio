@@ -51,4 +51,11 @@ end
 
 Dado /^que existem 20 produtos pre\-selecionados$/ do
   20.times { Factory :product, :selected => true}
+end  
+
+Quando /^eu avaliar todos os 20 produtos$/ do
+  Product.find_by_selected(true) do                                   
+    rate = (1..5).to_a.rand
+    click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}"
+  end
 end

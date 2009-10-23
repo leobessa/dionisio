@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091023002057) do
+ActiveRecord::Schema.define(:version => 20091023120630) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :null => false
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(:version => 20091023002057) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.string   "dimension"
+    t.integer  "stars"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id"], :name => "index_rates_on_rateable_id"
+  add_index "rates", ["user_id"], :name => "index_rates_on_user_id"
 
   create_table "stages", :force => true do |t|
     t.integer  "number"

@@ -183,7 +183,7 @@ Then /^devo estar na (.+)$/ do |page_name|
   URI.parse(current_url).path.should == path_to(page_name)
 end
 
-Then /^show me the page$/ do
+Then /^mostre a página$/ do
   save_and_open_page
 end       
 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  rateable_id: 1
+  rateable_type: MyString
+  stars: 1
+
+two:
+  user_id: 1
+  rateable_id: 1
+  rateable_type: MyString
+  stars: 1

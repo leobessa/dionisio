@@ -15,7 +15,8 @@ Funcionalidade: Recomendação de produtos
     Então devo ver "Etapa 1" em "#phase-description"
     E devo ver 20 produtos a serem avaliados
     Quando eu avaliar todos os 20 produtos
-    Então eu devo ver "Etapa 1 concluída" em "#phase-status"
+    Então mostre a página
+    Então devo ver "Etapa 1 concluída" em "#phase-status"
     
 
   

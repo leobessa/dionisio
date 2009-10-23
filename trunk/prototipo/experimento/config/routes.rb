@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.devise_for :admins   
   map.devise_for :users
   map.resources :users, :only => [:new,:create,:show]
+  map.resources :product, :only => [:show], :member => {:rate => :post}
 
   map.resources :invitations
 

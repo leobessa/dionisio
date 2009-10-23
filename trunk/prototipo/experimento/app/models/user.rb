@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base     
+
+  ajaxful_rater  
   
   class << self 
     def age_groups
