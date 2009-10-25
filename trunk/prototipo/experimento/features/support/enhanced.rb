@@ -24,5 +24,4 @@ Before do
     c.destroy_all
   end
   Stage.create_all
-  Factory.create :user, :email => "user@email.com", :password => "secret"        
 end

@@ -6,10 +6,10 @@ Dado /^que estou logado como adminstrador$/ do
   E %q{aperto "Entrar"}
 end
 
-Dado /^que estou logado$/ do
+Dado /^que estou logado como "([^\"]*)" com a senha "([^\"]*)"$/ do |email, password|
   Dado %Q{que estou na página de login de usuário}
-  E %Q{preencho "E-mail" com "user@email.com"}
-  E %Q{preencho "Senha" com "secret"}
+  E %Q{preencho "E-mail" com "#{email}"}
+  E %Q{preencho "Senha" com "#{password}"}
   E %q{aperto "Entrar"}
 end
 
@@ -32,8 +32,8 @@ Dado /^que estou deslogado$/ do
   visit destroy_user_session_path
 end          
 
-Dado /^que estou na etapa (\d+)$/ do |number|
-  User.find_by_email("user@email.com").update_attribute(:stage,Stage.find_by_number(number))
+Dado /^que "([^\"]*)" está na etapa (\d+)$/ do |email,number|
+  User.find_by_email(email).update_attribute(:stage,Stage.find_by_number(number))
 end
 
 Dado /^que a etapa (\d+) está habilitada$/ do |number|

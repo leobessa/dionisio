@@ -4,11 +4,11 @@ Funcionalidade: Recomendação de produtos
   Como um potencial consumidor
   Eu quero receber recomendações de produtos que eu provavelmente goste
   
-  @wip
   Cenário: Avaliando 20 produtos para o mecanismo de filtragem colaborativa
     Dado que a etapa 1 está habilitada
-    E que estou na etapa 1 
-    E que estou logado
+    Dado que existe um participante com e-mail "user@email.com" e senha "secret"
+    E que "user@email.com" está na etapa 1 
+    E que estou logado como "user@email.com" com a senha "secret"
     E que existem 20 produtos pre-selecionados
     Quando eu vou para a página principal
     Então devo ver "Etapa 1" 
@@ -16,5 +16,7 @@ Funcionalidade: Recomendação de produtos
     Quando eu avaliar todos produtos previamente selecionados
     Então devo ver "Etapa 2"
     
-
+  @wip
+  Cenário: Buscando produtos
+  Dado que a etapa 2 está habilitada
   
