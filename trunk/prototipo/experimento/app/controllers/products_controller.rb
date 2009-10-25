@@ -1,4 +1,4 @@
-class ProductController < ApplicationController                 
+class ProductsController < ApplicationController                 
   
   def rate
     @product = Product.find(params[:id])
@@ -10,5 +10,10 @@ class ProductController < ApplicationController
       page.redirect_to(root_path) if current_user.completed_stage?
     end
   end
+  
+  def index
+    @search = Product.search(params[:search])
+    @products = @search.all
+  end                                               
 
 end

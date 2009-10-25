@@ -6,8 +6,7 @@ Webrat.configure do |config|
   config.open_error_files = false # Set to true if you want error pages to pop up in the browser
 end                                                        
 
-Before do 
-  Stage.create! :number => 1, :enabled => true
-  Stage.create! :number => 2, :enabled => false
+Before do
+  Stage.create_all
   Factory.create :user, :email => "user@email.com", :password => "secret"        
 end

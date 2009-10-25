@@ -22,8 +22,11 @@ Rails::Initializer.run do |config|
   
   config.gem 'warden', :version => '0.5.0', :source => "http://gemcutter.org/"   
   config.gem 'devise', :version => '0.1.0', :source => "http://gemcutter.org/"
-  config.gem 'haml'  , :version => '2.2.6'
   config.gem "edgarjs-ajaxful_rating", :lib => "ajaxful_rating", :source => "http://gems.github.com"
+  config.gem "searchlogic"
+  
+#  config.gem 'haml'  , :version => '>= 2.2.6' 
+
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

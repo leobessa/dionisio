@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Stage do
   before(:each) do
     @valid_attributes = {
-      :number => 1,
+      :number => 10,
       :enabled => false
     }
   end

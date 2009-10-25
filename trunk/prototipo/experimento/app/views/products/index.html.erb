@@ -1,0 +1,22 @@
+<% form_for @search do |f| %>
+  <p>
+    <%= f.label :name_like, "Nome" %><br />
+    <%= f.text_field :name_like %>
+  </p>
+  <p>
+    <%= f.label :category_id_equals, "Categoria" %><br />
+    <%= f.collection_select :category_id_equals, Category.all, :id, :name, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.submit "Buscar" %>
+  </p>
+<% end %>
+
+<p>
+  Odernar por:
+  <%= order @search, :by => :name %> |
+  <%= order @search, :by => :price %>
+</p>
+<div id="productList">
+<%= render @products %>   
+</div>  

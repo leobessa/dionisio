@@ -16,6 +16,6 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-config.gem "thoughtbot-factory_girl",   :lib => "factory_girl"
+config.gem "thoughtbot-factory_girl",   :lib => "factory_girl", :source => "http://gems.github.com"    
 config.gem "populator", :lib => 'populator', :version => "0.2.5"
 config.gem "faker", :lib => "faker", :version => "0.3.1"

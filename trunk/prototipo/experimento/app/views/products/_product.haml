@@ -1,0 +1,14 @@
+%dl
+  %dt= product.name
+  %dd[product]
+    - if product.img_src
+      %img{:src => "#{product.img_src}",:alt => "#{product.img_alt}", :width => 200, :height => 200 }
+    - else
+      = image_tag 'product_pic_unavailable_large.jpg'
+    %blockquote
+      %p= product.price
+  %dd
+    %p= truncate product.description, :length => 400
+    = ratings_for product 
+    %ul
+      %li.brand= product.brand

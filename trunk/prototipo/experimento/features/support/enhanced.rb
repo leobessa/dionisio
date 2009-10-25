@@ -3,7 +3,7 @@ Webrat.configure do |config|
   # Selenium defaults to using the selenium environment. Use the following to override this.
   config.application_environment    = :cucumber
   #config.action_controller.session = { :session_http_only => false }
-  config.application_address       = 'localhost' 
+  #config.application_address       = 'localhost' 
   config.application_port           = 3000
   config.application_framework      = :rails
 end
@@ -23,7 +23,6 @@ Before do
   [Admin,Category,Invitation,Product,Rate,Stage,User].each do |c| 
     c.destroy_all
   end
-  Stage.create! :number => 1, :enabled => true
-  Stage.create! :number => 2, :enabled => false
+  Stage.create_all
   Factory.create :user, :email => "user@email.com", :password => "secret"        
 end
