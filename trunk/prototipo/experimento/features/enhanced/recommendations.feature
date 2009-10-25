@@ -14,7 +14,6 @@ Funcionalidade: Recomendação de produtos
     Então devo ver "Etapa 1" 
     E devo ver os produtos a serem avaliados inicialmente
     Quando eu avaliar todos produtos previamente selecionados
-    E eu vou para a página principal 
     Então devo ver "Etapa 2"
     
 
