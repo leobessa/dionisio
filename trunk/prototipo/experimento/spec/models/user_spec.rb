@@ -10,13 +10,19 @@ describe User do
     @valid_user.should be_valid
   end 
   
-  [:age_group,:sex,:name,:email,:invitation_id].each do |attribute|
+  [:age_group,:sex,:name,:email,:invitation_id,:stage_number].each do |attribute|
     it "should validate presence #{attribute}" do
         @valid_user.send("#{attribute}=",nil)
         @valid_user.should_not be_valid
         @valid_user.should have(1).error_on(attribute)
       end
-  end  
+  end 
+  
+  it "should set stage_number to 1 before creating" do
+    user = Factory.build :user, :stage_number => nil
+    user.save
+    user.stage_number.should == 1
+  end
   
   it "should tell when the stage has been completed" do 
     

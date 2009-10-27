@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   validates_presence_of :invitation_id, :name
   validates_uniqueness_of :invitation_id, :message => 'já foi utilizado'
   validates_inclusion_of :age_group, :in => User.age_groups  
-  validates_inclusion_of :sex, :in => %w(M F)
+  validates_inclusion_of :sex, :in => %w(M F)  
+  validates_presence_of :stage_number
   belongs_to :invitation
 
   attr_accessible :email, :name, :password, :password_confirmation, :invitation_token,
@@ -31,11 +32,7 @@ class User < ActiveRecord::Base
     self.invitation = Invitation.find_by_token(token)
   end             
 
-  before_create :set_stage_to_one
-  def set_stage_to_one
-    stage_number = 1
-    true
-  end
+  before_validation_on_create { |user| user.stage_number = 1}
   
   def stage_progress
     selection = Product.selected 
