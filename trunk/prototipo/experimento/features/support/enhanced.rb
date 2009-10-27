@@ -20,8 +20,6 @@ Before do
   rescue NoMethodError
   end
   # truncate your tables here, since you can't use transactional fixtures* 
-  [Admin,Category,Invitation,Product,Rate,Stage,User].each do |c| 
-    c.destroy_all
-  end
+  [Admin,Category,Invitation,Product,Rate,Stage,User].each(&:destroy_all)
   Stage.create_all
 end

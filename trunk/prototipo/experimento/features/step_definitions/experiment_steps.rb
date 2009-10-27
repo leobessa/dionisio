@@ -25,7 +25,7 @@ Dado /^que o adminstrador enviou um convite para e\-mail "([^\"]*)"$/ do |recipi
 end    
 
 Dado /^que existe um participante com e\-mail "([^\"]*)" e senha "([^\"]*)"$/ do |email, password|
-  Factory.create :user, :email => email, :password => password
+  Factory.create :user, :email => email, :password => password, :stage_number => 1
 end   
 
 Dado /^que estou deslogado$/ do
@@ -33,7 +33,7 @@ Dado /^que estou deslogado$/ do
 end          
 
 Dado /^que "([^\"]*)" está na etapa (\d+)$/ do |email,number|
-  User.find_by_email(email).update_attribute(:stage,Stage.find_by_number(number))
+  User.find_by_email(email).update_attribute(:stage_number,number)
 end
 
 Dado /^que a etapa (\d+) está habilitada$/ do |number|
@@ -51,8 +51,15 @@ Dado /^que existem 20 produtos pre\-selecionados$/ do
 end  
 
 Quando /^eu avaliar todos produtos previamente selecionados$/ do
-  Product.find_all_by_selected(true).each do |product|                                  
+  Product.selected.each do |product|                                  
     rate = 3
     click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}", :wait_for => :ajax
   end
+end
+
+Given /^que existem estes produtos:$/ do |table|
+  table.hashes.each do |product|                                       
+    product[:category] = Category.find_or_create_by_name(product[:category])
+    Product.create! :name => product[:name], :description => product[:description], :category => product[:category]
+  end                                                                 
 end

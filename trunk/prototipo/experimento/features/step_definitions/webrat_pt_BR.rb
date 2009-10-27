@@ -15,7 +15,7 @@ Quando /^eu vou para a página (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Dado /^aperto "([^\"]*)"$/ do |button|
+Quando /^aperto "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
@@ -141,11 +141,11 @@ Then /^I should see \/([^\/]*)\/ within "([^\"]*)"$/ do |regexp, selector|
   end
 end
 
-Then /^I should not see "([^\"]*)"$/ do |text|
+Then /^não devo ver "([^\"]*)"$/ do |text|
   response.should_not contain(text)
 end
 
-Then /^I should not see "([^\"]*)" within "([^\"]*)"$/ do |text, selector|
+Then /^não devo ver "([^\"]*)" em "([^\"]*)"$/ do |text, selector|
   within(selector) do |content|
     content.should_not contain(text)
   end

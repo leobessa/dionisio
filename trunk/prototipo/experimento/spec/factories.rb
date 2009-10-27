@@ -14,7 +14,7 @@ Factory.define :user do |f|
   f.password_confirmation {|u| u.password}
   f.sex "M"
   f.age_group '18 a 25'
-  f.stage { Stage.find_by_number!(1) }
+  f.stage_number 1
 end 
 
 Factory.define :admin do |f|                   
@@ -30,15 +30,13 @@ Factory.define :leo_user, :class => :user do |f|
   f.password_confirmation {|u| u.password}
   f.sex "M"
   f.age_group '18 a 25'
-  f.stage do
-    stage = Stage.find_or_create_by_number(1)
-    stage.update_attribute(:enabled,true) 
-    stage
-  end
+  f.stage_number 1
 end
 
 Factory.define :category do |f|
-  f.name Populator.words(1..3).titleize
+  f.sequence :name do |n| 
+    "#{Populator.words(1..3).titleize} #{n}"  
+  end
 end   
 
 Factory.define :product do |f|
@@ -47,7 +45,7 @@ Factory.define :product do |f|
   f.description { Populator.sentences(2..8) }
   f.price { [4.99, 19.95, 100].rand }
   f.category do |p|
-    if Category.count > 5
+    if Category.count > 3
       Category.all[rand(Category.count)]
     else
       p.association :category

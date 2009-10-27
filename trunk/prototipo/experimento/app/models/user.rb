@@ -15,11 +15,13 @@ class User < ActiveRecord::Base
   validates_inclusion_of :age_group, :in => User.age_groups  
   validates_inclusion_of :sex, :in => %w(M F)
   belongs_to :invitation
-  belongs_to :stage
 
   attr_accessible :email, :name, :password, :password_confirmation, :invitation_token,
   :age_group, :sex
-
+  
+  def stage
+    Stage.find_by_number!(stage_number)
+  end
 
   def invitation_token
     invitation.token if invitation
@@ -31,16 +33,24 @@ class User < ActiveRecord::Base
 
   before_create :set_stage_to_one
   def set_stage_to_one
-    stage = Stage.find_by_number!(1)
-  end 
+    stage_number = 1
+    true
+  end
+  
+  def stage_progress
+    selection = Product.selected 
+    rates_from_selection = Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)
+    return "#{rates_from_selection.count}/#{selection.count}" if stage_number == 1
+    "?/?"
+  end
 
   def completed_stage?
-    return Rate.count( :conditions => {:user_id => User.last} ) >= Product.count(:conditions => {:selected => true}) if stage.number == 1 
+    return self.rates.count > 0 && (Product.selected - Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)).empty? if stage_number == 1 
     false
   end
 
   def advance_stage
-    self.update_attribute(:stage,Stage.find_by_number!(self.stage.number+1))
+    self.update_attribute :stage_number, stage_number + 1
   end
 
 end

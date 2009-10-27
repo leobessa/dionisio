@@ -37,8 +37,7 @@
           = link_to "Login", new_user_session_path
         
       #phase-description
-        - if user_signed_in?
-          = "Etapa #{current_user.stage.number}" 
+        = phase_description_content 
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
       

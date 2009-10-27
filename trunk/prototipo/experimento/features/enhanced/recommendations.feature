@@ -15,8 +15,13 @@ Funcionalidade: Recomendação de produtos
     E devo ver os produtos a serem avaliados inicialmente
     Quando eu avaliar todos produtos previamente selecionados
     Então devo ver "Etapa 2"
+
+
+  
+  
+  
     
-  @wip
-  Cenário: Buscando produtos
-  Dado que a etapa 2 está habilitada
+
+  
+  
   

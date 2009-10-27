@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091023120630) do
+ActiveRecord::Schema.define(:version => 20091026231219) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :null => false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20091023120630) do
     t.string   "name"
     t.string   "age_group"
     t.string   "sex"
-    t.integer  "stage_id"
+    t.integer  "stage_number"
   end
 
 end
