@@ -1,6 +1,8 @@
 \chapter{ESPECIFICAÇÃO DO PROJETO} % (fold)
 \label{cha:especificacao_do_projeto}
 
+% Retirar web semântica e redefinir o projeto como o desenvolvimento de um sistema de recomendação com base em confiança acoplado a uma rede social.
+
  O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a redes sociais e compatível com padrões utilizados na web semântica.
 
 \section{Visão Geral do Sistema} % (fold)
@@ -14,16 +16,15 @@
   \label{fig:escopo}
 \end{figure}
 
-% Explicar como o sistema de recomendação e a rede social se encaixam
-% laços de amizade
+% Arrumar o laço de amizade, um usuário não faz um pedido a outro para ser amigo
 
  O sistema de recomendação utilizará redes sociais para obter as informações pessoais e as relações de amizade entre usuários. Neste contexto, um usuário é considerado amigo de outro quando eles estabelecem uma conexão direta dentro da rede social por meio de pedido de um usuário a outro, utilizando uma ferramenta própria do sistema.
 
+% Retirar informação da confiança explícita
+
  Os usuários podem receber as recomendações dos seus amigos, ou de outras pessoas presentes na rede social. No entanto, as recomendações feitas por amigos serão consideradas, a princípio, mais importantes do que as realizadas por desconhecidos. Além da amizade, haverá uma relação explícita de confiança que será utilizada para determinar maior relevância da recomendação. Quando a relação de amizade no sistema é estabelecida, os dois usuários envolvidos devem escolher uma opção indicando o quanto eles confiam na pessoa que se tornará sua amiga para realizar boas recomendações de produtos.
 
-% TODO: introduzir o conceito de reputação entre usuários (na descrição do sistema é citado)
-
-% Explicar como a web semantica se encaixa no sistema de recomendação
+% Retirar parágrafo
 
  O sistema de recomendação obtém informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos, as relações de amizades e as informações básicas dos usuários. Um repositório será implementado para armazenar tais informações, porém qualquer fonte de documentos que utilizem os padrões definidos pelo sistema de recomendação poderá ser utilizada. Desta forma, o sistema se integra ao contexto da web semântica.
 
@@ -31,6 +32,8 @@
 % section visao_do_sistema (end)
 
 \section{Descrição do Sistema}
+
+% Retirar informação de cadastro de produtos
 
  Através do sistema os usuários poderão cadastrar produtos e avaliá-los quantitativamente, sendo possível realizar recomendações a outros usuários. Estes irão fornecer um feedback de tais recomendações, atualizando o valor da reputação do usuário que a forneceu. O sistema de recomendação filtra as informações recebidas por todos os usuários, de modo que apenas aquelas relevantes cheguem ao conhecimento das pessoas. As recomendações geradas pelo sistema são baseadas nas opiniões, nas relações sociais entre os usuários e nas relações encontradas entre os produtos e é o sistema que determina, a partir desses valores, o quão relevante é a recomendação realizada de um usuário para outro. Com base na relação entre usuários, produtos e avaliações o sistema irá inferir as seguintes informações:
  
@@ -52,7 +55,11 @@
 
  Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários.
 
+% Retirar informação de cadastro de produto
+
  Ao entrar na rede, o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, cadastrá-los. Neste cadastro, ele pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus interesses. Com isso, as pessoas podem recomendar os produtos para seus amigos presentes na rede social, sendo que esta deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
+
+% Explicar melhor a relação de confiança entre usuários
 
  Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários. A avaliação altera o grau de reputação entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a reputação do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de reputação no outro usuário diminua.
 
@@ -77,12 +84,18 @@ Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas 
 	\item Permitir que o usuário envie uma recomendação a outro usuário
   \subitem Como recomendador, quero enviar uma recomendação de produto para outra pessoa para que ela conheça a minha opinião sobre este item.
 
+% Retirar funcionalidade
+
 	\item Exposição das avaliações em formatos abertos
   \subitem Como agente web, quero obter as avaliações dos usuários em formato padronizado (e aberto) para que possa interpretar estas avaliações.
+
+% Retirar funcionalidade
 
     \item Cadastro de novos produtos
     \subitem Como usuário, quero poder cadastrar um novo produto que ainda não está cadastrado.
     
+% Retirar funcionalidade
+
     \item Importação de conteúdo em formato aberto
     \subitem Como usuário, quero poder informar uma fonte de conteúdo em formato aberto para que possa adicionar dados externos ao repositório.
 
@@ -127,6 +140,8 @@ Os principais requisitos não-funcionais do sistema são:
 
 \section{Planejamento e Métodos} % (fold)
 \label{sec:planejamento_e_métodos}
+
+% Atualizar seção
 
 \subsection{Próximas Atividades} % (fold)
 \label{sub:próximas_atividades}
