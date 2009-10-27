@@ -1,10 +1,15 @@
-@wip
-Scenario Outline: buscando produtos
-  Given que a etapa 2 está habilitada
-  Given que existe um participante com e-mail "user@email.com" e senha "secret"
-  And que "user@email.com" está na etapa 2 
-  And que estou logado como "user@email.com" com a senha "secret" 
-  And que existem estes produtos:
+# language: pt
+Funcionalidade: Busca de produtos
+  Para encontrar produtos
+  Como um participante
+  Eu quero utilizar um mecanismo de busca
+
+Esquema do Cenário: buscando produtos
+  Dado que a etapa 2 está habilitada
+  E que existe um participante com e-mail "user@email.com" e senha "secret"
+  E que "user@email.com" está na etapa 2 
+  E que estou logado como "user@email.com" com a senha "secret" 
+  E que existem estes produtos:
   | name                 | description                   | category    |
   | harry potter         | harry potter 1                | Livros      |
   | macbook white        | computador macbook cor branca | Eletrônicos |
@@ -16,15 +21,14 @@ Scenario Outline: buscando produtos
   | CD U2                | CD U2                         | CDs         |
   | CD U3                | CD U3                         | CDs         |
   | CD U4                | CD U4                         | CDs         |
-  When eu vou para a página principal
-  When preencho o formulário com:
-  |Buscar|<busca>| 
-  And seleciono "<categoria>" na "Categoria"
-  And aperto "Buscar"                
-  Then não devo ver "<o_que_nao_devo_ver>" em "#productList"
-  Then devo ver "<o_que_devo_ver>" em "#productList"
+  Quando eu vou para a página principal
+  E preencho "Buscar" com "<busca>"
+  E seleciono "<categoria>" na "Categoria"
+  E aperto "Buscar"                
+  Então não devo ver "<o_que_nao_devo_ver>" em "#productList"
+  Então devo ver "<o_que_devo_ver>" em "#productList"
   
-Examples:
+Exemplos:
   | busca                | o_que_devo_ver                | categoria   | o_que_nao_devo_ver | 
   |                      | CD Iron Maiden                | CDs         | harry          |
   | harry                | harry potter 1                | Livros      | perfume        |
