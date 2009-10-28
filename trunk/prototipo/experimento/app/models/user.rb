@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :password_confirmation, :invitation_token,
   :age_group, :sex
-  
+
   def stage
     Stage.find_by_number!(stage_number)
   end
@@ -33,16 +33,23 @@ class User < ActiveRecord::Base
   end             
 
   before_validation_on_create { |user| user.stage_number = 1}
-  
+
   def stage_progress
-    selection = Product.selected 
-    rates_from_selection = Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)
-    return "#{rates_from_selection.count}/#{selection.count}" if stage_number == 1
+    case stage_number
+      when 1 
+        selection = Product.selected 
+        rates_from_selection = Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)
+        return "#{rates_from_selection.count}/#{selection.count}" 
+      when 2                    
+        rate_count = Rate.count(:conditions => {:user_id => self, :rateable_id => Product.not_selected})
+        return "#{rate_count}/10"
+    end
     "?/?"
   end
 
   def completed_stage?
     return self.rates.count > 0 && (Product.selected - Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)).empty? if stage_number == 1 
+    return Rate.count(:conditions => {:user_id => self, :rateable_id => Product.not_selected}) >= 10 if stage_number == 2
     false
   end
 

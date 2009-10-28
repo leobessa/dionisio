@@ -44,6 +44,7 @@ Factory.define :product do |f|
   f.brand { Populator.words(1..2).titleize }
   f.description { Populator.sentences(2..8) }
   f.price { [4.99, 19.95, 100].rand }
+  f.selected { false }
   f.category do |p|
     if Category.count > 3
       Category.all[rand(Category.count)]

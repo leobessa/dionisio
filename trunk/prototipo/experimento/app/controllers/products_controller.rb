@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
       page.visual_effect :highlight, id 
       page.replace_html 'phase-description', phase_description_content                       
       if current_user.completed_stage?
-        current_user.advance_stage
         page.redirect_to(root_path)
       end
     end
@@ -18,6 +17,10 @@ class ProductsController < ApplicationController
   def index
     @search = Product.search(params[:search])
     @products = @search.all
-  end                                               
+  end 
+  
+  def show
+    @product = Product.find(params[:id])                                              
+  end
 
 end

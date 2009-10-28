@@ -40,7 +40,37 @@ describe User do
       last.rate(4, @user, '')
       @user.completed_stage?.should == true
     end
+    
+    context "when user is in stage 2" do
+      @user = Factory :user
+      @user.update_attribute :stage_number, 2
+      @user.completed_stage?.should == false 
+      10.times { Factory :product, :selected => false}
+      selection = Product.not_selected
+      selection[0..8].each do |product|
+        product.rate(4, @user, '')
+      end
+      @user.completed_stage?.should == false
+      selection[9].rate(4, @user, '')
+      @user.completed_stage?.should == true
+    end
   end 
+  
+  it "should tell the stage progress" do
+     context "when user is in stage 2" do
+      @user = Factory :user
+      @user.update_attribute :stage_number, 2
+      @user.stage_progress.should == "0/10"
+      10.times { Factory :product, :selected => false}
+      selection = Product.not_selected
+      selection[0..8].each do |product|
+        product.rate(4, @user, '')
+      end
+      @user.stage_progress.should == "9/10"
+      selection[9].rate(4, @user, '')
+      @user.stage_progress.should == "10/10"
+    end
+  end
   
   
 end

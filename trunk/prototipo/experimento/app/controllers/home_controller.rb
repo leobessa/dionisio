@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   end       
 
   def show_selected_products_to_user
-    products = Product.all :conditions => {:selected => true}
+    products = Product.selected
     render :partial => "stage1", :locals => { :products => products }, :layout => 'application'
   end
 

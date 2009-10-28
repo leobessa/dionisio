@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user , :phase_description_content
 
-  before_filter :verify_completed_stage, :if => :user_signed_in?
+  after_filter :verify_completed_stage, :if => :user_signed_in?
 
   private 
   def verify_completed_stage 
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end 
 
   def phase_description_content 
-   "Etapa #{current_user.stage_number} - Andamento #{current_user.stage_progress}" if user_signed_in?
+    "Etapa #{current_user.stage_number} - Andamento #{current_user.stage_progress}" if user_signed_in?
   end
 
 end

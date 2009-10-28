@@ -9,7 +9,7 @@ Esquema do Cenário: buscando produtos
   E que existe um participante com e-mail "user@email.com" e senha "secret"
   E que "user@email.com" está na etapa 2 
   E que estou logado como "user@email.com" com a senha "secret" 
-  E que existem estes produtos:
+  E que existem os seguintes produtos:
   | name                 | description                   | category    |
   | harry potter         | harry potter 1                | Livros      |
   | macbook white        | computador macbook cor branca | Eletrônicos |

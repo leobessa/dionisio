@@ -18,7 +18,9 @@ module NavigationHelpers
     when /de cadastro de participante/
       signup_path
     when /de login/
-      new_user_session_path
+      new_user_session_path  
+    when /^do produto com id "([^\"]*)"$/i
+      product_path($1)
     # Add more mappings here.
     # Here is a more fancy example:
     #

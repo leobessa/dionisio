@@ -41,13 +41,13 @@ Dado /^que a etapa (\d+) está habilitada$/ do |number|
 end
 
 Então /^devo ver os produtos a serem avaliados inicialmente$/ do
-   Product.find_all_by_selected(true).each do |p|
+   Product.selected.each do |p|
     response.should have_selector("#product_#{p.id}")
    end
 end
 
 Dado /^que existem 20 produtos pre\-selecionados$/ do
-  20.times { Factory :product, :selected => true}
+  20.times { Factory.create :product, :selected => true}
 end  
 
 Quando /^eu avaliar todos produtos previamente selecionados$/ do
@@ -57,9 +57,25 @@ Quando /^eu avaliar todos produtos previamente selecionados$/ do
   end
 end
 
-Given /^que existem estes produtos:$/ do |table|
+Given /^que existem os seguintes produtos:$/ do |table|
   table.hashes.each do |product|                                       
     product[:category] = Category.find_or_create_by_name(product[:category])
     Product.create! :name => product[:name], :description => product[:description], :category => product[:category]
   end                                                                 
+end  
+
+Dado /^que existem 10 produtos ainda não avaliados por "([^\"]*)"$/ do |email|
+  10.times { Factory.create :product }
 end
+
+Quando /^avalio mais 10 produtos ainda não avaliados por "([^\"]*)"$/ do |email|
+  user = User.find_by_email!(email)
+  rated_products = Rate.all(:conditions => {:user_id => user}).map(&:rateable)
+  unrated_products = Product.all - rated_products
+  unrated_products[0..9].each do |product|
+    Quando %Q{eu vou para a página do produto com id "#{product.id}"}    
+    rate = 3
+    click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}", :wait_for => :ajax
+  end
+end
+  
