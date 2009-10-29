@@ -1,5 +1,5 @@
 Factory.sequence :email do |n|
-    "person#{n}@example.com"
+    "person#{n}@gmail.com"
 end
 
 Factory.define :invitation do |f|
