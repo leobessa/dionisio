@@ -1,6 +1,7 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :recipient_email, :token, :sent_at
+  attr_accessible :recipient_email, :token, :sent_at, :group_id
   has_one :recipient, :class_name => 'User'
+  belongs_to :group, :class_name => "Group", :foreign_key => "group_id"
 
   validates_presence_of :recipient_email
   validate :recipient_is_not_registered

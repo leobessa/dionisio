@@ -4,8 +4,13 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 Webrat.configure do |config|
   config.mode = :rails
   config.open_error_files = false # Set to true if you want error pages to pop up in the browser
-end                                                        
+end      
+
+require 'rubygems'
+require 'rake'
+
+                                                  
 
 Before do
-  Stage.create_all
+  load File.join( RAILS_ROOT, 'db', 'seeds.rb')
 end

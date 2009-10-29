@@ -21,7 +21,7 @@ Before do
   end
   # truncate your tables here, since you can't use transactional fixtures* 
   [Admin,Category,Invitation,Product,Rate,Stage,User].each(&:destroy_all)
-  Stage.create_all
+  load File.join( RAILS_ROOT, 'db', 'seeds.rb')
 end     
 
 After do

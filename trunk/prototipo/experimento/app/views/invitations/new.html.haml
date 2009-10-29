@@ -7,6 +7,10 @@
     %br
     = f.text_field :recipient_email
   %p
+    = f.label :inivation_group_id, 'Grupo'
+    %br
+    = collection_select("invitation", "group_id", Group.all , "id", "name")
+  %p
     = f.submit "Enviar convite"
 
 

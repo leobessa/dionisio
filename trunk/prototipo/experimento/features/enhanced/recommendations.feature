@@ -24,7 +24,8 @@ Funcionalidade: Recomendação de produtos
     Então devo ver "Etapa 2"
     Dado que existem 10 produtos ainda não avaliados por "user@email.com"
     Quando avalio mais 10 produtos ainda não avaliados por "user@email.com"
-    Quando eu vou para a página principal
+    Quando eu vou para a página principal  
+    Então mostre a página
     Então devo ver "Etapa 3"  
 
 

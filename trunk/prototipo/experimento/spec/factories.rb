@@ -3,7 +3,14 @@ Factory.sequence :email do |n|
 end
 
 Factory.define :invitation do |f|
-  f.recipient_email { Factory.next(:email) }
+  f.recipient_email { Factory.next(:email) } 
+  f.association :group
+end  
+
+Factory.define :group do |f|
+  f.sequence :name do |n| 
+    "#{Populator.words(1..2).titleize} #{n}"  
+  end
 end
 
 Factory.define :user do |f|                   
@@ -14,7 +21,7 @@ Factory.define :user do |f|
   f.password_confirmation {|u| u.password}
   f.sex "M"
   f.age_group '18 a 25'
-  f.stage_number 1
+  f.stage_number 1 
 end 
 
 Factory.define :admin do |f|                   

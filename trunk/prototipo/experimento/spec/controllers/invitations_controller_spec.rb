@@ -1,9 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 require 'ostruct'
 
-describe InvitationsController do
-  fixtures :all
-  integrate_views        
+describe InvitationsController do       
 
   before(:each) do   
      @attributes = {'recipient_email' => "joe@email.com"}
