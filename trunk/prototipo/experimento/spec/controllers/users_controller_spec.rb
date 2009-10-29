@@ -8,8 +8,10 @@ describe UsersController do
     @controller.stub(:user_signed_in?, false)
   end
   
-  it "show action should render show template" do 
-    get :show, :id => Factory.create(:user)
+  it "show action should render show template" do
+    @user = mock_model User, :email => 'user@email.com'
+    User.should_receive(:find).with("2").once.and_return(@user)
+    get :show, :id => 2
     response.should render_template(:show)
   end
   

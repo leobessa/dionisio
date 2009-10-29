@@ -1,0 +1,10 @@
+- title "Ratings"
+
+%table
+  %tr
+    %th Produto
+    %th Nota
+  - for rating in @ratings
+    %tr
+      %td= h rating.product.name
+

@@ -1,8 +1,15 @@
-class ProductsController < ApplicationController                 
+class ProductsController < ApplicationController    
+  
+  before_filter :authenticate_user! , :only => :rate             
   
   def rate
     @product = Product.find(params[:id])
-    @product.rate(params[:stars], current_user, params[:dimension])  
+    rating = Rating.find(:first,:conditions => {:product_id => @product,:user_id => current_user})
+    if rating
+      rating.update_attribute :stars, params[:stars]
+    else
+      Rating.create :product => @product, :stars => params[:stars], :user => current_user
+    end
     respond_to do |format|
       format.js do
         id = "star-rating-for-product-#{@product.id}"

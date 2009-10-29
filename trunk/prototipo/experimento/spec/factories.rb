@@ -22,6 +22,7 @@ Factory.define :user do |f|
   f.sex "M"
   f.age_group '18 a 25'
   f.stage_number 1 
+  f.association :group
 end 
 
 Factory.define :admin do |f|                   
@@ -29,15 +30,10 @@ Factory.define :admin do |f|
   f.password "secret"
 end
 
-Factory.define :leo_user, :class => :user do |f|
+Factory.define :leo_user, :parent => :user do |f|
   f.name "Leonardo Bessa"
-  f.invitation { Factory.create(:invitation) }
   f.email "leobessa@gmail.com"
   f.password "secret"
-  f.password_confirmation {|u| u.password}
-  f.sex "M"
-  f.age_group '18 a 25'
-  f.stage_number 1
 end
 
 Factory.define :category do |f|
@@ -59,4 +55,10 @@ Factory.define :product do |f|
       p.association :category
     end
   end
+end
+
+Factory.define :rating do |f|
+  f.association :user
+  f.association :product
+  f.stars 3
 end

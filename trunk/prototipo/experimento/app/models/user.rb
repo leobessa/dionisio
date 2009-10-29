@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base     
-
-  ajaxful_rater  
-  has_many :rates
+  
+  has_many :ratings
 
   class << self 
     def age_groups
@@ -44,7 +43,7 @@ class User < ActiveRecord::Base
   end     
   
   def rate_for(item)
-    rate = Rate.find(:first,:conditions => {:user_id => self, :rateable_id => item})
+    rate = Rating.find(:first,:conditions => {:user_id => self, :product_id => item})
     rate ? rate.stars : 0
   end
 
@@ -52,10 +51,10 @@ class User < ActiveRecord::Base
     case stage_number
     when 1 
       selection = Product.selected 
-      rates_from_selection = Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)
+      rates_from_selection = Rating.all(:conditions => {:user_id => self, :product_id => Product.selected}).map(&:product)
       return "#{rates_from_selection.count}/#{selection.count}" 
     when 2                    
-      rate_count = Rate.count(:conditions => {:user_id => self, :rateable_id => Product.not_selected})
+      rate_count = Rating.count(:conditions => {:user_id => self, :product_id => Product.not_selected})
       return "#{rate_count}/10"
     end
     "?/?"
@@ -64,9 +63,9 @@ class User < ActiveRecord::Base
   def completed_stage? 
     case stage_number
     when 1
-      self.rates.count > 0 && (Product.selected - Rate.all(:conditions => {:user_id => self, :rateable_id => Product.selected}).map(&:rateable)).empty?
+      self.ratings.count > 0 && (Product.selected - Rating.all(:conditions => {:user_id => self, :product_id => Product.selected}).map(&:product)).empty?
     when 2
-      Rate.count(:conditions => {:user_id => self, :rateable_id => Product.not_selected}) >= 10
+      Rating.count(:conditions => {:user_id => self, :product_id => Product.not_selected}) >= 10
     when 3           
       friends.count > 1 && friends.inject(true) { |result,friend| result &&= UserRecommendation.count(:conditions => {:sender_id => self, :target_id => friend }) >= 5 }
     else

@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :category
-  ajaxful_rateable :stars => 5
-  has_many :rates, :as => :rateable
+  has_many :ratings
   named_scope :selected, :conditions => {:selected => true}
   named_scope :not_selected, :conditions => {:selected => false}
   validates_inclusion_of :selected, :in => [true,false]

@@ -2,12 +2,10 @@
 
 one:
   user_id: 1
-  rateable_id: 1
-  rateable_type: MyString
+  product_id: 1
   stars: 1
 
 two:
   user_id: 1
-  rateable_id: 1
-  rateable_type: MyString
+  product_id: 1
   stars: 1

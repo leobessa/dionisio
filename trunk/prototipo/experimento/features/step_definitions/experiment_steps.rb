@@ -70,7 +70,7 @@ end
 
 Quando /^avalio mais 10 produtos ainda não avaliados por "([^\"]*)"$/ do |email|
   user = User.find_by_email!(email)
-  rated_products = Rate.all(:conditions => {:user_id => user}).map(&:rateable)
+  rated_products = Rating.all(:conditions => {:user_id => user}).map(&:product)
   unrated_products = Product.all - rated_products
   unrated_products[0..9].each do |product|
     Quando %Q{eu vou para a página do produto com id "#{product.id}"}    

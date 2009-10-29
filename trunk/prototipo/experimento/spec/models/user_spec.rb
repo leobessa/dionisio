@@ -34,10 +34,10 @@ describe User do
       selection = Product.selected
       last = selection.pop
       selection.each do |product|
-        product.rate(4, @user, '')
+        Rating.create!(:stars => 4, :user => @user, :product => product)
       end
-      @user.completed_stage?.should == false
-      last.rate(4, @user, '')
+      @user.completed_stage?.should == false 
+      Rating.create!(:stars => 4, :user => @user, :product => last)
       @user.completed_stage?.should == true
     end
     
@@ -48,10 +48,10 @@ describe User do
       10.times { Factory :product, :selected => false}
       selection = Product.not_selected
       selection[0..8].each do |product|
-        product.rate(4, @user, '')
+        Rating.create!(:stars => 4, :user => @user, :product => product)
       end
       @user.completed_stage?.should == false
-      selection[9].rate(4, @user, '')
+      Rating.create!(:stars => 4, :user => @user, :product => selection[9])
       @user.completed_stage?.should == true
     end  
     
@@ -87,11 +87,11 @@ describe User do
       @user.stage_progress.should == "0/10"
       10.times { Factory :product, :selected => false}
       selection = Product.not_selected
-      selection[0..8].each do |product|
-        product.rate(4, @user, '')
+      selection[0..8].each do |product| 
+        Rating.create!(:stars => 4, :user => @user, :product => product)
       end
-      @user.stage_progress.should == "9/10"
-      selection[9].rate(4, @user, '')
+      @user.stage_progress.should == "9/10" 
+      Rating.create!(:stars => 4, :user => @user, :product => selection[9])
       @user.stage_progress.should == "10/10"
     end
   end
