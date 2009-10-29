@@ -2,11 +2,11 @@
 
 \section{Objetivos} % Apresentar de forma precisa e concisa o objetivo do projeto.
 
- O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a redes sociais e compatível com padrões utilizados na web semântica.
+ O projeto consiste no desenvolvimento de um sistema de recomendação baseado em confiança acoplado a uma rede social.
 
 \section{Escopo}
 
- Os principais blocos do sistemas podem ser vistos na Figura~\ref{fig:escopo}.
+ Os principais blocos do sistema podem ser vistos na Figura~\ref{fig:escopo}.
 
 \begin{figure}
   \centering
@@ -15,82 +15,51 @@
   \label{fig:escopo}
 \end{figure}
 
-% Explicar como o sistema de recomendação e a rede social se encaixam
-% laços de amizade
+ Será realizado um experimento com 60 pessoas que se cadastrarão e formarão uma rede social disposta em 12 grupos de 5 amigos. O sistema de recomendação utilizará essa rede social para obter as informações de relações de amizade entre os usuários. Neste contexto, um usuário é considerado amigo do outro quando eles pertencem a um mesmo grupo de amigos. Os grupos de usuários são definidos a partir do envio de um e-mail com um convite de um usuário já cadastrado no sistema a outra pessoa. Este e-mail possui um endereço de cadastro, onde é possível a pessoa se cadastrar e automaticamente já fazer parte do grupo de amigos do usuário que a convidou.
 
- O sistema de recomendação utilizará redes sociais para obter as informações pessoais e as relações de amizade entre usuários. Neste contexto, um usuário é considerado amigo de outro quando eles estabelecem uma conexão direta dentro da rede social por meio de pedido de um usuário a outro, utilizando uma ferramenta própria do sistema.
+ Os usuários poderão receber recomendações dos seus amigos ou de outras pessoas presentes na rede. Além disso, o sistema de recomendação utilizará informações de avaliações de produtos por parte dos usuários para poder recomendar outros produtos a eles. Como visto na Figura~\ref{fig:escopo}, os usuários entram com as informações na rede social, sendo estas utilizadas pelo sistema para a recomendação de produtos. O sistema de recomendação utilizará 3 tipos de algoritmos baseados em :
 
- Os usuários podem receber as recomendações dos seus amigos, ou de outras pessoas presentes na rede social. No entanto, as recomendações feitas por amigos serão consideradas, a princípio, mais importantes do que as realizadas por desconhecidos. Além da amizade, haverá uma relação explícita de confiança que será utilizada para determinar maior relevância da recomendação. Quando a relação de amizade no sistema é estabelecida, os dois usuários envolvidos devem escolher uma opção indicando o quanto eles confiam na pessoa que se tornará sua amiga para realizar boas recomendações de produtos.
+\begin{itemize}
+	\item Similaridade entre perfis
+	\item Similaridade de produtos
+	\item Confiança
+\end{itemize}
 
-% TODO: introduzir o conceito de reputação entre usuários (na descrição do sistema é citado)
+ Os dois primeiros são algoritmos conhecidos. A maioria dos sistema de recomendação se utilizam de algum deles ou de uma mistura dos dois. Ambos utilizam as avaliações dos usuários a produtos, para então poder recomendar outros produtos.
 
-% Explicar como a web semantica se encaixa no sistema de recomendação
-
- O sistema de recomendação obtém informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos, as relações de amizades e as informações básicas dos usuários. Um repositório será implementado para armazenar tais informações, porém qualquer fonte de documentos que utilizem os padrões definidos pelo sistema de recomendação poderá ser utilizada. Desta forma, o sistema se integra ao contexto da web semântica.
-
+ O algoritmo de recomendação baseado em confiança utiliza as avaliações de produtos recomendados por usuários. Quando uma pessoa presente na rede social recomenda um produto a outra, a que recebe deve avaliar o produto recomendado. Essa avaliação é utilizada pelo sistema para calcular o grau de confiança que o usuário que recebe a recomendação tem no usuário que a realizou. Este grau de confiança é bidirecional, sendo que entre duas pessoas, uma pode ter um alto grau de confiança na outra, enquanto a outra tem um baixo de grau de confiança na primeira. Com estar informações, para recomendar produtos a uma pessoa, o sistema aplica o algoritmo de similaridade entre perfis apenas naquelas pessoas que já realizaram recomendações para ela, ou seja, apenas pessoas que têm informação de confiança são consideradas. Como dito anteriormente, para se ter informações de confiança, é necessário que uma pessoa recomende produtos a outra e que a pessoa que receba a recomendação, avalie o produto.
+ 
+ A diferença entre o algoritmo baseado na similaridade entre perfis e no baseado em confiança está no fato de que apenas pessoas que recomendaram produtos são interessantes no cálculo. Além disso, quanto mais recomendações são realizadas entre duas pessoas, mais definido será o grau de confiança entre elas. O algoritmo de similaridade entre perfis considera todos os usuários presentes no sistema que avaliaram os mesmos produtos que a pessoa que receberá a recomendação. O algoritmo baseado em confiança utiliza esse alto grau de confiança que um usuário tem no outro para então conseguir recomendar bons produtos para o primeiro.
 
 \section{Evolução do Projeto}
 
+ O sistema que será utilizado no experimento está em fase final de elaboração. As pessoas que participarão já estão definidas, tendo todas concordado em participar e colaborar com a realização do experimento.
 
-\subsection{Construção do Protótipo}
-\label{cha:prototipo}
+\subsection{Descrição do Experimento}
+\label{cha:descricao_do_experimento}
 
- Um protótipo do sistema foi desenvolvido para que se pudesse ter noção da usabilidade e do funcionamento do sistema de recomendação. Inicialmente as recomendações são realizadas sem levar em conta os dados de confiança e reputação entre usuários. A Figura~\ref{fig:tela_inicial_prototipo} mostra a página inicial do protótipo, contendo a listagem dos primeiros produtos presentes na base de dados e a opção do usuário fazer o \textit{login} no sistema.
- 
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{imagens/Tela_Inicial_Prototipo}
-  \caption{\it Tela inicial do protótipo}
-  \label{fig:tela_inicial_prototipo}
-\end{figure}
+ Inicialmente 12 pessoas serão convidadas a participar do experimento. Cada uma das 12 pessoas deverá convidar outras 4 pessoas para formarem um grupo de amigos. Sendo assim, formam-se 12 grupos de 5 amigos, totalizando 60 pessoas. Cada pessoa que participar de um grupo de amigos deverá concordar em ser definida como amiga de todos no grupo, ou seja, todas as pessoas pertencentes a um mesmo grupo de amigos se conhecem e se consideram amigas.
 
- Para se cadastrar, a pessoa necessita apenas informar o seu nome de usuário, e-mail e entrar com uma senha pessoal. A tela de \textit{login} solicita apenas o nome de usuário e senha. Após a validação dos dados, o sistema retorna para a tela inicial para que o usuário possa detalhar um produto de seu interesse. Há a opção de avaliar o produto sem conferir os seus detalhes. Para avaliar o produto o usuário escolhe de 1 a 5, sendo 1 não gostar do produto e 5 gostar muito, e clicar em uma das cinco estrelas. O número de estrelas coloridas mostra a nota da avaliação. 
- 
- Para efetuar o \emph{login} o sistema solicita apenas o nome de usuário e senha. Após a autenticação, o sistema retorna para a tela inicial para que o usuário possa procurar um produto de seu interesse. Ao escolher um produto, o sistema abre os seus detalhes incluindo nome, foto e descrição completa, como mostra a Figura~\ref{fig:detalhe_produto_prototipo}.
+ Cada uma das 12 pessoas receberá 5 Termos de Consentimento Livre e Esclarecido (TCLE). Cada pessoa deverá receber um TCLE, lê-lo e assiná-lo. Após ler e assinar o TCLE a pessoa torna-se um participante do experimento e deve informar o seu e-mail para a pessoa que lhe convidou. De posse dos e-mails de todos presentes no grupo de amigos, cada uma das 12 pessoas deverá enviá-los aos pesquisadores.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{imagens/Detalhe_Produto_Prototipo}
-  \caption{\it Detalhe do produto}
-  \label{fig:detalhe_produto_prototipo}
-\end{figure}
+ Um e-mail será enviado a cada um dos 60 participantes com um endereço da internet para que ele possa se cadastrar no sistema do experimento. Os grupos de amigos já serão formados no sistema com base nos endereços de e-mail enviados por cada uma das 12 pessoas que foram incialmente convidadas a participar. Os participantes deverão informar os seguintes dados no cadastro:
 
- Na tela de detalhamento do produto o usuário poderá editar as informações do mesmo ao escolher a opção \textit{edit}. Também é possível visualizar os comentários (\textit{reviews}) feitos pelos usuários sobre o produto detalhado, além de fazer o seu próprio comentário, clicando em \textit{Make a review}.
-  
- A encontrar um produto interessante o usuário tem a opção de recomendá-lo para outros da rede social. A opção \emph{Recommend it!} leva o usuário a tela ilustrada na Figura~\ref{fig:recomendacao_produto_prototipo}, onde é possível selecionar os amigos para os quais a recomendação será enviada.         
- 
- \begin{figure}
-   \centering
-   \includegraphics[width=\textwidth]{imagens/TELA_RECOMENDACAO_PROTOTIPO}
-   \caption{\it Tela de recomendação de produto}
-   \label{fig:recomendacao_produto_prototipo}
- \end{figure}
-
-
-\subsection{Planejamento dos testes com usuários}
-
-O planejamento dos testes com os usuários já está definido. Será feito um experimento para testar a eficácia do sistema de recomendação implementado pelo protótipo e assim obter subsídios para uma versão final do sistema que atenda a todos os requisitos funcionais. Como trata-se de um experimento envolvendo pessoas, antes será feito um pedido ao Comitê de Ética para autorizar o teste
-
-\subsubsection{Descrição do experimento}
- O experimento consistirá de um período de uso do sistema por grupos de pessoas. Serão 12 grupos com 5 pessoas cada um. Os grupos serão formados da seguinte forma:
-
-\begin{itemize}
-	\item Inicialmente serão convidadas 12 pessoas de diferentes faixas etárias.
-	\item Será passado um endereço de internet (URL) para cada uma das pessoas se cadastrar no sistema
-	\item Será pedido a cada uma dessas pessoas que convide mais 4 amigos ou conhecidos, usando uma ferramenta do próprio sistema, para completar um grupo de 5 pessoas.
-\end{itemize}
-
- O cadastro no sistema consiste de um série de formulários que visam extrair informações demográficas e pessoais. Serão pedidas as seguintes informações:
- 
 \begin{itemize}
 	\item Nome
-	\item Sexo (masculino ou feminino)
-	\item Data de nascimento
-	\item Escolaridade
-	\item Foto
+	\item Sexo
+	\item Faixa etária (18-25, 26-30, 31-40, +40)
+	\item Foto (Não obrigatório. Caso queira, o participante poderá escolher uma foto sua para representar o seu perfil no sistema.)
 \end{itemize}
 
- Será pedido também que elas avaliem em uma escala de 1 a 10, quais são os produtos que elas possuem o maior interesse para obter recomendações, como:
+ Após isso, o participante deverá escolher a opção de salvar os seus dados e então será remetido a outra página do sistema que mostrará uma lista com 20 produtos escolhidos pelos pesquisadores. Tais produtos serão escolhidos com base na sua popularidade definida no site www.submarino.com (por exemplo, mais vendidos ou lançamento). O participante deverá avaliar TODOS os 20 produtos para passar para a próxima fase do experimento.
+
+ Avaliar um produto significa dizer o quanto o participante acha aquele produto relevante para si, ou seja, o quanto ele se interessa pelo produto. A avaliação é feita por meio da atribuição de uma nota de 1 a 5, sendo 1 o participante não ter interesse e 5 o participante ter muito interesse naquele produto. Esse interesse não necessita ser um interesse de compra. O objetivo dessa avaliação é saber realmente o interesse do participante, podendo ser cobiça ou curiosidade, além de admiração pelo produto.
+
+ Caso o participante não conheça o produto, ou seja, não tivesse ouvido falar dele ou não tivesse conhecimento suficiente para reconhecê-lo, até o instante em que ele lhe foi apresentado, ele deve escolher a opção "Não conheço". Mesmo não conhecendo, o participante deverá avaliar o produto de acordo com o seu grau de interesse. Essa avaliação será feita apenas com base na foto e descrição do produto.
+
+ Terminadas as avaliações dos 20 produtos, o participante deverá procurar e avaliar - a avaliação deve ser feita da mesma forma como anteriormente - 10 produtos de sua escolha. Neste caso, o participante deverá avaliar apenas produtos de seu conhecimento, sendo que a opção de "Não conheço" não estará disponível.
+
+ Os produtos poderão ser localizados a partir da filtragem de categorias e de um campo de busca por texto, onde o participante digita o nome do produto e o sistema o procura na base de dados, atualizando a lista com os resultados obtidos. As categorias de produtos presentes no sistema são:
 
 \begin{itemize}
 	\item Roupas
@@ -98,50 +67,82 @@ O planejamento dos testes com os usuários já está definido. Será feito um ex
 	\item Filmes
 	\item Eletrônicos
 	\item Livros
+	\item Vinhos
+	\item DVDs
+	\item CDs
+	\item Perfumes
 \end{itemize}
 
-	Depois do cadastro dessas informações iniciais será pedido que cada pessoe avalie as outras pessoas de seu grupo, fornecendo as seguintes informações sobre a outra pessoa:
+ Para facilidade do participante, o sistema exibirá na tela o número de produtos restantes a serem avaliados.
+
+ O sistema aguardará todos os participantes avaliarem os 20 produtos escolhidos pelos pesquisadores e os 10 produtos escolhidos por eles mesmos. Somente quando todos terminarem as etapas de avaliação de produtos que a etapa seguinte estará disponível. Esse sincronismo é necessitado pela próxima etapa. Neste meio tempo, o participante que já finalizou as suas tarefas receberá uma mensagem do sistema indicando que ele receberá um e-mail quando a próxima etapa estiver liberada.
+ 
+ Na etapa seguinte, o sistema mostrará as fotos com o nome dos 4 amigos do grupo do participante e uma área com listagem aleatória de produtos cadastrados no sistema. Será solicitado ao participante que ele realize 5 recomendações a cada um dos quatro amigos do seu grupo, totalizando assim 20 recomendações a serem feitas. Para isso, o participante localiza um produto no sistema e escolhe a opção de recomendar a uma pessoa. Desse modo, será exibida a tela de recomendação de produto, com as informações do produto escolhido e uma lista com seus quatro amigos. O participante escolhe para quais amigos ele recomendará aquele produto e confirma a recomendação.
+ 
+ O propósito das recomendações é que apenas boas recomendações sejam realizadas pelos participantes. Uma boa recomendação é a indicação de um produto que o participante acha que seu amigo achará interessante.
+
+ Depois de fazer as 5 recomendações a cada amigo do seu grupo, o sistema mostrará ao participante uma lista contendo foto e nome de 10 participantes que não façam parte do seu grupo de amigos e solicitará a ele que recomende apenas 1 produto a cada uma dessas pessoas, totalizando 10 recomendações. Para poder fazer boas recomendações, o participante terá acesso às avaliações de produtos feitas por estas pessoas, além das informações de cadastro de cada uma delas. Para facilitar tal tarefa, o sistema indicará ao participantes quais das 10 pessoas ainda não receberam a sua recomendação.
+
+ O sistema aguardará todos os participantes finalizarem as etapas de recomendar produtos aos amigos e aos desconhecidos antes de continuar o experimento. Neste meio tempo, o participante que já finalizou as suas tarefas visualizará no sistema uma mensagem indicando que ele receberá um e-mail quando a próxima etapa estiver liberada. Após a conclusão das etapas de recomendação por parte de todos os participantes, será enviado um e-mail a cada um deles avisando a continuidade do experimento.
+ 
+ Ao entrar novamente no sistema o participante visualizará 20 recomendações de produtos. Estas são compostas de 5 recomendações feitas pelos seus amigos, 5 recomendações feitas por desconhecidos - em ambos os casos escolhidas aleatoriamente pelo sistema - e 10 recomendações feitas pelo sistema, cinco delas utilizando os algoritmos de recomendação com base em similaridade entre perfis e o restante similaridade entre produtos. O participante deverá avaliar o produto demonstrando o seu interesse na mesma escala de 1 a 5 utilizada para avaliar produtos anteriormente. A opção "Não conheço" está disponível nesta etapa. Não ficará visível ao participante quem é o autor da recomendação. Isso é feito para que não haja nenhuma influência sobre ele quando for avaliar o produto. Chamamos esta etapa de "teste cego". O sistema mostrará quantas recomendações restam para serem avaliadas pelo participante.
+ 
+ Após avaliar as 20 recomendações, o participante receberá outras 30 recomendações. Neste caso serão utilizadas as 15 recomendações restantes realizadas pelos seus amigos, as 5 recomendações restantes feitas a ele por desconhecidos e 10 recomendações feitas pelo sistema utilizando o algoritmo de recomendação com base na confiança. Nesta etapa ficará visível ao participante quem é o autor da recomendação (inclusive quando for o sistema). Após terminar de avaliar todas as recomendações, o experimento será finalizado e uma mensagem de agradecimento será mostrada ao participante.
+
+\section{Projeção da Análise dos Resultados}
+
+\subsection{Dados Considerados}
+
+ Após o término do experimento, serão considerados os seguintes dados extraídos do banco de dados do sistema:
 
 \begin{itemize}
-	\item O quanto ela conhece a outra pessoa. As opções são:
-	\subitem Não conhece
-  \subitem Conhece pouco
-  \subitem Conhece bastante
-  \subitem Melhor amiga
-  \item O quanto ela confia na outra pessoa para a recomendação de produtos em geral:
-   \subitem Não confia
-	\subitem Confia um pouco
-  \subitem Confia muito
-  \subitem Confia completamente
+	\item Sexo e faixa etária dos usuários
+	\item Grupos de usuários
+	\item Avaliações dos produtos
+	\item Recomendações realizadas por usuários
+	\item Recomendações realizadas pelo sistema e o algoritmo que foi utilizado
 \end{itemize}
 
- Após o levantamento dessas informações será pedido que cada usuário avalie uma série de produtos aleatórios. Cada produto será apresentado através de uma foto e uma descrição. Será pedido que o usuário escolha em uma escala de 1 a 5 o quanto ele gosta daquele produto caso ele o conheça. Se o usuário não conhecer o produto ele deverá escolher a opção "não conheço".
 
- Feita essa avaliação, começará o uso pleno do sistema pelo usuário. Dentro do sistema as pessoas terão as seguintes opções:
-\begin{enumerate}
-	\item Ver listas de recomendações
-	\item Procurar por produtos
-	\item Fazer uma recomendação
-	\item Ver lista de pessoas
-\end{enumerate}
+\subsection{Medidas}
 
- Ao acionar a primeira opção será mostrado ao usuário uma série de diferentes listagens de produtos recomendados. Para cada produto recomendado, o usuário terá a opção de avaliar:
+De posse de todos esses dados, serão realizadas as seguintes medidas.
 
 \begin{itemize}
-	\item O quanto ele gostou daquela recomendação, em uma escala de 1 a 5.
-	\item Opcionalmente, o quanto ele gosta daquele produto.
+
+\item Erro na avaliação do produto
+
+ Medir a diferença entre a avaliação prevista do produto pelo sistema e a avaliação dada pelo usuário. Quando o sistema recomenda um produto, ele calcula a avaliação prevista pelo usuário que receberá a recomendação.
+
+\item Taxa de rejeição das recomendações
+		
+ Medir para cada usuário o número de recomendações que tiveram nota abaixo de 3 (1 ou 2). Fazer a relação com o total de recomendações recebidas por ele.
+
+\item Taxa de serendipidade
+
+ Medir o número de avaliações que contêm a informação "Não conheço" ativadas. Fazer a relação com o total de avaliações de produtos.
+
+\item Grau de confiança calculado entre participantes do mesmo grupo
+
+ Verificar o grau de confiança entre usuários do mesmo grupo e o grau de confiança da pessoa no sistema e nas pessoas desconhecidas que realizaram recomendação a ela.
 \end{itemize}
 
- Uma destas listagens será composta pelas recomendações feitas por outras pessoas. Neste caso também será mostrado além do produto recomendado, quem fez a recomendação e uma justificativa do recomendado para aquela recomendação.
+ Os seguintes cenários serão considerados para a análise das medidas.
 
- Ao acionar a segunda opção, o usuário poderá ver os diferentes produtos cadastrados no sistema, podendo filtrá-los através de diferentes critérios. Haverá também uma listagem ordenada dos produtos mais bem avaliados nas diferentes categorias de produtos.
+\begin{itemize}
 
- Ao acionar a terceira opção, o usuário poderá fazer uma busca de um produto para recomendar a uma ou mais pessoas cadastradas no sistema. A recomendação consistirá de um produto e de uma justificativa do porquê daquele produto estar sendo recomendado.
+\item Global
 
- Ao acionar a quarta opção o usuário poderá ver a lista das pessoas conhecidas ou desconhecidas. Inicialmente apenas as pessoas de seu grupo estarão na lista de conhecidos. Mas ele poderá escolher uma outra pessoa para entrar em sua lista de conhecidos fazendo um pedido de amizade.
+ Serão comparados os dados que envolvem todos os elementos presentes no sistema.
 
- A lista de pessoas possue um atalho para o perfil de cada usuário. Este perfil é composto do nome, idade, sexo, foto da pessoa e uma lista dos produtos avaliados por essa pessoa.
+\item Grupo de amigos
 
- O sistema estará disponível por um período de 1 mês, sendo que ao final o mesmo será desativado e sua base de dados será analisada de forma anônima para se medir qual foi a eficácia das recomendações feitas pelo sistema e entre os usuários.
+ Serão comparados os dados apenas das pessoas que compõem um grupo de amigos. Todos os grupos serão analisados.
 
+\item Algoritmos
 
+ Neste cenário, iremos comparar os dados obtidos para os 3 diferentes tipos de algoritmo de recomendação utilizados no sistema.
+
+\end{itemize}
+
+ A análise será baseada em tabelas e gráficos construídos a partir dos dados retirados da base de dados do experimento.
