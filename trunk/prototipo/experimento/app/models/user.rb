@@ -41,6 +41,11 @@ class User < ActiveRecord::Base
   before_validation_on_create do |user|
     user.stage_number ||= 1
     user.group ||= user.invitation.group
+  end     
+  
+  def rate_for(item)
+    rate = Rate.find(:first,:conditions => {:user_id => self, :rateable_id => item})
+    rate ? rate.stars : 0
   end
 
   def stage_progress

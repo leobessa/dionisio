@@ -22,8 +22,5 @@ Before do
   # truncate your tables here, since you can't use transactional fixtures* 
   [Admin,Category,Invitation,Product,Rate,Stage,User].each(&:destroy_all)
   load File.join( RAILS_ROOT, 'db', 'seeds.rb')
-end     
-
-After do
-  visit destroy_user_session_path
+  #visit destroy_user_session_path
 end

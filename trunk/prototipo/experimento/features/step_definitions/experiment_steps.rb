@@ -52,8 +52,8 @@ end
 
 Quando /^eu avaliar todos produtos previamente selecionados$/ do
   Product.selected.each do |product|                                  
-    rate = 3
-    click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}", :wait_for => :ajax
+    rate = 3          
+    click_link_within "#star-rating-for-product-#{product.id}", "#{rate}"#, :wait_for => :ajax
   end
 end
 
@@ -75,7 +75,7 @@ Quando /^avalio mais 10 produtos ainda não avaliados por "([^\"]*)"$/ do |email
   unrated_products[0..9].each do |product|
     Quando %Q{eu vou para a página do produto com id "#{product.id}"}    
     rate = 3
-    click_link_within "#ajaxful-rating-product-#{product.id}", "#{rate}", :wait_for => :ajax
+    click_link_within "#star-rating-for-product-#{product.id}", "#{rate}"#, :wait_for => :ajax
   end
 end
   

@@ -9,6 +9,6 @@
       %p= product.price
   %dd
     %p= truncate product.description, :length => 400
-    = ratings_for product 
+    = render :partial => 'shared/star_rating', :locals => {:product => product, :user => (respond_to?(:user) ? user : current_user)}
     %ul
       %li.brand= product.brand

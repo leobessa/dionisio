@@ -1,0 +1,7 @@
+%ul.star-rating{:id => "star-rating-for-product-#{product.id}"}                                      
+  %li.current-rating{ :style => "width:#{user.rate_for(product)*20}%"}= "Atualmente #{user.rate_for(product)} estrelas"
+  - (1..5).each do |n|
+    %li  
+      - url = url_for(:controller => 'products', :action => 'rate', :id => product, :stars => n, :dimension => '')
+      = link_to_remote "#{n}", {:url => url, :method => :post, :update => { :success => "products", :failure => "error" }}, :href => url, :class => "#{%w(one two three four five)[n-1]}-star#{'s' if n > 1}", :title => "#{n} estrelas" 
+      /= link_to n, url, :class => "#{%w(one two three four five)[n-1]}-star#{'s' if n > 1}", :title => "#{n} estrelas"
