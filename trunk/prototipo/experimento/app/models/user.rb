@@ -80,5 +80,9 @@ class User < ActiveRecord::Base
   def recommend(options)
     UserRecommendation.create!(options.merge!(:sender => self))
   end
+  
+  def can_rate?
+    [1,2,5,6].include? stage_number 
+  end
 
 end

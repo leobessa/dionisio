@@ -1,4 +1,4 @@
-- title "Ratings"
+- title "Avaliações"
 
 %table
   %tr
@@ -6,5 +6,8 @@
     %th Nota
   - for rating in @ratings
     %tr
-      %td= h rating.product.name
+      %td= link_to h(rating.product.name), rating.product
+      %td
+        %ul.star-rating{:id => "star-rating-for-product-#{rating.product.id}"}
+          %li.current-rating{ :style => "width:#{rating.stars*20}%"}= "#{rating.stars} estrelas"
 
