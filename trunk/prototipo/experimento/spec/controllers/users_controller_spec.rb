@@ -9,7 +9,7 @@ describe UsersController do
   end
   
   it "show action should render show template" do
-    @user = mock_model User, :email => 'user@email.com'
+    @user = Factory.stub :user
     User.should_receive(:find).with("2").once.and_return(@user)
     get :show, :id => 2
     response.should render_template(:show)

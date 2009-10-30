@@ -1,0 +1,5 @@
+%dl.profile[user]
+  .picture= avatar_for(user)
+  %h2.title= user.name
+  %h3= "(#{user.age_group} anos)"
+  = link_to "(Ver avaliações)", user_ratings_path(user)

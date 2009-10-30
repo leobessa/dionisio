@@ -1,17 +1,12 @@
-* { margin: 0; padding: 0; }
-
-body {padding: 10px;line-height: 1.5em;  
+  
+#productList {  
+  
+float: left;
+padding: 10px;line-height: 1.5em;  
   
 color: #444;  
   
 font-family: "Georgia", times, serif;  
-  
-}  
-   
-  
-#productList {  
-  
-float: left;  
   
 }  
   

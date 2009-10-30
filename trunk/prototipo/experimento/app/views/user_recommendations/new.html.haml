@@ -1,0 +1,22 @@
+- title "Envio de recomendação para #{@target.name}"
+= render @target
+%br
+= render :partial => 'products/product_search', :locals => {:search => @search}
+#productList
+  - @products.each do |product|
+    - form_for [@target,@user_recommendation] do |f| 
+      = f.error_messages
+      %p
+        = render :partial => 'products/product', :locals => {:product => product, :show_stars => false}
+      = hidden_field_tag 'user_recommendation[product_id]', product.id
+      %p     
+        - rated = @target.rated?(product)
+        - recommended = current_user.recommended?(product,@target)
+        = f.submit "Recomendar para #{@target.name}", :disabled => (rated or recommended)
+        %ul
+          - if rated
+            %li{:style=>'font-style: italic;font-size: 11px;'}
+              = "Produto já avaliado por #{@target.name}."
+          - if recommended
+            %li{:style=>'font-style: italic;font-size: 11px;'}= "Você já recomendou este produto para #{@target.name}."
+    %hr
