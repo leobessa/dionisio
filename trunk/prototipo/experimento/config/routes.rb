@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.devise_for :admins   
   map.devise_for :users
   map.resources :users, :only => [:new,:create,:show] do |users|
-    users.resources :ratings
+    users.resources :ratings                   
+    users.resources :user_recommendations
   end
 
   map.resources :products, :only => [:show, :index], :member => {:rate => [:post,:get]}

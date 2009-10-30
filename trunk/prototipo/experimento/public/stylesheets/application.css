@@ -60,4 +60,52 @@ a {
     margin: 2px 24px; }
     #errorExplanation ul li {
       font-size: 12px;
-      list-style: disc; }
+      list-style: disc; }  
+
+
+			.profile {
+			clear: both;
+			margin: 0.5em 0;
+			border: 2px solid #5B8261;
+			}
+			.profile .picture {
+			float:left;
+			margin: 1em 1em 1em 0.5em;
+			}
+			.profile h3 {
+			border-bottom: 0px solid #5b8261;
+			color: #5B8261;
+			padding: 0px 0px;
+			}
+			.profile h2.title {
+			margin-top: 15px;
+			border-bottom: 0px solid #5b8261;
+			}
+			.profile dt {
+			margin: 0;
+			padding: 2px 3px;
+			width: 120px;
+			background-color: #000000;
+			border-bottom: 0px solid white;
+			float:left;
+			}
+			.profile dd {
+			margin: 0 0 0 130px;
+			padding: 2px 3px;
+			border-bottom: 0px dotted #5b8261;
+			background-color: #000000;
+			color: #ffffff;} 
+			
+			.lst {
+			-x-system-font:none;
+			font-family:arial,sans-serif;
+			font-size:17px;
+			font-size-adjust:none;
+			font-stretch:normal;
+			font-style:normal;
+			font-variant:normal;
+			font-weight:normal;
+			line-height:normal;
+			margin-bottom:0.2em;
+			vertical-align:bottom;
+			}

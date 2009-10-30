@@ -1,2 +1,2 @@
 - title @product.name
-= render @product
+= render :partial => 'products/product', :locals => {:product => @product, :show_stars => true}

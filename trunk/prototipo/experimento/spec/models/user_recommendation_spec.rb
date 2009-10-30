@@ -26,9 +26,9 @@ describe UserRecommendation do
     attributes = { :sender_id => 2, :target_id => 3, :product_id => 3 }
     UserRecommendation.create(attributes)
     UserRecommendation.new(attributes).should_not be_valid 
-    UserRecommendation.new(attributes.merge!(:sender_id => 4)).should be_valid
-    UserRecommendation.new(attributes.merge!(:target_id => 4)).should be_valid
-    UserRecommendation.new(attributes.merge!(:product_id => 4)).should be_valid
+    UserRecommendation.new(attributes.merge(:sender_id => 4)).should be_valid
+    UserRecommendation.new(attributes.merge(:target_id => 4)).should be_valid
+    UserRecommendation.new(attributes.merge(:product_id => 4)).should be_valid
   end
     
   

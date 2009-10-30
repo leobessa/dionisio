@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base     
-  
+
   has_many :ratings
 
   class << self 
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :group_id
   belongs_to :invitation
   belongs_to :group
+  has_many :rated_products, :through => :ratings, :source => :product
 
   def friends
     group.users.delete_if { |u| u == self} 
@@ -33,6 +34,10 @@ class User < ActiveRecord::Base
     invitation.token if invitation
   end
 
+  def unrated_products
+    Product.find(:all,:conditions => ['id NOT IN (?)',rated_products.map(&:id)])
+  end
+
   def invitation_token=(token)
     self.invitation = Invitation.find_by_token(token)
   end             
@@ -41,10 +46,18 @@ class User < ActiveRecord::Base
     user.stage_number ||= 1
     user.group ||= user.invitation.group
   end     
-  
+
   def rate_for(item)
-    rate = Rating.find(:first,:conditions => {:user_id => self, :product_id => item})
+    rate = Rating.find(:first,:conditions => {:user_id => self.id, :product_id => item.id})
     rate ? rate.stars : 0
+  end 
+
+  def rated?(item)
+    Rating.find(:first,:conditions => {:user_id => self.id, :product_id => item.id})
+  end 
+
+  def recommended?(product,target)
+    UserRecommendation.find(:first,:conditions => {:sender_id => self.id, :target_id => target.id, :product_id => product.id })
   end
 
   def stage_progress
@@ -56,8 +69,17 @@ class User < ActiveRecord::Base
     when 2                    
       rate_count = Rating.count(:conditions => {:user_id => self, :product_id => Product.not_selected})
       return "#{rate_count}/10"
+    when 3                    
+      i = friends.sum do |friend|
+        s = recommendations_count_to(friend); s = s > 5 ? 5 : s                
+      end
+      return "#{i}/20"
     end
     "?/?"
+  end
+  
+  def recommendations_count_to(user)
+    UserRecommendation.count(:conditions => {:sender_id => self, :target_id => user})
   end
 
   def completed_stage? 
@@ -81,6 +103,10 @@ class User < ActiveRecord::Base
     UserRecommendation.create!(options.merge!(:sender => self))
   end
   
+  def can_rate?
+    [1,2,5,6].include? stage_number 
+  end
+
   def can_rate?
     [1,2,5,6].include? stage_number 
   end

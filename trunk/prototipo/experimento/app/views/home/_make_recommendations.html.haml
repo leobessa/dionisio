@@ -1,0 +1,11 @@
+- title "Envio de recomendações"
+
+- users.each do |u|
+  %ul[u]  
+    - x = current_user.recommendations_count_to(u)
+    %li 
+      - if x < 5
+        = "Envie #{5-x} recomendações de produto para"
+      - else
+        = "Já foram enviadas #{x} recomendações de produto para"
+      = link_to u.name, user_ratings_path(u)

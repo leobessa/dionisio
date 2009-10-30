@@ -1,0 +1,9 @@
+<% form_for search do |f| %>
+  <p>
+    <%= f.label :name_like, "Buscar", {:class => :lst} %>
+    <%= f.text_field :name_like, :size => 55, :class => :lst %>
+    <%= f.label :category_id_equals, "Categoria", {:class => :lst} %>
+    <%= f.collection_select :category_id_equals, Category.all, :id, :name, {:include_blank => true}, {:class => :lst} %>
+    <%= f.submit "Buscar", {:class => :lst} %>
+  </p>
+<% end %>

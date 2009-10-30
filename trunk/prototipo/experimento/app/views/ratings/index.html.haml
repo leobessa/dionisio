@@ -1,5 +1,11 @@
-- title "Avaliações"
+- title "Avaliações de produtos"
+= render @user
 
+- if current_user.stage_number == 3 and current_user.friends.include?(@user)
+  %div
+    %strong{:style => 'font-size: 18px'}
+      = link_to "Realizar recomendações", new_user_user_recommendation_path(@user)
+%br
 %table
   %tr
     %th Produto
