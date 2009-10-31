@@ -48,6 +48,34 @@ describe Recommender do
 
       Recommender.pearson_correlation(x,y).should be_close(-0.721,0.001)
     end
+    
+     it "should be -1 when intersection user ratings are totally different" do
+        x = Factory.create :user
+        y = Factory.create :user 
+
+        [{x => 1, y => 5},{x => 5, y => 1},{x => 4, y => 2}].each do |point|               
+          product = Factory :product
+          point.each_pair do |user,stars|
+            Factory :rating, :user => user, :product => product  , :stars => stars
+          end
+        end
+
+        Recommender.pearson_correlation(x,y).should be_close(-1.0,0.001)
+      end
+      
+      it "should be 1 when intersection user ratings are totally equal" do
+          x = Factory.create :user
+          y = Factory.create :user 
+
+          [{x => 5, y => 5},{x => 1, y => 1},{x => 2, y => 2}].each do |point|               
+            product = Factory :product
+            point.each_pair do |user,stars|
+              Factory :rating, :user => user, :product => product  , :stars => stars
+            end
+          end
+
+          Recommender.pearson_correlation(x,y).should == 1.0
+        end
 
   end
 
