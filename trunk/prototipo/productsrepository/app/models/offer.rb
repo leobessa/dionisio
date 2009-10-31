@@ -18,6 +18,10 @@ class Offer < ActiveRecord::Base
     product.brand
   end
   
+  def popularity
+    product.popularity
+  end
+  
   def link
     business.url + path
   end

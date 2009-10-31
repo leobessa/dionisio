@@ -13,6 +13,8 @@ Feature: Parsing submarino offers
     And the category name of the offer should be 'Informática & Acessórios'
     And the offer img_src should be 'http://i.s8.com.br/images/software/cover/img4/21620474.jpg'
     And the offer img_alt should be 'ipod+touch+8gb+-+preto+-+apple'
+    And the offer popularity should be '-20' as integer
+
   
   Scenario: The offer is unavaiable
     Given the uri 'http://www.submarino.com.br/produto/10/21319113' is at the 'unavaliable-product.html' file
