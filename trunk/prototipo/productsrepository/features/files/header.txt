@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: Apache
+X-Powered-By: JSF/1.2
+Content-Type: text/html; charset=UTF-8
+Expires: Sat, 25 Jul 2009 23:37:00 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Sat, 25 Jul 2009 23:37:00 GMT
+Transfer-Encoding:  chunked
+Connection: keep-alive
+Connection: Transfer-Encoding
+Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.br
+
+

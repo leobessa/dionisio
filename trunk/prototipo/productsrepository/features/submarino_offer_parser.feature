@@ -4,15 +4,15 @@ Feature: Parsing submarino offers
   I want to make html scraping in submarino website
   
   Scenario: The offer is avaiable
-    Given the uri 'http://www.submarino.com.br/produto/10/21464400' is at the 'ipod32-avaliable-product.html' file
-    When I fetch the offer in 'http://www.submarino.com.br/produto/10/21464400'
-    Then the offer name should be 'IPod Touch 32GB - Apple'
+    Given the uri 'http://www.submarino.com.br/produto/10/21620474' is at the 'available-product.html' file
+    When I fetch the offer in 'http://www.submarino.com.br/produto/10/21620474'
+    Then the offer name should be 'iPod Touch 8GB - Preto - Apple'
     And the offer brand should be 'APPLE'
-    And the offer list_price should be '134900' as integer
-    And the offer link should be 'http://www.submarino.com.br/produto/10/21464400'
+    And the offer list_price should be '67900' as integer
+    And the offer link should be 'http://www.submarino.com.br/produto/10/21620474'
     And the category name of the offer should be 'Informática & Acessórios'
-    And the offer img_src should be 'http://i.s8.com.br/images/software/cover/img0/21464400.jpg'
-    And the offer img_alt should be 'ipod+touch+32gb+-+apple'
+    And the offer img_src should be 'http://i.s8.com.br/images/software/cover/img4/21620474.jpg'
+    And the offer img_alt should be 'ipod+touch+8gb+-+preto+-+apple'
   
   Scenario: The offer is unavaiable
     Given the uri 'http://www.submarino.com.br/produto/10/21319113' is at the 'unavaliable-product.html' file

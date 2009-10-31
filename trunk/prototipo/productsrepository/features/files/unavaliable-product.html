@@ -11,6 +11,7 @@ Connection: keep-alive
 Connection: Transfer-Encoding
 Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.br
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <html xmlns="http://www.w3.org/1999/xhtml">
       
@@ -27,7 +28,6 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 		<!--[if lte IE 7]><link type="text/css" rel="stylesheet" media="screen" href="http://img.submarino.com.br/css/skeleton_default_IE.css"><![endif]-->
 		
 		<meta http-equiv="Content-Type" content="text/xhtml+xml; charset=UTF-8" />
-		<meta name="WT.ad" content="" />
 		
 		<script type="text/javascript" src="http://img.submarino.com.br/js/prototype.js"></script>
 		<script type="text/javascript" src="http://img.submarino.com.br/js/swfobject.js"></script>
@@ -45,7 +45,8 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 		<script type="text/javascript" language="javascript" src="http://img.submarino.com.br//js/tab_switch.js"></script>
 		<script type="text/javascript" language="javascript" src="http://img.submarino.com.br//js/meusubmarino.js"></script>
 		<script type="text/javascript" language="javascript" src="http://img.submarino.com.br//js/subacatalog.js"></script><script type="text/javascript" src="http://img.submarino.com.br/js/review.js"></script>
-<script type="text/javascript" src="http://www.submarino.com.br/ms/resources/js/rating.js"></script><script type="text/javascript" src="http://www.submarino.com.br/skins/produto/js/estrutural_infoReviews.js"></script>
+<script type="text/javascript" src="http://www.submarino.com.br/ms/resources/js/rating.js"></script><script type="text/javascript" src="http://www.submarino.com.br/skins/produto/js/estrutural_infoReviews.js"></script><META NAME="WT.si_n" CONTENT="ShoppingCartV2"/>
+<META NAME="WT.si_x" CONTENT="1"/>
 		
 	</head>	
 	<body lang="pt">
@@ -93,6 +94,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 			</div>
           
           	<div class="mainNavigationBar">
+          	<div id="boxCart" class="boxCart" onmouseover="javascript:showOn()" onmouseout="javascript:showOff()">
 				<a href="http://www2.submarino.com.br/Basket.aspx" class="myCartBox">
 					<strong class="myCartBox1">
 						<strong class="myCartBox2">
@@ -101,9 +103,16 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 						</strong>
 					</strong>
 					<strong class="shoppingCart">
-						<span><img alt="Meu Carrinho" src="http://img.submarino.com.br/img/cart3.png" /></span>
+						<span id="imgCart13A">Meu Carrinho</span>
 					</strong>
 				</a>
+				<div id="layerCart" class="layerCart">
+						<div id="box13A" class="box13A">
+							<div id="box13B" class="box13B">
+							</div>
+						</div>
+					</div>
+				</div>
 				<script type="text/javascript">setCartHeader()</script>
 	
 				<div class="userMenu">
@@ -164,7 +173,8 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 							  	<li class=""><a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras">C&acirc;meras Digitais &amp; Filmadoras</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/910/Eletrodomesticos">Eletrodom&eacute;sticos</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/1704/Eletroportateis">Eletroport&aacute;teis</a></li>
-							  	<li class=""><a href="http://www.submarino.com.br/menu/847/GPS+Som+Automotivo">GPS &amp; Som Automotivo</a></li>
+							  	<li class=""><a href="http://www.submarino.com.br/menu/202926/gps">GPS</a></li>
+							  	<li class=""><a href="http://www.submarino.com.br/menu/213748/Automotivo">Automotivo</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia">Celulares &amp; Telefonia Fixa</a></li>
 						  </ul>
 					  </div></div>
@@ -195,6 +205,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 						  <ul>
 							  	<li class="first"><a href="http://www.submarino.com.br/menu/488/Cama+Mesa+Banho">Cama, Mesa &amp; Banho</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/546/Ferramentas">Ferramentas</a></li>
+							  	<li class=""><a href="http://www.submarino.com.br/menu/213748/Automotivo">Automotivo</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/910/Eletrodomesticos">Eletrodom&eacute;sticos</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/1704/Eletroportateis">Eletroport&aacute;teis</a></li>
 							  	<li class=""><a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a></li>
@@ -231,115 +242,121 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 					  </div></div>
 				  </li>
 	            	<li class="item" id="item_174" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1060/Livros">Livros</a>
+	                	<a href="http://www.submarino.com.br/menu/1060/Livros" rel="nofollow">Livros</a>
 	            	</li>
 	            	<li class="item" id="item_201083" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/202739/Livros+Importados">Livros Importados</a>
+	                	<a href="http://www.submarino.com.br/menu/202739/Livros+Importados" rel="nofollow">Livros Importados</a>
 	            	</li>
 	            	<li class="item" id="item_175" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1710/Papelaria">Papelaria</a>
+	                	<a href="http://www.submarino.com.br/menu/1710/Papelaria" rel="nofollow">Papelaria</a>
 	            	</li>
 	            	<li class="item" id="item_160" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/547/CDs">CDs</a>
+	                	<a href="http://www.submarino.com.br/menu/547/CDs" rel="nofollow">CDs</a>
 	            	</li>
 	            	<li class="item" id="item_161" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/741/DVDs+Blu-Ray">DVDs</a>
+	                	<a href="http://www.submarino.com.br/menu/741/DVDs+Blu-Ray" rel="nofollow">DVDs</a>
 	            	</li>
 	            	<li class="item" id="item_212348" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/746/blu-ray">Blu-Ray</a>
+	                	<a href="http://www.submarino.com.br/menu/746/blu-ray" rel="nofollow">Blu-Ray</a>
 	            	</li>
 	            	<li class="item" id="item_1219" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1471/Games">Games</a>
+	                	<a href="http://www.submarino.com.br/menu/1471/Games" rel="nofollow">Games</a>
 	            	</li>
 	            	<li class="item" id="item_201084" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais">Instrumentos Musicais</a>
+	                	<a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais" rel="nofollow">Instrumentos Musicais</a>
 	            	</li>
 	            	<li class="item" id="item_201085" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/662/Notebooks+Computadores">Inform&aacute;tica &amp; Acess&oacute;rios</a>
+	                	<a href="http://www.submarino.com.br/menu/662/Notebooks+Computadores" rel="nofollow">Inform&aacute;tica &amp; Acess&oacute;rios</a>
 	            	</li>
 	            	<li class="item" id="item_201087" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia">Celulares &amp; Telefonia Fixa</a>
+	                	<a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia" rel="nofollow">Celulares &amp; Telefonia Fixa</a>
 	            	</li>
 	            	<li class="item" id="item_201088" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras">C&acirc;meras Digitais &amp; Filmadoras</a>
+	                	<a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras" rel="nofollow">C&acirc;meras Digitais &amp; Filmadoras</a>
 	            	</li>
 	            	<li class="item" id="item_206001" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1471/Games">Games</a>
+	                	<a href="http://www.submarino.com.br/menu/1471/Games" rel="nofollow">Games</a>
 	            	</li>
 	            	<li class="item" id="item_165" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a>
+	                	<a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video" rel="nofollow">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a>
 	            	</li>
 	            	<li class="item" id="item_164" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras">C&acirc;meras Digitais &amp; Filmadoras</a>
+	                	<a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras" rel="nofollow">C&acirc;meras Digitais &amp; Filmadoras</a>
 	            	</li>
 	            	<li class="item" id="item_166" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/910/Eletrodomesticos">Eletrodom&eacute;sticos</a>
+	                	<a href="http://www.submarino.com.br/menu/910/Eletrodomesticos" rel="nofollow">Eletrodom&eacute;sticos</a>
 	            	</li>
 	            	<li class="item" id="item_167" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1704/Eletroportateis">Eletroport&aacute;teis</a>
+	                	<a href="http://www.submarino.com.br/menu/1704/Eletroportateis" rel="nofollow">Eletroport&aacute;teis</a>
 	            	</li>
 	            	<li class="item" id="item_168" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/847/GPS+Som+Automotivo">GPS &amp; Som Automotivo</a>
+	                	<a href="http://www.submarino.com.br/menu/202926/gps" rel="nofollow">GPS</a>
+	            	</li>
+	            	<li class="item" id="item_214508" style="display:none;">
+	                	<a href="http://www.submarino.com.br/menu/213748/Automotivo" rel="nofollow">Automotivo</a>
 	            	</li>
 	            	<li class="item" id="item_201378" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia">Celulares &amp; Telefonia Fixa</a>
+	                	<a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia" rel="nofollow">Celulares &amp; Telefonia Fixa</a>
 	            	</li>
 	            	<li class="item" id="item_171" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1706/Esporte+Lazer">Esporte &amp; Lazer</a>
+	                	<a href="http://www.submarino.com.br/menu/1706/Esporte+Lazer" rel="nofollow">Esporte &amp; Lazer</a>
 	            	</li>
 	            	<li class="item" id="item_201089" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/201365/Bicicletas+Acessorios">Bicicletas</a>
+	                	<a href="http://www.submarino.com.br/menu/201365/Bicicletas+Acessorios" rel="nofollow">Bicicletas</a>
 	            	</li>
 	            	<li class="item" id="item_201090" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/201371/Fitness">Fitness</a>
+	                	<a href="http://www.submarino.com.br/menu/201371/Fitness" rel="nofollow">Fitness</a>
 	            	</li>
 	            	<li class="item" id="item_201388" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais">Instrumentos Musicais</a>
+	                	<a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais" rel="nofollow">Instrumentos Musicais</a>
 	            	</li>
 	            	<li class="item" id="item_181" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1705/Vinhos+Bebidas">Vinhos &amp; Bebidas</a>
+	                	<a href="http://www.submarino.com.br/menu/1705/Vinhos+Bebidas" rel="nofollow">Vinhos &amp; Bebidas</a>
 	            	</li>
 	            	<li class="item" id="item_201091" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/201502/Comidas+Cia">Comidas &amp; Cia</a>
+	                	<a href="http://www.submarino.com.br/menu/201502/Comidas+Cia" rel="nofollow">Comidas &amp; Cia</a>
 	            	</li>
 	            	<li class="item" id="item_156" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/488/Cama+Mesa+Banho">Cama, Mesa &amp; Banho</a>
+	                	<a href="http://www.submarino.com.br/menu/488/Cama+Mesa+Banho" rel="nofollow">Cama, Mesa &amp; Banho</a>
 	            	</li>
 	            	<li class="item" id="item_157" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/546/Ferramentas">Ferramentas</a>
+	                	<a href="http://www.submarino.com.br/menu/546/Ferramentas" rel="nofollow">Ferramentas</a>
+	            	</li>
+	            	<li class="item" id="item_214509" style="display:none;">
+	                	<a href="http://www.submarino.com.br/menu/213748/Automotivo" rel="nofollow">Automotivo</a>
 	            	</li>
 	            	<li class="item" id="item_201092" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/910/Eletrodomesticos">Eletrodom&eacute;sticos</a>
+	                	<a href="http://www.submarino.com.br/menu/910/Eletrodomesticos" rel="nofollow">Eletrodom&eacute;sticos</a>
 	            	</li>
 	            	<li class="item" id="item_201093" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1704/Eletroportateis">Eletroport&aacute;teis</a>
+	                	<a href="http://www.submarino.com.br/menu/1704/Eletroportateis" rel="nofollow">Eletroport&aacute;teis</a>
 	            	</li>
 	            	<li class="item" id="item_206009" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a>
+	                	<a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video" rel="nofollow">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a>
 	            	</li>
 	            	<li class="item" id="item_158" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1712/Utilidades+Domesticas">Utilidades Dom&eacute;sticas</a>
+	                	<a href="http://www.submarino.com.br/menu/1712/Utilidades+Domesticas" rel="nofollow">Utilidades Dom&eacute;sticas</a>
 	            	</li>
 	            	<li class="item" id="item_206351" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1711/Perfumaria">Perfumaria</a>
+	                	<a href="http://www.submarino.com.br/menu/1711/Perfumaria" rel="nofollow">Perfumaria</a>
 	            	</li>
 	            	<li class="item" id="item_149" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/342/Beleza+Saude">Beleza &amp; Sa&uacute;de</a>
+	                	<a href="http://www.submarino.com.br/menu/342/Beleza+Saude" rel="nofollow">Beleza &amp; Sa&uacute;de</a>
 	            	</li>
 	            	<li class="item" id="item_178" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1709/Moda+e+Acess&oacute;rios">Moda &amp; Acess&oacute;rios</a>
+	                	<a href="http://www.submarino.com.br/menu/1709/Moda+e+Acess&oacute;rios" rel="nofollow">Moda &amp; Acess&oacute;rios</a>
 	            	</li>
 	            	<li class="item" id="item_179" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1708/Relogios+Presentes">Rel&oacute;gios &amp; Presentes</a>
+	                	<a href="http://www.submarino.com.br/menu/1708/Relogios+Presentes" rel="nofollow">Rel&oacute;gios &amp; Presentes</a>
 	            	</li>
 	            	<li class="item" id="item_206418" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/1711/Perfumaria">Perfumaria</a>
+	                	<a href="http://www.submarino.com.br/menu/1711/Perfumaria" rel="nofollow">Perfumaria</a>
 	            	</li>
 	            	<li class="item" id="item_146" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/184/Bebes">Beb&ecirc;s</a>
+	                	<a href="http://www.submarino.com.br/menu/184/Bebes" rel="nofollow">Beb&ecirc;s</a>
 	            	</li>
 	            	<li class="item" id="item_147" style="display:none;">
-	                	<a href="http://www.submarino.com.br/menu/379/Brinquedos">Brinquedos</a>
+	                	<a href="http://www.submarino.com.br/menu/379/Brinquedos" rel="nofollow">Brinquedos</a>
 	            	</li>
 	          
 		        <li id="allStores" class="item" onmouseover="this.className+=' over'; hideOption();" onmouseout="this.className=this.className.replace(new RegExp(' over\\b'), ''); unhideOption();" style="display: none;">
@@ -357,30 +374,30 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 													<li class="col1">
 														<ul>
 																<li>
-																	<strong><a href="#">Livros &amp; Papelaria</a></strong>
+																	<strong><a href="#" rel="nofollow">Livros &amp; Papelaria</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/1060/Livros">Livros</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/202739/Livros+Importados">Livros Importados</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1710/Papelaria">Papelaria</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1060/Livros" rel="nofollow">Livros</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/202739/Livros+Importados" rel="nofollow">Livros Importados</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1710/Papelaria" rel="nofollow">Papelaria</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">CDs, DVDs &amp; Games</a></strong>
+																	<strong><a href="#" rel="nofollow">CDs, DVDs &amp; Games</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/547/CDs">CDs</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/741/DVDs+Blu-Ray">DVDs</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/746/blu-ray">Blu-Ray</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1471/Games">Games</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais">Instrumentos Musicais</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/547/CDs" rel="nofollow">CDs</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/741/DVDs+Blu-Ray" rel="nofollow">DVDs</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/746/blu-ray" rel="nofollow">Blu-Ray</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1471/Games" rel="nofollow">Games</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais" rel="nofollow">Instrumentos Musicais</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">Inform&aacute;tica &amp; Celulares</a></strong>
+																	<strong><a href="#" rel="nofollow">Inform&aacute;tica &amp; Celulares</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/662/Notebooks+Computadores">Inform&aacute;tica &amp; Acess&oacute;rios</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia">Celulares &amp; Telefonia Fixa</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras">C&acirc;meras Digitais &amp; Filmadoras</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1471/Games">Games</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/662/Notebooks+Computadores" rel="nofollow">Inform&aacute;tica &amp; Acess&oacute;rios</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia" rel="nofollow">Celulares &amp; Telefonia Fixa</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras" rel="nofollow">C&acirc;meras Digitais &amp; Filmadoras</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1471/Games" rel="nofollow">Games</a></li>
 																	</ul>
 																</li>
 														</ul>
@@ -389,30 +406,31 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 													<li class="col2">
 														<ul>
 																<li>
-																	<strong><a href="#">Eletr&ocirc;nicos, C&acirc;meras &amp; Eletrodom&eacute;sticos</a></strong>
+																	<strong><a href="#" rel="nofollow">Eletr&ocirc;nicos, C&acirc;meras &amp; Eletrodom&eacute;sticos</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras">C&acirc;meras Digitais &amp; Filmadoras</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/910/Eletrodomesticos">Eletrodom&eacute;sticos</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1704/Eletroportateis">Eletroport&aacute;teis</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/847/GPS+Som+Automotivo">GPS &amp; Som Automotivo</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia">Celulares &amp; Telefonia Fixa</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video" rel="nofollow">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/968/Cameras+Digitais+Filmadoras" rel="nofollow">C&acirc;meras Digitais &amp; Filmadoras</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/910/Eletrodomesticos" rel="nofollow">Eletrodom&eacute;sticos</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1704/Eletroportateis" rel="nofollow">Eletroport&aacute;teis</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/202926/gps" rel="nofollow">GPS</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/213748/Automotivo" rel="nofollow">Automotivo</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1030/Celular+Telefonia" rel="nofollow">Celulares &amp; Telefonia Fixa</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">Esporte &amp; Lazer</a></strong>
+																	<strong><a href="#" rel="nofollow">Esporte &amp; Lazer</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/1706/Esporte+Lazer">Esporte &amp; Lazer</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/201365/Bicicletas+Acessorios">Bicicletas</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/201371/Fitness">Fitness</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais">Instrumentos Musicais</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1706/Esporte+Lazer" rel="nofollow">Esporte &amp; Lazer</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/201365/Bicicletas+Acessorios" rel="nofollow">Bicicletas</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/201371/Fitness" rel="nofollow">Fitness</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1707/Instrumentos+Musicais" rel="nofollow">Instrumentos Musicais</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">Alimentos &amp; Bebidas</a></strong>
+																	<strong><a href="#" rel="nofollow">Alimentos &amp; Bebidas</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/1705/Vinhos+Bebidas">Vinhos &amp; Bebidas</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/201502/Comidas+Cia">Comidas &amp; Cia</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1705/Vinhos+Bebidas" rel="nofollow">Vinhos &amp; Bebidas</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/201502/Comidas+Cia" rel="nofollow">Comidas &amp; Cia</a></li>
 																	</ul>
 																</li>
 														</ul>
@@ -421,42 +439,43 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 													<li class="col3">
 														<ul>
 																<li>
-																	<strong><a href="#">Casa, Cozinha &amp; Jardim</a></strong>
+																	<strong><a href="#" rel="nofollow">Casa, Cozinha &amp; Jardim</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/488/Cama+Mesa+Banho">Cama, Mesa &amp; Banho</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/546/Ferramentas">Ferramentas</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/910/Eletrodomesticos">Eletrodom&eacute;sticos</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1704/Eletroportateis">Eletroport&aacute;teis</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1712/Utilidades+Domesticas">Utilidades Dom&eacute;sticas</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/488/Cama+Mesa+Banho" rel="nofollow">Cama, Mesa &amp; Banho</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/546/Ferramentas" rel="nofollow">Ferramentas</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/213748/Automotivo" rel="nofollow">Automotivo</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/910/Eletrodomesticos" rel="nofollow">Eletrodom&eacute;sticos</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1704/Eletroportateis" rel="nofollow">Eletroport&aacute;teis</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/840/Eletronicos+Audio+Video" rel="nofollow">Eletr&ocirc;nicos Audio &amp; V&iacute;deo</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1712/Utilidades+Domesticas" rel="nofollow">Utilidades Dom&eacute;sticas</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">Perfume, Beleza &amp; Sa&uacute;de</a></strong>
+																	<strong><a href="#" rel="nofollow">Perfume, Beleza &amp; Sa&uacute;de</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/1711/Perfumaria">Perfumaria</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/342/Beleza+Saude">Beleza &amp; Sa&uacute;de</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1711/Perfumaria" rel="nofollow">Perfumaria</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/342/Beleza+Saude" rel="nofollow">Beleza &amp; Sa&uacute;de</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">Moda &amp; Rel&oacute;gios</a></strong>
+																	<strong><a href="#" rel="nofollow">Moda &amp; Rel&oacute;gios</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/1709/Moda+e+Acess&oacute;rios">Moda &amp; Acess&oacute;rios</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1708/Relogios+Presentes">Rel&oacute;gios &amp; Presentes</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/1711/Perfumaria">Perfumaria</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1709/Moda+e+Acess&oacute;rios" rel="nofollow">Moda &amp; Acess&oacute;rios</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1708/Relogios+Presentes" rel="nofollow">Rel&oacute;gios &amp; Presentes</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/1711/Perfumaria" rel="nofollow">Perfumaria</a></li>
 																	</ul>
 																</li>
 																<li>
-																	<strong><a href="#">Beb&ecirc;s &amp; Brinquedos</a></strong>
+																	<strong><a href="#" rel="nofollow">Beb&ecirc;s &amp; Brinquedos</a></strong>
 																	<ul>
-																			<li><a href="http://www.submarino.com.br/menu/184/Bebes">Beb&ecirc;s</a></li>
-																			<li><a href="http://www.submarino.com.br/menu/379/Brinquedos">Brinquedos</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/184/Bebes" rel="nofollow">Beb&ecirc;s</a></li>
+																			<li><a href="http://www.submarino.com.br/menu/379/Brinquedos" rel="nofollow">Brinquedos</a></li>
 																	</ul>
 																</li>
 															
 															<!-- 
 															<li class="topDepart2 col3">
-																<c:forEach varStatus="statusItem" items="[com.b2winc.xml.menu.MenuItem@2ce864c, com.b2winc.xml.menu.MenuItem@2ce86ff, com.b2winc.xml.menu.MenuItem@2ce8756, com.b2winc.xml.menu.MenuItem@2ce879c, com.b2winc.xml.menu.MenuItem@2ce87e2, com.b2winc.xml.menu.MenuItem@2ce882b, com.b2winc.xml.menu.MenuItem@2ce8875, com.b2winc.xml.menu.MenuItem@2ce88bf, com.b2winc.xml.menu.MenuItem@2ce8905, com.b2winc.xml.menu.MenuItem@2ce894c, com.b2winc.xml.menu.MenuItem@2ce8997]" 
+																<c:forEach varStatus="statusItem" items="[com.b2winc.xml.menu.MenuItem@5f90e0e, com.b2winc.xml.menu.MenuItem@5f90ec1, com.b2winc.xml.menu.MenuItem@5f90f18, com.b2winc.xml.menu.MenuItem@5f90f6c, com.b2winc.xml.menu.MenuItem@5f90fb7, com.b2winc.xml.menu.MenuItem@5f90ffd, com.b2winc.xml.menu.MenuItem@5f91046, com.b2winc.xml.menu.MenuItem@5f91090, com.b2winc.xml.menu.MenuItem@5f910da, com.b2winc.xml.menu.MenuItem@5f91120, com.b2winc.xml.menu.MenuItem@5f91167]" 
 																	begin="9" end="10" var="item">
 																	<c:set var="indice" value="1" />							
 																	<strong><a href=""></a></strong>															
@@ -545,7 +564,8 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="164" /><label>C&acirc;meras Digitais &amp; Filmadoras</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="166" /><label>Eletrodom&eacute;sticos</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="167" /><label>Eletroport&aacute;teis</label></li>
-											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="168" /><label>GPS &amp; Som Automotivo</label></li>
+											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="168" /><label>GPS</label></li>
+											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="214508" /><label>Automotivo</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="201378" /><label>Celulares &amp; Telefonia Fixa</label></li>
 										                </ul>
 										             </div>
@@ -581,6 +601,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 										             	<ul>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="156" /><label>Cama, Mesa &amp; Banho</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="157" /><label>Ferramentas</label></li>
+											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="214509" /><label>Automotivo</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="201092" /><label>Eletrodom&eacute;sticos</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="201093" /><label>Eletroport&aacute;teis</label></li>
 											               	<li><input type="checkbox" onclick="if (this.checked) {choices(this.value);}" class="optionDelivery" name="option" value="206009" /><label>Eletr&ocirc;nicos Audio &amp; V&iacute;deo</label></li>
@@ -639,14 +660,14 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
               <ul>
               	<li><a href="http://www.submarinoviagens.com.br/HomeSubmarino.vxlpub?utm_source=submarino&amp;utm_medium=menuprincipal&amp;utm_campaign=institucional">Submarino Viagens</a></li>
                 	<li id="item_middle_0" style=""><a href="http://www.ingresso.com.br/br/home/default.asp?parceria=submarino&amp;T_PARCERIA=submarino&amp;Busca=1&amp;ParceriaBusca=submarino">Ingressos</a></li>
-                	<li id="item_middle_1" style=""><a href="http://www.submarino.com.br/wedding.asp">Lista de Casamento</a></li>
-                	<li id="item_middle_2" style="display:none;"><a href="http://www.submarino.com.br/portal/servicos">Servi&ccedil;os Digitais</a></li>
-                	<li id="item_middle_3" style="display:none;"><a href="http://www.submarino.com.br/portal/revelacao-digital">Revela&ccedil;&atilde;o Digital</a></li>
-                	<li id="item_middle_4" style="display:none;"><a href="http://www.submarino.com.br/portal/central-de-presentes">Central de Presentes</a></li>
-                	<li id="item_middle_5" style="display:none;"><a href="http://www.submarino.com.br/portal/tudo-para-smartphone">Tudo para SmartPhone</a></li>
-                	<li id="item_middle_6" style="display:none;"><a href="http://www.submarino.com.br/entregaatomica">Entrega At&ocirc;mica</a></li>
-                	<li id="item_middle_7" style="display:none;"><a href="http://www.submarino.com.br/portal/vale-presente">Vale Presente</a></li>
-                	<li id="item_middle_8" style="display:none;"><a href="http://www.submarino.com.br/portal/central-de-lancamentos">Central de Lan&ccedil;amentos</a></li>
+                	<li id="item_middle_1" style=""><a href="http://www.blockbusteronline.com.br/submarino2/?WT.mc_id=blocksub_menu_hsub1mm&amp;WT.mc_ev=click">Aluguel de Filmes</a></li>
+                	<li id="item_middle_2" style="display:none;"><a href="http://www.submarino.com.br/portal/central-de-lancamentos">Central de Lan&ccedil;amentos</a></li>
+                	<li id="item_middle_3" style="display:none;"><a href="http://www.submarino.com.br/portal/servicos">Servi&ccedil;os Digitais</a></li>
+                	<li id="item_middle_4" style="display:none;"><a href="http://www.submarino.com.br/portal/revelacao-digital">Revela&ccedil;&atilde;o Digital</a></li>
+                	<li id="item_middle_5" style="display:none;"><a href="http://www.submarino.com.br/portal/central-de-presentes">Central de Presentes</a></li>
+                	<li id="item_middle_6" style="display:none;"><a href="http://www.submarino.com.br/portal/tudo-para-smartphone">Tudo para SmartPhone</a></li>
+                	<li id="item_middle_7" style="display:none;"><a href="http://www.submarino.com.br/entregaatomica">Entrega At&ocirc;mica</a></li>
+                	<li id="item_middle_8" style="display:none;"><a href="http://www.submarino.com.br/portal/vale-presente">Vale Presente</a></li>
               	<li><a href="http://www.submarino.com.br/lista-de-desejos">Lista de Desejos</a></li>
               </ul>
             </li>
@@ -681,7 +702,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
           		<div class="mainSubMenu">
 					<ul class="subMenu">
 						<!-- Pegar id do menu do menu -->
-							<li><a href="/portal/Especial-Notebooks?menuId=666">Notebooks &amp; Acess&oacute;rios</a></li>
+							<li><a href="/notebook">Notebooks &amp; Acess&oacute;rios</a></li>
 							<li><a href="/menu/663/computadores">Computadores</a></li>
 							<li><a href="/menu/665/monitores+lcd">Monitores LCD</a></li>
 							<li><a href="/menu/667/impressao+e+imagem">Impress&atilde;o e Imagem</a></li>
@@ -705,7 +726,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 
 	
 	
-	<ul class="breadcrumb"> <li><a href="/menu/662/informatica+e+acessorios">Inform&aacute;tica &amp; Acess&oacute;rios</a> &gt;</li> <li><a href="/menu/664/apple">Apple</a> &gt;</li> <li class="selected"><h1><a href="/menu/690/ipod">iPod</a></h1></li>
+	<ul class="breadcrumb"> <li><a href="http://www.submarino.com.br/menu/662/Notebooks+Computadores">Inform&aacute;tica &amp; Acess&oacute;rios</a> &gt;</li> <li><a href="/menu/664/apple">Apple</a> &gt;</li> <li class="selected"><h1><a href="/menu/690/ipod">iPod</a></h1></li>
 	</ul>
 	
 </div><!-- Fim do componente  -->
@@ -1021,8 +1042,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 			<div class="ficheTechnique" id="C1" style="">
 				
 				<ul>
-						<li>
-							<strong>Descri&ccedil;&atilde;o: </strong>Um iPod para você visualizar fotos, personalizar músicas e muito mais!<br>Tenha em mãos esse lançamento que a Apple fez especialmente para você.<br><br><b>Música</b><br>  Se uma imagem vale mil palavras, imagine quanto não valem todos os álbuns na sua coleção. Com o Cover Flow no iPod touch, percorra músicas e encontre o álbum que deseja ouvir. Quando o encontrar, basta tocar na capa para a ativar e apresentar uma lista de faixas. Um outro toque dará início à reprodução. Você pode até visualizar a letra da canção enquanto reproduz a faixa.<br><br>  <b>Vídeos</b><br><li>A tela de 3,5 polegadas proporciona vídeo como nunca antes visto num dispositivo portátil.<br>  <li>Desfrute de podcasts de vídeo.<br><li>Reproduza vídeos de música. Tudo utilizando tecnologia Multi-Touch.<br><li>Com um toque, faça surgir comandos na tela para reproduzir/pausar e visualizar por capítulo.<br><li>Rode o iPod touch para alternar entre tela widescreen panorâmico e tela cheia.<br><br><b>Fotos</b><br><li>O iPod touch armazena até 25.000 fotografias, sincronizadas através do iTunes.<br><li>Passe com o dedo para percorrer as miniaturas.<br><li>Toque para visualizar em tela cheia.<br>  <li>Rode para formato de paisagem. Ou faça mágica com as mãos, abrindo dois dedos para aproximar a imagem.<br><li>Você pode até reproduzir apresentações com música e transições.<br><li>Defina qualquer fotografia como fundo de tela para personalizar o iPod touch...com um só toque.<br><br><b>Tela Inicial Personalizável</b><br><li>Crie sua própria tela inicial para o iPod touch.<br><li>Altere os itens do Dock.<br><li>Reorganize os ícones.<br><li>Crie espaço para ainda mais. Você pode adicionar até oito páginas de tela inicial e preenchê-las com Web Clips.<br><br><b>Internet</b><br><br>  <i>Safari</i><br><li>O iPod touch é o único iPod com acesso sem fios à Internet.<br><li>O Safari encontra-se integrado, para que você visualize as páginas da Internet da forma como foram concebidas para serem visualizadas.<br><li>Pesquise na Internet utilizando o teclado na tela Multi-Touch.<br><li>Aproxime e afaste tocando no tela Multi-Touch.<br><li>Alterne entre a vista de retrato ou paisagem, dependendo da forma como segura o iPod touch.<br><li>Sincronize os seus favoritos. Melhor ainda, adicione-os ao menu da tela inicial. O iPod touch pode criar automaticamente um Web Clip na tela inicial a partir de qualquer uma das suas páginas da Internet favoritas.<br><li>Basta um toque para você entrar na página.<br><br><li>Capacidade: 16GB.<br>  <li>Duração da bateria: até 22 horas reproduzindo músicas e até 5 horas reproduzindo vídeos.<br>  <li>Tela: 3.5 pol. (diagonal) widescreen com sensor de multi toque.<br>  <li>Portas: conector do Dock, minijack estéreo.<br>  <li>Conectividade: USB através do dock, vídeo composto (com cabo AV, vendido separadamente) e saída de áudio para linha ou fone através do Dock Universal (vendido separadamente).<br>  <li>Dados sem-fio: Wi-Fi (802.11b/g).<br>  <li>Tempo de recarga: aprox. 3h (1,5h para 80% da capacidade).<br>  <li>Suporte de Áudio: AAC (16 a 320 Kbps), Protected AAC (da iTunes Store), MP3 (16 a 320 Kbps), MP3 VBR, Audible (formatos 2, 3 e 4), Apple Lossless, WAV, AIFF.<br>  <li>Suporte de Foto: sincronismo com imagens visíveis no iPod nos formatos JPEG, BMP, GIF, TIFF, PSD (somente Mac), e PNG.<br>  <li>Suporte de Vídeo: Vídeo H.264, até 1,5 Mbps, 640 por 480 pixels, 30 frames por seg., Baseline Low-Complexity Profile com áudio AAC-LC até 160 Kbps, 48 kHz, áudio estéreo nos formatos de arquivo .m4v, .mp4, e .mov; Vídeo H.264, até 768 Kbps, 320 por 240 pixels, 30 frames por seg., Baseline Profile até Level 1.3 com áudio AAC-LC até 160 Kbps, 48 kHz, áudio estéreo nos formatos de arquivo .m4v, .mp4, e .mov; Vídeo MPEG-4, até 2.5 Mbps, 640 por 480 pixels, 30 frames por seg., Simple Profile com áudio AAC-LC até 160 Kbps, 48 kHz, áudio estéreo no formatos de arquivo .m4v, .mp4, e .mov.<br><br>
+						<li>Um iPod para você visualizar fotos, personalizar músicas e muito mais!<br>Tenha em mãos esse lançamento que a Apple fez especialmente para você.<br><br><b>Música</b><br>  Se uma imagem vale mil palavras, imagine quanto não valem todos os álbuns na sua coleção. Com o Cover Flow no iPod touch, percorra músicas e encontre o álbum que deseja ouvir. Quando o encontrar, basta tocar na capa para a ativar e apresentar uma lista de faixas. Um outro toque dará início à reprodução. Você pode até visualizar a letra da canção enquanto reproduz a faixa.<br><br>  <b>Vídeos</b><br><li>A tela de 3,5 polegadas proporciona vídeo como nunca antes visto num dispositivo portátil.<br>  <li>Desfrute de podcasts de vídeo.<br><li>Reproduza vídeos de música. Tudo utilizando tecnologia Multi-Touch.<br><li>Com um toque, faça surgir comandos na tela para reproduzir/pausar e visualizar por capítulo.<br><li>Rode o iPod touch para alternar entre tela widescreen panorâmico e tela cheia.<br><br><b>Fotos</b><br><li>O iPod touch armazena até 25.000 fotografias, sincronizadas através do iTunes.<br><li>Passe com o dedo para percorrer as miniaturas.<br><li>Toque para visualizar em tela cheia.<br>  <li>Rode para formato de paisagem. Ou faça mágica com as mãos, abrindo dois dedos para aproximar a imagem.<br><li>Você pode até reproduzir apresentações com música e transições.<br><li>Defina qualquer fotografia como fundo de tela para personalizar o iPod touch...com um só toque.<br><br><b>Tela Inicial Personalizável</b><br><li>Crie sua própria tela inicial para o iPod touch.<br><li>Altere os itens do Dock.<br><li>Reorganize os ícones.<br><li>Crie espaço para ainda mais. Você pode adicionar até oito páginas de tela inicial e preenchê-las com Web Clips.<br><br><b>Internet</b><br><br>  <i>Safari</i><br><li>O iPod touch é o único iPod com acesso sem fios à Internet.<br><li>O Safari encontra-se integrado, para que você visualize as páginas da Internet da forma como foram concebidas para serem visualizadas.<br><li>Pesquise na Internet utilizando o teclado na tela Multi-Touch.<br><li>Aproxime e afaste tocando no tela Multi-Touch.<br><li>Alterne entre a vista de retrato ou paisagem, dependendo da forma como segura o iPod touch.<br><li>Sincronize os seus favoritos. Melhor ainda, adicione-os ao menu da tela inicial. O iPod touch pode criar automaticamente um Web Clip na tela inicial a partir de qualquer uma das suas páginas da Internet favoritas.<br><li>Basta um toque para você entrar na página.<br><br><li>Capacidade: 16GB.<br>  <li>Duração da bateria: até 22 horas reproduzindo músicas e até 5 horas reproduzindo vídeos.<br>  <li>Tela: 3.5 pol. (diagonal) widescreen com sensor de multi toque.<br>  <li>Portas: conector do Dock, minijack estéreo.<br>  <li>Conectividade: USB através do dock, vídeo composto (com cabo AV, vendido separadamente) e saída de áudio para linha ou fone através do Dock Universal (vendido separadamente).<br>  <li>Dados sem-fio: Wi-Fi (802.11b/g).<br>  <li>Tempo de recarga: aprox. 3h (1,5h para 80% da capacidade).<br>  <li>Suporte de Áudio: AAC (16 a 320 Kbps), Protected AAC (da iTunes Store), MP3 (16 a 320 Kbps), MP3 VBR, Audible (formatos 2, 3 e 4), Apple Lossless, WAV, AIFF.<br>  <li>Suporte de Foto: sincronismo com imagens visíveis no iPod nos formatos JPEG, BMP, GIF, TIFF, PSD (somente Mac), e PNG.<br>  <li>Suporte de Vídeo: Vídeo H.264, até 1,5 Mbps, 640 por 480 pixels, 30 frames por seg., Baseline Low-Complexity Profile com áudio AAC-LC até 160 Kbps, 48 kHz, áudio estéreo nos formatos de arquivo .m4v, .mp4, e .mov; Vídeo H.264, até 768 Kbps, 320 por 240 pixels, 30 frames por seg., Baseline Profile até Level 1.3 com áudio AAC-LC até 160 Kbps, 48 kHz, áudio estéreo nos formatos de arquivo .m4v, .mp4, e .mov; Vídeo MPEG-4, até 2.5 Mbps, 640 por 480 pixels, 30 frames por seg., Simple Profile com áudio AAC-LC até 160 Kbps, 48 kHz, áudio estéreo no formatos de arquivo .m4v, .mp4, e .mov.<br><br>
 						</li>
 				</ul>
 			</div>	
@@ -1031,13 +1051,13 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 				
 				<ul>
 						<li>
-							<strong>Marca: </strong>APPLE
+								<strong>Marca: </strong>APPLE
 						</li>
 						<li>
-							<strong>Modelo: </strong>MA627ZY/B
+								<strong>Modelo: </strong>MA627ZY/B
 						</li>
 						<li>
-							<strong>Garantia: </strong>Contra Defeitos de Fabricação
+								<strong>Garantia: </strong>Contra Defeitos de Fabricação
 						</li>
 				</ul>
 			</div>	
@@ -1046,7 +1066,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 				
 				<ul>
 						<li>
-							<strong>Requisitos: </strong><li>Computador Mac com porta USB 2.0.<br>vMac OS X v10.4.10 ou posterior.<br><li>iTunes 7.6 ou posterior.<br><br><b>Windows</b><li>PC com porta USB 2.0.<br><li>Windows Vista ou Windows XP Home ou Professional com Service Pack 2 ou posterior.<br><li>iTunes 7.6 ou posterior.<br><br>
+								<strong>Requisitos: </strong><li>Computador Mac com porta USB 2.0.<br>vMac OS X v10.4.10 ou posterior.<br><li>iTunes 7.6 ou posterior.<br><br><b>Windows</b><li>PC com porta USB 2.0.<br><li>Windows Vista ou Windows XP Home ou Professional com Service Pack 2 ou posterior.<br><li>iTunes 7.6 ou posterior.<br><br>
 						</li>
 				</ul>
 			</div>	
@@ -1055,7 +1075,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 				
 				<ul>
 						<li>
-							<strong>Itens Inclusos: </strong><li>iPod 16GB.<br><li>Fone de ouvido.<br><li>Cabo USB.<br><li>Adaptador dock.<br><li>Flanela para limpeza e suporte.<br><br>
+								<strong>Itens Inclusos: </strong><li>iPod 16GB.<br><li>Fone de ouvido.<br><li>Cabo USB.<br><li>Adaptador dock.<br><li>Flanela para limpeza e suporte.<br><br>
 						</li>
 				</ul>
 			</div>	
@@ -1263,8 +1283,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 </a>
 </div>
 <div>
-<a href="http://www.submarino.com.br/portal/almanaquepais/?WT.mc_id=selaoalmanaque&WT.mc_ev=click"><img border="0" alt="Almanaque Pais" src="http://i.s8.com.br/images/skins/pecas/home/banners/banner_almanaque6.jpg"/>
-</a>
+<!-- <a href="/blockbuster/?WT.mc_id=selao&WT.mc_ev=click"><img border="0" alt="Blockbuster" src="http://i.s8.com.br/images/skins/pecas/blockbuster/selao2.jpg"/></a> -->
 </div>
 				</div>
 			</div>
@@ -1290,7 +1309,7 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
 		<div onmouseover="this.className+=' selected';" onmouseout="this.className=this.className.replace(new RegExp(' selected\\b'), '');" class="sharePage3">
 			<div class="sharePage4"><strong class="shareTitle">Compartilhe esta página: </strong>
 				<div class="shareInfo"> 
-					(<a href="#">o que é isto?</a>)
+					(<a href="#" rel="nofollow">o que é isto?</a>)
 					<div class="boxMoreInfo">
                     	<div class="box6">
 	    	                <div class="box6A">
@@ -1304,15 +1323,15 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
             </div>
         </div>
         <ul class="sharePageIcons">
-            <li><a id="comp_delicious" target="_blank" href="http://del.icio.us/post?url=http://www.submarino.com.br/portal/dvds-high-school-musical3/21465658/?listid=sl06hsm3"><img alt="Adicionar ao delicious" src="http://img.submarino.com.br/img/imgIcon01.gif"/></a></li>
-            <li><a id="comp_digg" target="_blank" href="http://digg.com/submit?phase=2&amp;url=http://www.submarino.com.br/portal/dvds-high-school-musical3/21465658/?listid=sl06hsm3"><img alt="Adicionar ao digg" src="http://img.submarino.com.br/img/imgIcon02.gif"/></a></li>
-            <li><a id="comp_facebook" target="_blank" href="http://www.facebook.com/share.php?u=http://www.submarino.com.br/portal/dvds-high-school-musical3/21465658/?listid=sl06hsm3"><img alt="Adicionar ao facebook" src="http://img.submarino.com.br/img/imgIcon03.gif"/></a></li>
-            <li><a id="comp_technorati" target="_blank" href="http://www.technorati.com/faves?add=http://www.submarino.com.br/portal/dvds-high-school-musical3/21465658/?listid=sl06hsm3"><img alt="Adicionar ao technorati" src="http://img.submarino.com.br/img/imgIcon04.gif"/></a></li>
+            <li><a id="comp_delicious" target="_blank" href="http://del.icio.us/post?url=http://www.submarino.com.br" rel="nofollow"><img alt="Adicionar ao delicious" src="http://img.submarino.com.br/img/imgIcon01.gif"/></a></li>
+            <li><a id="comp_digg" target="_blank" href="http://digg.com/submit?phase=2&amp;url=http://www.submarino.com.br" rel="nofollow"><img alt="Adicionar ao digg" src="http://img.submarino.com.br/img/imgIcon02.gif"/></a></li>
+            <li><a id="comp_facebook" target="_blank" href="http://www.facebook.com/share.php?u=http://www.submarino.com.br" rel="nofollow"><img alt="Adicionar ao facebook" src="http://img.submarino.com.br/img/imgIcon03.gif"/></a></li>
+            <li><a id="comp_technorati" target="_blank" href="http://www.technorati.com/faves?add=http://www.submarino.com.br" rel="nofollow"><img alt="Adicionar ao technorati" src="http://img.submarino.com.br/img/imgIcon04.gif"/></a></li>
         </ul>
         <script type="text/javascript">
         var url = window.location.href;
         document.getElementById("comp_delicious").setAttribute("href", "http://del.icio.us/post?url="+url);
-        document.getElementById("comp_digg").setAttribute("href", "http://digg.com/submit?phase=2&url="+url);
+        document.getElementById("comp_digg").setAttribute("href", "http://digg.com/submit?phase=2&amp;url="+url);
         document.getElementById("comp_facebook").setAttribute("href", "http://www.facebook.com/share.php?u="+url);
         document.getElementById("comp_technorati").setAttribute("href", "http://www.technorati.com/faves?add="+url);
         </script>
@@ -1324,21 +1343,21 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
         <ul>
             <li>
                 <ul class="paymentWaysList">
-                    <li class="link1"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;th=sub&amp;question=Formas+de+pagamento" target="_parent">Cartões de Crédito</a></li>
-                    <li class="link2"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;th=sub&amp;question=Formas+de+pagamento" target="_parent">Cartões de Crédito</a></li>
-                    <li class="link3"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;th=sub&amp;question=Formas+de+pagamento" target="_parent">Financiamento</a></li>
-                    <li class="link4"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;th=sub&amp;question=Formas+de+pagamento" target="_parent">Transferência Eletrônica</a></li>
-                    <li class="link5"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;th=sub&amp;question=Formas+de+pagamento" target="_parent">Boleto Bancário</a></li>
+                    <li class="link1"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;question=Formas+de+pagamento" target="_parent">Cartões de Crédito</a></li>
+                    <li class="link2"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;question=Formas+de+pagamento" target="_parent">Cartões de Crédito</a></li>
+                    <!--<li class="link3"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;question=Formas+de+pagamento" target="_parent">Financiamento</a></li>-->
+                    <li class="link4"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&question=Formas+de+pagamento" target="_parent">Transferência Eletrônica</a></li>
+                    <li class="link5"><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;question=Formas+de+pagamento" target="_parent">Boleto Bancário</a></li>
                 </ul>
             </li>
-            <li><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;th=sub&amp;question=Formas+de+pagamento" target="_parent"><span>Cartão de Crédito, Transferência Eletrônica, Financiamento e Boleto Bancário.</span></a></li>
+            <li><a href="http://atendimento.submarino.com.br/?action=get&amp;element=Answer_centro&amp;id=237086&amp;match_number=1&amp;cat=200173&amp;question=Formas+de+pagamento" target="_parent"><span>Cartão de Crédito, Transferência Eletrônica, Financiamento e Boleto Bancário.</span></a></li>
         </ul>
 	</div>
 	<div class="rssWidgets">
 		<strong>Acompanhe</strong>
         <ul>
             <li><a href="http://www.submarino.com.br/portal/central-rss/?WT.mc_id=rss_footer&amp;WT.mc_ev=click"><img src="http://img.submarino.com.br/img/imgRss2.gif" alt="RSS"/>RSS</a></li>
-            <li><a href="http://www.submarino.com.br/portal/concurso-twitter/?WT.mc_id=twitter_footer&WT.mc_ev=click"><img src="http://img.submarino.com.br/img/imgTwitter2.gif" alt="Twitter" class="last"/>twitter</a></li>
+            <li><a href="http://www.submarino.com.br/portal/concurso-twitter/?WT.mc_id=twitter_bottom&WT.mc_ev=click"><img src="http://img.submarino.com.br/img/imgTwitter2.gif" alt="Twitter" class="last"/>twitter</a></li>
         </ul>
 	</div>	
 	<div class="awards">
@@ -1375,34 +1394,15 @@ Set-Cookie: sbBeta=http://www.submarino.com.br/; path=/; domain=.submarino.com.b
         </ul>
         <strong>Submarino Viagens:</strong>
         <ul>
-            <li><a href="http://www.submarinoviagens.com.br/aereo/passagens-aereas.xhtml?utm_source=submarino&utm_medium=link_building&utm_campaign=passagens" target="_blank">Passagens Aéreas</a> |</li>
-            <li><a href="http://www.submarinoviagens.com.br/viagens/hoteis.aspx?utm_source=submarino&utm_medium=link_building&utm_campaign=hoteis" target="_blank">Hotéis</a> |</li>
-            <li><a href="http://www.submarinoviagens.com.br/viagens/pacotes-turisticos.aspx?utm_source=submarino&utm_medium=link_building&utm_campaign=pacotes" target="_blank">Pacotes Turísticos</a> |</li>    
-            <li><a href="http://www.submarinoviagens.com.br/viagens/cruzeiros-maritimos.aspx?utm_source=submarino&utm_medium=link_building&utm_campaign=cruzeiros" target="_blank">Cruzeiros Marítimos</a> |</li>
-            <li><a href="http://www.submarinoviagens.com.br/viagens/resorts.aspx?utm_source=submarino&utm_medium=link_building&utm_campaign=resort" target="_blank">Resorts</a></li>
+            <li><a href="http://www.submarinoviagens.com.br/aereo/passagens-aereas.xhtml?utm_source=submarino&amp;utm_medium=link_building&amp;utm_campaign=passagens" target="_blank">Passagens Aéreas</a> |</li>
+            <li><a href="http://www.submarinoviagens.com.br/viagens/hoteis.aspx?utm_source=submarino&amp;utm_medium=link_building&amp;utm_campaign=hoteis" target="_blank">Hotéis</a> |</li>
+            <li><a href="http://www.submarinoviagens.com.br/viagens/pacotes-turisticos.aspx?utm_source=submarino&amp;utm_medium=link_building&amp;utm_campaign=pacotes" target="_blank">Pacotes Turísticos</a> |</li>    
+            <li><a href="http://www.submarinoviagens.com.br/viagens/cruzeiros-maritimos.aspx?utm_source=submarino&amp;utm_medium=link_building&amp;utm_campaign=cruzeiros" target="_blank">Cruzeiros Marítimos</a> |</li>
+            <li><a href="http://www.submarinoviagens.com.br/viagens/resorts.aspx?utm_source=submarino&amp;utm_medium=link_building&amp;utm_campaign=resort" target="_blank">Resorts</a></li>
         </ul>
         <ul style="padding-top:7px;"><li>Em caso de divergência de preços no site, o valor válido é o do Carrinho de Compras.</li></ul>
     </div>
 </div>
-<div class="prideSupport">
-	<div class="prideSupport2">
-		<p class="support"><strong>Submarino apoia:</strong></p>
-		<ul>
-			<li><a href="#"><img src="http://img.submarino.com.br/img/imgAlvo.gif" alt="Campanha alvo câncer de mama"/></a></li>
-			<li><a href="#"><img src="http://img.submarino.com.br/img/imgWwf.gif" alt="Ong WWF Brasil"/></a></li>
-		</ul>
-	</div>
-</div>
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-8704579-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
 
 
 		<!-- Fim do componente  -->
@@ -1416,10 +1416,27 @@ pageTracker._trackPageview();
 		<script type="text/javascript" language="javascript" src="http://img.submarino.com.br//js/carrinho.js"></script>
 		</div><!-- WebTrends Tracking de Grupos   -->
 			<META NAME="WT.cg_n" CONTENT="Informática & Acessórios"/><!-- Fim WebTrends Tracking de Grupos  -->		
-		<script type="text/javascript" src="http://img.submarino.com.br/js/TracerCode.js"></script>
 		
+		<!-- WebTrends -->
+		<script type="text/javascript" language="javascript" src="http://img.submarino.com.br/js/TracerCode.js"></script>
 		<noscript>
 			<img border="0" name="DCSIMG" width="1" height="1" src="http://wtb.submarino.com.br/dcsi30hrszokytthjsrxoe4de_4i6h/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=8.0.2" />
 		</noscript>
+		
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+			
+			<script type="text/javascript">
+				try {
+					var subarequesturi = document.location.pathname+document.location.search;
+					var pageTracker = _gat._getTracker("UA-8704579-1");
+					pageTracker._setDomainName(".submarino.com.br"); 
+					pageTracker._setAllowLinker(true);
+					pageTracker._trackPageview("Produto: Informática & Acessórios - iPod Touch 16GB - Apple##"+subarequesturi);
+				} catch(err) {}
+			</script>
+		
 	</body>
 </html>
