@@ -7,11 +7,13 @@ describe Rating do
     valid_rating.should be_valid
   end  
   
-  it "should be unique for a user and rateable item" do 
-    attributes = {:user_id => 100, :product_id => 1, :stars => 1}
-    Rating.create(attributes)
-    Rating.new(attributes).should_not be_valid
-    Rating.new(attributes.merge!(:product_id => 2)).should be_valid
-    Rating.new(attributes.merge!(:user_id => 444)).should be_valid
+  it "should be unique given a user and a product" do
+    a = Factory :rating
+    x = Rating.new a.attributes
+    x.should_not be_valid  
+    y = Rating.new a.attributes.merge(:user => (Factory :user))
+    y.should be_valid
+    z = Rating.new a.attributes.merge(:product => (Factory :product))
+    z.should be_valid
   end
 end

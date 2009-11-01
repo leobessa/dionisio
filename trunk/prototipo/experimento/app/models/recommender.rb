@@ -29,6 +29,27 @@ class Recommender
     end
     alias sim_pearson pearson_correlation
 
+    def sim_distance(item_1,item_2)
+      ratings = Rating.find(:all, :conditions => {:product_id => [item_1,item_2]})
+      n = ratings.length
+      return 0.0 if n == 0
+
+      ratings_map = ratings.inject({}) do |result,rating|
+        result[rating.user_id] ||= {}  
+        result[rating.user_id][rating.product_id] = rating.stars.to_f 
+        result
+      end
+       
+      sum_of_squares = ratings_map.values.sum do |map|
+        if map.length == 2
+          (map[item_1.id]-map[item_2.id])**2
+        else
+          0
+        end
+      end                                 
+      1.0/(1.0+sum_of_squares)
+    end
+
   end                                    
 
   module ProfileBased 
@@ -65,7 +86,7 @@ class Recommender
           similarity_sum[rating.product_id] += similarity
         end
       end
-                   
+
 
       rankings = []
       totals.each_pair do |product_id,total|
@@ -79,4 +100,5 @@ class Recommender
     end
 
   end
+
 end
