@@ -122,6 +122,54 @@ describe Recommender do
       Recommender::ProfileBased.recommendations_for(user_x).should_not include(product)   
     end
     
+  end 
+  
+  context "finding items similarity" do
+    
+    it "should be zero when no one has rated both items" do
+       a = Factory :product
+       b = Factory :product
+       Recommender.sim_distance(a,b).should == 0.0
+    end
+    
+    it "should be the 0.5 when just one user has rated a item with 5 and other with 4" do
+      a = Factory :rating, :stars => 5
+      b = Factory :rating, :stars => 4, :user => a.user
+      Recommender.sim_distance(a.product,b.product).should == 0.5
+    end
+    
+    it "should be the 1/26 with (hint: 1 + 3ˆ2 + 4ˆ2 = 26)" do
+      m = Factory :product
+      n = Factory :product
+      a = Factory :rating, :stars => 5, :product => m
+      b = Factory :rating, :stars => 1, :product => n, :user => a.user
+      c = Factory :rating, :stars => 2, :product => m
+      d = Factory :rating, :stars => 5, :product => n, :user => c.user
+      Recommender.sim_distance(m,n).should == 1.0/26.0
+    end
+    
+    it "should ignore other product rating if user rated only one product" do
+      m = Factory :product
+      n = Factory :product
+      a = Factory :rating, :stars => 5, :product => m
+      b = Factory :rating, :stars => 1, :product => n, :user => a.user
+      c = Factory :rating, :stars => 2, :product => m
+      Recommender.sim_distance(m,n).should == 1.0/17.0
+    end
+    
+    it "should be the 1 when all users give the same ratings for both" do
+      m = Factory :product
+      n = Factory :product                                            
+      3.times { Factory :user}
+      stars = 1
+      User.all.each do |rater|  
+        Factory :rating, :stars => stars, :product => m, :user => rater
+        Factory :rating, :stars => stars, :product => n, :user => rater
+        stars += 1
+      end 
+      Recommender.sim_distance(m,n).should == 1.0
+    end
+    
   end
 
   it "should make item based recommendations"
