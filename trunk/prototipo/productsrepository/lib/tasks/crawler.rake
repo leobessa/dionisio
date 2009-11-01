@@ -48,7 +48,7 @@ namespace :crawl do
             ranking_path = full_path + ".ranking"
             if File.exists? ranking_path then
               ranking = File.open(ranking_path, "r").read
-              popularity = -Integer.parse(ranking)
+              popularity = -Integer(ranking)
               p.parser_offer html, uri, popularity
             else
               p.parser_offer html, uri
