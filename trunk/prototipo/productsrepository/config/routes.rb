@@ -6,13 +6,13 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
                                                                                      
-  map.with_options :controller => 'products', :action => 'index' do |products| 
-    Category.all.each do |category|
-      name = category.name.parameterize  
-      method_name = category.name.parameterize('_')                             
-      products.send(method_name,name,:category_id => category.id)
-    end if Category.table_exists?
-  end
+  #map.with_options :controller => 'products', :action => 'index' do |products| 
+  #  Category.all.each do |category|
+  #    name = category.name.parameterize  
+  #    method_name = category.name.parameterize('_')                             
+  #    products.send(method_name,name,:category_id => category.id)
+  #  end if Category.table_exists?
+  #end
   
   map.resources :user_sessions
 
