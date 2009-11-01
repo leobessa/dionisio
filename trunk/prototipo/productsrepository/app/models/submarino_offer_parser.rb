@@ -21,7 +21,8 @@ class SubmarinoOfferParser
     brand = doc.xpath(to(:brand)).text.strip
 
     category_name = doc.xpath(to(:category)).text.strip
-    if name.empty? or category_name.empty? then
+    description = doc.xpath(to(:description)).inner_html
+    if name.empty? or category_name.empty? or description.empty? then
       raise "Invalid offer #{uri_path}"
     end
     
@@ -32,7 +33,7 @@ class SubmarinoOfferParser
     product = Product.find_by_name(name)
     
     if product.nil?
-      product = Product.create(:name => name, :brand => brand, :category =>  category, :photo => offer.img_src, :popularity => popularity)
+      product = Product.create(:name => name, :brand => brand, :category => category, :description => description, :photo => offer.img_src, :popularity => popularity)
     end
     
     product.photo = offer.img_src unless product.photo 
@@ -71,6 +72,7 @@ class SubmarinoOfferParser
      paths[:baseImg] = "#{root_path}/div[@id='area133']/div[@class='boxProductPics']/div[@class='productPicFull' and position()=1]/a[@class='lightwindow']/img[@id='baseImg']"
      paths[:category] = "//html/body/div[@id='page']/div[@id='content']/div[@id='area1']/div[@id='area1A']/div[@id='area1B']/div[@id='area1C']/div[@id='area13']/div[@id='area131']/div[@class='breadcrumbBox' and position()=2]/ul[@class='breadcrumb']/li[1]/a"
      paths[:availability] = "#{root_path}/div[@id='area134']/div[3]/div[@class='unavailableProduct']/div[@class='roundCornerTL']/div[@class='roundCornerTR']/div[@class='roundCornerBL']/div[@class='roundCornerBR']/div[@id='_form']/h3[@class='title18']"
+     paths[:description] = "//*[(@id = 'C1')]"
      
      paths[target]
    end

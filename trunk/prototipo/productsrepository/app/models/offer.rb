@@ -18,6 +18,10 @@ class Offer < ActiveRecord::Base
     product.brand
   end
   
+  def description
+    product.description
+  end
+  
   def popularity
     product.popularity
   end
