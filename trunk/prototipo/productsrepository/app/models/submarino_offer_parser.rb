@@ -30,11 +30,11 @@ class SubmarinoOfferParser
     offer.img_src = doc.xpath(to(:baseImg)+"/@src").text.strip
     offer.img_alt = doc.xpath(to(:baseImg)+"/@alt").text
     
-    product = Product.find_by_name(name)
+    #product = Product.find_by_name(name)
     
-    if product.nil?
+    #if product.nil?
       product = Product.create(:name => name, :brand => brand, :category => category, :description => description, :photo => offer.img_src, :popularity => popularity)
-    end
+    #end
     
     product.photo = offer.img_src unless product.photo 
 
