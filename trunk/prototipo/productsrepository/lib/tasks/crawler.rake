@@ -1,3 +1,4 @@
+require 'submarino_offer_parser.rb'
 
 namespace :crawl do
 
@@ -25,6 +26,31 @@ namespace :crawl do
       path = "http://www.submarino.com.br#{ENV['OFFER_PATH']}"
       puts "Trying to import #{path}"
       SubmarinoCrawler.new.import_offer path
+    end
+  end
+  
+  desc "Import a list of local offers from STDIN"
+  task :local => :environment do
+    if ENV['OFFER_PATH'] then
+      p = SubmarinoOfferParser.new
+      STDIN.each do |path|
+        path = path.strip
+        base = ENV['OFFER_PATH']
+        full_path = "#{base}/#{path}"
+        puts "Processing offer file: #{full_path}"
+        html = File.open(full_path, "r").read
+        uri = "http://www.submarino.com.br/#{path}"
+        ranking_path = full_path + ".ranking"
+        if File.exists? ranking_path then
+          ranking = File.open(ranking_path, "r").read
+          popularity = -Integer.parse(ranking)
+          p.parser_offer html, uri, popularity
+        else
+          p.parser_offer html, uri
+        end
+      end
+    else
+      puts "Set env OFFER_PATH to the base directory of files"
     end
   end
 
