@@ -17,8 +17,13 @@ class User < ActiveRecord::Base
   validates_presence_of :group_id
   belongs_to :invitation
   belongs_to :group
-  has_many :rated_products, :through => :ratings, :source => :product
+  has_many :rated_products, :through => :ratings, :source => :product                    
 
+  def recommenders
+    recommender_ids = UserRecommendation.find(:all,:select => 'DISTINCT sender_id',:conditions => {:target_id => self})
+    User.find(recommender_ids.map(&:sender_id))
+  end
+  
   def friends
     group.users.delete_if { |u| u == self} 
   end

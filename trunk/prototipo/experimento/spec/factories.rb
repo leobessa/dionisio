@@ -61,4 +61,10 @@ Factory.define :rating do |f|
   f.association :user
   f.association :product
   f.stars 3
+end  
+
+Factory.define :user_recommendation do |f|
+  f.sender  { |p| p.association :user  }
+  f.target  { |p| p.association :user  }
+  f.product { |p| p.association :product  }
 end

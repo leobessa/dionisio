@@ -138,4 +138,58 @@ class Recommender
 
   end
 
+  module TrustBased
+    
+    def self.recommendations_for(user,options = {})
+      defaults = {:limit => 5}
+      options = defaults.merge options
+
+      totals  = {}
+      totals.default= 0.0
+      similarity_sum = {}
+      similarity_sum.default= 0.0
+
+      self.trusted_users(user) do |other,similarity|                         
+        # Isso me parace um workarround de um bug do rails!                        
+        ids = user.rated_product_ids.empty? ? false  : user.rated_product_ids
+        ratings = Rating.find :all, :conditions => ['user_id = ? and product_id NOT IN (?)',other,ids]
+        ratings.each do |rating|
+          totals[rating.product_id] += (rating.stars.to_f * similarity)
+          similarity_sum[rating.product_id] += similarity
+        end
+      end
+      rankings = []
+      totals.each_pair do |product_id,total|
+        item = Product.find(product_id)
+        def item.recommendation_score; @recommendation_score ; end;
+        def item.recommendation_score=(d);  @recommendation_score = d ; end;
+        item.recommendation_score =  (total/similarity_sum[product_id])
+        rankings << item
+      end
+      rankings.sort{|x,y| y.recommendation_score <=> x.recommendation_score } [0,options[:limit]]
+    end
+    
+    def self.trusted_users(user, options = {})
+      defaults = { :min_trust => 0.5 }
+      options = defaults.merge(options)
+      trusted_users = []
+      user.recommenders.each do |other|
+        next if other == user
+        trust = self.trust(user,other)
+        next if trust <= options[:min_trust]
+        trusted_users << other
+        yield user,trust if block_given?
+      end                     
+      trusted_users
+    end
+    
+    def self.trust(user,other_user)
+      accepted_count = UserRecommendation.count(:all,:conditions => {:sender_id => other_user, :target_id => user, :accepted => true})
+      rejected_count = UserRecommendation.count(:all,:conditions => {:sender_id => other_user, :target_id => user, :accepted => false})
+      rated_count = accepted_count + rejected_count 
+      trust = rated_count > 0 ? accepted_count.to_f/rated_count : 0
+    end
+    
+  end
+  
 end

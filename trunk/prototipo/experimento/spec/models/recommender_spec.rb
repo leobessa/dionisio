@@ -250,6 +250,59 @@ describe Recommender do
 
   end
 
-  it "should make trust based recommendations"
+  context "making trust based recommendations" do
+
+    it "should be empty when user dosen't trust any one" do
+      u = Factory :user                          
+      Recommender::TrustBased.recommendations_for(u).should be_empty
+    end                                          
+
+    it "should find unrated products which are nice to trusted users" do                                                            
+      user_x = Factory :user
+      trusted_friend = Factory :user
+      product = Factory :product    
+      Factory :rating, :user => trusted_friend, :stars => 4, :product => product
+      Recommender::TrustBased.should_receive(:trusted_users).with(user_x).and_yield(trusted_friend,0.5)
+      recommendations = Recommender::TrustBased.recommendations_for(user_x)
+      recommendations.should include(product) 
+      recommendations.length.should == 1
+      recommendations.first.recommendation_score.should == 4
+    end
+
+  end 
+
+  context "finding trusted users" do
+    
+    it "should be empty when user hasn't accepted any recommendations" do
+      u = Factory :user                          
+      Recommender::TrustBased.trusted_users(u).should be_empty
+    end
+    
+    it "should be based on weigthed average of accepted recommendations" do
+      user = Factory :user
+      trusted_user = Factory :user
+      trusted_user_rating = Factory :rating, :user => trusted_user, :stars => 5
+      user_recommendation = Factory :user_recommendation, :sender => trusted_user, :target => user
+      Recommender::TrustBased.trusted_users(user).should be_empty
+      user_recommendation.update_attributes :accepted => true 
+      trusted_users = Recommender::TrustBased.trusted_users(user)
+      trusted_users.should include(trusted_user)
+      trusted_users.length.should == 1
+    end
+    
+    it "should yield passing user and trust as arguments" do
+      user = Factory :user
+      trusted_user = Factory :user
+      trusted_user_rating = Factory :rating, :user => trusted_user, :stars => 5
+      user_recommendation = Factory :user_recommendation, :sender => trusted_user, :target => user
+      Recommender::TrustBased.trusted_users(user).should be_empty
+      user_recommendation.update_attributes :accepted => true 
+      trusted_users = Recommender::TrustBased.trusted_users(user) do |param_1,param_2|
+        param_1.should == user
+        param_2.should == 1.0
+      end
+    end                                                                    
+    
+  end
 
 end
