@@ -47,8 +47,9 @@ class User < ActiveRecord::Base
     user.group ||= user.invitation.group
   end     
 
-  def rate_for(item)
-    rate = Rating.find(:first,:conditions => {:user_id => self.id, :product_id => item.id})
+  def rate_for(item)  
+    id = Product === item ? item.id : item
+    rate = Rating.find(:first,:conditions => {:user_id => self.id, :product_id => id})
     rate ? rate.stars : 0
   end 
 
@@ -103,10 +104,6 @@ class User < ActiveRecord::Base
     UserRecommendation.create!(options.merge!(:sender => self))
   end
   
-  def can_rate?
-    [1,2,5,6].include? stage_number 
-  end
-
   def can_rate?
     [1,2,5,6].include? stage_number 
   end
