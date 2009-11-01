@@ -19,7 +19,13 @@ class SubmarinoOfferParser
     
     name = doc.xpath(to(:name)).text.strip
     brand = doc.xpath(to(:brand)).text.strip
-    category = Category.find_or_create_by_name(doc.xpath(to(:category)).text)
+
+    category_name = doc.xpath(to(:category)).text.strip
+    if name.empty? or category_name.empty? then
+      raise "Invalid offer #{uri_path}"
+    end
+    
+    category = Category.find_or_create_by_name(category_name)
     offer.img_src = doc.xpath(to(:baseImg)+"/@src").text.strip
     offer.img_alt = doc.xpath(to(:baseImg)+"/@alt").text
     

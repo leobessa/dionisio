@@ -33,20 +33,31 @@ namespace :crawl do
   task :local => :environment do
     if ENV['OFFER_PATH'] then
       p = SubmarinoOfferParser.new
-      STDIN.each do |path|
-        path = path.strip
-        base = ENV['OFFER_PATH']
-        full_path = "#{base}/#{path}"
-        puts "Processing offer file: #{full_path}"
-        html = File.open(full_path, "r").read
-        uri = "http://www.submarino.com.br/#{path}"
-        ranking_path = full_path + ".ranking"
-        if File.exists? ranking_path then
-          ranking = File.open(ranking_path, "r").read
-          popularity = -Integer.parse(ranking)
-          p.parser_offer html, uri, popularity
-        else
-          p.parser_offer html, uri
+      noffers = 0
+      ActiveRecord::Base.transaction do
+        STDIN.each do |path|
+          path = path.strip
+          base = ENV['OFFER_PATH']
+          full_path = "#{base}/#{path}"
+          puts "Processing offer file: #{full_path}"
+          noffers += 1
+          puts noffers
+          begin
+            html = File.open(full_path, "r").read
+            uri = "http://www.submarino.com.br/#{path}"
+            ranking_path = full_path + ".ranking"
+            if File.exists? ranking_path then
+              ranking = File.open(ranking_path, "r").read
+              popularity = -Integer.parse(ranking)
+              p.parser_offer html, uri, popularity
+            else
+              p.parser_offer html, uri
+            end
+          rescue Exception => e  
+            puts "Problems parsing #{path}"
+            puts e.message  
+            puts e.backtrace.inspect  
+          end
         end
       end
     else
