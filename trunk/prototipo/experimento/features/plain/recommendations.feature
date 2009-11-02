@@ -34,6 +34,18 @@ Funcionalidade: Recomendação de produtos
     E que estou logado como "user@email.com" com a senha "secret"
     Então devo ver "Etapa 3"  
     Então devo ver "Esta etapa ainda não está habilitada. Volte mais tarde." 
+    
+  @wip  
+  Cenário: Usuário na etapa 3 enviando recomendações para amigos
+    Dado que a etapa 3 está habilitada
+    E que existe um participante com e-mail "user@email.com" e senha "secret"
+    E que "user@email.com" está na etapa 3 
+    E que estou logado como "user@email.com" com a senha "secret"
+    Então devo ver "Etapa 3"
+    Dado que tenho 4 amigos em meu grupo
+    Quando eu fizer 5 recomendações de produtos para cada amigo meu
+    Então devo ver "Etapa 4"
+    
 
   
   

@@ -4,7 +4,7 @@
 = render :partial => 'products/product_search', :locals => {:search => @search}
 #productList
   - @products.each do |product|
-    - form_for [@target,@user_recommendation] do |f| 
+    - form_for [@target,@user_recommendation], :html => {:id => "user_recommendation_of_product_#{product.id}" }  do |f| 
       = f.error_messages
       %p
         = render :partial => 'products/product', :locals => {:product => product, :show_stars => false}

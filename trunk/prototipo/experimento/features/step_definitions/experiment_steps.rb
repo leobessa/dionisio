@@ -11,6 +11,7 @@ Dado /^que estou logado como "([^\"]*)" com a senha "([^\"]*)"$/ do |email, pass
   E %Q{preencho "E-mail" com "#{email}"}
   E %Q{preencho "Senha" com "#{password}"}
   E %q{aperto "Entrar"}
+  @current_user = User.find_by_email(email)
 end
 
 Então /^um e\-mail deve ter sido enviado para "([^\"]*)"$/ do |recipient|
@@ -80,6 +81,22 @@ Quando /^avalio mais 10 produtos ainda não avaliados por "([^\"]*)"$/ do |email
     Quando %Q{eu vou para a página do produto com id "#{product.id}"}    
     rate = 3
     click_link_within "#star-rating-for-product-#{product.id}", "#{rate}"#, :wait_for => :ajax
+  end
+end
+
+Dado /^que tenho 4 amigos em meu grupo$/ do
+  4.times { Factory :user, :group => @current_user.group }
+end
+
+Quando /^eu fizer 5 recomendações de produtos para cada amigo meu$/ do
+  @current_user.friends.each do |friend|
+    5.times do
+       p = Factory.create :product
+       visit(new_user_user_recommendation_path(friend)) 
+       within "#user_recommendation_of_product_#{p.id}" do |scope|
+         scope.click_button "Recomendar para #{friend.name}"
+       end
+    end
   end
 end
   
