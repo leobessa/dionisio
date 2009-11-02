@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController    
   
-  before_filter :authenticate_user! , :only => :rate             
+  before_filter :authenticate_user!             
   
   def rate
     @product = Product.find(params[:id])
@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   
   def index
     @search = Product.search(params[:search])
-    @products = @search.all
+    @products = @search.all.paginate(:page => params[:page])
   end 
   
   def show

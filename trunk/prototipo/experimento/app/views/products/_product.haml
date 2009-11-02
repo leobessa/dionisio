@@ -1,8 +1,8 @@
 %dl
   %dt= link_to product.name, product
   %dd[product]
-    - if product.img_src
-      %img{:src => "#{product.img_src}",:alt => "#{product.img_alt}", :width => 200, :height => 200 }
+    - if product.photo
+      %img{:src => "#{product.photo}",:alt => "#{product.img_alt}", :width => 200, :height => 200 }
     - else
       = image_tag 'product_pic_unavailable_large.jpg'
     %blockquote
@@ -10,8 +10,11 @@
   %dd
     %ul
       %li.price= product.price
-    %p= truncate product.description, :length => 400
-    -unless respond_to?(:show_stars) and show_stars
-      %strong Avalie este produto:
+    - if defined?(truncate_description) and truncate_description
+      %p= truncate(product.description, :length => 400)
+    - else
+      %p= product.description
+    -if defined?(show_stars) and show_stars
+      %strong Sua avaliação sobre este produto:
       = render :partial => 'shared/star_rating', :locals => {:product => product, :user => (respond_to?(:user) ? user : current_user)}
     

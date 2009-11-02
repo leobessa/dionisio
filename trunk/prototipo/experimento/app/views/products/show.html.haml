@@ -1,2 +1,4 @@
 - title @product.name
-= render :partial => 'products/product', :locals => {:product => @product, :show_stars => true}
+#productList
+  = render :partial => 'products/product', :locals => {:product => @product, :show_stars => true} 
+%div{:style => 'height: 500px'}

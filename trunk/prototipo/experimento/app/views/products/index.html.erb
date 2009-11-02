@@ -5,9 +5,15 @@
   <%= order @search, :by => :name %> |
   <%= order @search, :by => :price %>
 </p>  
-<div id="name">
-  
+
 <div id="productList">
-<%= render @products %>   
-</div>  
+  <% @products.each do |product| %>
+  <%= render :partial => 'products/product', :locals => {:product => product, :show_stars => true, :truncate_description => true}  %>
+  <% end -%>
 </div>
+<div>                           
+  <%= render :partial => 'product_search', :locals => {:search => @search}%>  
+  <%= will_paginate @products %> 
+</div>
+
+

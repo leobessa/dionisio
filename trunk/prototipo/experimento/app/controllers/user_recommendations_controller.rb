@@ -6,7 +6,7 @@ class UserRecommendationsController < ApplicationController
     @target = User.find(params[:user_id])
     @user_recommendation = UserRecommendation.new 
     @search = Product.search(params[:search])
-    @products = @search.all
+    @products = @search.all.paginate(:page => params[:page])
   end
   
   def create                     

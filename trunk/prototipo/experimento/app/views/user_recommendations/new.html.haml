@@ -7,7 +7,7 @@
     - form_for [@target,@user_recommendation], :html => {:id => "user_recommendation_of_product_#{product.id}" }  do |f| 
       = f.error_messages
       %p
-        = render :partial => 'products/product', :locals => {:product => product, :show_stars => false}
+        = render :partial => 'products/product', :locals => {:product => product, :show_stars => false, :truncate_description => true}
       = hidden_field_tag 'user_recommendation[product_id]', product.id
       %p     
         - rated = @target.rated?(product)
@@ -20,3 +20,6 @@
           - if recommended
             %li{:style=>'font-style: italic;font-size: 11px;'}= "Você já recomendou este produto para #{@target.name}."
     %hr
+%div                           
+  = render :partial => 'products/product_search', :locals => {:search => @search}
+  = will_paginate @products 
