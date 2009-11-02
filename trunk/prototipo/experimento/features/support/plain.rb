@@ -6,11 +6,6 @@ Webrat.configure do |config|
   config.open_error_files = false # Set to true if you want error pages to pop up in the browser
 end      
 
-require 'rubygems'
-require 'rake'
-
-                                                  
-
 Before do
   load File.join( RAILS_ROOT, 'db', 'seeds.rb')
 end
