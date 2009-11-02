@@ -7,6 +7,7 @@ describe HomeController do
       @controller.should_receive(:authenticate_user!).and_return(true)
       @controller.stub(:admin_signed_in?, false)
       @controller.stub(:user_signed_in?, true)
+      @controller.should_receive(:check_stage_avaiability).and_return(true)
     end
 
 

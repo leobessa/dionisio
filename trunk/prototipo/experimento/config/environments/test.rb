@@ -31,3 +31,4 @@ config.gem 'bmabey-email_spec',       :version => '0.3.4',  :lib => 'email_spec'
 config.gem "thoughtbot-factory_girl", :vesion => '1.2.2',  :lib => "factory_girl", :source => "http://gems.github.com"
 config.gem "populator", :lib => 'populator', :version => "0.2.5"
 config.gem "faker", :lib => "faker", :version => "0.3.1"
+config.gem "mocha", :lib => "mocha", :version => ">= 0.9.8"
