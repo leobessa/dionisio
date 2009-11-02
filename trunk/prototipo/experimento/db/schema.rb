@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091101201026) do
+ActiveRecord::Schema.define(:version => 20091102025519) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :null => false
@@ -44,14 +44,15 @@ ActiveRecord::Schema.define(:version => 20091101201026) do
     t.string   "name"
     t.text     "description"
     t.string   "path"
-    t.string   "img_src"
+    t.string   "photo"
     t.string   "img_alt"
     t.string   "brand"
     t.integer  "category_id"
     t.boolean  "selected"
-    t.decimal  "price",       :precision => 10, :scale => 2
+    t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "popularity",  :default => 0
   end
 
   create_table "rates", :force => true do |t|
