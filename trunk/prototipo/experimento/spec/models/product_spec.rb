@@ -7,7 +7,7 @@ describe Product do
       :name => "value for name",
       :description => "value for description",
       :path => "value for path",
-      :img_src => "value for img_src",
+      :photo => "value for photo",
       :img_alt => "value for img_alt",
       :brand => "value for brand",
       :category_id => 1,

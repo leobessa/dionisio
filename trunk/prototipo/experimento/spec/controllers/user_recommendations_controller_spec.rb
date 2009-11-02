@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
  
 describe UserRecommendationsController do
 
-  integrate_views
-
   before(:each) do                               
     @controller.should_receive(:authenticate_user!).and_return(true)
     @controller.stub(:admin_signed_in?, false)

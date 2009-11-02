@@ -4,7 +4,8 @@ describe RatingsController do
 
   before(:each) do
     @controller.stub(:admin_signed_in?, false)
-    @controller.stub(:user_signed_in?, false)
+    @controller.stub(:user_signed_in?, false)          
+    @controller.should_receive(:authenticate_user!).and_return(true)
   end
 
   integrate_views
