@@ -26,7 +26,14 @@ Funcionalidade: Recomendação de produtos
     Quando avalio mais 10 produtos ainda não avaliados por "user@email.com"
     Quando eu vou para a página principal  
     Então devo ver "Etapa 3"  
-
+    
+  Cenário: Usuário na etapa 3 (desabilitada)
+    Dado que a etapa 3 está desabilitada
+    E que existe um participante com e-mail "user@email.com" e senha "secret"
+    E que "user@email.com" está na etapa 3 
+    E que estou logado como "user@email.com" com a senha "secret"
+    Então devo ver "Etapa 3"  
+    Então devo ver "Esta etapa ainda não está habilitada. Volte mais tarde." 
 
   
   

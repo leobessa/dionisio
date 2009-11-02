@@ -40,6 +40,10 @@ Dado /^que a etapa (\d+) está habilitada$/ do |number|
   Stage.find_by_number(number).update_attribute :enabled, true
 end
 
+Dado /^que a etapa (\d+) está desabilitada$/ do |number|
+  Stage.find_by_number(number).update_attribute :enabled, false
+end
+
 Então /^devo ver os produtos a serem avaliados inicialmente$/ do
    Product.selected.each do |p|
     response.should have_selector("#product_#{p.id}")
