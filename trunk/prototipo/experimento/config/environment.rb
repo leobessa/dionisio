@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'warden', :version => '0.5.0', :source => "http://gemcutter.org/"   
   config.gem 'devise', :version => '0.1.0', :source => "http://gemcutter.org/"
   config.gem "searchlogic", :version => '2.3.5'
+  config.gem "ambethia-smtp-tls", :lib => "smtp-tls", :source => "http://gems.github.com/"
   
 #  config.gem 'haml'  , :version => '>= 2.2.6' 
 
