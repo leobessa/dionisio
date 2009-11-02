@@ -6,11 +6,12 @@
     - else
       = image_tag 'product_pic_unavailable_large.jpg'
     %blockquote
-      %p= product.price
+      %p= product.brand
   %dd
     %ul
-      %li.brand= product.brand
+      %li.price= product.price
     %p= truncate product.description, :length => 400
     -unless respond_to?(:show_stars) and show_stars
+      %strong Avalie este produto:
       = render :partial => 'shared/star_rating', :locals => {:product => product, :user => (respond_to?(:user) ? user : current_user)}
     
