@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
 
   after_filter :verify_completed_stage, :if => :user_signed_in?
 
+  include ExceptionNotifiable
+  local_addresses.clear
+
   private 
   def verify_completed_stage 
     current_user.advance_stage if current_user.completed_stage?
