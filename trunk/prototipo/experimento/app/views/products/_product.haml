@@ -17,4 +17,9 @@
     -if defined?(show_stars) and show_stars
       %strong Sua avaliação sobre este produto:
       = render :partial => 'shared/star_rating', :locals => {:product => product, :user => (respond_to?(:user) ? user : current_user)}
-    
+      - if current_user.can_rate? 
+        - rating = Rating.find(:first, :conditions => {:user_id => current_user, :product_id => product})
+        - unknown = rating ? rating.unknown : false
+        = check_box_tag ("nc-#{product.id}","#{product.id}", unknown, :onclick => remote_function(:update => "nc-#{product.id}-ok", :url => { :action => :unknown }, :with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked" ))
+        não conheço 
+        %div{:id => "nc-#{product.id}-ok"}

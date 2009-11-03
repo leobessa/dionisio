@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091102025519) do
+ActiveRecord::Schema.define(:version => 20091103120653) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :null => false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20091102025519) do
     t.integer  "stars"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "unknown"
   end
 
   create_table "stages", :force => true do |t|

@@ -1,6 +1,17 @@
 class ProductsController < ApplicationController    
   
-  before_filter :authenticate_user!             
+  before_filter :authenticate_user! 
+  
+  def unknown
+    @product = Product.find(params[:id])
+    rating = Rating.find(:first,:conditions => {:product_id => @product,:user_id => current_user})
+    if rating
+      rating.update_attribute :unknown, params[:unknown]
+      render :text => "ok!"
+    else
+      render :text => "Faça primeiro a avaliação do produto"
+    end
+  end            
   
   def rate
     @product = Product.find(params[:id])
