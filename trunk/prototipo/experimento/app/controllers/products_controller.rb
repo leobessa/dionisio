@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
   def index
     @search = Product.search(params[:search])
-    @products = @search.all.paginate(:page => params[:page]) 
+    @products = @search.paginate(:page => params[:page]) 
     @ratings = Rating.find(:all,:conditions => {:user_id => current_user,:product_id => @products})
   end 
 

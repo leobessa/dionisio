@@ -35,8 +35,8 @@ describe ProductsController do
         it "search products" do                                                                              
           params = Hash.new                       
           products = [Factory.create :product]
-          search = mock 'Search', :all => products 
-          search.should_receive(:all).and_return(products)
+          search = mock 'Search' 
+          search.should_receive(:paginate).and_return(products)
           Product.should_receive(:search).and_return(search)
           get 'index', params                
           assigns[:products].should include(products.first)
