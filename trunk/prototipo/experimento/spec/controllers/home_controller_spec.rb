@@ -14,7 +14,7 @@ describe HomeController do
     describe "GET 'index'" do
       it "should be successful" do                 
         @user = mock_model User, :stage_number => 1
-        @controller.should_receive(:current_user).and_return(@user)
+        @controller.should_receive(:current_user).at_least(1).and_return(@user)
         get 'index'
         response.should be_success
       end

@@ -14,12 +14,12 @@
       %p= product.description
     -if defined?(show_stars) and show_stars
       %strong Sua avaliação sobre este produto:
-      = render :partial => 'shared/star_rating', :locals => {:product => product, :user => (respond_to?(:user) ? user : current_user)}
+      = render :partial => 'shared/star_rating', :locals => {:rating => rating, :product => product}
       - if current_user.can_rate?
-        - rating = Rating.find(:first, :conditions => {:user_id => current_user, :product_id => product})
-        - unknown = rating ? rating.unknown : false
-        - visibility = rating ? 'visible' : 'hidden'
-        %div{:id => "#{product.id}-checkbox", :style => "visibility:#{visibility};"}
+        - unknown =  rating.new_record? || rating.unknown
+        - display = rating.new_record? ? 'none' : ''
+        %div{:id => "#{product.id}-checkbox", :style => "display: #{display};"}
+          %strong Você já conhecia este produto?
           %div
-            = check_box_tag("nc-#{product.id}","#{product.id}", unknown,{:onclick => remote_function(:url => {:controller => :products, :action => :unknown },:with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked")}) + "Eu <b>não conheço</b> este produto"
+            = check_box_tag("nc-#{product.id}","#{product.id}", unknown,{:onclick => remote_function(:url => {:controller => :products, :action => :unknown },:with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked")}) + "<b>não</b>"
           %div{:id => "nc-#{product.id}-message"}

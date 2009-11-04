@@ -1,4 +1,4 @@
 - title "Avalie os 20 produtos abaixo"
 #productList        
   - for product in products
-    = render :partial => "products/product", :locals => {:product => product, :show_stars => true, :truncate_description => true}  
+    = render :partial => 'products/product', :locals => {:product => product, :show_stars => true, :truncate_description => true, :rating => (ratings.select{|r| r.product_id == product.id}.first || Rating.new(:stars => 0)) }

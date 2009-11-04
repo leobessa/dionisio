@@ -25,21 +25,19 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @rating = Rating.find(:first,:conditions => {:product_id => @product,:user_id => current_user})
     if @rating
-      @rating.update_attribute :stars, params[:stars]
+      @rating.update_attributes :stars => params[:stars], :unknown => params[:unknown]
     else
-      @rating = Rating.create :product => @product, :stars => params[:stars], :user => current_user
+      @rating = Rating.create :product => @product, :stars => params[:stars], :user => current_user, :unknown => params[:unknown]
     end
-    @rating.update_attribute :unknown, params[:unknown]
     respond_to do |format|
       format.js do
         id = "star-rating-for-product-#{@product.id}"
-        render :update do |page|
-          page.replace_html id, :partial => 'shared/star_rating', :locals => {:product => @product, :user => current_user}
-          page.visual_effect :highlight, id                           
-          page << "$('#{@product.id}-checkbox').style.visibility = 'visible';"
-          page << "$('nc-#{@product.id}').checked = #{@rating.unknown};"
-          page.visual_effect :highlight, "#{@product.id}-checkbox"
+        puts @rating.inspect
+        render :update do |page| 
           page.replace_html 'phase-description', phase_description_content                       
+          page.replace_html id, :partial => 'shared/star_rating', :locals => {:rating => @rating, :product => @product}
+          page.show "#{@product.id}-checkbox"
+          page << "$('nc-#{@product.id}').setValue(#{@rating.unknown});"
           page.redirect_to(root_path) if current_user.completed_stage?
         end                                                           
       end
@@ -50,11 +48,15 @@ class ProductsController < ApplicationController
 
   def index
     @search = Product.search(params[:search])
-    @products = @search.all.paginate(:page => params[:page])
+    @products = @search.all.paginate(:page => params[:page]) 
+    @ratings = Rating.find(:all,:conditions => {:user_id => current_user,:product_id => @products})
   end 
 
   def show
-    @product = Product.find(params[:id])                                              
+    @product = Product.find(params[:id])
+    @rating  = Rating.find(:first,:conditions => {:user_id => current_user,:product_id => @product}) || Rating.new(:stars => 0)
+    @show_stars = true
+    @truncate_description = false                                             
   end  
 
   private
