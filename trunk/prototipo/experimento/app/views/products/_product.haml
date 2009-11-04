@@ -8,8 +8,6 @@
     %blockquote
       %p= product.brand
   %dd
-    %ul
-      %li.price= product.price
     - if defined?(truncate_description) and truncate_description
       %p= truncate(product.description, :length => 400)
     - else

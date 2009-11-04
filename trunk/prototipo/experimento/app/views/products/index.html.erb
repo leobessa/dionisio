@@ -2,8 +2,7 @@
 
 <p>
   Odernar por:
-  <%= order @search, :by => :name %> |
-  <%= order @search, :by => :price %>
+  <%= order @search, :by => :name, :as => "nome" %>
 </p>  
 
 <div id="productList">
