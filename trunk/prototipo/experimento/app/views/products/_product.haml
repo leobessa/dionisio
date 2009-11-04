@@ -21,5 +21,5 @@
         - rating = Rating.find(:first, :conditions => {:user_id => current_user, :product_id => product})
         - unknown = rating ? rating.unknown : false
         = check_box_tag ("nc-#{product.id}","#{product.id}", unknown, :onclick => remote_function(:update => "nc-#{product.id}-ok", :url => { :action => :unknown }, :with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked" ))
-        não conheço 
+        = "não conheço"
         %div{:id => "nc-#{product.id}-ok"}

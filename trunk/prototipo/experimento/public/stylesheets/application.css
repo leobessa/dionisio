@@ -19,7 +19,9 @@ a {
   background: #fff;
   padding: 20px 40px;
   border: solid 1px black;
-  margin-top: 20px; }
+  margin-top: 20px; 
+  overflow: hidden;
+}
 
 #flash_notice,
 #flash_error {
