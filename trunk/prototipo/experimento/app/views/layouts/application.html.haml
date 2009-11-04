@@ -34,10 +34,14 @@
         - else
           = link_to "Login", new_user_session_path
         
-      #phase-description
-        = phase_description_content 
+      #phase-progress
+        %h2= phase_description_content 
       - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        = content_tag :div, msg, :id => "flash_#{name}" 
+      
+      - if user_signed_in?
+        #phase-description
+          = render :partial => "stages/description_#{current_user.stage_number}"
       
       - if show_title?
         %h1=h yield(:title)

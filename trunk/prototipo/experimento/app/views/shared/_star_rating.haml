@@ -4,5 +4,4 @@
     - (1..5).each do |n|
       %li  
         - url = url_for(:controller => 'products', :action => 'rate', :id => product, :stars => n, :dimension => '')
-        = link_to_remote "#{n}", {:url => url, :method => :post, :update => { :success => "products", :failure => "error" }}, :href => url, :class => "#{%w(one two three four five)[n-1]}-star#{'s' if n > 1}", :title => "#{n} estrelas" 
-        /= link_to n, url, :class => "#{%w(one two three four five)[n-1]}-star#{'s' if n > 1}", :title => "#{n} estrelas"
+        = link_to_remote "#{n}", {:url => url, :method => :post, :update => { :success => "products", :failure => "error" }}, :href => url, :class => "#{%w(one two three four five)[n-1]}-star#{'s' if n > 1}", :title => "#{n} estrelas"

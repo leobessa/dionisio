@@ -1,8 +1,6 @@
 class HomeController < ApplicationController  
   before_filter :authenticate_user!      
   before_filter :check_stage_avaiability
-  
-  
 
   def index                     
     case current_user.stage_number
@@ -13,7 +11,6 @@ class HomeController < ApplicationController
   end       
 
   private                         
-  
   def check_stage_avaiability
     if Stage.find_by_number(current_user.stage_number).enabled?
       return true
@@ -22,8 +19,7 @@ class HomeController < ApplicationController
       return false
     end
   end
-  
-  
+    
   def show_selected_products_to_user
     products = Product.selected
     render :partial => "stage1", :locals => { :products => products }, :layout => 'application'
