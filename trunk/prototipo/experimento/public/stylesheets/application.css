@@ -110,4 +110,8 @@ a {
 			line-height:normal;
 			margin-bottom:0.2em;
 			vertical-align:bottom;
-			}
+			} 
+			
+			#stage_notice {
+			  background-color: AliceBlue ;
+			  border: solid 1px #6C6; }
