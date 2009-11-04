@@ -7,6 +7,6 @@
 #   Major.create(:name => 'Daley', :city => cities.first)
                                 
 Stage.create_all
-['Grazi','Bruna','Machupichu','Saphyra','Daniela','Renato','Luiz','Rafael']. each do |name|
+['Grazi','Bruna','Machupichu','Saphyra','Daniela','Renato','Luiz','Rafael', 'Diego Esteves', 'Fernando Takey', 'Silvia Takey']. each do |name|
   Group.create! :name => name
 end
