@@ -9,9 +9,8 @@ class ProductsController < ApplicationController
     if rating
       rating.update_attribute :unknown, params[:unknown]
       render :update do |page|
-        id = "nc-#{@product.id}-message"
-        page.replace_html id, "ok!"
-        page.visual_effect :highlight, id
+        page.replace_html "nc-#{@product.id}-message", ""
+        page.visual_effect :highlight,"#{@product.id}-checkbox"
       end
     else
       render :update do |page|
@@ -24,12 +23,13 @@ class ProductsController < ApplicationController
 
   def rate
     @product = Product.find(params[:id])
-    rating = Rating.find(:first,:conditions => {:product_id => @product,:user_id => current_user})
-    if rating
-      rating.update_attribute :stars, params[:stars]
+    @rating = Rating.find(:first,:conditions => {:product_id => @product,:user_id => current_user})
+    if @rating
+      @rating.update_attribute :stars, params[:stars]
     else
-      Rating.create :product => @product, :stars => params[:stars], :user => current_user
+      @rating = Rating.create :product => @product, :stars => params[:stars], :user => current_user
     end
+    @rating.update_attribute :unknown, params[:unknown]
     respond_to do |format|
       format.js do
         id = "star-rating-for-product-#{@product.id}"
@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
           page.replace_html id, :partial => 'shared/star_rating', :locals => {:product => @product, :user => current_user}
           page.visual_effect :highlight, id                           
           page << "$('#{@product.id}-checkbox').style.visibility = 'visible';"
+          page << "$('nc-#{@product.id}').checked = #{@rating.unknown};"
           page.visual_effect :highlight, "#{@product.id}-checkbox"
           page.replace_html 'phase-description', phase_description_content                       
           page.redirect_to(root_path) if current_user.completed_stage?

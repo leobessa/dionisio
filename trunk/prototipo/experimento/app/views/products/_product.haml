@@ -23,5 +23,5 @@
         - visibility = rating ? 'visible' : 'hidden'
         %div{:id => "#{product.id}-checkbox", :style => "visibility:#{visibility};"}
           %div
-            = check_box_tag ("nc-#{product.id}","#{product.id}", unknown,{:onclick => remote_function(:url => {:controller => :products, :action => :unknown },:with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked")}) + "Marque esta opção se você não conhece este produto"
+            = check_box_tag("nc-#{product.id}","#{product.id}", unknown,{:onclick => remote_function(:url => {:controller => :products, :action => :unknown },:with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked")}) + "Eu <b>não conheço</b> este produto"
           %div{:id => "nc-#{product.id}-message"}
