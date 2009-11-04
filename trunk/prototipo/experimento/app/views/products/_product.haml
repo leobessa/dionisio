@@ -13,7 +13,9 @@
     - else
       %p= product.description
     -if defined?(show_stars) and show_stars
-      %strong Sua avaliação sobre este produto:
+      %strong Seu interesse neste produto:
+      %div
+        %small Pouco Interesse
       = render :partial => 'shared/star_rating', :locals => {:rating => rating, :product => product}
       - if current_user.can_rate?
         - unknown =  rating.new_record? || rating.unknown

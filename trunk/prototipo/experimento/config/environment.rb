@@ -49,6 +49,6 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = 'pt-BR'
 
 end
-ExceptionNotifier.exception_recipients = %w(nossotf@googlegroups.com sistemadionisio@gmail.com)
+ExceptionNotifier.exception_recipients = %w(nossotf@googlegroups.com)
 ExceptionNotifier.sender_address = %(sistemadionisio@gmail.com)
 
