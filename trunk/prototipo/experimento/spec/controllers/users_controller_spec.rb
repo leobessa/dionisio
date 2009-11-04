@@ -34,7 +34,7 @@ describe UsersController do
     User.should_receive(:new).and_return(@user)
     @user.should_receive(:save).and_return(true)
     post :create
-    response.should redirect_to(user_url(assigns[:user]))
+    response.should redirect_to(new_user_session_path)
   end
   
 end

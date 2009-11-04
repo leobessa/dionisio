@@ -29,7 +29,7 @@ describe ProductsController do
       context "stage #{stage_number}" do
         before(:each) do
           current_user = mock_model User, :stage_number => stage_number
-          @controller.should_receive(:current_user).and_return(current_user)
+          @controller.should_receive(:current_user).at_least(1).and_return(current_user)
         end
 
         it "search products" do                                                                              

@@ -69,11 +69,11 @@ class User < ActiveRecord::Base
   def stage_progress
     case stage_number
     when 1 
-      selection = Product.selected 
-      rates_from_selection = Rating.all(:conditions => {:user_id => self, :product_id => Product.selected}).map(&:product)
-      return "#{rates_from_selection.count}/#{selection.count}" 
+      selection_count = 20 
+      rates_count = Rating.count(:conditions => {:user_id => self, :product_id => Product.selected })
+      return "#{rates_count}/#{selection_count}" 
     when 2                    
-      rate_count = Rating.count(:conditions => {:user_id => self, :product_id => Product.not_selected})
+      rate_count = Rating.count(:conditions => ['user_id = ? and product_id NOT IN (?)', self, (Product.selected.empty? ? false : Product.selected)])
       return "#{rate_count}/10"
     when 3                    
       i = friends.sum do |friend|
@@ -91,9 +91,9 @@ class User < ActiveRecord::Base
   def completed_stage? 
     case stage_number
     when 1
-      self.ratings.count > 0 && (Product.selected - Rating.all(:conditions => {:user_id => self, :product_id => Product.selected}).map(&:product)).empty?
+      self.ratings.count > 0 && Rating.count(:conditions => {:user_id => self, :product_id => Product.selected}) >= 20
     when 2
-      Rating.count(:conditions => {:user_id => self, :product_id => Product.not_selected}) >= 10
+      Rating.count(:conditions => ['user_id = ? and product_id NOT IN (?)', self, Product.selected.empty? ? false : Product.selected]) >= 10
     when 3           
       friends.count > 1 && friends.inject(true) { |result,friend| result &&= UserRecommendation.count(:conditions => {:sender_id => self, :target_id => friend }) >= 5 }
     else
