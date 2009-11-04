@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  default_scope :order => 'popularity DESC'
   belongs_to :category
   has_many :ratings
   named_scope :selected, :conditions => {:selected => true}
