@@ -1,0 +1,12 @@
+<% form_for @stage do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :enabled %><br />
+    <%= f.check_box :enabled %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

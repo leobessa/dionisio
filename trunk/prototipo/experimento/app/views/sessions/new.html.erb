@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2>Login de <%= resource_name == :user ? 'Usuário' : 'Administrador'%></h2>
 
 <% form_for resource_name, :url => session_path(resource_name) do |f| -%>
   <p><%= f.label :email, 'E-mail' %></p>

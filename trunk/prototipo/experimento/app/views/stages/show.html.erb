@@ -1,0 +1,15 @@
+<% title "Stage" %>
+
+<p>
+  <strong>Number:</strong>
+  <%=h @stage.number %>
+</p>
+<p>
+  <strong>Enabled:</strong>
+  <%=h @stage.enabled %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_stage_path(@stage) %> |
+  <%= link_to "View All", stages_path %>
+</p>

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :stages
+
 
   map.devise_for :admins   
   map.devise_for :users

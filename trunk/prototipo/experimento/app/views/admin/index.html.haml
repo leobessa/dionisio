@@ -1,0 +1,7 @@
+- title "Usuários"
+
+- @users.each do |user|
+  = render user 
+
+  %strong= "Etapa: #{user.stage_number} - Progresso: #{user.stage_progress} - Grupo: #{user.group_id} (#{user.group.name})"
+    

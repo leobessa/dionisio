@@ -1,0 +1,16 @@
+<% title "Stages" %>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Enabled</th>
+  </tr>
+  <% for stage in @stages %>
+    <tr>
+      <td><%=h stage.number %></td>
+      <td><%=h stage.enabled %></td>
+      <td><%= link_to "Show", stage %></td>
+      <td><%= link_to "Edit", edit_stage_path(stage) %></td>
+    </tr>
+  <% end %>
+</table>
