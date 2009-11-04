@@ -9,7 +9,7 @@
       %p= product.brand
   %dd
     - if defined?(truncate_description) and truncate_description
-      %p= truncate(product.description, :length => 400)
+      %p= truncate_html(product.description, :length => 400)
     - else
       %p= product.description
     -if defined?(show_stars) and show_stars
