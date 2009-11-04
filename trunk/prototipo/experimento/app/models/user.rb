@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  devise :recoverable, :validatable
+  devise :validatable
   validates_presence_of :invitation_id, :name
   validates_uniqueness_of :invitation_id, :message => 'já foi utilizado'
   validates_inclusion_of :age_group, :in => User.age_groups  

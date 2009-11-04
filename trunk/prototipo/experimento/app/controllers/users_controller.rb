@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Seu cadastro foi realizado com sucesso."
-      redirect_to @user
+      redirect_to new_user_session_path
     else
       render :action => 'new'
     end
