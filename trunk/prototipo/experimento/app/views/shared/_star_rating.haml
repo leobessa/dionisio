@@ -1,9 +1,9 @@
-%ul.star-rating{:id => "star-rating-for-product-#{product.id}"}                                      
+%ul.star-rating{:id => "star-rating-for-product-#{product_id}"}                                      
   %li.current-rating{ :style => "width:#{rating.stars*20}%"}= "Atualmente #{rating.stars} estrelas"
   - if current_user.can_rate?
     - (1..5).each do |n|
       %li  
-        - url = url_for(:controller => 'products', :action => 'rate', :id => product, :stars => n, :dimension => '') 
+        - url = url_for(:controller => 'products', :action => 'rate', :id => product_id, :stars => n, :dimension => '') 
         - before_hash = { :with => "'unknown=' + (known == false)", :before => "var known = confirm('Aperte OK se você CONHECE este produto, e CANCEL caso você NÃO O CONHEÇA.')"}  
         - options = {:url => url, :method => :post}
         - options.merge!(before_hash) if rating.new_record?

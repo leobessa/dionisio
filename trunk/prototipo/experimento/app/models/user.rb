@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
     case stage_number
     when 1 
       selection_count = 20 
-      rates_count = Rating.count(:conditions => {:user_id => self, :product_id => Product.selected })
+      rates_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}})
       return "#{rates_count}/#{selection_count}" 
     when 2                    
       rate_count = Rating.count(:conditions => ['user_id = ? and product_id NOT IN (?)', self, (Product.selected.empty? ? false : Product.selected)])
@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
   def completed_stage? 
     case stage_number
     when 1
-      self.ratings.count > 0 && Rating.count(:conditions => {:user_id => self, :product_id => Product.selected}) >= 20
+       Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}}) >= 20
     when 2
       Rating.count(:conditions => ['user_id = ? and product_id NOT IN (?)', self, Product.selected.empty? ? false : Product.selected]) >= 10
     when 3           

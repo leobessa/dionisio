@@ -17,7 +17,7 @@
       %div
         %small{:style => "vertical-align: top;"} Pouco Interesse
         %div{:style => "display: inline-block;"}
-          = render :partial => 'shared/star_rating', :locals => {:rating => rating, :product => product}
+          = render :partial => 'shared/star_rating', :locals => {:rating => rating, :product_id => product.id}
         %small{:style => "vertical-align: top;"} Muito Interesse
         - if current_user.can_rate?
           - unknown =  rating.new_record? || rating.unknown
