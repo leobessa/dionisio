@@ -25,7 +25,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @rating = Rating.find(:first,:conditions => {:product_id => @product,:user_id => current_user})
     if @rating
-      @rating.update_attributes :stars => params[:stars], :unknown => params[:unknown]
+      if params[:unknown]
+        @rating.update_attributes :stars => params[:stars], :unknown => params[:unknown]
+      else
+        @rating.update_attribute :stars, params[:stars]
+      end
     else
       @rating = Rating.create :product => @product, :stars => params[:stars], :user => current_user, :unknown => params[:unknown]
     end
