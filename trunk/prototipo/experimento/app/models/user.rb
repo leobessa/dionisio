@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
       rates_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}})
       return "#{rates_count}/#{selection_count}" 
     when 2                    
-      rate_count = Rating.count(:conditions => ['user_id = ? and product_id NOT IN (?)', self, (Product.selected.empty? ? false : Product.selected)])
+      rate_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => false}})
       return "#{rate_count}/10"
     when 3                    
       i = friends.sum do |friend|
@@ -93,9 +93,9 @@ class User < ActiveRecord::Base
     when 1
        Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}}) >= 20
     when 2
-      Rating.count(:conditions => ['user_id = ? and product_id NOT IN (?)', self, Product.selected.empty? ? false : Product.selected]) >= 10
+      Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => false}}) >= 10
     when 3           
-      friends.count > 1 && friends.inject(true) { |result,friend| result &&= UserRecommendation.count(:conditions => {:sender_id => self, :target_id => friend }) >= 5 }
+      friends.count > 1 && friends.all? { |friend| UserRecommendation.count(:conditions => {:sender_id => self, :target_id => friend }) >= 5 }
     else
       false
     end

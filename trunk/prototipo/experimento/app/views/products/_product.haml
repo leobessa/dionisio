@@ -17,11 +17,11 @@
       %div
         %small{:style => "vertical-align: top;"} Pouco Interesse
         %div{:style => "display: inline-block;"}
-          = render :partial => 'shared/star_rating', :locals => {:rating => rating, :product_id => product.id}
+          = render :partial => 'shared/star_rating', :locals => { :product_id => product.id, :stars => product.stars }
         %small{:style => "vertical-align: top;"} Muito Interesse
         - if current_user.can_rate?
-          - unknown =  rating.new_record? || rating.unknown
-          - display = rating.new_record? ? 'none' : ''
+          - unknown = product.unknown.nil? ? false  : product.unknown.match(/(true|t|yes|y|1)$/i)
+          - display = product.stars.nil?   ? 'none' : ''
           %div{:id => "#{product.id}-checkbox", :style => "display: #{display};"}
             %strong Você já conhecia este produto?
             %div

@@ -38,26 +38,26 @@ class ProductsController < ApplicationController
         id = "star-rating-for-product-#{@product_id}"
         render :update do |page| 
           page.replace_html 'phase-description', phase_description_content                       
-          page.replace_html id, :partial => 'shared/star_rating', :locals => {:rating => @rating, :product_id => @product_id}
+          page.replace_html id, :partial => 'shared/star_rating', :locals => {:stars => @rating.stars, :product_id => @product_id}
           page.show "#{@product_id}-checkbox"
           page << "$('nc-#{@product_id}').setValue(#{@rating.unknown});"
           page.redirect_to(root_path) if current_user.completed_stage?
         end                                                           
       end
-      format.html { redirect_to(products_path)}
+      format.html { redirect_to(:back)}
     end
 
   end  
 
   def index
-    @search = Product.search(params[:search])
-    @products = @search.paginate(:page => params[:page]) 
-    @ratings = Rating.find(:all,:conditions => {:user_id => current_user,:product_id => @products})
+    @search = Product.with_ratings_from(current_user).search(params[:search]) 
+    if params[:search] && params[:search].reject{ |key,value| key == 'order' }.values.any? { |param| not param.empty?  }
+      @products = @search.paginate(:page => params[:page]) 
+    end
   end 
 
   def show
-    @product = Product.find(params[:id])
-    @rating  = Rating.find(:first,:conditions => {:user_id => current_user,:product_id => @product}) || Rating.new(:stars => 0)
+    @product = Product.with_ratings_from(current_user).find(params[:id])
     @show_stars = true
     @truncate_description = false                                             
   end  

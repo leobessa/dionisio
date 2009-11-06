@@ -48,6 +48,7 @@ end
 Então /^devo ver os produtos a serem avaliados inicialmente$/ do
    Product.selected.each do |p|
     response.should have_selector("#product_#{p.id}")
+    response.should have_selector("#star-rating-for-product-#{p.id}")
    end
 end
 

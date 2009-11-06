@@ -30,6 +30,7 @@ Esquema do Cenário: buscando produtos
   
 Exemplos:
   | busca                | o_que_devo_ver                | categoria   | o_que_nao_devo_ver | 
+  |                      |                               |             | harry          | 
   |                      | CD Iron Maiden                | CDs         | harry          |
   | harry                | harry potter 1                | Livros      | perfume        |
   | macbook              | computador macbook cor branca | Eletrônicos | harry          |
@@ -41,3 +42,4 @@ Exemplos:
   | CD U2                | CD U2                         | CDs         | perfume        |
   | CD U3                | CD U3                         | CDs         | camisa         |
   | CD U4                | CD U4                         | CDs         | ipod           |
+  

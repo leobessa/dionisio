@@ -20,10 +20,9 @@ class HomeController < ApplicationController
     end
   end
     
-  def show_selected_products_to_user
-    @products = Product.selected 
-    @ratings = Rating.find(:all,:conditions => {:user_id => current_user,:product_id => @products})
-    render :partial => "stage1", :locals => { :products => @products, :ratings => @ratings }, :layout => 'application'
+  def show_selected_products_to_user 
+    @products = Product.selected.with_ratings_from(current_user).all
+    render :partial => "stage1", :locals => { :products => @products }, :layout => 'application'
   end
 
   def show_products_search 
