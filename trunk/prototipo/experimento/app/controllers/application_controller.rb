@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   #filter_parameter_logging :password, :password_confirmation
 
-  helper_method :current_user , :phase_description_content
+  helper_method :current_user
 
   after_filter :verify_completed_stage, :if => :user_signed_in? 
   
@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
   private 
   def verify_completed_stage 
     current_user.advance_stage if current_user.completed_stage?
-  end                             
-
-  def phase_description_content 
-    "Etapa #{current_user.stage_number} - Andamento #{current_user.stage_progress}" if user_signed_in?
   end
 
 end

@@ -5,8 +5,6 @@
   - if current_user.can_rate?
     - (1..5).each do |n|
       %li  
-        - url = url_for(:controller => 'products', :action => 'rate', :id => product_id, :stars => n, :dimension => '') 
-        - before_hash = { :with => "'unknown=' + (known == false)", :before => "var known = confirm('Aperte OK se você CONHECE este produto, e CANCEL caso você NÃO O CONHEÇA.')"}  
+        - url = url_for(:controller => 'products', :id => product_id , :action => 'rate', 'rating[product_id]' => product_id, 'rating[stars]' => n) 
         - options = {:url => url, :method => :post}
-        - options.merge!(before_hash) if stars.nil?
         = link_to_remote "#{n}", options , :href => url, :class => "#{%w(one two three four five)[n-1]}-star#{'s' if n > 1}", :title => "#{n} estrelas"

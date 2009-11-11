@@ -20,10 +20,16 @@
           = render :partial => 'shared/star_rating', :locals => { :product_id => product.id, :stars => product.stars }
         %small{:style => "vertical-align: top;"} Muito Interesse
         - if current_user.can_rate?
-          - unknown = product.unknown.nil? ? false  : product.unknown.match(/(true|t|yes|y|1)$/i)
           - display = product.stars.nil?   ? 'none' : ''
-          %div{:id => "#{product.id}-checkbox", :style => "display: #{display};"}
-            %strong Você já conhecia este produto?
-            %div
-              = check_box_tag("nc-#{product.id}","#{product.id}", unknown,{:onclick => remote_function(:url => {:controller => :products, :action => :unknown },:with => "'id='+$('nc-#{product.id}').value+'&unknown='+$('nc-#{product.id}').checked")}) + "<b>não</b>"
-            %div{:id => "nc-#{product.id}-message"}
+          %div{:id => "radio-button-for-product-#{product.id}", :style => "display: #{display};"}
+            %strong Você já conhecia este produto?  
+            %div 
+              = radio_button_tag "unknown-#{product.id}", "false", (product.unknown && product.unknown.match(/(false|f|no|n|0)$/i)), :onclick => on_click_unknown_radio_save(product)
+              - url = url_for(:controller => 'products', :id => product.id , :action => 'unknown', 'rating[unknown]' => 'false') 
+              - options = {:url => url, :method => :post, :onSucess => "$('unknown-#{product.id}_false').checked = true"}
+              = label_tag "unknown-#{product.id}_false", "sim"
+              = radio_button_tag "unknown-#{product.id}", "true", (product.unknown && product.unknown.match(/(true|t|yes|y|1)$/i)), :onclick => on_click_unknown_radio_save(product)
+              - url = url_for(:controller => 'products', :id => product.id , :action => 'unknown', 'rating[unknown]' => 'true') 
+              - options = {:url => url, :method => :post, :onSucess => "$('unknown-#{product.id}_true').checked = true"}
+              = label_tag "unknown-#{product.id}_true",  "não"
+            %div{:id => "status-of-product-#{product.id}-rating", :style => "display:none;"} enviando...

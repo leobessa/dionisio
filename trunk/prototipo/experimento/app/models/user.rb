@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     recommender_ids = UserRecommendation.find(:all,:select => 'DISTINCT sender_id',:conditions => {:target_id => self})
     User.find(recommender_ids.map(&:sender_id))
   end
-  
+
   def friends
     group.users.delete_if { |u| u == self} 
   end
@@ -69,35 +69,33 @@ class User < ActiveRecord::Base
   def stage_progress
     case stage_number
     when 1 
-      selection_count = 20 
-      rates_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}})
-      return "#{rates_count}/#{selection_count}" 
+      rates_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}, :unknown => [true,false]})
     when 2                    
-      rate_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => false}})
-      return "#{rate_count}/10"
+      rate_count = Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => false}, :unknown => [true,false]})
     when 3                    
       i = friends.sum do |friend|
-        s = recommendations_count_to(friend); s = s > 5 ? 5 : s                
+        s = recommendations_count_to(friend); 
+        s = s > 5 ? 5 : s                
       end
-      return "#{i}/20"
     end
-    "?/?"
   end
-  
+
   def recommendations_count_to(user)
     UserRecommendation.count(:conditions => {:sender_id => self, :target_id => user})
   end
 
   def completed_stage? 
+    stage_progress >= stage_limit
+  end 
+
+  def stage_limit 
     case stage_number
     when 1
-       Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => true}}) >= 20
+      20
     when 2
-      Rating.count(:joins => :product, :conditions => {:user_id => self, :products => {:selected => false}}) >= 10
+      10
     when 3           
-      friends.count > 1 && friends.all? { |friend| UserRecommendation.count(:conditions => {:sender_id => self, :target_id => friend }) >= 5 }
-    else
-      false
+      20
     end
   end
 
@@ -108,7 +106,7 @@ class User < ActiveRecord::Base
   def recommend(options)
     UserRecommendation.create!(options.merge!(:sender => self))
   end
-  
+
   def can_rate?
     [1,2,5,6].include? stage_number 
   end

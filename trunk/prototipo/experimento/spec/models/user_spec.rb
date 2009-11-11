@@ -18,45 +18,56 @@ describe User do
     end
   end 
 
+  { 1 => 20, 2 => 10, 3 => 20 }.each_pair do |stage_number,limit| 
+    it "should tell the stage limit is #{limit} when the stage is #{stage_number}" do
+      user = Factory.build :user, :stage_number => stage_number
+      user.stage_limit.should == limit
+    end 
+  end
+
   it "should set stage_number to 1 before creating" do
     user = Factory.build :user, :stage_number => nil
     user.save
     user.stage_number.should == 1
   end
 
-  it "should tell when the stage has been completed" do 
+  context "when user is in stage 1" do   
 
-    context "when user is in stage 1" do
+    it "should tell when the stage has been completed" do
       @user = Factory :user, :stage_number => 1
       @user.completed_stage?.should == false 
       20.times { Factory :product, :selected => true}
       20.times { Factory :product, :selected => false}
       selection = Product.selected
-      last = selection.pop
-      selection.each do |product|
-        Rating.create!(:stars => 4, :user => @user, :product => product)
+      19.times do
+        Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => false)
       end
       @user.completed_stage?.should == false 
-      Rating.create!(:stars => 4, :user => @user, :product => last)
-      @user.completed_stage?.should == true
+      Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => true)
+      @user.completed_stage?.should == true 
     end
+  end
 
-    context "when user is in stage 2" do
+  context "when user is in stage 2" do 
+    it "should tell when the stage has been completed" do
       @user = Factory :user
       @user.update_attribute :stage_number, 2
       @user.completed_stage?.should == false 
       10.times { Factory :product, :selected => false}
       selection = Product.find :all, :conditions => {:selected => false}
-      selection[0..8].each do |product|
-        Rating.create!(:stars => 4, :user => @user, :product => product)
+      9.times do 
+        Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => true)
       end
       @user.completed_stage?.should == false
-      Rating.create!(:stars => 4, :user => @user, :product => selection[9])
-      @user.completed_stage?.should == true
-    end  
+      Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => false)
+      @user.completed_stage?.should == true 
+    end
+    
+  end  
 
-    context "when user is in stage 3" do 
-      context "and has 4 friends" do
+  context "when user is in stage 3" do 
+    context "and has 4 friends" do
+      it "should tell when the stage has been completed" do
         @poli  = Factory :group
         @user1 = Factory :user, :group => @poli, :stage_number => 3  
         @user2 = Factory :user, :group => @poli
@@ -67,36 +78,44 @@ describe User do
         @user1.friends.each do |friend|
           5.times { @user1.recommend(:target => friend, :product => (Factory :product) ) }
         end      
-        @user1.completed_stage?.should == true 
+        @user1.completed_stage?.should == true  
       end
+    end
 
-      context "and has no friends" do
+    context "and has no friends" do 
+      it "should tell when the stage has been completed" do
         @poli  = Factory :group
         @user1 = Factory :user, :group => @poli, :stage_number => 3  
-        @user1.completed_stage?.should == false
-      end 
-
+        @user1.completed_stage?.should == false              
+      end
     end 
-
 
   end 
 
-  context "when user is in stage 2" do 
-    it "should tell the stage progress" do
-
-      @user = Factory :user, :stage_number => 2
-      @user.stage_progress.should == "0/10"           
-      10.times { Factory :product, :selected => false}
-      selection = Product.find :all, :conditions => {:selected => false}
-      selection[0..8].each do |product| 
-        Rating.create!(:stars => 4, :user => @user, :product => product)
-      end
-      @user.stage_progress.should == "9/10" 
-      Rating.create!(:stars => 4, :user => @user, :product => selection[9])
-      @user.stage_progress.should == "10/10"
-
+  context "when user is in stage 2" do     
+    context "ratings don't have unknown set" do
+      it "should tell the stage progress is 0" do
+        @user = Factory :user, :stage_number => 2
+        @user.stage_progress.should == 0           
+        10.times { Factory :product, :selected => false}
+        Rating.create!(:stars => 4, :user => @user, :product => Product.selected.first)
+        @user.stage_progress.should == 0
+      end   
     end
-  end
+    context "ratings do have unknown set" do
+      it "should tell the correct stage progress" do
+        @user = Factory :user, :stage_number => 2
+        @user.stage_progress.should == 0           
+        10.times { Factory :product, :selected => false}
+        selection = Product.find :all, :conditions => {:selected => false}
+        9.times { Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => false )}
+        @user.stage_progress.should == 9 
+        Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => false)
+        @user.stage_progress.should == 10
+      end   
+    end
+  end 
+  
   it "should be able to have a group of friends" do
     @poli = Factory :group, :name => 'Poli'
     @fools = Factory :group, :name => 'Fools'
@@ -109,7 +128,5 @@ describe User do
     @leo.friends.should_not include(@leo), :messsage => ' User should not be his/her own friend'
     @leo.friends.should_not include(@fool)
   end
-
-
 
 end

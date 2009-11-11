@@ -82,6 +82,7 @@ Quando /^avalio mais 10 produtos ainda não avaliados por "([^\"]*)"$/ do |email
     Quando %Q{eu vou para a página do produto com id "#{product.id}"}    
     rate = 3
     click_link_within "#star-rating-for-product-#{product.id}", "#{rate}"#, :wait_for => :ajax
+    visit "products/unknown?rating[product_id]=#{product.id}&rating[unknown]=true"
   end
 end
 

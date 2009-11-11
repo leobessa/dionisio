@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :user_recommendations
   end
 
-  map.resources :products, :only => [:show, :index], :member => {:rate => [:post,:get]}
+  map.resources :products, :only => [:show, :index], :member => {:rate => [:post,:get], :unknown => [:post,:get]}
 
   map.resources :invitations
 
