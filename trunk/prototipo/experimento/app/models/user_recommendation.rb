@@ -8,13 +8,21 @@ class UserRecommendation < ActiveRecord::Base
   validates_uniqueness_of :target_id, :scope => [:sender_id,:product_id], :message => "must be unique"
   validate :must_be_friends, :if => [:sender,:target]
   validate :must_not_be_friends
-  validate :reject_self_recommendation
+  validate :reject_self_recommendation    
+  validate :must_have_five_recommendations_at_most
+  validate :must_not_be_sent_to_user_who_has_already_rated_the_product
 
   def must_be_friends
     if sender.stage_number == 3 
       errors.add_to_base("Deve ser enviada a um amigo") unless sender.friends.include?(target)
     end
   end 
+  
+  def must_have_five_recommendations_at_most
+    if sender.stage_number == 3 
+      errors.add_to_base("Já foi enviada 5 vezes para este amigo.") if sender.recommendations_count_to(target) >= 5
+    end
+  end
   
   def must_not_be_friends
     if sender && sender.stage_number == 4 
@@ -24,6 +32,10 @@ class UserRecommendation < ActiveRecord::Base
   
   def reject_self_recommendation
      errors.add_to_base("Não pode ser enviada a si mesmo") if sender_id.eql?(target_id)
+  end  
+  
+  def must_not_be_sent_to_user_who_has_already_rated_the_product
+    errors.add_to_base("Não pode ser enviada a um pessoa que já avaliou o produto.") if target.rated?(product)
   end
   
   

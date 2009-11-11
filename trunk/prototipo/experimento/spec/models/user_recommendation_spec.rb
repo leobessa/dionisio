@@ -1,22 +1,14 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe UserRecommendation do
-  before(:each) do
-    @valid_attributes = {
-      :sender_id => 1,
-      :target_id => 2,
-      :product_id => 1
-    }    
-    @valid_user_recommendation = UserRecommendation.create @valid_attributes
-  end
 
   it "should create a new instance given valid attributes" do
-    @valid_user_recommendation.should be_valid
+    Factory.create(:user_recommendation).should be_valid
   end 
   
   [:sender_id,:target_id,:product_id].each do |attribute|
-    it "should validate presence of #{attribute}" do   
-      pending
+    it "should validate presence of #{attribute}" do  
+        @valid_user_recommendation = Factory.build(:user_recommendation) 
         @valid_user_recommendation.send("#{attribute}=",nil)
         @valid_user_recommendation.should_not be_valid
         @valid_user_recommendation.should have(1).error_on(attribute)
@@ -24,13 +16,35 @@ describe UserRecommendation do
   end     
   
   it "should be unique given a product a sender and a target" do 
-    pending
-    attributes = { :sender_id => 2, :target_id => 3, :product_id => 3 }
-    UserRecommendation.create(attributes)
-    UserRecommendation.new(attributes).should_not be_valid 
-    UserRecommendation.new(attributes.merge(:sender_id => 4)).should be_valid
-    UserRecommendation.new(attributes.merge(:target_id => 4)).should be_valid
-    UserRecommendation.new(attributes.merge(:product_id => 4)).should be_valid
+     a = Factory.create :user_recommendation
+     UserRecommendation.new(a.attributes).should_not be_valid
+  end 
+  
+  it "should not be valid when target has already rated that product" do
+    target = Factory :user, :stage_number => 3
+    rated_product = Factory :product
+    Factory :rating, :user => target, :product => rated_product
+    r = Factory.build :user_recommendation, :target => target, :product => rated_product
+    r.should_not be_valid
+  end
+    
+  context "sender is on stage 3" do
+    it "should not be valid when user has already sent 5 recommendations to the same target" do
+      sender = Factory :user, :stage_number => 3
+      target = Factory :user, :stage_number => 3, :group => sender.group
+      5.times do
+        r = Factory.create :user_recommendation, :sender => sender, :target => target
+      end
+      r = Factory.build :user_recommendation, :sender => sender, :target => target
+      r.should_not be_valid
+    end  
+    
+    it "should be sent among friends" do 
+      sender = Factory :user, :stage_number => 3
+      target = Factory :user, :stage_number => 3
+      r = Factory.build(:user_recommendation, :sender => sender, :target => target)
+      r.should_not be_valid
+    end                            
   end
     
   

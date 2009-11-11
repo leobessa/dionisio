@@ -22,13 +22,15 @@ describe UserRecommendationsController do
     User.should_receive(:find).with("3").and_return(@user)
     UserRecommendation.any_instance.stubs(:valid?).returns(false)
     post :create, :user_id => 3
-    response.should render_template(:new)
+    response.should redirect_to(root_path)
   end
   
   it "create action should redirect when model is valid" do
+    pending
     @current_user = mock_model User, :stage_number => 3 
     @controller.should_receive(:current_user).and_return(@current_user)
     @user = Factory.stub :user
+    @user.stubs(:recommendations_count_to).returns(3) 
     User.should_receive(:find).with("3").and_return(@user)
     UserRecommendation.any_instance.stubs(:valid?).returns(true)
     post :create, :user_id => 3
