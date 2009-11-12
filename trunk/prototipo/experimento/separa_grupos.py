@@ -24,7 +24,17 @@ def main():
                     escolhidos.add(candidato)
                     pessoas_freq[candidato] += 1
             pessoas_escolhidos[pessoa] = escolhidos
+    pessoas_inverso = {}
+    for pessoa, escolhidos in pessoas_escolhidos.items():
+
+        for escolhido in escolhidos:
+            pessoas_inverso.setdefault(escolhido, [])
+            pessoas_inverso[escolhido].append(pessoa)
+
     pprint(pessoas_escolhidos)
+    print '-' * 10
+    pprint(pessoas_inverso)
+    print '-' * 10
     pprint(pessoas_freq)
 
 main()
