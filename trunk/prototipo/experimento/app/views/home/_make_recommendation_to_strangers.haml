@@ -1,0 +1,12 @@
+- title "Envio de recomendações para desconhecidos"
+- guides.each do |guide|
+  %ul[guide.target]  
+    %li                         
+      - recommendations_count = UserRecommendation.count(:conditions => {:sender_id => current_user, :target_id => guide.target})
+      - if recommendations_count < guide.times
+        %strong
+          = "Envie #{guide.times-recommendations_count} recomendações para"
+          = link_to guide.target.name, user_ratings_path(guide.target)
+      - else
+        %i
+          = "Já foram enviadas #{guide.times} recomendações para #{guide.target.name}"

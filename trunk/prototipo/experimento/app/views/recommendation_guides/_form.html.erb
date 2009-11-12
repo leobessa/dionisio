@@ -1,0 +1,16 @@
+<% form_for @recommendation_guide do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :sender_id %><br />
+    <%= f.select :sender_id, User.all.collect{|u| ["#{u.name} - (#{u.group.name})",u.id]} %>
+  </p>
+  <p>
+    <%= f.label :target_id %><br />
+    <%= f.select :target_id, User.all.collect{|u| ["#{u.name} - (#{u.group.name})",u.id]} %>
+  </p>
+  <p>
+    <%= f.label :times %><br />
+    <%= f.text_field :times %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

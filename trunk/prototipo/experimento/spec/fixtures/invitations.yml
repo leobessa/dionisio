@@ -1,9 +1,0 @@
-one:
-  recipient_email: MyString
-  token: MyString
-  sent_at: 2009-10-18 23:41:42
-
-two:
-  recipient_email: MyString
-  token: MyString
-  sent_at: 2009-10-18 23:41:42

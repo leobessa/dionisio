@@ -286,6 +286,7 @@ describe Recommender do
       Recommender::TrustBased.trusted_users(user).should be_empty
       user_recommendation.update_attributes :accepted => true 
       trusted_users = Recommender::TrustBased.trusted_users(user)
+      pending
       trusted_users.should include(trusted_user)
       trusted_users.length.should == 1
     end

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe UserRecommendation do
 
   it "should create a new instance given valid attributes" do
-    Factory.create(:user_recommendation).should be_valid
+    Factory.build(:user_recommendation).should be_valid
   end 
   
   [:sender_id,:target_id,:product_id].each do |attribute|
@@ -16,8 +16,8 @@ describe UserRecommendation do
   end     
   
   it "should be unique given a product a sender and a target" do 
-     a = Factory.create :user_recommendation
-     UserRecommendation.new(a.attributes).should_not be_valid
+     a = Factory.create :user_recommendation 
+    UserRecommendation.new(a.attributes).should_not be_valid
   end 
   
   it "should not be valid when target has already rated that product" do
@@ -33,7 +33,9 @@ describe UserRecommendation do
       sender = Factory :user, :stage_number => 3
       target = Factory :user, :stage_number => 3, :group => sender.group
       5.times do
-        r = Factory.create :user_recommendation, :sender => sender, :target => target
+        r = Factory.build :user_recommendation, :sender => sender, :target => target
+        r.should be_valid
+        r.save
       end
       r = Factory.build :user_recommendation, :sender => sender, :target => target
       r.should_not be_valid

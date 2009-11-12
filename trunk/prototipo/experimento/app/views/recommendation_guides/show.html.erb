@@ -1,0 +1,20 @@
+<% title "Recommendation Guide" %>
+
+<p>
+  <strong>Sender:</strong>
+  <%=h @recommendation_guide.sender.name %>
+</p>
+<p>
+  <strong>Target:</strong>
+  <%=h @recommendation_guide.target.name %>
+</p>
+<p>
+  <strong>Times:</strong>
+  <%=h @recommendation_guide.times %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_recommendation_guide_path(@recommendation_guide) %> |
+  <%= link_to "Destroy", @recommendation_guide, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", recommendation_guides_path %>
+</p>

@@ -5,9 +5,9 @@
     %li 
       - if x < 5
         %strong
-          = "Envie #{5-x} recomendações de produto para"
+          = "Envie #{5-x} recomendações para"
           = link_to u.name, user_ratings_path(u)
       - else
         %i
-          = "Já foram enviadas #{x} recomendações de produto para #{u.name}"
+          = "Já foram enviadas #{x} recomendações para #{u.name}"
       

@@ -15,14 +15,13 @@ end
 
 Factory.define :user do |f|                   
   f.sequence(:name){ |n| "João 123#{n} da Silva"}
-  f.invitation { Factory.create(:invitation) }
+  f.invitation { Factory :invitation  }
   f.email { Factory.next(:email) }
   f.password "secret"
   f.password_confirmation {|u| u.password}
   f.sex "M"
   f.age_group '18 a 25'
   f.stage_number 1 
-  f.association :group
 end 
 
 Factory.define :admin do |f|                   

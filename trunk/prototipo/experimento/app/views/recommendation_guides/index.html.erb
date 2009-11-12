@@ -1,0 +1,21 @@
+<% title "Recommendation Guides" %>
+
+<table>
+  <tr>
+    <th>Sender</th>
+    <th>Target</th>
+    <th>Times</th>
+  </tr>
+  <% for recommendation_guide in @recommendation_guides %>
+    <tr>
+      <td><%=h recommendation_guide.sender.name %></td>
+      <td><%=h recommendation_guide.target.name %></td>
+      <td><%=h recommendation_guide.times %></td>
+      <td><%= link_to "Show", recommendation_guide %></td>
+      <td><%= link_to "Edit", edit_recommendation_guide_path(recommendation_guide) %></td>
+      <td><%= link_to "Destroy", recommendation_guide, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Recommendation Guide", new_recommendation_guide_path %></p>

@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   validates_presence_of :group_id
   belongs_to :invitation
   belongs_to :group
-  has_many :rated_products, :through => :ratings, :source => :product                    
+  has_many :rated_products, :through => :ratings, :source => :product
+  has_many :recommendation_guides, :class_name => "RecommendationGuide", :foreign_key => "sender_id"                    
 
   def recommenders
     recommender_ids = UserRecommendation.find(:all,:select => 'DISTINCT sender_id',:conditions => {:target_id => self})
@@ -77,6 +78,9 @@ class User < ActiveRecord::Base
         s = recommendations_count_to(friend); 
         s = s > 5 ? 5 : s                
       end
+    when 4                                                                       
+      strangers_ids = RecommendationGuide.all(:conditions => {:sender_id => self}).map(&:target_id)
+      UserRecommendation.count(:conditions => {:sender_id => self, :target_id => strangers_ids})
     end
   end
 
@@ -85,7 +89,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_stage? 
-    stage_progress >= stage_limit
+    stage_progress >= stage_limit unless stage_number > 4
   end 
 
   def stage_limit 
@@ -96,6 +100,8 @@ class User < ActiveRecord::Base
       10
     when 3           
       20
+    when 4
+      RecommendationGuide.sum(:times, :conditions => {:sender_id => self})
     end
   end
 
@@ -109,6 +115,11 @@ class User < ActiveRecord::Base
 
   def can_rate?
     [1,2,5,6].include? stage_number 
+  end 
+  
+  def can_send_recommendation_to?(target)
+    return current_user.friends.include?(target) if stage_number == 3
+    return self.recommendation_guides.map(&:target_id).include?(target.id) if stage_number == 4
   end
 
 end

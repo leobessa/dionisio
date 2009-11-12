@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     when 1 then show_selected_products_to_user 
     when 2 then show_products_search 
     when 3 then show_friends
+    when 4 then show_strangers
     end                                             
   end       
 
@@ -19,7 +20,7 @@ class HomeController < ApplicationController
       return false
     end
   end
-    
+
   def show_selected_products_to_user 
     @products = Product.selected.with_ratings_from(current_user).all
     render :partial => "stage1", :locals => { :products => @products }, :layout => 'application'
@@ -28,10 +29,15 @@ class HomeController < ApplicationController
   def show_products_search 
     redirect_to :action => 'index', :controller => 'products'
   end  
-  
+
   def show_friends
     @users = current_user.friends
     render :partial => 'make_recommendations', :locals => {:users => @users}, :layout => 'application'
+  end
+  
+  def show_strangers
+    @recommendation_guides = RecommendationGuide.all(:include => :target,:conditions => {:sender_id => current_user}) 
+    render :partial => 'make_recommendation_to_strangers', :locals => {:guides => @recommendation_guides}, :layout => 'application'
   end
 
 end

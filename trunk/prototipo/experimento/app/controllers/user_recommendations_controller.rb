@@ -17,10 +17,16 @@ class UserRecommendationsController < ApplicationController
     @user_recommendation.target = @target
     @user_recommendation.sender = current_user
     if @user_recommendation.save 
-      x = current_user.recommendations_count_to(@target)                        
-      if x < 5
-        message = "Restam apenas #{5-x} recomendações para #{@target.name}" if (5-x) > 1
-        message = "Resta apenas 1 recomendação para #{@target.name}" if (5-x) == 1 
+      x = current_user.recommendations_count_to(@target)  
+      y = case current_user.stage_number
+        when 3
+          5
+        when 4
+          RecommendationGuide.first(:conditions => {:sender_id => current_user, :target_id => @target}).times
+        end                        
+      if x < y
+        message = "Restam apenas #{y-x} recomendações para #{@target.name}" if (y-x) > 1
+        message = "Resta apenas 1 recomendação para #{@target.name}" if (y-x) == 1 
         flash[:notice] = "Recomendação enviada com sucesso. #{message}" 
         redirect_to new_user_user_recommendation_path(@target)
       else 
