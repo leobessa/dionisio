@@ -3,5 +3,5 @@
 - @users.each do |user|
   = render user 
 
-  %strong= "Etapa: #{user.stage_number} - Progresso: #{user.stage_progress} - Grupo: #{user.group_id} (#{user.group.name})"
+  %strong= "Etapa: #{user.stage_number} - Progresso: #{user.stage_progress}/#{user.stage_limit} - Grupo: #{user.group_id} (#{user.group.name})"
     
