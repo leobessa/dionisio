@@ -20,7 +20,7 @@ class UserRecommendation < ActiveRecord::Base
 
   def must_have_five_recommendations_at_most
     if sender.stage_number == 3 
-      errors.add_to_base("Já foi enviada 5 vezes para este amigo.") if sender.recommendations_count_to(target) >= 5
+      errors.add_to_base(" Já foram enviadas 5 recomendações para #{target.name}.") if sender.recommendations_count_to(target) >= 5
     end
   end
 
@@ -35,11 +35,11 @@ class UserRecommendation < ActiveRecord::Base
   end  
 
   def must_not_be_sent_to_user_who_has_already_rated_the_product
-    errors.add_to_base("Não pode ser enviada a um pessoa que já avaliou o produto.") if target.rated?(product)
+    errors.add_to_base("Recomendação não pode ser enviada a um pessoa que já avaliou o produto.") if target.rated?(product)
   end
   
   def must_be_unique  
-    errors.add_to_base("Este produto já foi recomendado para esta pessoa.") if UserRecommendation.first(:conditions => {:sender_id => sender_id, :target_id => target_id, :product_id => product_id})
+    errors.add_to_base("Esta recomendação foi enviada com sucesso.") if UserRecommendation.first(:conditions => {:sender_id => sender_id, :target_id => target_id, :product_id => product_id})
   end     
 
 

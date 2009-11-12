@@ -18,11 +18,17 @@ describe User do
     end
   end 
 
-  { 1 => 20, 2 => 10, 3 => 20 }.each_pair do |stage_number,limit| 
+  { 1 => 20, 2 => 10 }.each_pair do |stage_number,limit| 
     it "should tell the stage limit is #{limit} when the stage is #{stage_number}" do
       user = Factory.build :user, :stage_number => stage_number
       user.stage_limit.should == limit
     end 
+  end
+  
+  it "should tell the stage limit is 5*friends when the stage is 3" do
+    user = Factory.create :user, :stage_number => 3
+    3.times { Factory.create :user, :stage_number => 3, :group => user.group }
+    user.stage_limit.should == 15
   end
 
   it "should set stage_number to 1 before creating" do
@@ -70,10 +76,10 @@ describe User do
       it "should tell when the stage has been completed" do
         @poli  = Factory :group
         @user1 = Factory :user, :group => @poli, :stage_number => 3  
-        @user2 = Factory :user, :group => @poli
-        @user3 = Factory :user, :group => @poli
-        @user4 = Factory :user, :group => @poli
-        @user5 = Factory :user, :group => @poli
+        @user2 = Factory :user, :group => @poli, :stage_number => 3
+        @user3 = Factory :user, :group => @poli, :stage_number => 4
+        @user4 = Factory :user, :group => @poli, :stage_number => 3
+        @user5 = Factory :user, :group => @poli, :stage_number => 4
         @user1.completed_stage?.should == false
         @user1.friends.each do |friend|
           5.times { @user1.recommend(:target => friend, :product => (Factory :product) ) }
@@ -85,7 +91,8 @@ describe User do
     context "and has no friends" do 
       it "should tell when the stage has been completed" do
         @poli  = Factory :group
-        @user1 = Factory :user, :group => @poli, :stage_number => 3  
+        @user1 = Factory :user, :group => @poli, :stage_number => 3
+        Factory :user, :group => @poli, :stage_number => 3  
         @user1.completed_stage?.should == false              
       end
     end 

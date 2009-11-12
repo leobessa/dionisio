@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     when 2
       10
     when 3           
-      20
+      (User.count(:conditions => {:group_id => self.group_id, :stage_number => [3,4]}) - 1) * 5
     when 4
       RecommendationGuide.sum(:times, :conditions => {:sender_id => self})
     end
@@ -118,7 +118,7 @@ class User < ActiveRecord::Base
   end 
   
   def can_send_recommendation_to?(target)
-    return current_user.friends.include?(target) if stage_number == 3
+    return self.friends.include?(target) if stage_number == 3
     return self.recommendation_guides.map(&:target_id).include?(target.id) if stage_number == 4
   end
 
