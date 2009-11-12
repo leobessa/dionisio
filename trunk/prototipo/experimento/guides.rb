@@ -563,6 +563,9 @@ a.each_pair do |email,list|
  sender = User.find_by_email(email)
  list.each do |stranger|                 
    target = User.find_by_email(stranger)
-   RecommendationGuide.create :sender_id => sender, :target_id => target, :times => 1
+   r = RecommendationGuide.new :sender => sender, :target => target, :times => 1
+   puts r
+   puts r.errors.full_messages unless r.save
+   puts
  end 
 end
