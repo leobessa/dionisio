@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     when 2
       10
     when 3           
-      (User.count(:conditions => {:group_id => self.group_id, :stage_number => [3,4]}) - 1) * 5
+      (User.count(:conditions => {:group_id => self.group_id, :stage_number => [3,4,5]}) - 1) * 5
     when 4
       RecommendationGuide.sum(:times, :conditions => {:sender_id => self})
     end
