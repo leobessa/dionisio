@@ -28,6 +28,8 @@ describe User do
   context "in stage 5" do
     it "should tell the limit is the number of unique recommended products" do
       user = Factory :user, :stage_number => 5
+      other = Factory :user, :stage_number => 5
+      ur = Factory :user_recommendation, :target => other
       user.stage_limit.should == 0
       friend = Factory :user, :stage_number => 5, :group => user.group
       stranger = Factory :user, :stage_number => 5 

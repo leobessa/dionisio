@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
     when 4
       RecommendationGuide.sum(:times, :conditions => {:sender_id => self})
     when 5
-      UserRecommendation.count_by_sql "SELECT COUNT(DISTINCT r.product_id) FROM user_recommendations r"
+      UserRecommendation.count_by_sql "SELECT COUNT(DISTINCT r.product_id) FROM user_recommendations r WHERE r.target_id = #{self.id}"
     end
   end
 
