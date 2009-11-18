@@ -81,6 +81,8 @@ class User < ActiveRecord::Base
     when 4                                                                       
       strangers_ids = RecommendationGuide.all(:conditions => {:sender_id => self}).map(&:target_id)
       UserRecommendation.count(:conditions => {:sender_id => self, :target_id => strangers_ids})
+    when 5
+      Rating.count(:conditions => {:user_id => self,:product_id => UserRecommendation.find(:all,:conditions => {:target_id => self}).map(&:product_id)})      
     end
   end
 
