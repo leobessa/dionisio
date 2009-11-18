@@ -81,6 +81,8 @@ class User < ActiveRecord::Base
     when 4                                                                       
       strangers_ids = RecommendationGuide.all(:conditions => {:sender_id => self}).map(&:target_id)
       UserRecommendation.count(:conditions => {:sender_id => self, :target_id => strangers_ids})
+    when 5
+      Rating.count(:conditions => {:user_id => self,:product_id => UserRecommendation.find(:all,:conditions => {:target_id => self}).map(&:product_id)})      
     end
   end
 
@@ -102,6 +104,8 @@ class User < ActiveRecord::Base
       (User.count(:conditions => {:group_id => self.group_id, :stage_number => [3,4,5]}) - 1) * 5
     when 4
       RecommendationGuide.sum(:times, :conditions => {:sender_id => self})
+    when 5
+      UserRecommendation.count_by_sql "SELECT COUNT(DISTINCT r.product_id) FROM user_recommendations r"
     end
   end
 
@@ -116,7 +120,7 @@ class User < ActiveRecord::Base
   def can_rate?
     [1,2,5,6].include? stage_number 
   end 
-  
+
   def can_send_recommendation_to?(target)
     return self.friends.include?(target) if stage_number == 3
     return self.recommendation_guides.map(&:target_id).include?(target.id) if stage_number == 4
