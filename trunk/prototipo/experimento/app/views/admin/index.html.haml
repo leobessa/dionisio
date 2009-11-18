@@ -1,5 +1,7 @@
 - title "Usuários"
-
+-(1..6).each do |i|
+  %h3= "Etapa : #{i}"
+  = User.count(:conditions => {:stage_number => i })
 - @users.each do |user|
   = render user 
 
