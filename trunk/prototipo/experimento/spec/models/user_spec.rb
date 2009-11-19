@@ -48,11 +48,13 @@ describe User do
         ur = Factory :user_recommendation, :target => user, :sender => friend
         Rating.create :user => user
         user.stage_progress.should == 0
-        Rating.create :user => user, :product => ur.product 
+        r = Rating.create :user => user, :product => ur.product, :unknown => nil
+        user.stage_progress.should == 0
+        r.update_attribute :unknown, true  
         user.stage_progress.should == 1
         ur = Factory :user_recommendation, :target => user
         user.stage_progress.should == 1
-        Rating.create :user => user, :product => ur.product 
+        Rating.create :user => user, :product => ur.product, :unknown => false 
         user.stage_progress.should == 2
       end
   end
