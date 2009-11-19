@@ -15,5 +15,4 @@ class Product < ActiveRecord::Base
       true
     end
 
-
-  end
+end

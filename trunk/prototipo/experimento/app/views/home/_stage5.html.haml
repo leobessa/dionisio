@@ -1,0 +1,4 @@
+- title "Avalie os produtos abaixo"
+#productList        
+  - for product in products
+    = render :partial => 'products/product', :locals => {:product => product, :show_stars => true, :truncate_description => true }

@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     when 2 then show_products_search 
     when 3 then show_friends
     when 4 then show_strangers
+    when 5 then show_recommended_products_to_user
     end                                             
   end       
 
@@ -38,6 +39,12 @@ class HomeController < ApplicationController
   def show_strangers
     @recommendation_guides = RecommendationGuide.all(:include => :target,:conditions => {:sender_id => current_user}) 
     render :partial => 'make_recommendation_to_strangers', :locals => {:guides => @recommendation_guides}, :layout => 'application'
+  end
+  
+  def show_recommended_products_to_user 
+    ids = UserRecommendation.find(:all,:conditions => {:target_id => current_user}).map(&:product_id)
+    @products = Product.with_ratings_from(current_user).find(ids).paginate(:page => params[:page])
+    render :partial => "stage5", :locals => { :products => @products }, :layout => 'application'
   end
 
 end
