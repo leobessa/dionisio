@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_stage? 
-    stage_progress >= stage_limit unless stage_number > 4
+    stage_progress >= stage_limit unless stage_number > 5 
   end 
 
   def stage_limit 
