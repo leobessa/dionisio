@@ -3,7 +3,7 @@
 
 % Retirar web semântica e redefinir o projeto como o desenvolvimento de um sistema de recomendação com base em confiança acoplado a uma rede social.
 
- O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a redes sociais e compatível com padrões utilizados na web semântica.
+ O projeto consiste no desenvolvimento de um sistema de recomendação baseado em confiança acoplado a uma rede social.
 
 \section{Visão Geral do Sistema} % (fold)
 \label{sec:visao_do_sistema}
@@ -16,18 +16,10 @@
   \label{fig:escopo}
 \end{figure}
 
-% Arrumar o laço de amizade, um usuário não faz um pedido a outro para ser amigo
+% TODO explicar como as pessoas ficam amigas na rede social
+ O sistema de recomendação utilizará a rede social para obter as informações pessoais e as relações de amizade entre usuários. Neste contexto, um usuário é considerado amigo de outro quando na rede social é estabelecida uma conexão direta entre eles.
 
- O sistema de recomendação utilizará redes sociais para obter as informações pessoais e as relações de amizade entre usuários. Neste contexto, um usuário é considerado amigo de outro quando eles estabelecem uma conexão direta dentro da rede social por meio de pedido de um usuário a outro, utilizando uma ferramenta própria do sistema.
-
-% Retirar informação da confiança explícita
-
- Os usuários podem receber as recomendações dos seus amigos, ou de outras pessoas presentes na rede social. No entanto, as recomendações feitas por amigos serão consideradas, a princípio, mais importantes do que as realizadas por desconhecidos. Além da amizade, haverá uma relação explícita de confiança que será utilizada para determinar maior relevância da recomendação. Quando a relação de amizade no sistema é estabelecida, os dois usuários envolvidos devem escolher uma opção indicando o quanto eles confiam na pessoa que se tornará sua amiga para realizar boas recomendações de produtos.
-
-% Retirar parágrafo
-
- O sistema de recomendação obtém informações a partir de documentos semanticamente estruturados que descrevem as avaliações dos produtos, as relações de amizades e as informações básicas dos usuários. Um repositório será implementado para armazenar tais informações, porém qualquer fonte de documentos que utilizem os padrões definidos pelo sistema de recomendação poderá ser utilizada. Desta forma, o sistema se integra ao contexto da web semântica.
-
+ Os usuários podem receber as recomendações dos seus amigos, ou de outras pessoas presentes na rede social. No entanto, as recomendações feitas por amigos serão consideradas, a princípio, mais importantes do que as realizadas por desconhecidos.
 
 % section visao_do_sistema (end)
 
