@@ -55,8 +55,8 @@ namespace :dionisio do
     end
   end
 
-  namespace :trust do
-    desc "Builds trust based recommendations"
+  namespace :item do
+    desc "Builds item based recommendations"
     task :build => :environment do
       Rails.cache.delete_matched /products_sim_distance/
       User.all.each do |u|
