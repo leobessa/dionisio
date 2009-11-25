@@ -185,6 +185,11 @@ describe Recommender do
   end
 
   context "making item based recommendations" do
+    
+    before(:each) do
+      Rails.cache.delete_matched(/sim_distance/)
+    end
+    
     it "should be none if user has rated no products" do
       user = Factory :user
       Recommender::ItemBased.recommendations_for(user).should be_empty

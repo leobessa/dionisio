@@ -119,21 +119,27 @@ class Recommender
                                                     
       rated_product_ids.each do |product_id|
         candidates.each do |candidate|   
-          similarity = Recommender.sim_distance(product_id,candidate.product_id)
+          similarity = Rails.cache.fetch("products_sim_distance#{[product_id,candidate.product_id].sort.inspect}") do 
+            Recommender.sim_distance(product_id,candidate.product_id)
+          end
           similarity_sum[candidate.product_id] += similarity
           totals[candidate.product_id] +=  user.rate_for(product_id).to_f * similarity    
         end
       end   
       
-      rankings = []
+      rankings = {}
       totals.each_pair do |product_id,total|
-        item = Product.find(product_id)
+        recommendation_score =  (total/similarity_sum[product_id])
+        rankings[product_id] = recommendation_score
+      end
+      keys = rankings.sort{|x,y| y[1] <=> x[1] }.map(&:first)
+      items = Product.find(keys[0,options[:limit]])
+      items.each do |item|
         def item.recommendation_score; @recommendation_score ; end;
         def item.recommendation_score=(d);  @recommendation_score = d ; end;
-        item.recommendation_score =  (total/similarity_sum[product_id])
-        rankings << item
+        item.recommendation_score = rankings[item.id]  
       end
-      rankings.sort{|x,y| y.recommendation_score <=> x.recommendation_score } [0,options[:limit]]
+      items.sort{|x,y| y.recommendation_score <=> x.recommendation_score } 
     end
 
   end
