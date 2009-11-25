@@ -1,6 +1,18 @@
 
-# Fornece a soma do quadrados dos erros agrupados por tipo de algoritmo
+# Fornece a soma do quadrados dos erros agrupados por tipo de algoritmo (erro global por algoritmo)
 select sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating)), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm
+
+# soma dos quadrados dos erros agrupados por usuario e algoritmo (erro por usuario por algoritmo)
+select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating)), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id, sr.algorithm
+
+# soma dos quadrados dos erros agrupados por usuario (erro global por usuario)
+select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating)) from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id
 
 # Histograma dos erros dos algoritmos
 select round((r.stars-sr.predicted_rating),0) as erro, count(*)*100/(select count(*) from system_recommendations _sr where _sr.algorithm = sr.algorithm),  sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by erro, sr.algorithm order by sr.algorithm, erro
+
+
+# Taxa de rejeicao por algoritmo
+# ainda precisa rever isso, por que tirando o criterio de r.stars < 3 o trust possui um quociente maior?
+
+select count(*)*100/(select count(*) from system_recommendations _sr where _sr.algorithm = sr.algorithm), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id and r.stars < 3 group by sr.algorithm
