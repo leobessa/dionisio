@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091111213338) do
+ActiveRecord::Schema.define(:version => 20091125043754) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :null => false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20091111213338) do
     t.integer  "popularity",  :default => 0
   end
 
-  add_index "products", ["category_id"], :name => "index_category_id_on_products"
+  add_index "products", ["category_id"], :name => "index_category_on_products"
   add_index "products", ["name"], :name => "index_name_on_products"
 
   create_table "rates", :force => true do |t|
@@ -80,6 +80,9 @@ ActiveRecord::Schema.define(:version => 20091111213338) do
     t.boolean  "unknown"
   end
 
+  add_index "ratings", ["product_id"], :name => "index_dsfadsfdsa"
+  add_index "ratings", ["user_id"], :name => "index_sdadsadsa"
+
   create_table "recommendation_guides", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "target_id"
@@ -91,6 +94,15 @@ ActiveRecord::Schema.define(:version => 20091111213338) do
   create_table "stages", :force => true do |t|
     t.integer  "number"
     t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "system_recommendations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "algorithm"
+    t.integer  "product_id"
+    t.integer  "predicted_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

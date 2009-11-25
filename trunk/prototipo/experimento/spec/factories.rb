@@ -66,3 +66,10 @@ Factory.define :user_recommendation do |f|
   f.target  { |p| p.association :user  }
   f.product { |p| p.association :product  }
 end
+
+Factory.define :system_recommendation do |f|
+  f.user     { |p| p.association :user  }
+  f.algorithm { ["item","profile","trust"].rand }
+  f.product  { |p| p.association :product  }
+  f.predicted_rating 3
+end

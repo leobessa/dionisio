@@ -67,7 +67,7 @@ class Recommender
         similarity = Recommender.pearson_correlation(user,other)
         next if similarity <= options[:min_similarity]
         similar_users << other
-        yield user,similarity if block_given?
+        yield other,similarity if block_given?
       end                     
       similar_users
     end
@@ -90,15 +90,17 @@ class Recommender
           similarity_sum[rating.product_id] += similarity
         end
       end
-      rankings = []
+      rankings = {}
       totals.each_pair do |product_id,total|
-        item = Product.find(product_id)
-        def item.recommendation_score; @recommendation_score ; end;
-        def item.recommendation_score=(d);  @recommendation_score = d ; end;
-        item.recommendation_score =  (total/similarity_sum[product_id])
-        rankings << item
+        recommendation_score =  (total/similarity_sum[product_id])
+        rankings[product_id] =  recommendation_score
+      end      
+      ids = rankings.sort{|x,y| y.second <=> x.second }.map(&:first) [0,options[:limit]]
+      
+      predicted_ratings = rankings.select{ |k,v| ids.include?(k) }
+      predicted_ratings.inject([]) do |result,(product_id,predicted_rating)|
+        result << {:user_id => user.id, :algorithm => 'profile', :product_id => product_id, :predicted_rating => predicted_rating }
       end
-      rankings.sort{|x,y| y.recommendation_score <=> x.recommendation_score } [0,options[:limit]]
     end
 
   end
@@ -106,7 +108,7 @@ class Recommender
   module ItemBased
 
     def self.recommendations_for(user,options = {}) 
-      defaults = {:limit => 5}
+      defaults = {:limit => 10}
       options = defaults.merge options
       rated_product_ids = user.rated_product_ids
       return [] if rated_product_ids.empty? 
@@ -132,14 +134,11 @@ class Recommender
         recommendation_score =  (total/similarity_sum[product_id])
         rankings[product_id] = recommendation_score
       end
-      keys = rankings.sort{|x,y| y[1] <=> x[1] }.map(&:first)
-      items = Product.find(keys[0,options[:limit]])
-      items.each do |item|
-        def item.recommendation_score; @recommendation_score ; end;
-        def item.recommendation_score=(d);  @recommendation_score = d ; end;
-        item.recommendation_score = rankings[item.id]  
-      end
-      items.sort{|x,y| y.recommendation_score <=> x.recommendation_score } 
+      ids = rankings.sort{|x,y| y.second <=> x.second }.map(&:first) [0,options[:limit]]
+      predicted_ratings = rankings.select{ |k,v| ids.include?(k) }
+      predicted_ratings.inject([]) do |result,(product_id,predicted_rating)|
+        result << {:user_id => user.id, :algorithm => 'item', :product_id => product_id, :predicted_rating => predicted_rating }
+      end.sort{|x,y| y[:predicted_rating] <=> x[:predicted_rating] }
     end
 
   end
@@ -164,15 +163,16 @@ class Recommender
           similarity_sum[rating.product_id] += similarity
         end
       end
-      rankings = []
+      rankings = {}
       totals.each_pair do |product_id,total|
-        item = Product.find(product_id)
-        def item.recommendation_score; @recommendation_score ; end;
-        def item.recommendation_score=(d);  @recommendation_score = d ; end;
-        item.recommendation_score =  (total/similarity_sum[product_id])
-        rankings << item
+        recommendation_score =  (total/similarity_sum[product_id])
+        rankings[product_id] = recommendation_score
       end
-      rankings.sort{|x,y| y.recommendation_score <=> x.recommendation_score } [0,options[:limit]]
+      ids = rankings.sort{|x,y| y.second <=> x.second }.map(&:first) [0,options[:limit]]
+      predicted_ratings = rankings.select{ |k,v| ids.include?(k) }
+      predicted_ratings.inject([]) do |result,(product_id,predicted_rating)|
+        result << {:user_id => user.id, :algorithm => 'trust', :product_id => product_id, :predicted_rating => predicted_rating }
+      end.sort{|x,y| y[:predicted_rating] <=> x[:predicted_rating] }
     end
     
     def self.trusted_users(user, options = {})

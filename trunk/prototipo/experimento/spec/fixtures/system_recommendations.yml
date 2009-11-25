@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  algorithm: MyString
+  product_id: 1
+  predicted_rating: 1
+
+two:
+  user_id: 1
+  algorithm: MyString
+  product_id: 1
+  predicted_rating: 1

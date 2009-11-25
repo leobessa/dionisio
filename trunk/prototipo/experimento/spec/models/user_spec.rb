@@ -24,7 +24,7 @@ describe User do
       user.stage_limit.should == limit
     end 
   end
-  
+
   context "in stage 5" do
     it "should tell the limit is the number of unique recommended products" do
       user = Factory :user, :stage_number => 5
@@ -40,25 +40,56 @@ describe User do
       Factory :user_recommendation, :target => user, :sender => friend, :product => ur.product
       user.stage_limit.should == 2
     end
-    
-     it "should tell the progess is the number of rated products that have been recommended" do
-        user = Factory :user, :stage_number => 5
-        user.stage_progress.should == 0
-        friend = Factory :user, :stage_number => 5, :group => user.group
-        ur = Factory :user_recommendation, :target => user, :sender => friend
-        Rating.create :user => user
-        user.stage_progress.should == 0
-        r = Rating.create :user => user, :product => ur.product, :unknown => nil
-        user.stage_progress.should == 0
-        r.update_attribute :unknown, true  
-        user.stage_progress.should == 1
-        ur = Factory :user_recommendation, :target => user
-        user.stage_progress.should == 1
-        Rating.create :user => user, :product => ur.product, :unknown => false 
-        user.stage_progress.should == 2
-      end
+
+    it "should tell the progess is the number of rated products that have been recommended" do
+      user = Factory :user, :stage_number => 5
+      user.stage_progress.should == 0
+      friend = Factory :user, :stage_number => 5, :group => user.group
+      ur = Factory :user_recommendation, :target => user, :sender => friend
+      Rating.create :user => user
+      user.stage_progress.should == 0
+      r = Rating.create :user => user, :product => ur.product, :unknown => nil
+      user.stage_progress.should == 0
+      r.update_attribute :unknown, true  
+      user.stage_progress.should == 1
+      ur = Factory :user_recommendation, :target => user
+      user.stage_progress.should == 1
+      Rating.create :user => user, :product => ur.product, :unknown => false 
+      user.stage_progress.should == 2
+    end
   end
-  
+
+  context "in stage 6" do
+    it "should tell the limit is the number of unique recommended products" do
+      user = Factory :user, :stage_number => 6
+      user.stage_limit.should == 0
+      a = Factory :system_recommendation, :user => user, :algorithm => 'profile'
+      user.stage_limit.should == 1
+      Factory :system_recommendation, :user => user, :product => a.product, :algorithm => 'item'
+      user.stage_limit.should == 1
+      Factory :system_recommendation, :user => user
+      user.stage_limit.should == 2
+      Factory :user_recommendation
+      user.stage_limit.should == 2
+    end
+
+    it "should tell the progess is the number of rated products that have been recommended" do
+      user = Factory :user, :stage_number => 6
+      user.stage_progress.should == 0
+      a = Factory :system_recommendation, :user => user, :algorithm => 'profile'
+      Rating.create :user => user
+      user.stage_progress.should == 0
+      r = Rating.create :user => user, :product => a.product, :unknown => nil
+      user.stage_progress.should == 0
+      r.update_attribute :unknown, true  
+      user.stage_progress.should == 1
+      sr = Factory :system_recommendation, :user => user
+      user.stage_progress.should == 1
+      Rating.create :user => user, :product => sr.product, :unknown => false 
+      user.stage_progress.should == 2
+    end
+  end
+
   it "should tell the stage limit is 5*friends when the stage is 3" do
     user = Factory.create :user, :stage_number => 3
     3.times { Factory.create :user, :stage_number => 3, :group => user.group }
@@ -102,7 +133,7 @@ describe User do
       Rating.create!(:stars => 4, :user => @user, :product => selection.pop, :unknown => false)
       @user.completed_stage?.should == true 
     end
-    
+
   end  
 
   context "when user is in stage 3" do 
@@ -156,7 +187,7 @@ describe User do
       end   
     end
   end 
-  
+
   it "should be able to have a group of friends" do
     @poli = Factory :group, :name => 'Poli'
     @fools = Factory :group, :name => 'Fools'

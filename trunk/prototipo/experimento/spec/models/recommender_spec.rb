@@ -99,16 +99,15 @@ describe Recommender do
     end 
 
     it "should find unrated products which are nice to similiar users" do                                                            
-      user_x = Factory :user
+      user = Factory :user
       similiar_friend = Factory :user
       product = Factory :product    
-      Factory :rating, :user => user_x,         :stars => 4
+      Factory :rating, :user => user,         :stars => 4
       Factory :rating, :user => similiar_friend, :stars => 4, :product => product
-      Recommender::ProfileBased.should_receive(:similar_users).with(user_x).and_yield(similiar_friend,0.5)
-      recommendations = Recommender::ProfileBased.recommendations_for(user_x)
-      recommendations.should include(product) 
+      Recommender::ProfileBased.should_receive(:similar_users).with(user).and_yield(similiar_friend,0.5)
+      recommendations = Recommender::ProfileBased.recommendations_for(user)
+      recommendations.should include({:user_id=> user.id, :predicted_rating=>4.0, :product_id=> product.id, :algorithm=>"profile"})
       recommendations.length.should == 1
-      recommendations.first.recommendation_score.should == 4
     end
 
     it "should not recommend products that user has already rated" do                                                            
@@ -118,7 +117,7 @@ describe Recommender do
       Factory :rating, :user => user_x,         :stars => 4, :product => product
       Factory :rating, :user => similiar_friend, :stars => 4, :product => product
       Recommender::ProfileBased.should_receive(:similar_users).with(user_x).and_yield(similiar_friend,0.5)
-      Recommender::ProfileBased.recommendations_for(user_x).should_not include(product)   
+      Recommender::ProfileBased.recommendations_for(user_x).should be_empty   
     end
 
   end 
@@ -204,9 +203,8 @@ describe Recommender do
 
       Recommender.should_receive(:sim_distance).with(product.id,similar.id).and_return(0.8)
       recommendations = Recommender::ItemBased.recommendations_for(user)
-      recommendations.should include(similar)                           
+      recommendations.should include({:user_id=>user.id, :predicted_rating=>4.0, :product_id=> similar.id, :algorithm=>"item"})                           
       recommendations.length.should == 1
-      recommendations.first.recommendation_score.should == 4
     end
 
     it "should be weighted by product similarity" do
@@ -222,9 +220,9 @@ describe Recommender do
       Recommender.should_receive(:sim_distance).with(rated_product_1.id,similar.id).and_return(0.8)
       Recommender.should_receive(:sim_distance).with(rated_product_2.id,similar.id).and_return(0.9)
       recommendations = Recommender::ItemBased.recommendations_for(user)
-      recommendations.should include(similar)
+      recommendations.first[:product_id].should == similar.id
       recommendations.length.should == 1
-      recommendations.first.recommendation_score.should be_close(3.588,0.001)
+      recommendations.first[:predicted_rating].should be_close(3.588,0.001)
     end 
 
     it "should bring recommendations ordered by score" do
@@ -247,10 +245,10 @@ describe Recommender do
       recommendations.length.should == 2
       first = recommendations.first
       second = recommendations.second
-      first.id.should be(similar_1.id)
-      first.recommendation_score.should be_close(3.588,0.001)
-      second.id.should be(similar_2.id)
-      second.recommendation_score.should be_close(2.857,0.001)
+      first[:product_id].should be(similar_1.id)
+      first[:predicted_rating].should be_close(3.588,0.001)
+      second[:product_id].should be(similar_2.id)
+      second[:predicted_rating].should be_close(2.857,0.001)
     end
 
   end
@@ -269,9 +267,8 @@ describe Recommender do
       Factory :rating, :user => trusted_friend, :stars => 4, :product => product
       Recommender::TrustBased.should_receive(:trusted_users).with(user_x).and_yield(trusted_friend,0.5)
       recommendations = Recommender::TrustBased.recommendations_for(user_x)
-      recommendations.should include(product) 
+      recommendations.should include({:user_id=>user_x.id, :predicted_rating=>4.0, :product_id=>product.id, :algorithm=>"trust"}) 
       recommendations.length.should == 1
-      recommendations.first.recommendation_score.should == 4
     end
 
   end 

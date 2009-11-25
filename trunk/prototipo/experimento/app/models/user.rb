@@ -83,6 +83,8 @@ class User < ActiveRecord::Base
       UserRecommendation.count(:conditions => {:sender_id => self, :target_id => strangers_ids})
     when 5
       Rating.count(:conditions => {:user_id => self, :unknown => [true,false], :product_id => UserRecommendation.find(:all,:conditions => {:target_id => self}).map(&:product_id)})      
+    when 6
+      Rating.count(:conditions => {:user_id => self, :unknown => [true,false], :product_id => SystemRecommendation.find(:all,:conditions => {:user_id => self}).map(&:product_id)})
     end
   end
 
@@ -91,7 +93,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_stage? 
-    stage_progress >= stage_limit unless stage_number > 5 
+    stage_progress >= stage_limit unless stage_number > 6 
   end 
 
   def stage_limit 
@@ -106,6 +108,8 @@ class User < ActiveRecord::Base
       RecommendationGuide.sum(:times, :conditions => {:sender_id => self})
     when 5
       UserRecommendation.count_by_sql "SELECT COUNT(DISTINCT r.product_id) FROM user_recommendations r WHERE r.target_id = #{self.id}"
+    when 6
+      UserRecommendation.count_by_sql "SELECT COUNT(DISTINCT r.product_id) FROM system_recommendations r WHERE r.user_id = #{self.id}"
     end
   end
 

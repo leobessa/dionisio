@@ -9,12 +9,13 @@ class HomeController < ApplicationController
     when 3 then show_friends
     when 4 then show_strangers
     when 5 then show_recommended_products_to_user
+    when 6 then show_system_recommended_products_to_user
     end                                             
   end       
 
   private                         
   def check_stage_avaiability
-    if Stage.find_by_number(current_user.stage_number).enabled?
+    if (current_user.stage_number <= 6) && Stage.find_by_number(current_user.stage_number).enabled?
       return true
     else
       render :partial => "unavaiable_stage", :layout => 'application'
@@ -47,4 +48,10 @@ class HomeController < ApplicationController
     render :partial => "stage5", :locals => { :products => @products }, :layout => 'application'
   end
 
+  def show_system_recommended_products_to_user 
+    ids = SystemRecommendation.find(:all,:conditions => {:user_id => current_user}).map(&:product_id)
+    @products = Product.with_ratings_from(current_user).find(ids).paginate(:page => params[:page])
+    render :partial => "stage5", :locals => { :products => @products }, :layout => 'application'
+  end
+  
 end

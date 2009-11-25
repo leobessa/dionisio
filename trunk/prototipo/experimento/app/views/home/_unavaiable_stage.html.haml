@@ -1,4 +1,9 @@
-%p 
-  %strong Esta etapa ainda não está habilitada.
-%p Obrigado pela sua colaboração!
-%p Volte mais tarde.
+- if current_user.stage_number <= 6
+  %p 
+    %strong Esta etapa ainda não está habilitada.
+  %p Obrigado pela sua colaboração!
+  %p Volte mais tarde.
+- else
+  %p
+    %strong Fim do experimento.
+  %p Obrigado pela sua colaboração!
