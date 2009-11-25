@@ -4,7 +4,7 @@ class CreateSystemRecommendations < ActiveRecord::Migration
       t.integer :user_id
       t.string :algorithm
       t.integer :product_id
-      t.integer :predicted_rating
+      t.float :predicted_rating
 
       t.timestamps
     end
