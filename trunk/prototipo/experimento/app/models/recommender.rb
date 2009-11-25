@@ -73,7 +73,7 @@ class Recommender
     end
 
     def self.recommendations_for(user,options = {})
-      defaults = {:limit => 5}
+      defaults = {:limit => 10}
       options = defaults.merge options
 
       totals  = {}
@@ -141,7 +141,7 @@ class Recommender
   module TrustBased
     
     def self.recommendations_for(user,options = {})
-      defaults = {:limit => 5}
+      defaults = {:limit => 10}
       options = defaults.merge options
 
       totals  = {}
@@ -170,7 +170,7 @@ class Recommender
     end
     
     def self.trusted_users(user, options = {})
-      defaults = { :min_trust => 0.5 }
+      defaults = { :min_trust => 0.0 }
       options = defaults.merge(options)
       trusted_users = []
       user.recommenders.each do |other|
@@ -178,16 +178,15 @@ class Recommender
         trust = self.trust(user,other)
         next if trust <= options[:min_trust]
         trusted_users << other
-        yield user,trust if block_given?
+        yield other,trust if block_given?
       end                     
       trusted_users
     end
     
     def self.trust(user,other_user)
-      accepted_count = UserRecommendation.count(:all,:conditions => {:sender_id => other_user, :target_id => user, :accepted => true})
-      rejected_count = UserRecommendation.count(:all,:conditions => {:sender_id => other_user, :target_id => user, :accepted => false})
-      rated_count = accepted_count + rejected_count 
-      trust = rated_count > 0 ? accepted_count.to_f/rated_count : 0
+      products_ids = UserRecommendation.find(:all,:conditions => {:sender_id => other_user, :target_id => user}).map(&:product_id)
+      return 0 if products_ids.empty?
+      Rating.average('(stars - 3.0)/2.0',:conditions => {:user_id => user, :product_id => products_ids}) || 0
     end
     
   end
