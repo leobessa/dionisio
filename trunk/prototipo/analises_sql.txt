@@ -1,12 +1,12 @@
 
 # Fornece a soma do quadrados dos erros agrupados por tipo de algoritmo (erro na avaliação prevista global por algoritmo)
-select sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating)), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm
+select sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating))/count(*), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm
 
 # soma dos quadrados dos erros agrupados por usuario e algoritmo (erro na avaliação prevista por usuario por algoritmo)
-select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating)), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id, sr.algorithm
+select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating))/count(*), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id, sr.algorithm
 
 # soma dos quadrados dos erros agrupados por usuario (erro na avaliação prevista global por usuario)
-select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating)) from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id
+select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating))/count(*) from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id
 
 # Histograma dos erros dos algoritmos
 select round((r.stars-sr.predicted_rating),0) as erro, count(*)*100/(select count(*) from system_recommendations _sr, users _u where _sr.algorithm = sr.algorithm and _u.id = _sr.user_id and _u.stage_number >=6), sr.algorithm from ratings r, system_recommendations sr, users u where r.product_id = sr.product_id and r.user_id = sr.user_id and u.id = sr.user_id and u.stage_number >=6 group by erro, sr.algorithm order by sr.algorithm, erro
