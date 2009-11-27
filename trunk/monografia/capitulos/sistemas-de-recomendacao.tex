@@ -1,0 +1,116 @@
+\chapter{SISTEMAS DE RECOMENDAÇÃO} \pagenumbering{arabic}% (fold)
+\label{cha:sistemas_de_recomendação}
+
+\section{Introdução}
+Sistemas de recomendação~\footnote{Em inglês, \textit{Recommender systems}.} são aqueles que sugerem itens ao seus usuários de forma a ajudá-los a encontrar mais efetivamente os itens de maior interesse dentre uma variedade imensa de opções.
+
+A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre um determinado produto antes de comprá-lo ou experimentá-lo. Estas informações são transmitidas boca-a-boca entre amigos e colegas ou através de resenhas especializadas que podem encontradas em revistas e jornais.
+
+Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
+
+\section{Contexto histórico}
+O primeiro sistema de recomendação, Tapestry\cite{Goldberg92}, foi desenvolvido no início dos anos 90. Na última década tais sistemas foram um grande foco de estudo, principalmente os baseado em filtragem colaborativa.~\cite{Resnick97}~\cite{Herlocker04}
+
+Graças ao acúmulo de informações provenientes da web social, observa-se hoje que vários sistemas de recomendação podem ser experimentados pelo usuários da Internet, como exemplo:
+
+\begin{itemize}
+\item 
+A Amazon~\footnote{http://www.amazon.com.} e o Submarino~\footnote{http://www.submarino.com.br.}, lojas virtuais de artigos diversos, recomendam itens semelhantes para aqueles usuários que compram um produto ou manifestam interesse em comprá-lo.
+
+\item O Last.fm~\footnote{http://last.fm.}, uma rede social focada em música, recomenda artistas e canções semelhantes àquelas que os usuários mais gostam de ouvir.
+
+\item O Digg~\footnote{http://digg.com.} e o Delicious~\footnote{http://del.icio.us.}, sistemas de compartilhamento de links~\footnote{Também conhecidos como bookmarks.}, geram uma lista geral de links recomendados baseado nas opiniões dos usuários do sistema.
+
+\item O StumbleUpon~\footnote{http://stumbleupon.com.}, também um sistema online de compartilhamento de links, permite que os usuários recebam recomendações de links e avaliem se eles gostaram ou não daquele link, gerando recomendações personalizadas baseadas nessa avaliação.
+\end{itemize}
+
+
+\section{Classificações dos sistemas de recomendação}
+
+Nas próximas seções serão apresentadas as diferentes abordagens para a implementação de sistemas de recomendação. As primeiras abordagens foram a filtragem colaborativa e a filtragem baseada em conteúdo. Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem.
+
+%Na seção (seção XXX) serão discutidos as diferentes implementações encontradas na literatura.
+
+\section{Filtragem baseada em conteúdo} % (fold)
+A filtragem baseada em conteúdo consiste na extração de \textit{features} dos itens a serem recomendados e da comparação desses \textit{features} com aqueles que formam o  perfil histórico do usuário. Esse é um dos primeiros métodos que surgiram e sua origem está na comunidade de \textit{information retrieval}.~\cite{Balabanovi97}
+
+Como exemplo, suponha-se que se queira recomendar documentos em formato texto. Os \textit{features} nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela frequência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se os \textit{features} (palavras) presentes podem ser encontrados em grande frequência nos documentos avaliados positivamente pelo usuário no passado.
+
+Outros exemplos de \textit{features} que podem ser usados em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras palavras-chave.
+
+% (falar um pouquinho porque é bom/ruim)
+
+\section{Filtragem social} % (fold)
+
+% Talvez usar o Pazzani96syskill para falar de content-based
+
+A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hill95}.} consiste em um conjunto de técnicas que utilizam o contexto e as relações sociais de uma comunidade de usuários para fazer recomendações. Ao contrário da filtragem colaborativa, o conteúdo de cada item não é analisado, possibilitando-se recomendar qualquer tipo de item.
+
+\subsection{Filtragem colaborativa}
+
+O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}.}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}.} dos itens que podem ser recomendados, resultando em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário. Na descrição a seguir, este usuário a quem se deseja recomendar algo será chamado usuário ativo. A avaliação de um item feita por um usuário será chamada de voto. Os passos são os seguintes:
+
+\begin{enumerate}
+\item 
+Para cada usuário do sistema, determina-se a similaridade entre este usuário e o usuário ativo, conforme mostra a equação \ref{eq:calculo_s}. Este valor será designado por $s$.
+
+\item Para cada item do sistema não avaliado pelo usuário ativo, calcula-se o voto previsto $p$ para aquele item, utilizando-se o voto de cada usuário que avaliou o item e a similaridade $s$ entre este usuário e o usuário ativo. O voto previsto é uma estimativa da avaliação que aquele usuário faria do item caso já o conhecesse.
+\end{enumerate}
+
+A lista de itens recomendados será formada pelos $n$ itens com os maiores votos previstos ordenados decrescentemente.
+
+\subsubsection{Descrição matemática}
+Mais detalhadamente, o algoritmo básico é o seguinte:
+
+Sendo $v_{i,j}$ o voto do usuário $i$ para o item $j$, $I_{i}$ o conjunto de itens que foram avaliados pelo usuário $i$, define-se voto médio de um usuário $i$ por:
+
+\begin{equation}
+ \bar{v_{i}} = \frac{1}{|I_{i}|} \sum_{j \in I_{i}} v_{i,j}
+\end{equation}
+
+O valor previsto do voto do usuário ativo $a$ para o item $j$, será dado por:
+
+\begin{equation}
+ p_{a,j} = \bar{v_{a}} + k\sum_{i=1}^n{s(a,i) (v_{i,j} - \bar{v_{i})}}
+ \label{eq:filtragem_colaborativa_similaridade} 
+\end{equation}
+onde $n$ é o número de usuários do sistema, $s(a,i)$ é a similaridade entre o usuário $a$ e o usuário $i$ e $k$ é um fator de normalização, dado neste caso por:
+
+\begin{equation}
+ k = \sum_{i=1}^n{\frac{1}{s(a,i)}}
+\end{equation}
+
+
+\paragraph{Cálculo de $s$.}
+
+O cálculo de $s$ geralmente é realizado utilizando-se o coeficiente de correlação de Pearson\cite{Breese98}, definido por:
+
+\begin{equation}
+\label{eq:calculo_s}
+ s(a,i) = \frac{\sum_{j}{(v_{a,j} - \bar{v_{a}}) (v_{i,j} - \bar{v_{i}})}}{\sqrt{\sum_{j}{(v_{a,j} - \bar{v_{a}})}^2\sum_{j}{(v_{i,j} - \bar{v_{i}})}^2}}
+\end{equation}
+
+\paragraph{Forma geral da Filtragem Colaborativa.}
+
+Apesar dos primeiras abordagens terem utilizado a similaridade $s$, qualquer peso $w$\footnote{Do inglês \textit{weigth}} pode ser usado na equação \ref{eq:filtragem_colaborativa_similaridade}. Pode-se então reescreve-la da seguinte maneira geral:
+
+\begin{equation}
+ p_{a,j} = \bar{v_{a}} + k\sum_{i=1}^n{w(a,i) (v_{i,j} - \bar{v_{i})}}
+ \label{eq:filtragem_colaborativa_geral} 
+\end{equation}
+
+Para mais detalhes, ver \cite{Breese98}.
+% Explicar com mais detalhes o método e citar outros tipos de w
+
+
+\subsection{Filtragem baseada em confiança} % (fold)
+
+A filtragem baseada em confiança\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
+
+Esta confiança é fornecida de forma explícita pelo usuário. Este método se mostrou muito efetivo no casos em que a maioria dos usuários do sistema são \textit{cold-users}, isto é, quando a maioria dos usuários avaliou poucos itens e portanto possuem poucos itens em comum. Em um cenário como esse, a filtragem colaborativa tradicional falha em encontrar usuários semelhantes pois há pouca intersecção de avaliações de itens~\footnote{Em inglês, \textit{rating-overlap}.}.
+
+%\section{
+
+%\section{Discussão sobre as diferentes abordagens}
+
+

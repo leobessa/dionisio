@@ -1,0 +1,93 @@
+\chapter{ANÁLISES E RESULTADOS} % (fold)
+\label{cha:analises_e_resultados}
+
+\section{Introdução}
+\label{cha:introducao}
+
+ A análise dos resultados consistiu na elaboração de gráficos e tabelas com os dados retirados da base do experimento realizado. Os seguintes dados foram considerados para a análise:
+ 
+\begin{itemize}
+	\item Grupos de usuários
+	
+	Para se ter noção dos laços de amizades entre os participantes cadastrados no experimento. São 12 grupos no total, sendo que cada um deles possui no máximo 5 pessoas.
+	
+	\item Categorias de produtos
+	
+	As categorias de produtos foram consideradas na análise para discretizar as avaliações das recomendações por tipos de produtos.
+	
+	\item Recomendações realizadas por amigos
+	
+	Informações dos produtos que foram recomendados na etapa 3 do experimento, onde os participantes deveriam recomendar 5 produtos a cada amigo presente no seu grupo. Cada participante possui no máximo 20 recomendações, sendo que alguns possuem apenas 15 devido à desistência de participantes do seu grupo.
+	
+	\item Recomendações realizadas por desconhecidos
+	
+	Informações dos produtos que foram recomendados na etapa 4 do experimento, onde os participantes deveriam recomendar 1 produto a alguns participantes de diferentes grupos, considerados desconhecidos. Cada participante possui no máximo 10 recomendações realizadas por desconhecidos, sendo que alguns possuem menos de 10 recomendações devido à desistência de participantes no experimento.
+	
+	\item Recomendações realizadas pelo sistema
+	
+	Todas as recomendações que o sistema realizou para os participantes. Contém a informação de qual participante recebeu a recomendação e qual foi o produto recomendado.
+	
+	\item Avaliação prevista do produto pelo sistema
+	
+	Ao recomendar um produto a um participante, o sistema calcula uma nota prevista para o mesmo. Essas informações foram armazenadas e consideradas durante a análise e exposição dos dados do experimento.
+	
+	\item Avaliações dos produtos
+	
+	Avaliações de todos as avaliações de produtos no sistema. Contém os produtos avaliados na duas primeiras etapas do experimento, quando os participantes avaliaram 20 produtos em comum e 10 produtos de seu interesse, e as avaliações de produtos recomendados tanto pelos participantes como pelo sistema.
+	
+	\item Algoritmo utilizado para a recomendação
+	
+	Dentre as recomendações realizadas pelo sistema, foi retirada da base de dados a informação de qual algoritmo foi utilizado para gerar a recomendação.
+	
+\end{itemize}
+
+ De posse dos dados, foram considerados 3 tipos de cenários possíveis para a análise dos mesmos:
+ 
+ \begin{itemize}
+	\item Cenário global
+	
+	Foram analisados os dados de todos os participantes presentes no experimento, sem discriminar os dados pelos grupos de amigos.
+	
+	\item Grupos de amigos
+	
+	Os dados foram analisados grupo a grupo para comparar os resultados obtidos apenas participantes amigos.
+	
+	\item Categorias de produtos
+	
+	%TODO
+	A categoria de produtos 
+	
+	\item Algoritmos de recomendação
+	
+	A discriminação entre os diferentes tipos de algoritmos de recomendação serviram para comparar o algoritmo baseado em confiança proposto pelo estudo frente aos algoritmos já existentes baseados em similaridade de perfis e produtos.
+	
+\end{itemize}
+
+ Em cada cenário foram analisadas as seguintes possíveis medidas:
+ 
+\begin{itemize}
+	\item Erro na avaliação do produto
+	\item Taxa de rejeição das recomendações
+	\item Taxa de serendipidade
+	\item Grau de confiança calculado
+\end{itemize}
+
+ Cada medida e cenário considerado será discutido nas seguintes seções.
+ 
+\section{Análise de Desempenho}
+
+
+\section{Análise Comparativa dos Algoritmos de Recomendação}
+
+\subsection{Recomendações do Sistema}
+
+\subsection{Recomendações Diretas}
+
+
+\section{Análise de Rejeição das Recomendações}
+
+\subsection{Recomendações do Sistema}
+
+\subsection{Recomendações Diretas}
+
+\section{Análise do Algoritmo Baseado em Confiança}
