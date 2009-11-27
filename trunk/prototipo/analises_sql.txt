@@ -5,7 +5,7 @@ select sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating))/count(*)
 # Fornece a soma do quadrados dos erros agrupados por categoria de produto
 select sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating))/count(*) as erro, p.category_id from ratings r, system_recommendations sr, products p where r.product_id = sr.product_id and r.user_id = sr.user_id and p.id = r.product_id group by p.category_id order by erro
 
-# soma dos quadrados dos erros agrupados por usuario e algoritmo (erro na avaliação prevista por usuario por algoritmo)
+# soma dos quadrados dos erros agrupados por usuario e algoritmo (erro na avaliação prevista por usuario por algoritmo) -- talvez calcular desvio padrao aqui seja uma boa
 select r.user_id, sum((r.stars-sr.predicted_rating)*(r.stars-sr.predicted_rating))/count(*) as erro, sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by r.user_id, sr.algorithm order by erro
 
 # soma dos quadrados dos erros agrupados por usuario (erro na avaliação prevista global por usuario)
@@ -18,13 +18,13 @@ select avg(r.stars), sr.algorithm from ratings r, system_recommendations sr wher
 select avg(r.stars) as rating, count(*), p.category_id from ratings r, system_recommendations sr, products p where r.product_id = sr.product_id and r.user_id = sr.user_id and p.id = r.product_id group by p.category_id order by rating
 
 # rating medio das recomendacoes diretas
-select avg(r.stars) from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id and u.stage_number >=6
+select avg(r.stars) from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id
 
 # rating medio dos produtos selecionados
 select avg(r.stars) from ratings r, products p, users u where r.user_id = u.id and u.stage_number >=6 and p.selected='t'
 
 # rating medio das recomendacoes dos amigos
-select avg(r.stars) from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id and u.stage_number >=6 and ur.sender_id in (select _u.id from users _u where _u.group_id = u.group_id and _u.id <> u.id)
+select avg(r.stars) from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id and ur.sender_id in (select _u.id from users _u where _u.group_id = u.group_id and _u.id <> u.id)
 
 
 # Histograma dos erros dos algoritmos (%)
