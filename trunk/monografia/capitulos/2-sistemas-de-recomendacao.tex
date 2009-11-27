@@ -103,8 +103,8 @@ Para mais detalhes, ver \cite{Breese98}.
 % Explicar com mais detalhes o método e citar outros tipos de w
 
 
-\subsection{Filtragem baseada em confiança} % (fold)
-
+\subsection{Filtragem baseada em confiança explícita} % (fold)
+% TODO: falar que a nossa não é explicita e portanto possui algumas vantagens
 A filtragem baseada em confiança\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
 
 Esta confiança é fornecida de forma explícita pelo usuário. Este método se mostrou muito efetivo no casos em que a maioria dos usuários do sistema são \textit{cold-users}, isto é, quando a maioria dos usuários avaliou poucos itens e portanto possuem poucos itens em comum. Em um cenário como esse, a filtragem colaborativa tradicional falha em encontrar usuários semelhantes pois há pouca intersecção de avaliações de itens~\footnote{Em inglês, \textit{rating-overlap}.}.
