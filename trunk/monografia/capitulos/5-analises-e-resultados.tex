@@ -11,10 +11,6 @@
 	
 	Para se ter noção dos laços de amizades entre os participantes cadastrados no experimento. São 12 grupos no total, sendo que cada um deles possui no máximo 5 pessoas.
 	
-	\item Categorias de produtos
-	
-	As categorias de produtos foram consideradas na análise para discretizar as avaliações das recomendações por tipos de produtos.
-	
 	\item Recomendações realizadas por amigos
 	
 	Informações dos produtos que foram recomendados na etapa 3 do experimento, onde os participantes deveriam recomendar 5 produtos a cada amigo presente no seu grupo. Cada participante possui no máximo 20 recomendações, sendo que alguns possuem apenas 15 devido à desistência de participantes do seu grupo.
@@ -41,53 +37,50 @@
 	
 \end{itemize}
 
- De posse dos dados, foram considerados 3 tipos de cenários possíveis para a análise dos mesmos:
- 
- \begin{itemize}
-	\item Cenário global
-	
-	Foram analisados os dados de todos os participantes presentes no experimento, sem discriminar os dados pelos grupos de amigos.
-	
-	\item Grupos de amigos
-	
-	Os dados foram analisados grupo a grupo para comparar os resultados obtidos apenas participantes amigos.
-	
-	\item Categorias de produtos
-	
-	%TODO
-	A categoria de produtos 
-	
-	\item Algoritmos de recomendação
-	
-	A discriminação entre os diferentes tipos de algoritmos de recomendação serviram para comparar o algoritmo baseado em confiança proposto pelo estudo frente aos algoritmos já existentes baseados em similaridade de perfis e produtos.
-	
-\end{itemize}
-
- Em cada cenário foram analisadas as seguintes possíveis medidas:
+ De posse dos dados, foram feitas as seguintes análises:
  
 \begin{itemize}
-	\item Erro na avaliação do produto
-	\item Taxa de rejeição das recomendações
-	\item Taxa de serendipidade
-	\item Grau de confiança calculado
+	\item Análise Comparativa dos Algoritmos de Recomendação
+	\item Análise de Rejeição das Recomendações
+	\item Taxa de Serendipidade
+	\item Análise do Algoritmo Baseado em Confiança
 \end{itemize}
 
- Cada medida e cenário considerado será discutido nas seguintes seções.
+ Cada análise será discutida nas seções a seguir.
  
-\section{Análise de Desempenho}
-
-
 \section{Análise Comparativa dos Algoritmos de Recomendação}
+\label{sec:analise_comparativa_dos_algoritmos_de_recomendacao}
 
+ 
+ 
 \subsection{Recomendações do Sistema}
 
 \subsection{Recomendações Diretas}
 
+
+% section analise_comparativa_dos_algoritmos_de_recomendacao (end)
 
 \section{Análise de Rejeição das Recomendações}
+\label{sec:analise_de_rejeicao_das_recomendacoes}
 
 \subsection{Recomendações do Sistema}
 
 \subsection{Recomendações Diretas}
 
+% section analise_de_rejeicao_das_recomendacoes (end)
+
+\section{Taxa de Serendipidade}
+\label{sec:taxa_de_serendipidade}
+
+% section taxa_de_serendipidade (end)
+
 \section{Análise do Algoritmo Baseado em Confiança}
+\label{sec:analise_do_algoritmo_baseado_em_confianca}
+
+% section analise_do_algoritmo_baseado_em_confianca (end)
+
+\section{Análise de Desempenho}
+\label{sec:analise_de_desempenho}
+% TODO falar sobre os problemas enfrentados com as consultas SQL e com as estrelinhas para a avaliação do produto (javascript).
+
+% section analise_de_desempenho (end)
