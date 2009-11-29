@@ -1,9 +1,7 @@
 \chapter{ESPECIFICAÇÃO DO PROJETO} % (fold)
 \label{cha:especificacao_do_projeto}
 
-% Retirar web semântica e redefinir o projeto como o desenvolvimento de um sistema de recomendação com base em confiança acoplado a uma rede social.
-
- O projeto consiste no desenvolvimento de um sistema de recomendação baseado em confiança acoplado a uma rede social.
+ O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a uma rede social. As recomendações realizadas pelo sistema serão baseadas em similaridade de itens, em similiradade de perfil e na confiança implícita entre os usuários.
 
 \section{Visão Geral do Sistema} % (fold)
 \label{sec:visao_do_sistema}
@@ -25,9 +23,7 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 \section{Descrição do Sistema}
 
-% Retirar informação de cadastro de produtos
-
- Através do sistema os usuários poderão avaliar produtos quantitativamente e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro usuário o índice de confiança deste em relação ao outro é ataulizado no sistema. Com base na relação entre usuários e nas avaliações o sistema irá inferir as seguintes informações:
+ Através do sistema os usuários poderão indicar o interesse em produtos e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro usuário o índice de confiança deste em relação ao outro é ataulizado no sistema. Com base nas recomendações e nas avaliações o sistema irá inferir as seguintes informações:
  
 \begin{itemize}
 
@@ -35,64 +31,37 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
  \item Similaridade entre produtos
 
- \item Grau de confiança nas recomendações de um usuário para outro
-
- \item Grau de reputação global de um usuário baseado nas recomendações diretas
-
- \item Relação de consumo entre diferentes produtos
+ \item Grau de confiança entre usuários
 
  \item Recomendações de produtos mais relevantes para um determinado usuário
 
 \end{itemize}
 
- Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários. As recomendações geradas pelo sistema são baseadas na similiraridade entre as avaliações feitas pelos usuários, nas relações de confiança, e nas relações encontradas entre os produtos.
+ Para a obtenção das recomendações será feito um experimento para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários. As recomendações geradas pelo sistema são baseadas na similiraridade entre as avaliações feitas pelos usuários, nas relações de confiança, e nas relações encontradas entre os produtos.
 
-% Retirar informação de cadastro de produto
+  O usuário do sistema tem a opção de buscar produtos já cadastrados. Além disso, os usuários podem recomendar os produtos para outros usuários presentes na rede social. Os usuários serão instruídos a direcionadar as recomendações para as pessoas que provavelmente gostariam do produto.
 
- Ao entrar na rede, o usuário tem a opção de buscar produtos já cadastrados e, caso não existam, cadastrá-los. Neste cadastro, ele pode informar a sua opinião referente ao produto e avaliá-lo, possibilitando ao sistema verificar quais são os seus interesses. Com isso, as pessoas podem recomendar os produtos para seus amigos presentes na rede social, sendo que esta deve ser direcionada para as pessoas que o usuário tenha certo conhecimento que gostarão do produto.
+ Ao receber uma recomendação o usuário é instruído a avaliar o produto recomendado para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários, a similaridade entre itens e o índice de confiança.
+ 
+ Quando um usuário avalia um produto recomendado por outro, essa avaliação altera o grau de confiança do usuário que recomendou o produto em relação àquele que recebeu a recomendação. Caso a avaliação seja positiva, a confiança do receptor aumenta, porém, caso a avaliação seja negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, diminuindo o índice de confiança.
 
-% Explicar melhor a relação de confiança entre usuários
-
- Os usuários que recebem a recomendação podem acessar o cadastro do produto e avaliá-lo para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários. A avaliação altera o grau de reputação entre o usuário que recomendou o produto e o que recebeu. Caso a avaliação tenha um grau positivo, a reputação do receptor aumenta, porém, caso a avaliação tenha um grau negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, fazendo com que o grau de reputação no outro usuário diminua.
-
- O sistema armazena todas essas informações referentes às avaliações de produtos, confiança e reputação entre usuários para filtrar recomendações entre usuários com baixo grau de confiança. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes. Assim, caso a pessoa receba recomendações sem conteúdo plausível de um usuário, seu grau de reputação diminui e, quando esta diminuir até um limite, o sistema passa a não mostrar mais recomendações dele em destaque, sendo estas mostradas apenas como uma espécie de spam, mas ainda acessíveis ao usuário que as recebe.
-
- Também é função do sistema de recomendação realizar recomendações aos usuários para incentivar a avaliação de produtos, pois é assim que as pessoas fornecem informações referentes aos seus interesses. Tais recomendações são relativas aos produtos mais bem avaliados na rede e também aqueles bem avaliados por amigos com alto grau de reputação.
+ O sistema armazena as informações referentes as avaliações de produtos e os índices de confiança entre usuários. Essas informações são utilzadas para sugerir outros produtos que os usuários possam gostar. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes.
 
 \section{Funcionalidades principais} % (fold)
 \label{sec:funcionalidades_principais}
 
-Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories}:
-% TODO: referencia faltando!!!
+Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories}\cite{557458}:
 
 \begin{itemize}
-
+	
+	\item Avaliação de produto
+  \subitem Como usuário, quero fazer a minha avaliação de produtos para que outros tenham conhecimento da minha opinião.
+  
 	\item Recomendação de produtos baseada em preferência do usuário
 	\subitem Como usuário, eu quero receber uma lista de produtos que eu provavelemente goste para que eu não precise filtrar os itens que me interessam.
 
-	\item Permitir que o usuário avalie um produto
-  \subitem Como usuário, quero fazer a minha avaliação de produtos para que outros tenham conhecimento da minha opinião.
-
-	\item Permitir que o usuário envie uma recomendação a outro usuário
+	\item Envio de recomendação de produto a outro usuário
   \subitem Como recomendador, quero enviar uma recomendação de produto para outra pessoa para que ela conheça a minha opinião sobre este item.
-
-% Retirar funcionalidade
-
-	\item Exposição das avaliações em formatos abertos
-  \subitem Como agente web, quero obter as avaliações dos usuários em formato padronizado (e aberto) para que possa interpretar estas avaliações.
-
-% Retirar funcionalidade
-
-    \item Cadastro de novos produtos
-    \subitem Como usuário, quero poder cadastrar um novo produto que ainda não está cadastrado.
-    
-% Retirar funcionalidade
-
-    \item Importação de conteúdo em formato aberto
-    \subitem Como usuário, quero poder informar uma fonte de conteúdo em formato aberto para que possa adicionar dados externos ao repositório.
-
-    \item Explicação da recomendação
-    \subitem Como usuário, quero obter a explicação sobre as recomendações recebidas para analisar criticamente a recomendação e me motivar a avaliar o produto.
 
     \item Visualização das avaliações recentes dos amigos
     \subitem Como usuário, quero estar ciente sobre as últimas avaliações dos meus amigos para que eu possa saber o que acontece no meu contexto social e conheça novos produtos.
