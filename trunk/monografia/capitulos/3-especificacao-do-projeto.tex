@@ -27,7 +27,7 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 % Retirar informação de cadastro de produtos
 
- Através do sistema os usuários poderão cadastrar produtos e avaliá-los quantitativamente, sendo possível realizar recomendações a outros usuários. Estes irão fornecer um feedback de tais recomendações, atualizando o valor da reputação do usuário que a forneceu. O sistema de recomendação filtra as informações recebidas por todos os usuários, de modo que apenas aquelas relevantes cheguem ao conhecimento das pessoas. As recomendações geradas pelo sistema são baseadas nas opiniões, nas relações sociais entre os usuários e nas relações encontradas entre os produtos e é o sistema que determina, a partir desses valores, o quão relevante é a recomendação realizada de um usuário para outro. Com base na relação entre usuários, produtos e avaliações o sistema irá inferir as seguintes informações:
+ Através do sistema os usuários poderão avaliar produtos quantitativamente e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro usuário o índice de confiança deste em relação ao outro é ataulizado no sistema. Com base na relação entre usuários e nas avaliações o sistema irá inferir as seguintes informações:
  
 \begin{itemize}
 
@@ -45,7 +45,7 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 \end{itemize}
 
- Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários.
+ Para a obtenção das recomendações será feito um estudo para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários. As recomendações geradas pelo sistema são baseadas na similiraridade entre as avaliações feitas pelos usuários, nas relações de confiança, e nas relações encontradas entre os produtos.
 
 % Retirar informação de cadastro de produto
 
@@ -99,10 +99,8 @@ Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas 
 
     \item Feedback de recomendação
     \subitem Como recomendador, quero receber feedback sobre as recomendações que enviei para me incentivar a fazer melhores recomendações.
-
 	
 \end{itemize}
-
 
 \section{Requisitos não-funcionais}
 
