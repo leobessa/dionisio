@@ -46,9 +46,9 @@ Outros exemplos de \textit{features} que podem ser usados em um documento são m
 
 % Talvez usar o Pazzani96syskill para falar de content-based
 
-A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hill95}.} consiste em um conjunto de técnicas que utilizam o contexto e as relações sociais de uma comunidade de usuários para fazer recomendações. Ao contrário da filtragem colaborativa, o conteúdo de cada item não é analisado, possibilitando-se recomendar qualquer tipo de item.
+A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hill95}.} consiste em um conjunto de técnicas que utilizam o contexto e as relações sociais de uma comunidade de usuários para fazer recomendações. Ao contrário da filtragem baseada em conteúdo, o conteúdo de cada item não é analisado, possibilitando-se recomendar qualquer tipo de item. As próximas seções descrevem diferentes abordagem baseadas na filtragem social.
 
-\subsubsection{Filtragem colaborativa}
+\subsection{Filtragem colaborativa}
 
 O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}.}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}.} dos itens que podem ser recomendados, resultando em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário. Na descrição a seguir, este usuário a quem se deseja recomendar algo será chamado usuário ativo. A avaliação de um item feita por um usuário será chamada de voto. Os passos são os seguintes:
 
@@ -105,7 +105,7 @@ Para mais detalhes, ver \cite{Breese98}.
 % Explicar com mais detalhes o método e citar outros tipos de w
 
 
-\subsubsection{Filtragem baseada em confiança} % (fold)
+\subsection{Filtragem baseada em confiança} % (fold)
 
 A filtragem baseada em confiança\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
 
@@ -115,7 +115,32 @@ Esta confiança é fornecida de forma explícita pelo usuário. Este método se 
 
 %\section{Discussão sobre as diferentes abordagens}
 
-\section{Sistemas de Recomendação Baseados em Confiança}
+\subsection{Filtragem por similaridade de item}
+
+Esta é uma técnica que pertence à filtragem social e possui a mesma base da filtragem colaborativa por montar um sistema em que os usuários podem fazer as avaliações de diferentes itens.
+
+A principal diferença é que a filtragem por similaridade de item analisa essas avaliações e monta um modelo da semelhança entre os itens. A este tipo de filtragem é dado o nome de \textit{Model-based Collaborative Filtering}, em oposição ao \textit{Memory-based Collaborative Filtering}, que é a técnica tradicional usada na filtragem colaborativa~\cite{sarwar01}.
+
+O algoritmo é dividido em duas partes:
+
+\subsubsection{Cálculo da similaridade entre itens}
+
+Neste passo, é calculada a correlação entre as avaliações efetuadas pelo usuários para cada par de itens, usando por exemplo o coeficiente de correlação de Pearson (ver \ref{eq:calculo_s}).
+
+Para um sistema com $n$ itens, o resultado é uma matriz $n \times n$ contendo a correlação entre um item e outro. Este é o "modelo" que diferencia esta abordagem daquela da filtragem colaborativa.
+
+\subsubsection{Cálculo do valor previsto do voto do usuário}
+
+O próximo passo é determinar o voto previsto $p_{a,i}$, que é o valor da avaliação prevista do produto $i$ pelo o usuário $a$.
+
+Para cada item $i$ usa-se a similaridade $s$ para os $N$ produtos $j$ mais similares a este. $v(a,j)$ é a avaliação do usuário $a$ para o produto $j$. A expressão de $p$ é dada por:
+
+\begin{equation}
+ p_{a,i} = \frac{\sum_{j=0}^N{(s_{i,j} \times v_{a, j})}}{\sum_{j=0}^N{(|s_{i,j}|)}}
+ \label{eq:filtragem_item_based} 
+\end{equation}
+
+\subsection{Sistemas de Recomendação Baseados em Confiança}
 \label{sec:sistemas_de_recomendacao_baseados_em_confianca}
 
 De acordo com \cite{sabater2001regret}, a reputação tem grande importância em relações sociais e comerciais e é composta por diversos elementos que resultam na visão geral de uma entidade. Por exemplo, a reputação de uma companhia aérea é composta da reputação de seus aviões, assim como a reputação do seu serviço de bordo, entre outras. O REGRET\footnote{Do inglês \textit{Reputation Model for Gregarious Societies}\cite{sabater2001regret}} é um modelo de reputação que se utiliza de impressões que um agente tem de uma entidade. Nesta impressão, define-se o peso $W{i}$ que é utilizado para calcular a reputação da entidade como sendo a somatória desses pesos multiplicada por uma função dependente do tempo para normalização.
