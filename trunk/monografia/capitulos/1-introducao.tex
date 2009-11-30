@@ -60,7 +60,36 @@
  Além disso, enquanto o experimento estava no ar, os participantes que já haviam terminado determinada etapa comunicavam espontaneamente por e-mail as dificuldades ou facilidades que tiveram durante a realização da mesma. Isso facilitava a correção imediata de erros com o sistema no ar e a mitigação dos mesmos na etapas seguintes.
 
  % Controle de versão SVN
- O controle de versão do código criado foi feito com o SVN\footnote{Do inglês \textit{Subversion}}. SVN é um sistema de controle de versão de documentos quaisquer.}. Esse sistema de controle ajudou muito no desenvolvimento paralelo do sistema do projeto por todos os integrantes do grupo. Os arquivos utilizados durante todo o desenvolvimento do projeto também foram versionados com o SVN.
+ O controle de versão do código criado foi feito com o SVN\footnote{Do inglês \textit{Subversion}. SVN é um sistema de controle de versão de documentos quaisquer.}. Esse sistema de controle ajudou muito no desenvolvimento paralelo do sistema do projeto por todos os integrantes do grupo. Os arquivos utilizados durante todo o desenvolvimento do projeto também foram versionados com o SVN.
+
+ O sistema de recomendação implementado utiliza 3 tipos de algoritmos para realizar as recomendações aos usuários.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{imagens/RBP}
+  \caption{\it RBP: Recomendação com base em similaridade entre perfis}
+  \label{fig:RBP}
+\end{figure}
+ 
+ A recomendação com base na similaridade entre perfis de usuários (RBP) utiliza a correlação de Pearson para calcular a semelhança entre os usuários. Como visto na Figura~\ref{fig:RBP} inicialmente os usuários avaliam alguns produtos em comum. Comparando os usuários um-a-um com base nas notas que eles deram aos produtos, calcula-se a correlação de Pearson que resultará em alto grau de similaridade caso os dois usuários tenham avaliado produtos de forma semelhante. Desse modo, se dois usuários têm perfis similares e um deles avalia bem um produto $P{n}$ então o sistema recomenda este produto ao outro usuário.
+ 
+ A recomendação com base em similaridade entre produtos/itens (RBI) calcula a semelhança entre produtos para realizar as recomendações. Como mostrado na Figura~\ref{fig:RBI} inicialmente os usuários avaliam alguns produtos em comum. O sistema de recomendação utiliza essas informações de avaliação de produtos para calcular uma-a-uma a correlação entre os produtos calculando a sua distância Euclidiana. Caso dois produtos, $P{1}$ e $P{2}$, tenham alto índice de correlação e um usuário avalia bem $P{1}$, então o sistema recomenda $P{2}$ a ele.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{imagens/RBI}
+  \caption{\it RBI: Recomendação com base em similaridade entre produtos}
+  \label{fig:RBI}
+\end{figure}
+
+ Os dois algoritmos introduzidos anteriormente são conhecidos na comunidade científica e muito utilizados entre os sistemas de recomendação atuais. O algoritmo proposto pelo grupo é a recomendação com base em confiança (RBC). Neste caso, inicialmente um usuário avalia alguns produtos e depois recomenda um deles a outras pessoas. Depois dessas pessoas terem avaliado o produto recomendado, o sistema de recomendação calcula o índice de confiança entre o usuário recomendador e o usuário que recebeu a recomendação. Quanto melhor o produto recomendado for avaliado, maior será o índice de confiança que este usuário tem naquele que fez a recomendação. Caso o índice de confiança seja alto, o sistema recomenda produtos bem avaliados pelo usuários recomendador ao usuário recomendado. O RBC é ilustrado na Figura~\ref{fig:RBC}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{imagens/RBC}
+  \caption{\it RBC: Recomendação com base em confiança}
+  \label{fig:RBC}
+\end{figure}
 
 % section metodologia (end)
 
