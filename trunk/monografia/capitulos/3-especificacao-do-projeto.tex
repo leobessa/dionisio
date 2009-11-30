@@ -102,16 +102,18 @@ Os principais requisitos não-funcionais do sistema são:
 \section{Implementação} % (fold)
 \label{sec:implementacao}
 
-% TODO: Ruby, python & RoR
 A principal linguagem de programação utilizada no projeto foi Ruby, uma linguagem de script, com tipagem dinâmica, forte e implícita. Além disso, o Ruby permite uma abordagem multi-paradigma bem equilibrada entre os paradigmas orientado a objetos, funcional, imperativo e reflexivo. 
 
 O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura Model-View-Controller\cite{burbeck1992applications} (MVC) e segue os princípios Convention over Configuration\cite{hansson2006convention} (CoC) e Don't Repeat Yourself\cite{hunt-don} (DRY).
 
 A lingugem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
 
-% TODO: SQLite
+O SQLite é uma biblioteca independente que implementa um banco de dados SQL transacional, sem a necessidade de configurações. Este foi o gerenciador de banco de dados escolhido para o projeto, pois ele atende aos requistos de performance e facilita geração de backups.
 
-% TODO: AJAX
+Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas com AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} tem JavaScript habilitado, o sistema tolera esse deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
+
+% A Figura{tal} apresentar o painel de avaliação de produto que utiliza a técnica AJAX.
+% TODO: Figura do rater AJAX
 
 % TODO: email de convite / autenticação
 
