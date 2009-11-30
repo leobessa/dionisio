@@ -1,16 +1,16 @@
 \chapter{ESPECIFICAÇÃO DO PROJETO} % (fold)
 \label{cha:especificacao_do_projeto}
 
- O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a uma rede social. As recomendações realizadas pelo sistema serão baseadas em similaridade de itens, em similiradade de perfil e na confiança implícita entre os usuários.
+ O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a uma rede social. As recomendações realizadas pelo sistema serão baseadas em similaridade de itens, em similaridade de perfil e na confiança implícita entre os usuários.
 
 \section{Visão Geral do Sistema} % (fold)
 \label{sec:visao_do_sistema}
 
-O sistema de recomendação utilizará a rede social para obter as relações de amizade entre usuários. Esta relação é estabelicida entre dois usuários após ambos a confirmarem através do envio de um convite de amizade ou da aceitação deste.
+O sistema de recomendação utilizará a rede social para obter as relações de amizade entre usuários. Esta relação é estabelecida entre dois usuários após ambos a confirmarem através do envio de um convite de amizade ou da aceitação deste.
 
-Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e receber recomendações de outras pessoas presentes na rede social. Tendo como base o comportamento do usuários nestas atividades o sistema será capaz de enviar novas recomendações de produtos relevantes ao usuário.
+Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e receber recomendações de outras pessoas presentes na rede social. Tendo como base o comportamento dos usuários nestas atividades o sistema será capaz de enviar novas recomendações de produtos relevantes ao usuário.
 
- Os principais blocos do sistemas podem ser vistos na Figura~\ref{fig:escopo}. A rede social é utilizada para o estabelecimento das relações de amizade, para a criação e visualização de avaliações dos produtos e para o envio de recomendações. O reposotório é utilizado armezenar os produtos cadastrados e as recomendações a serem enviadas. Já o sistema de recomendação tem o papel de analisar as informações contidas no repositório e gerar novas recomendações.
+ Os principais blocos do sistema podem ser vistos na Figura~\ref{fig:escopo}. A rede social é utilizada para o estabelecimento das relações de amizade, para a criação e visualização de avaliações dos produtos e para o envio de recomendações. O repositório é utilizado para armazenar os produtos cadastrados e as recomendações a serem enviadas. Já o sistema de recomendação tem o papel de analisar as informações contidas no repositório e gerar novas recomendações.
 
 \begin{figure}
   \centering
@@ -23,7 +23,7 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 \section{Descrição do Sistema}
 
- Através do sistema os usuários poderão indicar o interesse em produtos e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro usuário o índice de confiança deste em relação ao outro é ataulizado no sistema. Com base nas recomendações e nas avaliações o sistema irá inferir as seguintes informações:
+ Através do sistema os usuários poderão indicar o interesse em produtos e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro o índice de confiança deste em relação ao outro é atualizado no sistema. Com base nas recomendações e nas avaliações o sistema irá inferir as seguintes informações:
  
 \begin{itemize}
 
@@ -37,15 +37,15 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 \end{itemize}
 
- Para a obtenção das recomendações será feito um experimento para determinar quais critérios inferidos são mais importantes de forma que o sistema apresente uma boa acurácia, abrangência e alta satisfação dos usuários. As recomendações geradas pelo sistema são baseadas na similiraridade entre as avaliações feitas pelos usuários, nas relações de confiança, e nas relações encontradas entre os produtos.
+ As recomendações geradas pelo sistema são baseadas nas avaliações de produtos feitas pelos usuários. A partir destas avaliações o sistema calcula a similaridade entre usuários, as relações de confiança e as relações encontradas entre os produtos.
 
-  O usuário do sistema tem a opção de buscar produtos já cadastrados. Além disso, os usuários podem recomendar os produtos para outros usuários presentes na rede social. Os usuários serão instruídos a direcionadar as recomendações para as pessoas que provavelmente gostariam do produto.
+  O usuário do sistema tem a opção de buscar os produtos já cadastrados através de uma ferramenta de busca incorporada à rede social. Além disso, os usuários podem recomendar os produtos para outros usuários presentes na rede social. Os usuários são informados que devem sempre realizar boas recomendações. Uma boa recomendação é a indicação de um produto que o outro usuário provavelmente terá o máximo interesse.
 
- Ao receber uma recomendação o usuário é instruído a avaliar o produto recomendado para que o sistema atualize as informações relativas aos seus interesses. Estas informações são utilizadas para verificar a similaridade entre usuários, a similaridade entre itens e o índice de confiança.
+ Ao receber uma recomendação o usuário tem a opção de a avaliar o produto e então o sistema atualiza as informações relativas aos seus interesses. As avaliações de produtos são feitas em uma escala de 1 a 5, onde 1 representa que o usuário não tem nenhum interesse no produto, e 5 significa que o usuário tem muito interesse no produto. Estas informações são utilizadas para verificar a similaridade entre usuários, a similaridade entre itens e o índice de confiança.
  
- Quando um usuário avalia um produto recomendado por outro, essa avaliação altera o grau de confiança do usuário que recomendou o produto em relação àquele que recebeu a recomendação. Caso a avaliação seja positiva, a confiança do receptor aumenta, porém, caso a avaliação seja negativo, significa que o usuário que recebeu a recomendação não a aceitou como relevante, diminuindo o índice de confiança.
+ Quando um usuário avalia um produto recomendado por outro, essa avaliação altera o grau de confiança do usuário que recomendou o produto em relação àquele que recebeu a recomendação. Caso a avaliação seja positiva, a confiança do receptor aumenta, porém, caso a avaliação seja negativa, significa que o usuário que recebeu a recomendação não a aceitou como relevante, diminuindo o grau de confiança.
 
- O sistema armazena as informações referentes as avaliações de produtos e os índices de confiança entre usuários. Essas informações são utilzadas para sugerir outros produtos que os usuários possam gostar. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes.
+ Todas as informações sobre as avaliações são armazenadas no repositório para que o sistema de recomendação as consulte e seja capaz de realizar recomendações de outros produtos aos usuários. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes.
 
 \section{Funcionalidades principais} % (fold)
 \label{sec:funcionalidades_principais}
@@ -53,21 +53,27 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories}\cite{557458}:
 
 \begin{itemize}
+  
+  \item Envio de convite
+  \subitem Como usuário, quero convidar outra pessoa a ingressar na rede social para que ela possa utilizar o sistema.
+  
+  \item Pedido de amizade
+  \subitem Como usuário, quero convidar outro usuário a estabelecer uma relação de amizada na rede para que eu possa acompanhar as atividades dele na rede.
+  
+  \item Confirmação de amizade
+  \subitem Como usuário, quero confirmar ou rejeitar um pedido de amizade para que eu possa acompanhar as atividades dos meus amigos pelo sistema.
 	
 	\item Avaliação de produto
   \subitem Como usuário, quero fazer a minha avaliação de produtos para que outros tenham conhecimento da minha opinião.
   
-	\item Recomendação de produtos baseada em preferência do usuário
-	\subitem Como usuário, eu quero receber uma lista de produtos que eu provavelemente goste para que eu não precise filtrar os itens que me interessam.
-
 	\item Envio de recomendação de produto a outro usuário
   \subitem Como recomendador, quero enviar uma recomendação de produto para outra pessoa para que ela conheça a minha opinião sobre este item.
+  
+	\item Recomendação de produtos
+	\subitem Como usuário, eu quero receber uma lista de produtos que eu provavelemente goste para que eu não precise filtrar os itens que me interessam.
 
-    \item Visualização das avaliações recentes dos amigos
+    \item Visualização das avaliações dos usuários
     \subitem Como usuário, quero estar ciente sobre as últimas avaliações dos meus amigos para que eu possa saber o que acontece no meu contexto social e conheça novos produtos.
-
-    \item Feedback de recomendação
-    \subitem Como recomendador, quero receber feedback sobre as recomendações que enviei para me incentivar a fazer melhores recomendações.
 	
 \end{itemize}
 
@@ -96,6 +102,20 @@ Os principais requisitos não-funcionais do sistema são:
 \section{Implementação} % (fold)
 \label{sec:implementacao}
 
+% TODO: Ruby, python & RoR
+A principal linguagem de programação utilizada no projeto foi Ruby, uma linguagem de script, com tipagem dinâmica, forte e implícita. Além disso, o Ruby permite uma abordagem multi-paradigma bem equilibrada entre os paradigmas orientado a objetos, funcional, imperativo e reflexivo. 
+
+O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura Model-View-Controller\cite{burbeck1992applications} (MVC) e segue os princípios Convention over Configuration\cite{hansson2006convention} (CoC) e Don't Repeat Yourself\cite{hunt-don} (DRY).
+
+A lingugem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
+
+% TODO: SQLite
+
+% TODO: AJAX
+
+% TODO: email de convite / autenticação
+
+% TODO: figuras aspectos internos e externos
 
 % section implementacao (end)
 
