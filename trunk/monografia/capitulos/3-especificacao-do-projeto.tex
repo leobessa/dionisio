@@ -45,7 +45,14 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
  
  Quando um usuário avalia um produto recomendado por outro, essa avaliação altera o grau de confiança do usuário que recomendou o produto em relação àquele que recebeu a recomendação. Caso a avaliação seja positiva, a confiança do receptor aumenta, porém, caso a avaliação seja negativa, significa que o usuário que recebeu a recomendação não a aceitou como relevante, diminuindo o grau de confiança.
 
- Todas as informações sobre as avaliações são armazenadas no repositório para que o sistema de recomendação as consulte e seja capaz de realizar recomendações de outros produtos aos usuários. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes.
+ Todas as informações sobre as avaliações são armazenadas no repositório para que o sistema de recomendação as consulte e seja capaz de realizar recomendações de outros produtos aos usuários. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes. A Figura~\ref{fig:aspectos_funcionais} apresenta os diagrama de blocos dos aspectos do sistema e a relação entre eles.
+ 
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{imagens/Implementacao_Detalhe2}
+ \caption{\it Aspectos funcionais do sistema}
+ \label{fig:aspectos_funcionais}
+\end{figure}
 
 \section{Funcionalidades principais} % (fold)
 \label{sec:funcionalidades_principais}
@@ -104,20 +111,32 @@ Os principais requisitos não-funcionais do sistema são:
 
 A principal linguagem de programação utilizada no projeto foi Ruby, uma linguagem de script, com tipagem dinâmica, forte e implícita. Além disso, o Ruby permite uma abordagem multi-paradigma bem equilibrada entre os paradigmas orientado a objetos, funcional, imperativo e reflexivo. 
 
-O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura Model-View-Controller\cite{burbeck1992applications} (MVC) e segue os princípios Convention over Configuration\cite{hansson2006convention} (CoC) e Don't Repeat Yourself\cite{hunt-don} (DRY).
+O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura \emph{Model-View-Controller}\cite{burbeck1992applications} (MVC) e segue os princípios \emph{Convention over Configuration}\cite{hansson2006convention} (CoC) e \emph{Don't Repeat Yourself}\cite{hunt-don} (DRY).
 
 A lingugem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
 
 O SQLite é uma biblioteca independente que implementa um banco de dados SQL transacional, sem a necessidade de configurações. Este foi o gerenciador de banco de dados escolhido para o projeto, pois ele atende aos requistos de performance e facilita geração de backups.
 
-Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas com AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} tem JavaScript habilitado, o sistema tolera esse deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
+Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas via AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} tem JavaScript habilitado, o sistema tolera esse deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
 
-% A Figura{tal} apresentar o painel de avaliação de produto que utiliza a técnica AJAX.
-% TODO: Figura do rater AJAX
+A Figura~\ref{fig:rater-ajax} apresentar o painel de avaliação de produto que utiliza a técnica de AJAX. Ao clicar em uma das estrelas, uma requisição é enviada ao servidor para o cadastro da avaliação e, em caso de sucesso, a resposta enviada de volta ao \emph{browser} atualiza o estilo do elemento selecionado, indicando que a avaliação foi realizada.
+\begin{figure}
+ \centering
+ \includegraphics{imagens/rater-ajax}
+ \caption{\it Avaliação de produto via AJAX}
+ \label{fig:rater-ajax}
+\end{figure}
 
-O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem a rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório é associado a ele. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O framework escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}.
+O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem a rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório é associado a ele. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
 
-% TODO: figuras aspectos internos e externos
+A arquitetura cliente/servidor em três camadas, apresentada na Figura~\ref{fig:three_tier}, foi adotada na implementação do projeto. Essa escolha possibilita a modificação ou substituição de uma das camadas sem afetar as demais. Além disso, a separção entre as camadas de aplicação e de dados facilita o balanceamento da carga do sistema. Por fim, as políticas de segurança aplicadas no servidor podem ser rigorosas e, mesmo assim, não incomodar excessivamente os clientes.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{imagens/Implementacao_Detalhe}
+ \caption{\it Arquitetura em três camadas}
+ \label{fig:three_tier}
+\end{figure}
 
 % section implementacao (end)
 
