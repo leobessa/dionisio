@@ -39,12 +39,40 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
  As recomendações geradas pelo sistema são baseadas nas avaliações de produtos feitas pelos usuários. A partir destas avaliações o sistema calcula a similaridade entre usuários, as relações de confiança e as relações encontradas entre os produtos.
 
+\begin{figure}[htp]
+ \centering
+ \includegraphics[width=\textwidth]{imagens/diagrama_confianca}
+ \caption{\it Diagrama ilustrando o parâmetro de confiança na rede}
+ \label{fig:diagrama_confianca}
+\end{figure}
+ 
   O usuário do sistema tem a opção de buscar os produtos já cadastrados através de uma ferramenta de busca incorporada à rede social. Além disso, os usuários podem recomendar os produtos para outros usuários presentes na rede social. Os usuários são informados que devem sempre realizar boas recomendações. Uma boa recomendação é a indicação de um produto que o outro usuário provavelmente terá o máximo interesse.
 
  Ao receber uma recomendação o usuário tem a opção de a avaliar o produto e então o sistema atualiza as informações relativas aos seus interesses. As avaliações de produtos são feitas em uma escala de 1 a 5, onde 1 representa que o usuário não tem nenhum interesse no produto, e 5 significa que o usuário tem muito interesse no produto. Estas informações são utilizadas para verificar a similaridade entre usuários, a similaridade entre itens e o índice de confiança.
  
  Quando um usuário avalia um produto recomendado por outro, essa avaliação altera o grau de confiança do usuário que recomendou o produto em relação àquele que recebeu a recomendação. Caso a avaliação seja positiva, a confiança do receptor aumenta, porém, caso a avaliação seja negativa, significa que o usuário que recebeu a recomendação não a aceitou como relevante, diminuindo o grau de confiança.
 
+ O parâmetro de confiança $C_{i,j}$, que representa a confiança que o usuário $i$ tem no usuário $j$, é calculado de acordo com a Equação~\ref{eq:param_trust}:
+ 
+\begin{equation}
+ C_{i,j} = \frac{M_{i,j} - 3}{2}
+ \label{eq:param_trust} 
+\end{equation}
+
+ Onde
+\begin{equation}
+ M_{i,j} = \frac{{\sum_{i=0}^n}R_{i,j}}{n}
+ \label{eq:media_notas}
+\end{equation}
+
+ Sendo que $M_{i,j}$ é a média das notas que o usuário $i$ deu aos produtos recomendados pelo usuário $j$ e $n$ o número de recomendações que $i$ recebeu de $j$. Para o parâmetro de confiança $C_{i,j}$ ficar normalizado na escala [-1,1], assim como os parâmetros de similaridade entre perfis e itens, a Equação~\ref{eq:param_trust} é aplicada.
+
+ Desse modo, o parâmetro de confiança é a média das notas dadas aos produtos recomendados normalizada na escala [-1,1]. A Figura~\ref{fig:diagrama_confianca} ilustra as relações entre os usuários da rede social e os parâmetros de confiança calculados.
+ 
+ O algoritmo RBC leva em conta que as pessoas que fazem boas recomendações têm um alto grau de confiança do usuário que recebeu as indicações de produtos. No plano social, a hipótese é que o bom recomendador é uma pessoa conhecida, enquanto os desconhecidos são mau recomendadores. Assim, o bom recomendador possui um alto grau de confiança, permitindo ao sistema que o fluxo de recomendações entre pessoas confiáveis seja maior do que entre as não confiáveis.
+ 
+ O sistema também recomenda produtos utilizando os algoritmos RBP e RBI, que também levam em conta as avaliações de produtos feitas pelos usuários no sistema. Com relação ao RBC, o RBP e o RBI utilizam todas as avaliações de produtos feitas na rede e o RBC utiliza apenas as avaliações de produtos recomendados ao usuário alvo.
+ 
  Todas as informações sobre as avaliações são armazenadas no repositório para que o sistema de recomendação as consulte e seja capaz de realizar recomendações de outros produtos aos usuários. Esse é um dos propósitos do sistema de recomendação: mostrar ao usuário apenas informações relevantes. A Figura~\ref{fig:aspectos_funcionais} apresenta os diagrama de blocos dos aspectos do sistema e a relação entre eles.
  
 \begin{figure}
@@ -102,7 +130,7 @@ Os principais requisitos não-funcionais do sistema são:
 
 \begin{itemize}
   
-    \item O sistema não fará processamento de linguagem natural\footnote{\textit{Natural Language Processing (NLP)}}
+    \item O sistema não faz processamento de linguagem natural\footnote{\textit{Natural Language Processing (NLP)}}
 
 \end{itemize}
 
