@@ -11,7 +11,7 @@ def print_per_line(f, l, n=10):
         if (i+1) % n == 0:
             f.write('\n')
         else:
-            f.write(' ')
+            f.write('\t')
 
 def main():
     con = sqlite3.connect('../prototipo/experimento/db/production.sqlite3')
