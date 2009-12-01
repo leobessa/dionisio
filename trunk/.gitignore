@@ -2,7 +2,10 @@ monografia/capitulos/*.aux
 monografia/*.aux
 monografia/principal.bbl
 monografia/principal.blg
-monografia/principal.fdb_latexmk
-monografia/principal.log
+monografia/*.fdb_latexmk
+monografia/*.log
+monografia/*.lof
+monografia/*.lot
+monografia/*.log
 monografia/principal.pdf
 monografia/principal.toc

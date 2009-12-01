@@ -50,9 +50,9 @@
 	\subitem Os produtos mais relevantes em cada categoria escolhida foram cadastrados com o intuito da base de dados não ser composta apenas de produtos desconhecidas aos participantes do experimento.
 \end{itemize}
 
- % Falar sobre TDD (Test Driven Development).
- % TODO
- A técnica de desenvolvimento de software utilizada foi o TDD\footnote{Do inglês \textit{Test-driven Development.}} que se baseia na realização de pequenos ciclos de desenvolvimento. Inicialmente são escritos alguns casos de teste para as novas funcionalidades ou melhorias.
+ Algumas práticas das metologias de desenvolvimento ágil foram adotadas neste projeto, como o Desenvolvimento Dirigido por Testes (TDD\footnote{Do inglês \textit{Test Driven Development.}}). Nesta prática, sempre que uma nova funcionalidade for adicionada ao sistema, o desenvolvedor deve iniciar o processo testando a funcionalidade. Após executar o teste, o desenvolvedor deve verificar porque o teste falha e então adicionar o código necessário para o teste passar. Quando todos os testes estiverem passando, o desenvolvedor deve adicionar mais testes para a nova funcionalidade até que ela possa ser considerada pronta.
+ 
+ Outra processo de desenvolvimento de software utilizado no projeto foi a refatoração de código\cite{fowler1999refactoring}. A refatoração de código consiste na mudança da estrutura interna do programa sem afetar o comportamente externo dele. Dessa forma, é possível aprimorar o código fonte existente melhorando a legibilidade, aplicando simplificações na estrutura, adequando a paradigmas de programação, melhorando a performance e a extensibilidade.
 
  % Desenvolvimento das etapas durante o experimento.
  O experimento foi dividido em etapas, sendo que enquanto uma etapa não era concluída por todos os participantes, as etapas subsequentes não ficavam disponíveis. Com isso, o desenvolvimento das funcionalidades disponíveis pelo sistema foi gradual, proporcionando a correção de erros nas etapas a serem ainda liberadas.
@@ -60,7 +60,7 @@
  Além disso, enquanto o experimento estava no ar, os participantes que já haviam terminado determinada etapa comunicavam espontaneamente por e-mail as dificuldades ou facilidades que tiveram durante a realização da mesma. Isso facilitava a correção imediata de erros com o sistema no ar e a mitigação dos mesmos na etapas seguintes.
 
  % Controle de versão SVN
- O controle de versão do código criado foi feito com o SVN\footnote{Do inglês \textit{Subversion}. SVN é um sistema de controle de versão de documentos quaisquer.}. Esse sistema de controle ajudou muito no desenvolvimento paralelo do sistema do projeto por todos os integrantes do grupo. Os arquivos utilizados durante todo o desenvolvimento do projeto também foram versionados com o SVN.
+ O controle de versão do código fonte criado foi feito com o SVN\footnote{Do inglês \textit{Subversion}. SVN é um sistema de controle de versão de documentos quaisquer.}. Esse sistema de controle ajudou muito no desenvolvimento paralelo do sistema do projeto por todos os integrantes do grupo. Os arquivos utilizados durante todo o desenvolvimento do projeto também foram versionados com o SVN.
 
  O sistema de recomendação implementado utiliza 3 tipos de algoritmos para realizar as recomendações aos usuários.
 
