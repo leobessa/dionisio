@@ -269,4 +269,31 @@ ProductsController\#show.html [GET]     & 0.02s &  0.12s &  0.00s &  1.99s \\
 \caption{\it Tempo de resposta das requisições ao banco de dados após a otimização \label{table:after_stats}}
 \end{table}
 
+Para completar a análise da performance do sistema, a Tabela~\ref{table:process_blockers} apresenta as requisições bloqueantes, isto é, aquelas com duração total maior do que um segundo. Os dados apresentados na Tabela~\ref{table:process_blockers} são referentes apenas as requisições feitas após a otimização até o término do experimento.
+
+\begin{table}[htbp]\centering
+\begin{tabular}{l c c }\hline\hline
+\multicolumn{1}{c}{\textbf{Requisção Web}}
+& \textbf{Ocorrências}
+& \textbf{Porcentagem}
+ \\ \hline
+UserRecommendationsController\#new.html [GET]     & 1596 & 65.2\% \\ 
+ProductsController\#index.html [GET]              &  315 & 12.9\% \\ 
+AdminController\#index.html [GET]                 &  167 &  6.8\% \\
+ProductsController\#rate.html [POST]              &  165 &  6.7\% \\
+HomeController\#index.html [GET]                  &  128 &  5.2\% \\ 
+UserRecommendationsController\#create.html [POST] &   38 &  1.6\% \\
+RecommendationGuidesController\#index.html [GET]  &   11 &  0.4\% \\  
+InvitationsController\#create.html [POST]         &    8 &  0.3\% \\  
+ProductsController\#unknown.html [POST]           &    8 &  0.3\% \\  
+RatingsController\#index.html [GET]               &    7 &  0.3\% \\  
+SessionsController\#create.html [POST]            &    4 &  0.2\% \\  
+UsersController\#new.html [GET]                   &    1 &  0.0\% \\  
+ProductsController\#show.html [GET]               &    1 &  0.0\% \\
+\end{tabular}
+\hline
+\caption{\it Requisições bloqueantes \label{table:process_blockers}}
+\end{table}
+
+
 % section analise_de_desempenho (end)
