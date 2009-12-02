@@ -143,7 +143,7 @@ O \emph{framework} web Ruby on Rails foi escolhido para implementação do proje
 
 A linguagem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de cento e vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
 
-O SQLite é uma biblioteca independente que implementa um banco de dados SQL transacional, sem a necessidade de configurações. Este foi o gerenciador de banco de dados escolhido para o projeto, pois ele atende aos requistos de performance e facilita a geração de backups.
+O SQLite é uma biblioteca independente que implementa um banco de dados SQL transacional, sem a necessidade de configurações. Este foi o gerenciador de banco de dados escolhido para o projeto, pois ele atende aos requisitos de performance e facilita a geração de backups.
 
 Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas via AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} têm JavaScript habilitado, o sistema tolera essa deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
 
