@@ -51,7 +51,7 @@
 \section{Análise Comparativa dos Algoritmos de Recomendação}
 \label{sec:analise_comparativa_dos_algoritmos_de_recomendacao}
 
-
+Nesta seção serão comparados os três algoritmos de recomendação e as recomendações diretas feitas tanto por amigos quanto por desconhecidos.
 
 \begin{figure}
     \centering
@@ -62,51 +62,31 @@
 
 \begin{table}
 \centering
-\begin{tabular}{|r|c|c|}
-    \hline
-    Tipo de recomendação & Média& Desvio-Padrão \\
+\begin{tabular}{c c c}
+    \hline \hline
+    \textbf{Tipo de recomendação} & \textbf{Média}	& \textbf{Desvio-Padrão} \\
 \hline 
-Direta & 38.5952208545 & 35.2309513597 \\
+Direta & 38.60\% & 35.23\% \\
 \hline 
-RBC & 57.3979591837 & 36.9792384652 \\
+RBC & 57.40\% & 37.00\% \\
 \hline 
-RBI & 31.6068573222 & 23.7537026572 \\
+RBI & 31.61\% & 23.75\% \\
 \hline 
-RBP & 65.8 & 34.5378053732 \\
+RBP & 65.80\% & 34.54\% \\
 \hline        
 \end{tabular}
 \caption{\it Desvio da nota prevista por tipo de recomendação}
 \label{table:erro}
 \end{table}
 
+A Figura~\ref{fig:erro} ilustra o desvio na nota prevista pelos tipos de recomendação. A Tabela~\ref{table:erro} contém os dados utilizados para a construção do gráfico. O desvio é a diferença entre a nota máxima esperada na recomendação e a nota realmente dada pelo participante. Os valores estão descritos em porcentagem em relação ao desvio máximo. A nota máxima prevista na recomendação é 5. Portanto, o desvio máximo é 4, pois a menor nota possível a ser dada é 1. O valor final apresentado é a média desses desvios.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{imagens/grafico_notas}
-    \caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
-    \label{fig:notas}
-\end{figure}
+Podemos verificar que o algoritmo RBI demonstrou o melhor desempenho, seguido das recomendações diretas, do algoritmo RBC e, por fim, do algoritmo RBP.
+%TODO concluir análise
 
-\begin{table}
-\centering
-\begin{tabular}{|r|c|c|c|}
-    \hline
-    Tipo de recomendação & 1-2& 3& 4-5 \\
-\hline 
-Direta & 26 & 19 & 54 \\
-\hline 
-RBC & 48 & 16 & 32 \\
-\hline 
-RBI & 38 & 22 & 36 \\
-\hline 
-RBP & 58 & 17 & 22 \\
-\hline        
-\end{tabular}
-\caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
-\label{table:notas}
-\end{table}
-
-
+ As notas médias dadas pelos participantes estão discriminadas por algoritmos de recomendação e pelas recomendações diretas, como mostra a Figura~\ref{fig:notas_medias}. Os dados utilizados para a elaboração do gráficos estão na Tabela~\ref{table:notas_medias}. As recomendações que resultaram em uma média de notas maior foram as diretas, seguidas das realizadas com o algoritmo RBI, RBC e RBP.
+%TODO concluir análise
+ 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{imagens/grafico_notas_medias}
@@ -116,23 +96,29 @@ RBP & 58 & 17 & 22 \\
 
 \begin{table}
 \centering
-\begin{tabular}{|r|c|c|}
-    \hline
-    Tipo de recomendação & Média& Desvio-Padrão \\
+\begin{tabular}{c c c}
+    \hline \hline
+    \textbf{Tipo de recomendação} & \textbf{Média}& \textbf{Desvio-Padrão} \\
 \hline 
-Direta & 3.45619116582 & 1.40923805439 \\
+Direta & 3.46 & 1.41 \\
 \hline 
-RBC & 2.70408163265 & 1.47916953861 \\
+RBC & 2.70 & 1.48 \\
 \hline 
-RBI & 2.964 & 1.41092310209 \\
+RBI & 2.96 & 1.41 \\
 \hline 
-RBP & 2.368 & 1.38151221493 \\
+RBP & 2.37 & 1.38 \\
 \hline        
 \end{tabular}
 \caption{\it Notas por tipo de recomendação}
 \label{table:notas_medias}
 \end{table}
 
+\subsection{Recomendações do Sistema}
+
+\subsection{Recomendações Diretas}
+
+ As notas médias dadas por recomendações diretas foram separadas entre as realizadas por amigos e as feitas por desconhecidos, como ilustra a Figura~\ref{fig:notas_medias_diretas}. Os dados utilizados para a construção do gráfico está na Tabela~\ref{table:notas_medias_diretas}. Verifica-se que a média de notas dadas por recomendações realizadas por amigos foi ligeiramente maior que as notas dadas a produtos indicados por desconhecidos.
+ %TODO concluir análise
 
 \begin{figure}
     \centering
@@ -143,19 +129,68 @@ RBP & 2.368 & 1.38151221493 \\
 
 \begin{table}
 \centering
-\begin{tabular}{|r|c|c|}
-    \hline
-    Tipo de recomendação & Média& Desvio-Padrão \\
+\begin{tabular}{c c c}
+    \hline \hline
+    \textbf{Tipo de recomendação} & \textbf{Média}& \textbf{Desvio-Padrão} \\
 \hline 
-Amigos & 3.50659340659 & 1.41167052454 \\
+Amigos & 3.51 & 1.41 \\
 \hline 
-Desconhecidos & 3.35881104034 & 1.39939396512 \\
+Desconhecidos & 3.36 & 1.40 \\
 \hline        
 \end{tabular}
 \caption{\it Notas das recomendações diretas}
 \label{table:notas_medias_diretas}
 \end{table}
 
+% section analise_comparativa_dos_algoritmos_de_recomendacao (end)
+
+\section{Análise de Rejeição das Recomendações}
+\label{sec:analise_de_rejeicao_das_recomendacoes}
+
+ Nesta seção serão analisadas a taxa de rejeição das recomendações realizadas pelos algoritmos RBI, RBP e RBC, além das recomendações diretas. Para isso, foram definidas classes de avaliações. As avaliações com notas 1 e 2 são da classe de \textit{Rejeição}, as com nota 3 são da classe \textit{Indiferente} e as com notas 4 e 5 são da classe \textit{Aceitação}. A classe Rejeição denota as recomendação que não foram aceitas e a classe Aceitação denota as recomendações que foram aceitas. Na classe Indiferente estão as recomendações que tiveram avaliações neutras (nota 3).
+
+ Podemos verificar pela Figura~\ref{fig:notas} que as recomendações diretas representaram uma maior porcentagem de notas na classe de Aceitação, seguida das recomendações feitas pelo algoritmo RBI, RBC e, por fim, RBP. Os dados utilizados para a elaboração do gráfico constam na Tabela~\ref{table:notas}.
+%TODO concluir análise
+ 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_notas}
+    \caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
+    \label{fig:notas}
+\end{figure}
+
+\begin{table}
+\centering
+\begin{tabular}{c c c c} 
+    \hline \hline
+    \textbf{Tipo de recomendação} & \textbf{Rejeição}& \textbf{Indiferente}& \textbf{Aceitação} \\
+\hline 
+Direta & 26\% & 19\% & 54\% \\
+\hline 
+RBC & 48\% & 16\% & 32\% \\
+\hline 
+RBI & 38\% & 22\% & 36\% \\
+\hline 
+RBP & 58\% & 17\% & 22\% \\
+\hline        
+\end{tabular}
+\caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
+\label{table:notas}
+\end{table}
+
+\subsection{Recomendações do Sistema}
+
+\subsection{Recomendações Diretas}
+
+% section analise_de_rejeicao_das_recomendacoes (end)
+
+\section{Taxa de Serendipidade}
+\label{sec:taxa_de_serendipidade}
+
+Serendipidade significa o usuário ter aceitado a recomendação, ou seja, ter dado uma nota 4 ou 5 ao produto e não o conhecer. A taxa de serendipidade foi calculada com base no número de recomendações de produtos desconhecidos aceitas sobre o total de produtos recomendados em cada tipo de algoritmo, considerando também as recomendações diretas. A Figura~\ref{fig:serendipidade} mostra a taxa de serendipidade para os tipos de recomendação, sendo que os dados utilizados para elaborar o gráfico estão na Tabela~\ref{table:serendipidade}.
+
+Verificamos que as recomendações diretas resultaram em um alto grau de serendipidade, se comparado com os graus dos tipos de recomendações que as seguiram: RBI, RBC e RBP.
+%TODO concluir análise
 
 \begin{figure}
     \centering
@@ -166,23 +201,25 @@ Desconhecidos & 3.35881104034 & 1.39939396512 \\
 
 \begin{table}
 \centering
-\begin{tabular}{|r|c|}
-    \hline
-    Tipo de recomendação & Taxa de Serendipidade \\
+\begin{tabular}{c c}
+    \hline \hline
+    \textbf{Tipo de recomendação} & \textbf{Taxa de Serendipidade} \\
 \hline 
-Direta & 22 \\
+Direta & 22\% \\
 \hline 
-RBC & 12 \\
+RBC & 12\% \\
 \hline 
-RBI & 13 \\
+RBI & 13\% \\
 \hline 
-RBP & 9 \\
+RBP & 9\% \\
 \hline        
 \end{tabular}
 \caption{\it Taxa de serendipidade por tipo de recomendação}
 \label{table:serendipidade}
 \end{table}
 
+A Figura~\ref{fig:serendipidade_diretas} compara a taxa de serendipidade entre as recomendações diretas realizadas por amigos e por desconhecidos. A Tabela~\ref{table:serendipidade_diretas} contém os dados utilizados para elaborar o gráfico. Podemos ver que as recomendações realizadas pelos amigos resultaram em uma taxa de serendipidade ligeiramente maior que as recomendações realizadas por desconhecidos.
+%TODO concluir análise
 
 \begin{figure}
     \centering
@@ -193,38 +230,18 @@ RBP & 9 \\
 
 \begin{table}
 \centering
-\begin{tabular}{|r|c|}
-    \hline
-    Tipo de recomendação & Taxa de Serendipidade \\
+\begin{tabular}{c c}
+    \hline \hline
+    \textbf{Tipo de recomendação} & \textbf{Taxa de Serendipidade} \\
 \hline 
-Amigos & 23 \\
+Amigos & 23\% \\
 \hline 
-Desconhecidos & 20 \\
+Desconhecidos & 20\% \\
 \hline        
 \end{tabular}
 \caption{\it Taxa de serendipidade comparando amigos e desconhecidos}
 \label{table:serendipidade_diretas}
 \end{table}
-
-
- 
-\subsection{Recomendações do Sistema}
-
-\subsection{Recomendações Diretas}
-
-% section analise_comparativa_dos_algoritmos_de_recomendacao (end)
-
-\section{Análise de Rejeição das Recomendações}
-\label{sec:analise_de_rejeicao_das_recomendacoes}
-
-\subsection{Recomendações do Sistema}
-
-\subsection{Recomendações Diretas}
-
-% section analise_de_rejeicao_das_recomendacoes (end)
-
-\section{Taxa de Serendipidade}
-\label{sec:taxa_de_serendipidade}
 
 % section taxa_de_serendipidade (end)
 
@@ -240,8 +257,8 @@ Desconhecidos & 20 \\
 Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema. Ao analisar estas requisições, foi possível verificar que o fatores responsáveis pela degradação da performance estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo aumento no tempo de resposta. Esses problemas de performance foram rapidamente corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições antes da otmização das consultas podem ser observados na Tabela~\ref{table:before_stats} e comparados com os valores obtidos após a otmização na Tabela~\ref{table:after_stats}.
 
 \begin{table}\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
+\begin{tabular}{c c c c c}
+\hline \hline
 \textbf{Requisção Web}
 & \textbf{Média}
 & \textbf{Desvio Padrão}
@@ -260,8 +277,8 @@ ProductsController\#show.html [GET]     &  1.18s &  1.21s &  0.00s &  8.52s \\
 \end{table}
 
 \begin{table}\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
+\begin{tabular}{c c c c c}
+\hline \hline
 \textbf{Requisção Web}
 & \textbf{Média}
 & \textbf{Desvio Padrão}
@@ -282,8 +299,8 @@ ProductsController\#show.html [GET]     & 0.02s &  0.12s &  0.00s &  1.99s \\
 Para completar a análise da performance do sistema, a Tabela~\ref{table:process_blockers} apresenta as requisições bloqueantes, isto é, aquelas com duração total maior do que um segundo. Os dados apresentados na Tabela~\ref{table:process_blockers} são referentes apenas as requisições feitas após a otimização até o término do experimento.
 
 \begin{table}\centering
-\begin{tabular}{|c|c|c|}
-\hline
+\begin{tabular}{c c c}
+\hline \hline
 \textbf{Requisção Web}
 & \textbf{Ocorrências}
 & \textbf{Porcentagem} \\ \hline
