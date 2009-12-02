@@ -237,4 +237,38 @@ Desconhecidos & 20 \\
 \label{sec:analise_de_desempenho}
 % TODO falar sobre os problemas enfrentados com as consultas SQL e com as estrelinhas para a avaliação do produto (javascript).
 
+Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema. Ao analisar estas requisições, foi possível verificar que o fatores responsáveis pela degradação da performance estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo aumento no tempo de resposta. Esses problemas de performance foram rapidamente corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições antes da otmização das consultas podem ser observados na Tabela~\ref{table:before_stats} e comparados com os valores obtidos após a otmização na Tabela~\ref{table:after_stats}.
+
+\begin{table}[htbp]\centering
+\begin{tabular}{l c c c c }\hline\hline
+\multicolumn{1}{c}{\textbf{Requisção Web}}
+& \textbf{Média}
+& \textbf{Desvio Padrão.}
+& \textbf{Min.} 
+& \textbf{Max.} \\ \hline
+ProductsController\#index.html [GET]    & 16.90s & 29.02s &  0.00s &  5m06s \\
+ProductsController\#rate.html [POST]    &  2.09s &  1.24s &  0.80s & 32.16s \\
+ProductsController\#unknown.html [POST] &  1.26s &  0.54s &  0.85s &  2.42s \\
+ProductsController\#show.html [GET]     &  1.18s &  1.21s &  0.00s &  8.52s \\
+\end{tabular}
+\hline
+\caption{\it Tempo de resposta das requisições ao banco de dados antes da otimização \label{before_stats}}
+\end{table}
+
+\begin{table}[htbp]\centering
+\begin{tabular}{l c c c c }\hline\hline
+\multicolumn{1}{c}{\textbf{Requisção Web}}
+& \textbf{Média}
+& \textbf{Desvio Padrão.}
+& \textbf{Min.} 
+& \textbf{Max.} \\ \hline
+ProductsController\#index.html [GET]    & 1.28s &  3.51s &  0.00s & 57.42s \\
+ProductsController\#rate.html [POST]    & 0.13s &  0.77s &  0.00s & 21.05s \\
+ProductsController\#unknown.html [POST] & 0.02s &  0.10s &  0.00s &  2.66s \\
+ProductsController\#show.html [GET]     & 0.02s &  0.12s &  0.00s &  1.99s \\
+\end{tabular}
+\hline
+\caption{\it Tempo de resposta das requisições ao banco de dados após a otimização \label{after_stats}}
+\end{table}
+
 % section analise_de_desempenho (end)
