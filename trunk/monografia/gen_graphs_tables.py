@@ -16,13 +16,28 @@ class StdDev:
     def finalize(self):
         return array(self.values).std()
 
-def inverte(d):
-    d_ = {}
-    for d, values in d.items():
-        for v in values:
-            d_.setdefault(v, [])
-            d_[v].append(d)
-    return d_
+def gen_tabela(x_labels, graph, out_name, title='', xlabel='', ylabel=''):
+    keys = sorted(graph.keys())
+    out = r"""
+\begin{table}
+\centering
+\begin{tabular}{|%s}
+    \hline
+    %s
+""" % (('c|' * len(keys)), ' & '.join(keys) + r' \\')
+    for key in keys:
+        out += r'\hline'
+        out += '\n'
+        out += ' & '.join(map(str, graph[key])) + r' \\'
+        out += '\n'
+    out += r"""        
+\end{tabular}
+\caption{\it %s}
+\label{table:%s}
+\end{table}
+""" % (title.decode('iso-8859-1'), out_name.replace('.pdf','').replace('grafico_', ''))
+
+    print out
 
 def run(cmd):
     import subprocess
@@ -56,6 +71,9 @@ def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel
     call_script(conf.name, out_name)
     #raw_input('')
     conf.close()
+    
+    
+    gen_tabela(x_labels, graph, out_name, title, xlabel, ylabel)
 
 def gen_erro(c):
     graph = {}
