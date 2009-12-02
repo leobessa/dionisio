@@ -239,59 +239,81 @@ Desconhecidos & 20 \\
 
 Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema. Ao analisar estas requisições, foi possível verificar que o fatores responsáveis pela degradação da performance estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo aumento no tempo de resposta. Esses problemas de performance foram rapidamente corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições antes da otmização das consultas podem ser observados na Tabela~\ref{table:before_stats} e comparados com os valores obtidos após a otmização na Tabela~\ref{table:after_stats}.
 
-\begin{table}[htbp]\centering
-\begin{tabular}{l c c c c }\hline\hline
-\multicolumn{1}{c}{\textbf{Requisção Web}}
+\begin{table}\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Requisção Web}
 & \textbf{Média}
-& \textbf{Desvio Padrão.}
+& \textbf{Desvio Padrão}
 & \textbf{Min.} 
 & \textbf{Max.} \\ \hline
 ProductsController\#index.html [GET]    & 16.90s & 29.02s &  0.00s &  5m06s \\
+\hline
 ProductsController\#rate.html [POST]    &  2.09s &  1.24s &  0.80s & 32.16s \\
+\hline
 ProductsController\#unknown.html [POST] &  1.26s &  0.54s &  0.85s &  2.42s \\
+\hline
 ProductsController\#show.html [GET]     &  1.18s &  1.21s &  0.00s &  8.52s \\
+\hline
 \end{tabular}
 \caption{\it Tempo de resposta das requisições ao banco de dados antes da otimização \label{table:before_stats}}
 \end{table}
 
-\begin{table}[htbp]\centering
-\begin{tabular}{l c c c c }\hline\hline
-\multicolumn{1}{c}{\textbf{Requisção Web}}
+\begin{table}\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Requisção Web}
 & \textbf{Média}
-& \textbf{Desvio Padrão.}
+& \textbf{Desvio Padrão}
 & \textbf{Min.} 
 & \textbf{Max.} \\ \hline
 ProductsController\#index.html [GET]    & 1.28s &  3.51s &  0.00s & 57.42s \\
+\hline
 ProductsController\#rate.html [POST]    & 0.13s &  0.77s &  0.00s & 21.05s \\
+\hline
 ProductsController\#unknown.html [POST] & 0.02s &  0.10s &  0.00s &  2.66s \\
+\hline
 ProductsController\#show.html [GET]     & 0.02s &  0.12s &  0.00s &  1.99s \\
+\hline
 \end{tabular}
 \caption{\it Tempo de resposta das requisições ao banco de dados após a otimização \label{table:after_stats}}
 \end{table}
 
 Para completar a análise da performance do sistema, a Tabela~\ref{table:process_blockers} apresenta as requisições bloqueantes, isto é, aquelas com duração total maior do que um segundo. Os dados apresentados na Tabela~\ref{table:process_blockers} são referentes apenas as requisições feitas após a otimização até o término do experimento.
 
-\begin{table}[htbp]\centering
-\begin{tabular}{l c c }\hline\hline
-\multicolumn{1}{c}{\textbf{Requisção Web}}
-& \textbf{Ocorrências}
-& \textbf{Porcentagem}
- \\ \hline
-UserRecommendationsController\#new.html [GET]     & 1596 & 65.2\% \\ 
-ProductsController\#index.html [GET]              &  315 & 12.9\% \\ 
-AdminController\#index.html [GET]                 &  167 &  6.8\% \\
-ProductsController\#rate.html [POST]              &  165 &  6.7\% \\
-HomeController\#index.html [GET]                  &  128 &  5.2\% \\ 
-UserRecommendationsController\#create.html [POST] &   38 &  1.6\% \\
-RecommendationGuidesController\#index.html [GET]  &   11 &  0.4\% \\  
-InvitationsController\#create.html [POST]         &    8 &  0.3\% \\  
-ProductsController\#unknown.html [POST]           &    8 &  0.3\% \\  
-RatingsController\#index.html [GET]               &    7 &  0.3\% \\  
-SessionsController\#create.html [POST]            &    4 &  0.2\% \\  
-UsersController\#new.html [GET]                   &    1 &  0.0\% \\  
-ProductsController\#show.html [GET]               &    1 &  0.0\% \\
-\end{tabular}
+\begin{table}\centering
+\begin{tabular}{|c|c|c|}
 \hline
+\textbf{Requisção Web}
+& \textbf{Ocorrências}
+& \textbf{Porcentagem} \\ \hline
+UserRecommendationsController\#new.html [GET]     & 1596 & 65.2\% \\ 
+\hline
+ProductsController\#index.html [GET]              &  315 & 12.9\% \\ 
+\hline
+AdminController\#index.html [GET]                 &  167 &  6.8\% \\
+\hline
+ProductsController\#rate.html [POST]              &  165 &  6.7\% \\
+\hline
+HomeController\#index.html [GET]                  &  128 &  5.2\% \\ 
+\hline
+UserRecommendationsController\#create.html [POST] &   38 &  1.6\% \\
+\hline
+RecommendationGuidesController\#index.html [GET]  &   11 &  0.4\% \\  
+\hline
+InvitationsController\#create.html [POST]         &    8 &  0.3\% \\  
+\hline
+ProductsController\#unknown.html [POST]           &    8 &  0.3\% \\  
+\hline
+RatingsController\#index.html [GET]               &    7 &  0.3\% \\  
+\hline
+SessionsController\#create.html [POST]            &    4 &  0.2\% \\  
+\hline
+UsersController\#new.html [GET]                   &    1 &  0.0\% \\  
+\hline
+ProductsController\#show.html [GET]               &    1 &  0.0\% \\
+\hline
+\end{tabular}
 \caption{\it Requisições bloqueantes \label{table:process_blockers}}
 \end{table}
 
