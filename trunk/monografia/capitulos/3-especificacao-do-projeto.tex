@@ -1,7 +1,7 @@
 \chapter{ESPECIFICAÇÃO DO PROJETO} % (fold)
 \label{cha:especificacao_do_projeto}
 
- O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a uma rede social. As recomendações realizadas pelo sistema serão baseadas em similaridade de itens, em similaridade de perfil e na confiança implícita entre os usuários.
+ O projeto consiste no desenvolvimento de um sistema de recomendação acoplado a uma rede social. As recomendações realizadas pelo sistema serão baseadas em similaridade de itens, em similaridade de perfis e na confiança implícita entre os usuários.
 
 \section{Visão Geral do Sistema} % (fold)
 \label{sec:visao_do_sistema}
@@ -23,11 +23,11 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 \section{Descrição do Sistema}
 
- Através do sistema os usuários poderão indicar o interesse em produtos e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro o índice de confiança deste em relação ao outro é atualizado no sistema. Com base nas recomendações e nas avaliações o sistema irá inferir as seguintes informações:
+ Através do sistema os usuários poderão indicar o interesse em produtos e realizar recomendações a outros usuários. Quando um usuário avaliar um produto recomendado por outro, o índice de confiança deste em relação ao outro é atualizado no sistema. Com base nas recomendações e nas avaliações o sistema irá inferir as seguintes informações:
  
 \begin{itemize}
 
- \item Similaridade entre usuários
+ \item Similaridade entre perfis de usuários
 
  \item Similaridade entre produtos
 
@@ -46,9 +46,9 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
  \label{fig:diagrama_confianca}
 \end{figure}
  
-  O usuário do sistema tem a opção de buscar os produtos já cadastrados através de uma ferramenta de busca incorporada à rede social. Além disso, os usuários podem recomendar os produtos para outros usuários presentes na rede social. Os usuários são informados que devem sempre realizar boas recomendações. Uma boa recomendação é a indicação de um produto que o outro usuário provavelmente terá o máximo interesse.
+  O usuário do sistema tem a opção de buscar os produtos já cadastrados através de uma ferramenta de busca incorporada à rede social. Além disso, os usuários podem recomendar os produtos para outros usuários presentes na rede. Os usuários são informados que devem sempre realizar boas recomendações. Uma boa recomendação é a indicação de um produto que o outro usuário provavelmente terá o máximo interesse.
 
- Ao receber uma recomendação o usuário tem a opção de a avaliar o produto e então o sistema atualiza as informações relativas aos seus interesses. As avaliações de produtos são feitas em uma escala de 1 a 5, onde 1 representa que o usuário não tem nenhum interesse no produto, e 5 significa que o usuário tem muito interesse no produto. Estas informações são utilizadas para verificar a similaridade entre usuários, a similaridade entre itens e o índice de confiança.
+ Ao receber uma recomendação o usuário tem a opção de avaliar o produto e então o sistema atualiza as informações relativas aos seus interesses. As avaliações de produtos são feitas em uma escala de 1 a 5, onde 1 representa que o usuário não tem nenhum interesse no produto e 5 significa que o usuário tem muito interesse no produto. Estas informações são utilizadas para verificar a similaridade entre usuários, a similaridade entre itens e o índice de confiança.
  
  Quando um usuário avalia um produto recomendado por outro, essa avaliação altera o grau de confiança do usuário que recomendou o produto em relação àquele que recebeu a recomendação. Caso a avaliação seja positiva, a confiança do receptor aumenta, porém, caso a avaliação seja negativa, significa que o usuário que recebeu a recomendação não a aceitou como relevante, diminuindo o grau de confiança.
 
@@ -93,7 +93,7 @@ Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas 
   \subitem Como usuário, quero convidar outra pessoa a ingressar na rede social para que ela possa utilizar o sistema.
   
   \item Pedido de amizade
-  \subitem Como usuário, quero convidar outro usuário a estabelecer uma relação de amizada na rede para que eu possa acompanhar as atividades dele na rede.
+  \subitem Como usuário, quero convidar outro usuário a estabelecer uma relação de amizade na rede para que eu possa acompanhar as suas atividades.
   
   \item Confirmação de amizade
   \subitem Como usuário, quero confirmar ou rejeitar um pedido de amizade para que eu possa acompanhar as atividades dos meus amigos pelo sistema.
@@ -102,10 +102,10 @@ Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas 
   \subitem Como usuário, quero fazer a minha avaliação de produtos para que outros tenham conhecimento da minha opinião.
   
 	\item Envio de recomendação de produto a outro usuário
-  \subitem Como recomendador, quero enviar uma recomendação de produto para outra pessoa para que ela conheça a minha opinião sobre este item.
+  \subitem Como recomendador, quero enviar uma recomendação de produto para outra pessoa presente no sistema para que ela conheça a minha opinião sobre este item.
   
 	\item Recomendação de produtos
-	\subitem Como usuário, eu quero receber uma lista de produtos que eu provavelemente goste para que eu não precise filtrar os itens que me interessam.
+	\subitem Como usuário, quero receber uma lista de produtos que eu provavelmente goste para que eu não precise filtrar os itens que me interessam.
 
     \item Visualização das avaliações dos usuários
     \subitem Como usuário, quero estar ciente sobre as últimas avaliações dos meus amigos para que eu possa saber o que acontece no meu contexto social e conheça novos produtos.
@@ -141,13 +141,13 @@ A principal linguagem de programação utilizada no projeto foi Ruby, uma lingua
 
 O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura \emph{Model-View-Controller}\cite{burbeck1992applications} (MVC) e segue os princípios \emph{Convention over Configuration}\cite{ruby2009agile} (CoC) e \emph{Don't Repeat Yourself}\cite{hunt-don} (DRY).
 
-A lingugem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
+A linguagem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
 
-O SQLite é uma biblioteca independente que implementa um banco de dados SQL transacional, sem a necessidade de configurações. Este foi o gerenciador de banco de dados escolhido para o projeto, pois ele atende aos requistos de performance e facilita geração de backups.
+O SQLite é uma biblioteca independente que implementa um banco de dados SQL transacional, sem a necessidade de configurações. Este foi o gerenciador de banco de dados escolhido para o projeto, pois ele atende aos requistos de performance e facilita a geração de backups.
 
-Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas via AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} tem JavaScript habilitado, o sistema tolera esse deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
+Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas via AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} têm JavaScript habilitado, o sistema tolera essa deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
 
-A Figura~\ref{fig:rater-ajax} apresentar o painel de avaliação de produto que utiliza a técnica de AJAX. Ao clicar em uma das estrelas, uma requisição é enviada ao servidor para o cadastro da avaliação e, em caso de sucesso, a resposta enviada de volta ao \emph{browser} atualiza o estilo do elemento selecionado, indicando que a avaliação foi realizada.
+A Figura~\ref{fig:rater-ajax} apresenta o painel de avaliação de produto que utiliza a técnica de AJAX. Ao clicar em uma das estrelas, uma requisição é enviada ao servidor para o cadastro da avaliação e, em caso de sucesso, a resposta enviada de volta ao \emph{browser} atualiza o estilo do elemento selecionado, indicando que a avaliação foi realizada.
 \begin{figure}
  \centering
  \includegraphics{imagens/rater-ajax}
@@ -155,9 +155,9 @@ A Figura~\ref{fig:rater-ajax} apresentar o painel de avaliação de produto que 
  \label{fig:rater-ajax}
 \end{figure}
 
-O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem a rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório é associado a ele. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
+O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem à rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório é associado a ele. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
 
-A arquitetura cliente/servidor em três camadas, apresentada na Figura~\ref{fig:three_tier}, foi adotada na implementação do projeto. Essa escolha possibilita a modificação ou substituição de uma das camadas sem afetar as demais. Além disso, a separção entre as camadas de aplicação e de dados facilita o balanceamento da carga do sistema. Por fim, as políticas de segurança aplicadas no servidor podem ser rigorosas e, mesmo assim, não incomodar excessivamente os clientes.
+A arquitetura cliente/servidor em três camadas, apresentada na Figura~\ref{fig:three_tier}, foi adotada na implementação do projeto. Essa escolha possibilita a modificação ou substituição de uma das camadas sem afetar as demais. Além disso, a separação entre as camadas de aplicação e de dados facilita o balanceamento da carga do sistema. Por fim, as políticas de segurança aplicadas no servidor podem ser rigorosas e, mesmo assim, não incomodarem excessivamente os clientes.
 
 \begin{figure}
  \centering

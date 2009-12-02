@@ -111,8 +111,6 @@ A filtragem baseada em confiança\footnote{Entendida aqui no contexto de \textit
 
 Esta confiança é fornecida de forma explícita pelo usuário. Este método se mostrou muito efetivo no casos em que a maioria dos usuários do sistema são \textit{cold-users}, isto é, quando a maioria dos usuários avaliou poucos itens e portanto possuem poucos itens em comum. Em um cenário como esse, a filtragem colaborativa tradicional falha em encontrar usuários semelhantes pois há pouca intersecção de avaliações de itens~\footnote{Em inglês, \textit{rating-overlap}.}.
 
-%\section{
-
 %\section{Discussão sobre as diferentes abordagens}
 
 \subsection{Filtragem por similaridade de item}
@@ -125,15 +123,15 @@ O algoritmo é dividido em duas partes:
 
 \subsubsection{Cálculo da similaridade entre itens}
 
-Neste passo, é calculada a correlação entre as avaliações efetuadas pelo usuários para cada par de itens, usando por exemplo o coeficiente de correlação de Pearson (ver \ref{eq:calculo_s}).
+Neste passo, é calculada a correlação entre as avaliações efetuadas pelos usuários para cada par de itens, usando por exemplo o coeficiente de correlação de Pearson (ver \ref{eq:calculo_s}).
 
 Para um sistema com $n$ itens, o resultado é uma matriz $n \times n$ contendo a correlação entre um item e outro. Este é o ``modelo'' que diferencia esta abordagem daquela da filtragem colaborativa.
 
 \subsubsection{Cálculo do valor previsto do voto do usuário}
 
-O próximo passo é determinar o voto previsto $p_{a,i}$, que é o valor da avaliação prevista do produto $i$ pelo o usuário $a$.
+O próximo passo é determinar o voto previsto $p_{a,i}$, que é o valor da avaliação prevista do produto $i$ pelo usuário $a$.
 
-Para cada item $i$ usa-se a similaridade $s$ para os $N$ produtos $j$ mais similares a este. $v(a,j)$ é a avaliação do usuário $a$ para o produto $j$. A expressão de $p$ é dada por:
+Para cada item $i$ utiliza-se a similaridade $s$ para os $N$ produtos $j$ mais similares a este. $v(a,j)$ é a avaliação do usuário $a$ para o produto $j$. A expressão de $p$ é dada por:
 
 \begin{equation}
  p_{a,i} = \frac{\sum_{j=0}^N{(s_{i,j} \times v_{a, j})}}{\sum_{j=0}^N{(|s_{i,j}|)}}
