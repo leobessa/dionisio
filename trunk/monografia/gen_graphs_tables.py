@@ -124,7 +124,7 @@ def gen_notas(c):
         graph.setdefault(algoritmo, [0,0,0])
         graph[algoritmo][agrupa[faixa]] += p
         
-    gen_bar(['Rejeição (1-2)', 'Indiferença (3)', 'Aceitação (4-5)'], graph, 'grafico_notas.pdf',
+    gen_bar(['Rejeição (1-2)', 'Indiferente (3)', 'Aceitação (4-5)'], graph, 'grafico_notas.pdf',
         title='Porcentagem das notas em cada faixa comparadas por tipo de recomendação',
         yformat='%g%%', sort=True, sort_col=0)
 
