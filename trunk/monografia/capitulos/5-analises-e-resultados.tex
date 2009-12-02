@@ -50,6 +50,121 @@
  
 \section{Análise Comparativa dos Algoritmos de Recomendação}
 \label{sec:analise_comparativa_dos_algoritmos_de_recomendacao}
+
+
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|c|}
+    \hline
+    Tipo de recomendação & Média& Desvio-Padrão \\
+\hline 
+direta & 38.5952208545 & 35.2309513597 \\
+\hline 
+item & 31.6068573222 & 23.7537026572 \\
+\hline 
+profile & 65.8 & 34.5378053732 \\
+\hline 
+trust & 57.3979591837 & 36.9792384652 \\
+\hline        
+\end{tabular}
+\caption{\it Desvio da nota prevista por tipo de recomendação}
+\label{table:erro}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|c|c|}
+    \hline
+    Tipo de recomendação & 1-2& 3& 4-5 \\
+\hline 
+direta & 26 & 19 & 54 \\
+\hline 
+item & 38 & 22 & 36 \\
+\hline 
+profile & 58 & 17 & 22 \\
+\hline 
+trust & 48 & 16 & 32 \\
+\hline        
+\end{tabular}
+\caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
+\label{table:notas}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|c|}
+    \hline
+    Tipo de recomendação & Média& Desvio-Padrão \\
+\hline 
+diretas & 3.45619116582 & 1.40923805439 \\
+\hline 
+item & 2.964 & 1.41092310209 \\
+\hline 
+profile & 2.368 & 1.38151221493 \\
+\hline 
+trust & 2.70408163265 & 1.47916953861 \\
+\hline        
+\end{tabular}
+\caption{\it Notas por tipo de recomendação}
+\label{table:notas_medias}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|c|}
+    \hline
+    Tipo de recomendação & Média& Desvio-Padrão \\
+\hline 
+amigos & 3.50659340659 & 1.41167052454 \\
+\hline 
+desconhecidos & 3.35881104034 & 1.39939396512 \\
+\hline        
+\end{tabular}
+\caption{\it Notas das recomendações diretas}
+\label{table:notas_medias_diretas}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|}
+    \hline
+    Tipo de recomendação & Taxa de Serendipidade \\
+\hline 
+direta & 22 \\
+\hline 
+item & 13 \\
+\hline 
+profile & 9 \\
+\hline 
+trust & 12 \\
+\hline        
+\end{tabular}
+\caption{\it Taxa de serendipidade por tipo de recomendação}
+\label{table:serendipidade}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|}
+    \hline
+    Tipo de recomendação & Taxa de Serendipidade \\
+\hline 
+amigos & 23 \\
+\hline 
+desconhecidos & 20 \\
+\hline        
+\end{tabular}
+\caption{\it Taxa de serendipidade comparando amigos e desconhecidos}
+\label{table:serendipidade_diretas}
+\end{table}
+
+
  
 \subsection{Recomendações do Sistema}
 

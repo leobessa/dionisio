@@ -16,26 +16,35 @@ class StdDev:
     def finalize(self):
         return array(self.values).std()
 
+def limpa(s):
+    try:
+        return '%s' % s
+    except:
+        try:
+            return '%s' % s.decode('iso-8859-1')
+        except:
+            return '%s' % s.decode('utf-8')
+        
 def gen_tabela(x_labels, graph, out_name, title='', xlabel='', ylabel=''):
     keys = sorted(graph.keys())
     out = r"""
 \begin{table}
 \centering
-\begin{tabular}{|%s}
+\begin{tabular}{|r|%s}
     \hline
     %s
-""" % (('c|' * len(keys)), ' & '.join(keys) + r' \\')
+""" % (('c|' * len(x_labels)), 'Tipo de recomendação & ' + '& '.join(x_labels) + r' \\')
     for key in keys:
-        out += r'\hline'
+        out += r'\hline '
         out += '\n'
-        out += ' & '.join(map(str, graph[key])) + r' \\'
+        out += str(limpa(key)) + ' & ' + ' & '.join(map(limpa, graph[key])) + r' \\'
         out += '\n'
-    out += r"""        
+    out += r"""\hline        
 \end{tabular}
 \caption{\it %s}
 \label{table:%s}
 \end{table}
-""" % (title.decode('iso-8859-1'), out_name.replace('.pdf','').replace('grafico_', ''))
+""" % (limpa(title), out_name.replace('.pdf','').replace('grafico_', ''))
 
     print out
 
@@ -80,7 +89,6 @@ def gen_erro(c):
     c.execute("select avg(abs(r.stars-sr.predicted_rating))*100/4 as erro, stddev(abs(r.stars-sr.predicted_rating))*100/4, sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm union all select avg(abs(5-r.stars))*100/4, stddev(abs(5-r.stars))*100/4, 'direta' from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id")
     for erro_medio, erro_desvio, algoritmo in c.fetchall():
         graph[algoritmo] = [erro_medio, erro_desvio]
-    print graph
     gen_bar(['Média', 'Desvio-Padrão'], graph, 'grafico_erro.pdf',
         title='Desvio da nota prevista por tipo de recomendação',
         yformat='%g%%', sort=True, sort_col=0)
