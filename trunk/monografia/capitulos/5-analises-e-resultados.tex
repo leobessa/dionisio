@@ -53,19 +53,26 @@
 
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_erro}
+    \caption{\it Desvio da nota prevista por tipo de recomendação}
+    \label{fig:erro}
+\end{figure}
+
 \begin{table}
 \centering
 \begin{tabular}{|r|c|c|}
     \hline
     Tipo de recomendação & Média& Desvio-Padrão \\
 \hline 
-direta & 38.5952208545 & 35.2309513597 \\
+Direta & 38.5952208545 & 35.2309513597 \\
 \hline 
-item & 31.6068573222 & 23.7537026572 \\
+RBC & 57.3979591837 & 36.9792384652 \\
 \hline 
-profile & 65.8 & 34.5378053732 \\
+RBI & 31.6068573222 & 23.7537026572 \\
 \hline 
-trust & 57.3979591837 & 36.9792384652 \\
+RBP & 65.8 & 34.5378053732 \\
 \hline        
 \end{tabular}
 \caption{\it Desvio da nota prevista por tipo de recomendação}
@@ -73,19 +80,26 @@ trust & 57.3979591837 & 36.9792384652 \\
 \end{table}
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_notas}
+    \caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
+    \label{fig:notas}
+\end{figure}
+
 \begin{table}
 \centering
 \begin{tabular}{|r|c|c|c|}
     \hline
     Tipo de recomendação & 1-2& 3& 4-5 \\
 \hline 
-direta & 26 & 19 & 54 \\
+Direta & 26 & 19 & 54 \\
 \hline 
-item & 38 & 22 & 36 \\
+RBC & 48 & 16 & 32 \\
 \hline 
-profile & 58 & 17 & 22 \\
+RBI & 38 & 22 & 36 \\
 \hline 
-trust & 48 & 16 & 32 \\
+RBP & 58 & 17 & 22 \\
 \hline        
 \end{tabular}
 \caption{\it Porcentagem das notas em cada faixa comparadas por tipo de recomendação}
@@ -93,19 +107,26 @@ trust & 48 & 16 & 32 \\
 \end{table}
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_notas_medias}
+    \caption{\it Notas por tipo de recomendação}
+    \label{fig:notas_medias}
+\end{figure}
+
 \begin{table}
 \centering
 \begin{tabular}{|r|c|c|}
     \hline
     Tipo de recomendação & Média& Desvio-Padrão \\
 \hline 
-diretas & 3.45619116582 & 1.40923805439 \\
+Direta & 3.45619116582 & 1.40923805439 \\
 \hline 
-item & 2.964 & 1.41092310209 \\
+RBC & 2.70408163265 & 1.47916953861 \\
 \hline 
-profile & 2.368 & 1.38151221493 \\
+RBI & 2.964 & 1.41092310209 \\
 \hline 
-trust & 2.70408163265 & 1.47916953861 \\
+RBP & 2.368 & 1.38151221493 \\
 \hline        
 \end{tabular}
 \caption{\it Notas por tipo de recomendação}
@@ -113,15 +134,22 @@ trust & 2.70408163265 & 1.47916953861 \\
 \end{table}
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_notas_medias_diretas}
+    \caption{\it Notas das recomendações diretas}
+    \label{fig:notas_medias_diretas}
+\end{figure}
+
 \begin{table}
 \centering
 \begin{tabular}{|r|c|c|}
     \hline
     Tipo de recomendação & Média& Desvio-Padrão \\
 \hline 
-amigos & 3.50659340659 & 1.41167052454 \\
+Amigos & 3.50659340659 & 1.41167052454 \\
 \hline 
-desconhecidos & 3.35881104034 & 1.39939396512 \\
+Desconhecidos & 3.35881104034 & 1.39939396512 \\
 \hline        
 \end{tabular}
 \caption{\it Notas das recomendações diretas}
@@ -129,19 +157,26 @@ desconhecidos & 3.35881104034 & 1.39939396512 \\
 \end{table}
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_serendipidade}
+    \caption{\it Taxa de serendipidade por tipo de recomendação}
+    \label{fig:serendipidade}
+\end{figure}
+
 \begin{table}
 \centering
 \begin{tabular}{|r|c|}
     \hline
     Tipo de recomendação & Taxa de Serendipidade \\
 \hline 
-direta & 22 \\
+Direta & 22 \\
 \hline 
-item & 13 \\
+RBC & 12 \\
 \hline 
-profile & 9 \\
+RBI & 13 \\
 \hline 
-trust & 12 \\
+RBP & 9 \\
 \hline        
 \end{tabular}
 \caption{\it Taxa de serendipidade por tipo de recomendação}
@@ -149,15 +184,22 @@ trust & 12 \\
 \end{table}
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_serendipidade_diretas}
+    \caption{\it Taxa de serendipidade comparando amigos e desconhecidos}
+    \label{fig:serendipidade_diretas}
+\end{figure}
+
 \begin{table}
 \centering
 \begin{tabular}{|r|c|}
     \hline
     Tipo de recomendação & Taxa de Serendipidade \\
 \hline 
-amigos & 23 \\
+Amigos & 23 \\
 \hline 
-desconhecidos & 20 \\
+Desconhecidos & 20 \\
 \hline        
 \end{tabular}
 \caption{\it Taxa de serendipidade comparando amigos e desconhecidos}
