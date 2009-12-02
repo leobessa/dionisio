@@ -19,12 +19,12 @@
 
  Os mecanismos de busca atualmente utilizados na Web são capazes de listar os sites que contenham os termos desejados, bem como ordená-los de acordo com critérios de relevância. Considerando as dificuldades impostas à interpretação do conteúdo pelos computadores, fica a cargo do usuário a tarefa de identificar quais dos sites obtidos são coerentes com as expectativas de contexto e necessidade.
 
- Cientes disso, o grupo tinha proposto inicialmente um sistema de recomendação baseado em confiança com padrões de confiança. Todas as informações contidas no repositório seriam documentos semanticamente estruturados em padrões abertos. Com isso, todas as informações sobre avaliações e recomendações de produtos, além de perfis de usuários estariam disponíveis para importação por outros sistemas que entendem a linguagem adotada nesses documentos. Desse modo, a filtragem e localização de produtos mais relevantes aos usuários ganharia a poderosa ferramenta do processamento computacional.
+ Cientes disso, o grupo tinha proposto inicialmente um sistema de recomendação baseado em confiança com padrões da web semântica. Todas as informações contidas no repositório seriam documentos semanticamente estruturados em padrões abertos. Com isso, todas as informações sobre avaliações e recomendações de produtos, além de perfis de usuários estariam disponíveis para importação por outros sistemas que entendem a linguagem adotada nesses documentos. Desse modo, a filtragem e localização de produtos mais relevantes aos usuários ganharia a poderosa ferramenta do processamento computacional.
 % subsection web_semantica (end)
 \subsection{Confiança Dependente do Tempo} % (fold)
 \label{sub:confianca_dependente_do_tempo}
 
- Em \cite{sabater2001regret} o modelo de reputação proposto é baseado no cálculo do parâmetro de reputação a partir da somatórias dos pesos de impressões que o usuário tem de determinada entidade. Porém, o artigo levanta um ponto importante e crucial no modelo: a reputação ser dependente do tempo. Impressões antigas não podem ser consideradas com o mesmo peso das mais recentes. Para isso, os autores propõem a utilização de uma função dependente do tempo tal como a Equação~\ref{eq:REGRET}.
+ Em \cite{sabater2001regret} o modelo de reputação proposto é baseado no cálculo do parâmetro de reputação a partir da somatória dos pesos de impressões que o usuário tem de determinada entidade. Porém, o artigo levanta um ponto importante e crucial no modelo: a reputação ser dependente do tempo. Impressões antigas não podem ser consideradas com o mesmo peso das mais recentes. Para isso, os autores propuseram a utilização de uma função dependente do tempo tal como a Equação~\ref{eq:REGRET}.
  
 \begin{equation}
  R^t(IDB_a) = {\sum_{t_i\in{IDB_a}}}\rho(t,t_i)\times{W_i}
