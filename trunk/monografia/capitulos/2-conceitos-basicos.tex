@@ -50,7 +50,11 @@ A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hil
 
 \subsection{Filtragem colaborativa}
 
-O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}.}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}.} dos itens que podem ser recomendados, resultando em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário. Na descrição a seguir, este usuário a quem se deseja recomendar algo será chamado usuário ativo. A avaliação de um item feita por um usuário será chamada de voto. Os passos são os seguintes:
+O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}.}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}.} dos itens que podem ser recomendados, resultando em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário.
+
+É este o algoritmo básico que nesta monografia será denominado RBP.
+
+Na descrição a seguir, o usuário a quem se deseja recomendar algo será chamado usuário ativo. A avaliação de um item feita por um usuário será chamada de voto. Os passos são os seguintes:
 
 \begin{enumerate}
 \item 
@@ -105,9 +109,10 @@ Para mais detalhes, ver \cite{Breese98}.
 % Explicar com mais detalhes o método e citar outros tipos de w
 
 
-\subsection{Filtragem baseada em confiança} % (fold)
+\subsection{Filtragem baseada em confiança explícita} % (fold)
+\label{sec:confianca_explicita}
 
-A filtragem baseada em confiança\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
+A filtragem baseada em confiança explícita\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
 
 Esta confiança é fornecida de forma explícita pelo usuário. Este método se mostrou muito efetivo no casos em que a maioria dos usuários do sistema são \textit{cold-users}, isto é, quando a maioria dos usuários avaliou poucos itens e portanto possuem poucos itens em comum. Em um cenário como esse, a filtragem colaborativa tradicional falha em encontrar usuários semelhantes pois há pouca intersecção de avaliações de itens~\footnote{Em inglês, \textit{rating-overlap}.}.
 
@@ -118,6 +123,8 @@ Esta confiança é fornecida de forma explícita pelo usuário. Este método se 
 Esta é uma técnica que pertence à filtragem social e possui a mesma base da filtragem colaborativa por montar um sistema em que os usuários podem fazer as avaliações de diferentes itens.
 
 A principal diferença é que a filtragem por similaridade de item analisa essas avaliações e monta um modelo da semelhança entre os itens. A este tipo de filtragem é dado o nome de \textit{Model-based Collaborative Filtering}, em oposição ao \textit{Memory-based Collaborative Filtering}, que é a técnica tradicional usada na filtragem colaborativa~\cite{sarwar01}.
+
+Nesta monografia este algoritmo será chamado de RBI.
 
 O algoritmo é dividido em duas partes:
 
@@ -138,12 +145,19 @@ Para cada item $i$ utiliza-se a similaridade $s$ para os $N$ produtos $j$ mais s
  \label{eq:filtragem_item_based} 
 \end{equation}
 
-\subsection{Sistemas de Recomendação Baseados em Confiança}
-\label{sec:sistemas_de_recomendacao_baseados_em_confianca}
+\subsection{Sistemas de Recomendação Baseados em Reputação}
+\label{sec:sistemas_de_recomendacao_baseados_em_reputacao}
 
 De acordo com \cite{sabater2001regret}, a reputação tem grande importância em relações sociais e comerciais e é composta por diversos elementos que resultam na visão geral de uma entidade. Por exemplo, a reputação de uma companhia aérea é composta da reputação de seus aviões, assim como a reputação do seu serviço de bordo, entre outras. O REGRET\footnote{Do inglês \textit{Reputation Model for Gregarious Societies}\cite{sabater2001regret}} é um modelo de reputação que se utiliza de impressões que um agente tem de uma entidade. Nesta impressão, define-se o peso $W{i}$ que é utilizado para calcular a reputação da entidade como sendo a somatória desses pesos multiplicada por uma função dependente do tempo para normalização.
 
-% section sistemas_de_recomendacao_baseados_em_confianca (end)
+Este modelo de reputação foi uma das inspirações para a elaboração do algoritmo baseado em confiança (RBC), explicado a seguir.
+
+
+\subsection{Sistemas de Recomendação Baseados em Confiança}
+
+Este é um sistema de recomendação que está sendo proposto nesta monografia. Ele funciona como o sistema de recomendação baseado em confiança explícita introduzido na seção~\ref{sec:confianca_explicita}, mas tendo o seu parâmetro de confiança calculado automaticamente com base nas avaliações das recomendações feitas pelos usuários, seguindo um modelo muito parecido ao de sistemas baseado em reputação.
+
+Este algoritmo será denominado RBC nesta monografia e o seu detalhamento será feito na seção~\ref{sec:descricao_sistema}.
 
 \section{Web Social} % (fold)
 
