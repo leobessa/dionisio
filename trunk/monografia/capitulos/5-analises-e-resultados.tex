@@ -51,7 +51,7 @@
 \section{Análise Comparativa dos Algoritmos de Recomendação}
 \label{sec:analise_comparativa_dos_algoritmos_de_recomendacao}
 
-Nesta seção serão comparados os três algoritmos de recomendação e as recomendações diretas feitas tanto por amigos quanto por desconhecidos.
+Nesta seção serão comparados os resultados dos três algoritmos de recomendação e as recomendações diretas feitas tanto por amigos quanto por desconhecidos.
 
 \begin{figure}
     \centering
@@ -82,10 +82,8 @@ RBP & 65.80\% & 34.54\% \\
 A Figura~\ref{fig:erro} ilustra o desvio na nota prevista pelos tipos de recomendação. A Tabela~\ref{table:erro} contém os dados utilizados para a construção do gráfico. O desvio é a diferença entre a nota máxima esperada na recomendação e a nota realmente dada pelo participante. Os valores estão descritos em porcentagem em relação ao desvio máximo. A nota máxima prevista na recomendação é 5. Portanto, o desvio máximo é 4, pois a menor nota possível a ser dada é 1. O valor final apresentado é a média desses desvios.
 
 Podemos verificar que o algoritmo RBI demonstrou o melhor desempenho, seguido das recomendações diretas, do algoritmo RBC e, por fim, do algoritmo RBP.
-%TODO concluir análise
 
  As notas médias dadas pelos participantes estão discriminadas por algoritmos de recomendação e pelas recomendações diretas, como mostra a Figura~\ref{fig:notas_medias}. Os dados utilizados para a elaboração do gráficos estão na Tabela~\ref{table:notas_medias}. As recomendações que resultaram em uma média de notas maior foram as diretas, seguidas das realizadas com o algoritmo RBI, RBC e RBP.
-%TODO concluir análise
  
 \begin{figure}
     \centering
@@ -113,12 +111,7 @@ RBP & 2.37 & 1.38 \\
 \label{table:notas_medias}
 \end{table}
 
-\subsection{Recomendações do Sistema}
-
-\subsection{Recomendações Diretas}
-
  As notas médias dadas por recomendações diretas foram separadas entre as realizadas por amigos e as feitas por desconhecidos, como ilustra a Figura~\ref{fig:notas_medias_diretas}. Os dados utilizados para a construção do gráfico está na Tabela~\ref{table:notas_medias_diretas}. Verifica-se que a média de notas dadas por recomendações realizadas por amigos foi ligeiramente maior que as notas dadas a produtos indicados por desconhecidos.
- %TODO concluir análise
 
 \begin{figure}
     \centering
@@ -178,10 +171,6 @@ RBP & 58\% & 17\% & 22\% \\
 \label{table:notas}
 \end{table}
 
-\subsection{Recomendações do Sistema}
-
-\subsection{Recomendações Diretas}
-
 % section analise_de_rejeicao_das_recomendacoes (end)
 
 \section{Taxa de Serendipidade}
@@ -190,7 +179,6 @@ RBP & 58\% & 17\% & 22\% \\
 Serendipidade significa o usuário ter aceitado a recomendação, ou seja, ter dado uma nota 4 ou 5 ao produto e não o conhecer. A taxa de serendipidade foi calculada com base no número de recomendações de produtos desconhecidos aceitas sobre o total de produtos recomendados em cada tipo de algoritmo, considerando também as recomendações diretas. A Figura~\ref{fig:serendipidade} mostra a taxa de serendipidade para os tipos de recomendação, sendo que os dados utilizados para elaborar o gráfico estão na Tabela~\ref{table:serendipidade}.
 
 Verificamos que as recomendações diretas resultaram em um alto grau de serendipidade, se comparado com os graus dos tipos de recomendações que as seguiram: RBI, RBC e RBP.
-%TODO concluir análise
 
 \begin{figure}
     \centering
@@ -247,6 +235,16 @@ Desconhecidos & 20\% \\
 
 \section{Análise do Algoritmo Baseado em Confiança}
 \label{sec:analise_do_algoritmo_baseado_em_confianca}
+
+ Com os dados apresentados na seções anteriores, podemos verificar que o algoritmo de recomendação baseado em confiança (RBC) possuiu resultados relativamente bons principalmente com relação ao RBP.
+ 
+ Na análise de desvio da nota prevista o RBC não foi tão eficiente quanto as recomendações diretas e o algoritmo RBI, porém mostrou resultados melhores que o RBP. 
+ 
+ Verificando a média de notas dadas, o RBC teve resultado intermediário com relação aos outros dois algoritmos, sendo que as recomendações diretas apresentaram a melhor eficiência. Isso ocorreu principalmente pelo fato dos desconhecidos terem recomendado quase tão bem como os amigos, como mostra a Figura~\ref{fig:notas_medias_diretas}.
+ 
+ Quanto à taxa de serendipidade, o RBC manteve-se na média dos outros algoritmos, sendo que as recomendações diretas foram disparadamente mais eficientes.
+ 
+ De acordo com os dados, o RBC conseguiu recomendar melhor que o RBP, que é o algoritmo que o RBC se baseia para recomendar. O RBC utiliza menos informações que o RBP para recomendar e mesmo assim mostrou-se melhor nos resultados do experimento.
 
 % section analise_do_algoritmo_baseado_em_confianca (end)
 
