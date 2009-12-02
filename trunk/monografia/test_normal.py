@@ -78,10 +78,10 @@ def main():
     tests('Teste de que recomendações Diretas são melhores que RBC (H1)',
         graph['trust'], diretas)
     
-    tests('Teste de que recomendações RBC é melhor que RBP (H1)',
+    tests('Teste de que RBC é melhor que RBP (H1)',
         graph['trust'], graph['profile'])
     
-    tests('Teste de que recomendações RBI é melhor que RBC (H1)',
+    tests('Teste de que RBI é melhor que RBC (H1)',
         graph['trust'], graph['item'])
     
 main()
