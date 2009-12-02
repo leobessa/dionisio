@@ -4,7 +4,7 @@
 \section{Descrição do Experimento}
 \label{cha:descricao_do_experimento}
 
-Foi realizado um experimento com 60 pessoas que se cadastraram e formaram uma rede social disposta em 12 grupos de 5 amigos. O sistema de recomendação utiliza essa rede social para obter as informações de relações de amizade entre os usuários. Neste contexto, um usuário é considerado amigo do outro quando eles pertencem a um mesmo grupo de amigos. Os grupos de usuários foram definidos a partir do envio de um e-mail com um convite de um usuário já cadastrado no sistema a outra pessoa. Este e-mail possuía um endereço de cadastro, onde foi possível a pessoa se cadastrar e automaticamente já fazer parte do grupo de amigos do usuário que a convidou.
+Foi realizado um experimento com 60 pessoas que se cadastraram e formaram uma rede social disposta em 12 grupos de 5 amigos. O sistema de recomendação utiliza essa rede social para obter as informações de relações de amizade entre os usuários. Neste contexto, um usuário é considerado amigo do outro quando eles pertencem a um mesmo grupo de amigos. Os grupos de usuários foram definidos a partir do envio de um e-mail com um convite de um usuário já cadastrado no sistema a outra pessoa. Este e-mail possuía um endereço de cadastro onde foi possível a pessoa se cadastrar e automaticamente já fazer parte do grupo de amigos do usuário que a convidou.
 
 Os usuários receberam recomendações dos seus amigos e de outras pessoas presentes na rede. Além disso, foram utilizadas as informações de avaliações de produtos por parte dos usuários para o sistema de recomendação poder recomendar outros produtos a eles. Foram utilizados 3 tipos de algoritmos pelo sistema de recomendação:
 
@@ -41,7 +41,7 @@ Avaliar um produto significa dizer o quanto o participante acha aquele produto r
   \label{fig:product-rating}
 \end{figure}
 
-Caso o participante não conhecesse o produto na hora de avaliá-lo, ou seja, não tivesse ouvido falar dele ou não tivesse conhecimento suficiente para reconhecê-lo, até o instante em que ele lhe foi apresentado, ele deveria informar isso ao sistema. Mesmo não conhecendo, o participante avaliava o produto de acordo com o seu grau de interesse. Neste caso, a avaliação deveria ser feita apenas com base na foto e descrição do produto.
+Caso o participante não conhecesse o produto na hora de avaliá-lo, ou seja, não tivesse ouvido falar dele ou não tivesse conhecimento suficiente para reconhecê-lo, até o instante em que ele lhe foi apresentado, ele deveria informar isso ao sistema por meio de uma opção disponilizada após a avaliação de cada produto. Mesmo não conhecendo, o participante avaliava o produto de acordo com o seu grau de interesse. Neste caso, a avaliação deveria ser feita apenas com base na foto e descrição do produto.
 
 \subsection{Segunda Etapa}
 \label{cha:segunda_etapa}
@@ -49,7 +49,6 @@ Caso o participante não conhecesse o produto na hora de avaliá-lo, ou seja, n�
 Assim que o participante terminava a primeira etapa, automaticamente a segunda etapa era carregada. Esta visava conhecer os interesses particulares dos participantes. Para isso, foram disponibilizados vários produtos separados nas diversas categorias:
 
 \begin{itemize}
-  \item Foto
   \item CDs
   \item DVDs e Blu Ray
   \item Livros
@@ -75,8 +74,7 @@ Esta etapa era necessária para que os participantes avaliassem outros produtos 
 
 \subsection{Terceira Etapa}
 
-Assim que todos os participantes terminaram as duas primeiras etapas do experimento, a terceira etapa era liberada. Enquanto isso não ocorresse, quem terminava a etapa 2 recebia a mensagem do sistema informando que a terceira etapa estava desabilitada. Esse sincronismo foi necessário, pois as etapas seguintes necessitavam das informações de avaliação de produtos de todas as pessoas.
-% TODO informar o número de pessoas que desistiram nesta parte!
+Assim que todos os participantes terminaram as duas primeiras etapas do experimento, a terceira etapa era liberada. Enquanto isso não ocorresse, quem terminava a segunda etapa recebia a mensagem do sistema informando que a terceira etapa estava desabilitada. Esse sincronismo foi necessário, pois as etapas seguintes necessitavam das informações de avaliação de produtos de todas as pessoas.
 
 Na terceira etapa o participante deveria recomendar produtos às pessoas do seu grupo. Como todos os integrantes de um grupo eram amigos entre si, era esperado que as recomendações de produtos fossem fáceis de serem realizadas, porque normalmente as pessoas conhecem os gostos dos amigos. Por isso, cada participante deveria recomendar 5 produtos a cada amigo, ou seja, 20 produtos no total.
 
@@ -91,18 +89,13 @@ A busca de produtos estava disponível nesta etapa, assim como as avaliações d
   \label{fig:stage-3}
 \end{figure}
 
-O propósito das recomendações é que apenas boas recomendações sejam realizadas pelos participantes. Uma boa recomendação é a indicação de um produto que o participante acha que o outro achará interessante e provavelmente não o conheça, ou seja, não é óbvio a ele.
-
 Esta etapa era necessária para que posteriormente fosse possível analisar a eficiência da recomendação de produtos realizadas por amigos, que em teoria deve ser mais eficiente do que as recomendações realizadas por pessoas deconhecidas ou pelo sistema de recomendação \cite{bonhard2007devil}.
 
 \subsection{Quarta Etapa}
 
 Depois de ter feito as 5 recomendações de produtos a cada amigo, o participante deveria recomendar alguns produtos a pessoas que não faziam parte do seu grupo, ou seja, pessoas deconhecidas. Ficava visível ao participante uma lista gerada pelo sistema contendo alguns desconhecidos. Tal lista foi gerada aleatoriamente em um aplicativo desenvolvido especialmente para isso. Para cada pessoa na lista, o participante deveria recomendar apenas um produto. As avaliações de produtos realizadas por essas pessoas da lista ficavam disponíveis ao participante, sendo que ele deveria se basear apenas nisso e nos dados pessoais da pessoa para lhe recomendar um produto.
 
-% TODO inserir figura mostrando a lista de pessoas deconhecidas
-
 Com as recomendações realizadas por pessoas desconhecidas, foi possível comparar estas com aquelas feitas pelos amigos durante a terceira etapa do experimento. Foi necessário esperar todos os participantes terminarem a terceira e quarta etapas para que o experimento desse continuidade. Isso foi preciso porque, todas essas recomendações de produtos seriam utilizadas nas etapas seguintes.
-% TODO informar o número de pessoas que desistiram nesta parte!
 
 \subsection{Quinta Etapa}
 
@@ -110,9 +103,9 @@ A quinta etapa tinha como propósito mostrar apenas as recomendações diretas, 
 
 Na listagem de recomendações, não ficava visível quem lhe recomendou o produto. Isso foi feito para que o participante não tivesse nenhuma influência na hora de demonstrar o seu nível de interesse no produto. Caso estivesse exposto que um amigo seu lhe recomendou o produto, o participante poderia avaliá-lo bem só por causa do laço de amizade que tem com o recomendador. Ou, no caso contrário, avaliar mal um produto só porque não conhece a pessoa que o recomendou. Não tendo esse tipo de influência foi possível analisar as avaliações de produtos recomendados por amigos e desconhecidos por igual.
 
-Para o sistema realizar as recomendações baseadas em confiança, era necessário que a terceira e quarta etapas fossem finalizadas por todos os participantes. Ao término da segunda etapa o sistema já poderia recomendar produtos, mas utilizando apenas os algoritmos baseados em perfil e em produto. A utilização desses algoritmos já era possível porque as avaliações dos 20 produtos da primeira etapa e a dos 10 da segunda já forneciam dados suficientes. Porém, como o algoritmo baseado em confiança necessita da avaliação de produtos recomendados diretamente por pessoas, foi decidido que todas as recomendações realizadas pelo sistema, a partir do algoritmos baseados em perfil, produto e confiança, seriam realizadas ao término da quarta etapa. Com a avaliação dos produtos recomendados nas etapas 3 e 4 os algoritmos baseados em perfil e em produto teriam mais dados para os seus cálculos.
+Para o sistema realizar as recomendações baseadas em confiança, era necessário que a terceira e quarta etapas fossem finalizadas por todos os participantes. Ao término da segunda etapa o sistema já poderia recomendar produtos, mas utilizando apenas os algoritmos baseados em perfil e em produto. A utilização desses algoritmos já era possível porque as avaliações dos 20 produtos da primeira etapa e a dos 10 da segunda já forneciam dados suficientes. Porém, como o algoritmo baseado em confiança necessita da avaliação de produtos recomendados diretamente por pessoas, foi decidido que todas as recomendações realizadas pelo sistema, a partir dos algoritmos baseados em perfil, produto e confiança, seriam realizadas ao término da quarta etapa. Com a avaliação dos produtos recomendados na terceira e quarta etapas os algoritmos baseados em perfil e em produto teriam mais dados para os seus cálculos.
 
-Nenhum participantes desistiu do experimento nesta etapa. No total, 51 participantes alcançaram a sexta e última etapa.
+Nenhum participante desistiu do experimento nesta etapa. No total, 51 participantes alcançaram a sexta e última etapa.
 
 \subsection{Sexta Etapa}
 
