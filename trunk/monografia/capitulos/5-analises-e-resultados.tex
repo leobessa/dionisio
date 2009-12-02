@@ -248,6 +248,29 @@ Desconhecidos & 20\% \\
 
 % section analise_do_algoritmo_baseado_em_confianca (end)
 
+\section{Análise das Hipóteses}
+
+Um dos objetivos do experimento foi testar certas hipóteses que, ao serem confirmadas, fornecem uma base mais sólida para a construção de sistemas de recomendação efetivos.
+
+A seguir cada hipótese será analisada. As hipóteses nulas (H0) são todas iguais, elas consideram que as duas diferentes distribuições pouco diferem, tendo por exemplo a mesma média, mediana ou algum critério equivalente que depende exatamente do teste de hipótese utilizado. Para mais informações, consultar a seção apêndice~\ref{anexo_hipoteses}, onde estão listados os testes utilizados e os resultados numéricos dos mesmos.
+
+\subsection{Os amigos recomendam melhor do que os desconhecidos}
+A hipótese nula foi rejeitada com um nível de significância de 10\%, confirmando esta hipótese quando também se considera que a média das recomendações dos amigos é maior do que as dos desconhecidos, conforme pode ser visto na figura~\ref{fig:notas_medias_diretas}.
+
+
+\subsection{A recomendação baseada em confiança é melhor do que a baseada em similaridade de perfil dos usuários}
+A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando a hipótese de que o algoritmo apresentado nesta monografia (RBC) é superior ao algoritmo de similaridade de perfil (RBP) que é um dos mais utilizados na filtragem social. As figuras \ref{fig:notas} e \ref{fig:notas_medias} mostram a melhor aceitação da RBC em relação a RBP.
+
+
+\subsection{Hipóteses secundárias}
+
+\subsubsection{As recomendações diretas são melhores do que as RBC}
+A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando que as recomendações feitas diretamente pelas pessoas possuem uma aceitação muito maior do que o algoritmo apresentado neste trabalho, como pode ser visto nas figuras~\ref{fig:notas} e \ref{fig:notas_medias}.
+
+\subsubsection{As recomendações baseadas em similaridade de itens são melhores do que as baseadas em confiança}
+A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando, como pode ser visto nas figuras \ref{fig:notas} e \ref{fig:notas_medias}, que a RBI é melhor aceita do que a RBC.
+
+
 \section{Análise de Desempenho}
 \label{sec:analise_de_desempenho}
 % TODO falar sobre os problemas enfrentados com as consultas SQL e com as estrelinhas para a avaliação do produto (javascript).
