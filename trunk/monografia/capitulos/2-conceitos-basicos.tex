@@ -11,7 +11,7 @@ A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pes
 Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
 
 \subsection{Contexto histórico}
-O primeiro sistema de recomendação, Tapestry\cite{Goldberg92}, foi desenvolvido no início dos anos 90. Na última década tais sistemas foram um grande foco de estudo, principalmente os baseado em filtragem colaborativa.~\cite{Resnick97}~\cite{Herlocker04}
+O primeiro sistema de recomendação, Tapestry\cite{Goldberg92}, foi desenvolvido no início dos anos 90. Na última década, tais sistemas foram um grande foco de estudo, principalmente os baseado em filtragem colaborativa ~\cite{Resnick97}~\cite{Herlocker04}.
 
 Observa-se hoje que vários sistemas de recomendação podem ser experimentados pelo usuários da Internet, como exemplo:
 
@@ -29,30 +29,34 @@ A Amazon~\footnote{http://www.amazon.com.} e o Submarino~\footnote{http://www.su
 
 \subsection{Classificações dos sistemas de recomendação}
 
-Nas próximas seções serão apresentadas as diferentes abordagens para a implementação de sistemas de recomendação. As primeiras abordagens foram a filtragem colaborativa e a filtragem baseada em conteúdo. Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem.
+Nas próximas seções serão apresentadas as diferentes abordagens existentes para a implementação de sistemas de recomendação. As primeiras abordagens foram a filtragem colaborativa e a filtragem baseada em conteúdo. Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem.
 
 %Na seção (seção XXX) serão discutidos as diferentes implementações encontradas na literatura.
 
-\subsection{Filtragem baseada em conteúdo} % (fold)
-A filtragem baseada em conteúdo consiste na extração de \textit{features} dos itens a serem recomendados e da comparação desses \textit{features} com aqueles que formam o  perfil histórico do usuário. Esse é um dos primeiros métodos que surgiram e sua origem está na comunidade de \textit{information retrieval}.~\cite{Balabanovi97}
+\subsubsection{Filtragem baseada em conteúdo} % (fold)
+A filtragem baseada em conteúdo consiste na extração de características dos itens a serem recomendados e da comparação dessas características (\textit{features}) com aquelas que formam o  perfil histórico do usuário. Esse é um dos primeiros métodos que surgiram e sua origem está na comunidade de recuperação de informações (\textit{information retrieval} ~\cite{Balabanovi97}).
 
-Como exemplo, suponha-se que se queira recomendar documentos em formato texto. Os \textit{features} nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela freqüência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se os \textit{features} (palavras) presentes podem ser encontrados em grande freqüência nos documentos avaliados positivamente pelo usuário no passado.
+Como exemplo, suponha-se que se queira recomendar documentos em formato texto. As características nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela freqüência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se as características (palavras) presentes podem ser encontradas em grande freqüência nos documentos avaliados positivamente pelo usuário no passado.
 
-Outros exemplos de \textit{features} que podem ser usados em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras palavras-chave.
+Outros exemplos de características que podem ser usadas em um documento são meta-informações como autor, categoria do documento (artigo, jornal, revista, por exemplo), assunto (computação, matemática, artes, esportes), entre outras palavras-chave.
 
 % (falar um pouquinho porque é bom/ruim)
 
-\subsection{Filtragem social} % (fold)
+\subsubsection{Filtragem social} % (fold)
 
 % Talvez usar o Pazzani96syskill para falar de content-based
 
-A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hill95}.} consiste em um conjunto de técnicas que utilizam o contexto e as relações sociais de uma comunidade de usuários para fazer recomendações. Ao contrário da filtragem baseada em conteúdo, o conteúdo de cada item não é analisado, possibilitando-se recomendar qualquer tipo de item. As próximas seções descrevem diferentes abordagem baseadas na filtragem social.
+A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hill95}.} consiste em um conjunto de técnicas que utilizam o contexto e as relações sociais de uma comunidade de usuários para fazer recomendações. Ao contrário da filtragem baseada em conteúdo, o conteúdo de cada item não é analisado, possibilitando-se recomendar qualquer tipo de item.
 
-\subsection{Filtragem colaborativa}
+\subsection{Tipos de Filtragem Social}
+
+ As próximas seções descrevem diferentes abordagem baseadas na filtragem social.
+
+\subsubsection{Filtragem colaborativa}
 
 O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}.}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}.} dos itens que podem ser recomendados, resultando em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário.
 
-É este o algoritmo básico que nesta monografia será denominado RBP.
+Este é o algoritmo básico que nesta monografia será denominado RBP.
 
 Na descrição a seguir, o usuário a quem se deseja recomendar algo será chamado usuário ativo. A avaliação de um item feita por um usuário será chamada de voto. Os passos são os seguintes:
 
@@ -65,7 +69,7 @@ Para cada usuário do sistema, determina-se a similaridade entre este usuário e
 
 A lista de itens recomendados será formada pelos $n$ itens com os maiores votos previstos ordenados decrescentemente.
 
-\subsubsection{Descrição matemática}
+\subsubsubsection{Descrição matemática}
 Mais detalhadamente, o algoritmo básico é o seguinte:
 
 Sendo $v_{i,j}$ o voto do usuário $i$ para o item $j$, $I_{i}$ o conjunto de itens que foram avaliados pelo usuário $i$, define-se voto médio de um usuário $i$ por:
@@ -89,7 +93,7 @@ onde $n$ é o número de usuários do sistema, $s(a,i)$ é a similaridade entre 
 
 \paragraph{Cálculo de $s$.}
 
-O cálculo de $s$ geralmente é realizado utilizando-se o coeficiente de correlação de Pearson\cite{Breese98}, definido por:
+O cálculo de $s$ geralmente é realizado utilizando-se o coeficiente de correlação de Pearson \cite{Breese98}, definido por:
 
 \begin{equation}
 \label{eq:calculo_s}
@@ -109,7 +113,7 @@ Para mais detalhes, ver \cite{Breese98}.
 % Explicar com mais detalhes o método e citar outros tipos de w
 
 
-\subsection{Filtragem baseada em confiança explícita} % (fold)
+\subsubsection{Filtragem baseada em confiança explícita} % (fold)
 \label{sec:confianca_explicita}
 
 A filtragem baseada em confiança explícita\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
@@ -118,9 +122,9 @@ Esta confiança é fornecida de forma explícita pelo usuário. Este método se 
 
 %\section{Discussão sobre as diferentes abordagens}
 
-\subsection{Filtragem por similaridade de item}
+\subsubsection{Filtragem por similaridade de item}
 
-Esta é uma técnica que pertence à filtragem social e possui a mesma base da filtragem colaborativa por montar um sistema em que os usuários podem fazer as avaliações de diferentes itens.
+Esta é uma técnica que também pertence à filtragem social e possui a mesma base da filtragem colaborativa por montar um sistema em que os usuários podem fazer as avaliações de diferentes itens.
 
 A principal diferença é que a filtragem por similaridade de item analisa essas avaliações e monta um modelo da semelhança entre os itens. A este tipo de filtragem é dado o nome de \textit{Model-based Collaborative Filtering}, em oposição ao \textit{Memory-based Collaborative Filtering}, que é a técnica tradicional usada na filtragem colaborativa~\cite{sarwar01}.
 
@@ -128,34 +132,32 @@ Nesta monografia este algoritmo será chamado de RBI.
 
 O algoritmo é dividido em duas partes:
 
-\subsubsection{Cálculo da similaridade entre itens}
+\begin{enumerate}
+\item{Cálculo da similaridade entre itens}
 
 Neste passo, é calculada a correlação entre as avaliações efetuadas pelos usuários para cada par de itens, usando por exemplo o coeficiente de correlação de Pearson (ver equação \ref{eq:calculo_s}).
 
 Para um sistema com $n$ itens, o resultado é uma matriz $n \times n$ contendo a correlação entre um item e outro. Este é o ``modelo'' que diferencia esta abordagem daquela da filtragem colaborativa.
 
-\subsubsection{Cálculo do valor previsto do voto do usuário}
+\item{Cálculo do valor previsto do voto do usuário}
 
 O próximo passo é determinar o voto previsto $p_{a,i}$, que é o valor da avaliação prevista do produto $i$ pelo usuário $a$.
 
-Para cada item $i$ utiliza-se a similaridade $s$ para os $N$ produtos $j$ mais similares a este. $v(a,j)$ é a avaliação do usuário $a$ para o produto $j$. A expressão de $p$ é dada por:
+Para cada item $i$ utiliza-se a similaridade $s$ para os $N$ produtos $j$ mais similares a este, onde $v(a,j)$ é a avaliação do usuário $a$ para o produto $j$. A expressão de $p$ é dada por:
 
 \begin{equation}
  p_{a,i} = \frac{\sum_{j=0}^N{(s_{i,j} \times v_{a, j})}}{\sum_{j=0}^N{(|s_{i,j}|)}}
  \label{eq:filtragem_item_based} 
 \end{equation}
 
-\subsection{Sistemas de Recomendação Baseados em Reputação}
+\end{enumerate}
+
+\subsubsection{Sistemas de Recomendação Baseados em Reputação}
 \label{sec:sistemas_de_recomendacao_baseados_em_reputacao}
 
-De acordo com \cite{sabater2001regret}, a reputação tem grande importância em relações sociais e comerciais e é composta por diversos elementos que resultam na visão geral de uma entidade. Por exemplo, a reputação de uma companhia aérea é composta da reputação de seus aviões, assim como a reputação do seu serviço de bordo, entre outras. O REGRET\footnote{Do inglês \textit{Reputation Model for Gregarious Societies}\cite{sabater2001regret}} é um modelo de reputação que se utiliza de impressões que um agente tem de uma entidade. Nesta impressão, define-se o peso $W{i}$ que é utilizado para calcular a reputação da entidade como sendo a somatória desses pesos multiplicada por uma função dependente do tempo para normalização.
+De acordo com \cite{sabater2001regret}, a reputação tem grande importância em relações sociais e comerciais e é composta por diversos elementos que resultam na visão geral de uma entidade. Por exemplo, a reputação de uma companhia aérea é composta da reputação de seus aviões, assim como a reputação do seu serviço de bordo, entre outras. O REGRET\footnote{Do inglês \textit{Reputation Model for Gregarious Societies}} \cite{sabater2001regret} é um modelo de reputação que se utiliza de impressões que um agente tem de uma entidade. Nesta impressão, define-se o peso $W{i}$ que é utilizado para calcular a reputação da entidade como sendo a somatória desses pesos multiplicada por uma função dependente do tempo para normalização.
 
-Este modelo de reputação foi uma das inspirações para a elaboração do algoritmo baseado em confiança (RBC), explicado a seguir.
-
-
-\subsection{Sistemas de Recomendação Baseados em Confiança}
-
-Este é um sistema de recomendação que está sendo proposto nesta monografia. Ele funciona como o sistema de recomendação baseado em confiança explícita introduzido na seção~\ref{sec:confianca_explicita}, mas tendo o seu parâmetro de confiança calculado automaticamente com base nas avaliações das recomendações feitas pelos usuários, seguindo um modelo muito parecido ao de sistemas baseado em reputação.
+Este modelo de reputação foi uma das inspirações para a elaboração do algoritmo baseado em confiança (RBC) que está sendo proposto nesta monografia. Ele funciona como o sistema de recomendação baseado em confiança explícita introduzido na seção~\ref{sec:confianca_explicita}, mas tendo o seu parâmetro de confiança calculado automaticamente com base nas avaliações das recomendações feitas pelos usuários, seguindo um modelo muito parecido ao de sistemas baseado em reputação.
 
 Este algoritmo será denominado RBC nesta monografia e o seu detalhamento será feito na seção~\ref{sec:descricao_sistema}.
 
@@ -172,7 +174,7 @@ Neste cenário, as pessoas se cadastram no site e criam perfis com as suas infor
 % Motivando novos usuários
 \subsection{Qualidade da Informação}
 
-Para a formação e atualização do seu conteúdo, as redes sociais precisam das informações vindas dos seus usuários. Quanto mais as pessoas contribuem, mais rica será a rede social \cite{burke2009fmm}. A dependência dos usuários traz a necessidade de mostrar a eles o porquê de eles contribuírem. Uma rede social deve motivar os seus usuários a participarem ativamente com as suas opiniões ou novas informações a serem disponibilizadas, mesmo sem receber em troca algum tipo de recompensa além da exposição das suas idéias. O desafio é mostrar aos novos usuários, chamados de \textit{coldstart users}, o motivo para eles contribuírem com o fluxo de informações.
+Para a formação e atualização do seu conteúdo, as redes sociais precisam das informações vindas dos seus usuários. Quanto mais as pessoas contribuem, mais rica será a rede social \cite{burke2009fmm}. A dependência dos usuários traz a necessidade de mostrar a eles o valor de suas contribuições. Uma rede social deve motivar os seus usuários a participarem ativamente com as suas opiniões ou fornecendo novas informações, mesmo sem receber em troca algum tipo de recompensa além da exposição das suas idéias. O desafio é mostrar aos novos usuários, chamados de \textit{coldstart users}, o motivo para eles contribuírem com o fluxo de informações.
 
 Durante a formação de uma rede social, o princípio básico adotado é sempre o cadastro inicial de algumas pessoas influentes, para que estas depois possam enviar convites para seus amigos e conhecidos. Também há a opção de convidar amigos presentes em outras redes, o que torna mais fácil o processo de localização de pessoas conhecidas. Após isso, existem técnicas adotadas para motivar os usuários a contribuírem com dados. Segundo \cite{burke2009fmm}, uma das técnicas adotadas é mostrar aos usuários o que seus amigos estão fazendo na rede. Essa técnica tem como base o comportamento humano de primeiro observar para depois agir ao chegar em um novo local com pessoas já interagindo entre si. Sabendo o comportamento dos seus amigos, os novos usuários agirão de maneira semelhante \cite{burke2009fmm}.
 
@@ -183,9 +185,9 @@ Mesmo fazendo com que as pessoas compartilhem informações, a qualidade destas 
 % Por que ela depende de recomendação?
 \section{Necessidade de Sistemas de Recomendação}
 
-A popularização de sites que dão oportunidade às pessoas de contribuírem com suas informações, tais como \textit{weblogs}, \textit{fotologs} e outros meios de compartilhamento de conteúdo digital, fez com que rapidamente a quantidade de conteúdo pessoal na internet tivesse um crescimento considerado \cite{bonhard2007devil}. Com isso, encontrar algo relevante e pessoas que partilham os mesmos interesses tornou-se uma tarefa muito mais complicada. Os sistemas de recomendação são projetados para aliviar essa dificuldade, porém, de acordo com \cite{bonhard2007devil}, sistemas de recomendação baseados em um contexto social apresentam recomendações mais eficientes.
+A popularização de sites que dão oportunidade às pessoas de contribuírem com suas informações, tais como \textit{weblogs}, \textit{fotologs} e outros meios de compartilhamento de conteúdo digital, fez com que rapidamente a quantidade de conteúdo pessoal na Internet tivesse um crescimento considerado \cite{bonhard2007devil}. Com isso, encontrar algo relevante e pessoas que partilham os mesmos interesses tornou-se uma tarefa muito mais complicada. Os sistemas de recomendação são projetados para aliviar essa dificuldade. Porém, de acordo com \cite{bonhard2007devil}, sistemas de recomendação baseados em um contexto social apresentam recomendações mais eficientes.
 
-Um sistema de recomendação inserido em um contexto social pode se basear na similaridade de itens e pessoas, assim como foi abordado no capítulo sobre Sistemas de Recomendação. Em \cite{bonhard2007devil} um experimento foi realizado com 60 participantes que avaliaram recomendações de filmes feitas em uma rede social. As pessoas avaliavam recomendações feitas por conhecidos e desconhecidos para que se pudesse verificar qual dos parâmetros dentre a similaridade de perfis e familiaridade seria mais influente em uma recomendação. Os resultados mostraram que os participantes claramente preferiram as recomendações realizadas por pessoas que eles conheciam.
+Um sistema de recomendação inserido em um contexto social pode se basear na similaridade de itens e pessoas, assim como foi abordado no capítulo sobre Sistemas de Recomendação. Em \cite{bonhard2007devil}, um experimento foi realizado com 60 participantes que avaliaram recomendações de filmes feitas em uma rede social. As pessoas avaliavam recomendações feitas por conhecidos e desconhecidos para que se pudesse verificar qual dos parâmetros dentre a similaridade de perfis e familiaridade seria mais influente em uma recomendação. Os resultados mostraram que os participantes claramente preferiram as recomendações realizadas por pessoas que eles conheciam.
 
 % section web_social (end)
 
