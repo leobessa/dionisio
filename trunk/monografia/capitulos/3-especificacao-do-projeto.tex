@@ -8,7 +8,7 @@
 
 O sistema de recomendação utilizará a rede social para obter as relações de amizade entre usuários. Esta relação é estabelecida entre dois usuários após ambos a confirmarem através do envio de um convite de amizade ou da aceitação deste.
 
-Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e receber recomendações de outras pessoas presentes na rede social. Tendo como base o comportamento dos usuários nestas atividades o sistema será capaz de enviar novas recomendações de produtos relevantes ao usuário.
+Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e receber recomendações de outras pessoas presentes na rede social. Tendo como base o comportamento dos usuários nestas atividades, o sistema será capaz de enviar novas recomendações de produtos relevantes ao usuário.
 
  Os principais blocos do sistema podem ser vistos na Figura~\ref{fig:escopo}. A rede social é utilizada para o estabelecimento das relações de amizade, para a criação e visualização de avaliações dos produtos e para o envio de recomendações. O repositório é utilizado para armazenar os produtos cadastrados e as recomendações a serem enviadas. Já o sistema de recomendação tem o papel de analisar as informações contidas no repositório e gerar novas recomendações.
 
@@ -38,7 +38,7 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 
 \end{itemize}
 
- As recomendações geradas pelo sistema são baseadas nas avaliações de produtos feitas pelos usuários. A partir destas avaliações o sistema calcula a similaridade entre usuários, as relações de confiança e as relações encontradas entre os produtos.
+ As recomendações geradas pelo sistema são baseadas nas avaliações de produtos feitas pelos usuários. A partir destas avaliações, o sistema calcula a similaridade entre usuários, as relações de confiança e as relações encontradas entre os produtos.
 
 \begin{figure}[htp]
  \centering
@@ -60,13 +60,13 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
  \label{eq:param_trust} 
 \end{equation}
 
- Onde
+ onde
 \begin{equation}
  M_{i,j} = \frac{{\sum_{i=0}^n}R_{i,j}}{n}
  \label{eq:media_notas}
 \end{equation}
 
- Sendo que $M_{i,j}$ é a média das notas que o usuário $i$ deu aos produtos recomendados pelo usuário $j$ e $n$ o número de recomendações que $i$ recebeu de $j$. Para o parâmetro de confiança $C_{i,j}$ ficar normalizado na escala [-1,1], assim como os parâmetros de similaridade entre perfis e itens, a Equação~\ref{eq:param_trust} é aplicada.
+ e $M_{i,j}$ é a média das notas que o usuário $i$ deu aos produtos recomendados pelo usuário $j$ e $n$ o número de recomendações que $i$ recebeu de $j$. Para o parâmetro de confiança $C_{i,j}$ ficar normalizado na escala [-1,1], assim como os parâmetros de similaridade entre perfis e itens, a Equação~\ref{eq:param_trust} é aplicada.
 
  Desse modo, o parâmetro de confiança é a média das notas dadas aos produtos recomendados normalizada na escala [-1,1]. A Figura~\ref{fig:diagrama_confianca} ilustra as relações entre os usuários da rede social e os parâmetros de confiança calculados.
  
@@ -86,7 +86,7 @@ Os usuários podem avaliar produtos (previamente cadastrados na base de dados) e
 \section{Funcionalidades principais} % (fold)
 \label{sec:funcionalidades_principais}
 
-Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories}\cite{557458}:
+Abaixo estão sumarizadas as principais funcionalidades do sistema acompanhadas das descrições em formato de \textit{user stories} \cite{557458}:
 
 \begin{itemize}
   
@@ -127,20 +127,12 @@ Os principais requisitos não-funcionais do sistema são:
 
 \end{itemize}
 
-\section{Limites do Sistema}
-
-\begin{itemize}
-  
-    \item O sistema não faz processamento de linguagem natural\footnote{\textit{Natural Language Processing (NLP)}}
-
-\end{itemize}
-
 \section{Implementação} % (fold)
 \label{sec:implementacao}
 
 A principal linguagem de programação utilizada no projeto foi Ruby, uma linguagem de script, com tipagem dinâmica, forte e implícita. Além disso, o Ruby permite uma abordagem multi-paradigma bem equilibrada entre os paradigmas orientado a objetos, funcional, imperativo e reflexivo. 
 
-O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura \emph{Model-View-Controller}\cite{burbeck1992applications} (MVC) e segue os princípios \emph{Convention over Configuration}\cite{ruby2009agile} (CoC) e \emph{Don't Repeat Yourself}\cite{hunt-don} (DRY).
+O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura \emph{Model-View-Controller} \cite{burbeck1992applications} (MVC) e segue os princípios \emph{Convention over Configuration} \cite{ruby2009agile} (CoC) e \emph{Don't Repeat Yourself} \cite{hunt-don} (DRY).
 
 A linguagem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de cento e vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
 
@@ -149,6 +141,7 @@ O SQLite é uma biblioteca independente que implementa um banco de dados SQL tra
 Visando permitir um padrão de usabilidade aceitável para o usuário comum, algumas interações no sistema são realizadas via AJAX (Asynchronous JavaScript And XML). Através dessa técnica a aplicação pode obter dados do servidor de forma assíncrona sem interferir na apresentação e no comportamento da página atual. Esse recurso foi utilizado para permitir que os usuários registrassem o interesse em produtos sem que a página fosse totalmente recarregada. Como o uso dessa técnica requer utilização de JavaScript no \emph{browser} (cliente), e nem todos os \emph{browsers} têm JavaScript habilitado, o sistema tolera essa deficiência do cliente e possibilita neste caso o acesso através de uma requisição síncrona com recarregamento total da página.
 
 A Figura~\ref{fig:rater-ajax} apresenta o painel de avaliação de produto que utiliza a técnica de AJAX. Ao clicar em uma das estrelas, uma requisição é enviada ao servidor para o cadastro da avaliação e, em caso de sucesso, a resposta enviada de volta ao \emph{browser} atualiza o estilo do elemento selecionado, indicando que a avaliação foi realizada.
+
 \begin{figure}
  \centering
  \includegraphics{imagens/rater-ajax}
@@ -156,7 +149,7 @@ A Figura~\ref{fig:rater-ajax} apresenta o painel de avaliação de produto que u
  \label{fig:rater-ajax}
 \end{figure}
 
-O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem à rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório é associado a ele. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
+O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem à rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório lhe é associado. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
 
 A arquitetura cliente/servidor em três camadas, apresentada na Figura~\ref{fig:three_tier}, foi adotada na implementação do projeto. Essa escolha possibilita a modificação ou substituição de uma das camadas sem afetar as demais. Além disso, a separação entre as camadas de aplicação e de dados facilita o balanceamento da carga do sistema. Por fim, as políticas de segurança aplicadas no servidor podem ser rigorosas e, mesmo assim, não incomodarem excessivamente os clientes.
 
