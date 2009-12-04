@@ -10,7 +10,7 @@ A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pes
 
 Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
 
-\subsection{Contexto histórico}
+\subsection{Contexto Histórico}
 O primeiro sistema de recomendação, Tapestry\cite{Goldberg92}, foi desenvolvido no início dos anos 90. Na última década, tais sistemas foram um grande foco de estudo, principalmente os baseado em filtragem colaborativa ~\cite{Resnick97}~\cite{Herlocker04}.
 
 Observa-se hoje que vários sistemas de recomendação podem ser experimentados pelo usuários da Internet, como exemplo:
@@ -27,13 +27,13 @@ A Amazon~\footnote{http://www.amazon.com.} e o Submarino~\footnote{http://www.su
 \end{itemize}
 
 
-\subsection{Classificações dos sistemas de recomendação}
+\subsection{Classificações dos Sistemas de Recomendação}
 
 Nas próximas seções serão apresentadas as diferentes abordagens existentes para a implementação de sistemas de recomendação. As primeiras abordagens foram a filtragem colaborativa e a filtragem baseada em conteúdo. Vários sistemas são híbridos, isto é, utilizam mais de uma abordagem.
 
 %Na seção (seção XXX) serão discutidos as diferentes implementações encontradas na literatura.
 
-\subsubsection{Filtragem baseada em conteúdo} % (fold)
+\subsubsection{Filtragem Baseada em Conteúdo} % (fold)
 A filtragem baseada em conteúdo consiste na extração de características dos itens a serem recomendados e da comparação dessas características (\textit{features}) com aquelas que formam o  perfil histórico do usuário. Esse é um dos primeiros métodos que surgiram e sua origem está na comunidade de recuperação de informações (\textit{information retrieval} ~\cite{Balabanovi97}).
 
 Como exemplo, suponha-se que se queira recomendar documentos em formato texto. As características nesse caso poderiam ser as palavras do texto. O perfil histórico do usuário seria formado pela freqüência acumulada das palavras presentes em cada texto avaliado pelo usuário. Um documento neste caso é recomendado se as características (palavras) presentes podem ser encontradas em grande freqüência nos documentos avaliados positivamente pelo usuário no passado.
@@ -42,7 +42,7 @@ Outros exemplos de características que podem ser usadas em um documento são me
 
 % (falar um pouquinho porque é bom/ruim)
 
-\subsubsection{Filtragem social} % (fold)
+\subsubsection{Filtragem Social} % (fold)
 
 % Talvez usar o Pazzani96syskill para falar de content-based
 
@@ -52,7 +52,7 @@ A filtragem social\footnote{Termo originado em \cite{Malone87} segundo \cite{Hil
 
  As próximas seções descrevem diferentes abordagem baseadas na filtragem social.
 
-\subsubsection{Filtragem colaborativa}
+\subsubsection{Filtragem Colaborativa}
 
 O termo \textit{collaborative filtering} foi cunhado por \cite{Goldberg92}~\footnote{Conforme \cite{Resnick97}.}. A abordagem básica consiste em montar um sistema que permite os usuários fazerem avaliações\footnote{Em inglês, \textit{ratings} ou \textit{votes}.} dos itens que podem ser recomendados, resultando em triplas (usuário, item, avaliação). A partir dessas avaliações, pode-se criar uma lista de recomendação para um determinado usuário.
 
@@ -69,7 +69,8 @@ Para cada usuário do sistema, determina-se a similaridade entre este usuário e
 
 A lista de itens recomendados será formada pelos $n$ itens com os maiores votos previstos ordenados decrescentemente.
 
-\subsubsubsection{Descrição matemática}
+\paragraph{Descrição matemática.}
+
 Mais detalhadamente, o algoritmo básico é o seguinte:
 
 Sendo $v_{i,j}$ o voto do usuário $i$ para o item $j$, $I_{i}$ o conjunto de itens que foram avaliados pelo usuário $i$, define-se voto médio de um usuário $i$ por:
@@ -113,7 +114,7 @@ Para mais detalhes, ver \cite{Breese98}.
 % Explicar com mais detalhes o método e citar outros tipos de w
 
 
-\subsubsection{Filtragem baseada em confiança explícita} % (fold)
+\subsubsection{Filtragem Baseada em Confiança Explícita} % (fold)
 \label{sec:confianca_explicita}
 
 A filtragem baseada em confiança explícita\footnote{Entendida aqui no contexto de \textit{Trust-aware recommender systems}~\cite{Massa07}} é muito similar à filtragem colaborativa, mas utiliza como peso $w(a,i)$ a confiança do usuário $a$ no usuário $i$.
@@ -122,7 +123,7 @@ Esta confiança é fornecida de forma explícita pelo usuário. Este método se 
 
 %\section{Discussão sobre as diferentes abordagens}
 
-\subsubsection{Filtragem por similaridade de item}
+\subsubsection{Filtragem por Similaridade de Item}
 
 Esta é uma técnica que também pertence à filtragem social e possui a mesma base da filtragem colaborativa por montar um sistema em que os usuários podem fazer as avaliações de diferentes itens.
 
@@ -163,7 +164,7 @@ Este algoritmo será denominado RBC nesta monografia e o seu detalhamento será 
 
 \section{Web Social} % (fold)
 
-\subsection{O que é Web Social}
+\subsection{O Que é Web Social}
 
 O conceito de Web Social está relacionado diretamente com o termo Web 2.0, criado em 2004 pela empresa O'Reilly Medial, o que designa o uso da Internet como plataforma para novos tipos de comunidades e serviços. Antes do advento da Web 2.0, o fluxo de informação era praticamente unidirecional, sendo que os dados eram disponibilizados pelo proprietário do site da internet e apenas visualizado pelas pessoas que o freqüentavam. A troca de informações era muito baixa, dado que as pessoas não podiam comentar sobre o conteúdo a elas exposto, dando a sua opinião positiva ou negativa.
 

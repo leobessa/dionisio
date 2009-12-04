@@ -4,20 +4,20 @@
 \section{Introdução}
 \label{cha:introducao}
 
- A análise dos resultados consistiu na elaboração de gráficos e tabelas com os dados retirados da base do experimento realizado. Os seguintes dados foram considerados para a análise:
+ Para efetuar a análise dos resultados do experimento, inicialmente foram elaborados gráficos e tabelas com os valores obtidos da base de dados. Os seguintes dados foram considerados para a análise:
  
 \begin{itemize}
 	\item Grupos de usuários
 	
-	\subitem Para se ter noção dos laços de amizades entre os participantes cadastrados no experimento. São 12 grupos no total, sendo que cada um deles possui no máximo 5 pessoas.
+	\subitem Utilizado para avaliar os laços de amizade entre os participantes cadastrados no experimento. São 12 grupos no total, sendo que cada um deles possui no máximo 5 pessoas.
 	
-	\item Recomendações realizadas por amigos
+	\item Recomendações enviadas por amigos
 	
-	\subitem Informações dos produtos que foram recomendados na etapa 3 do experimento, onde os participantes deveriam recomendar 5 produtos a cada amigo presente no seu grupo. Cada participante possui no máximo 20 recomendações, sendo que alguns possuem apenas 15 devido à desistência de participantes do seu grupo.
+	\subitem Informações dos produtos que foram recomendados na etapa 3 do experimento, onde os participantes deveriam recomendar 5 produtos a cada amigo presente no seu grupo. Cada participante possui no máximo 20 recomendações, sendo que devido à desistência de participantes do seu grupo, alguns possuem apenas 15 recomendações.
 	
-	\item Recomendações realizadas por desconhecidos
+	\item Recomendações enviadas por desconhecidos
 	
-	\subitem Informações dos produtos que foram recomendados na etapa 4 do experimento, onde os participantes deveriam recomendar 1 produto a alguns participantes de diferentes grupos, considerados desconhecidos. Cada participante possui no máximo 10 recomendações realizadas por desconhecidos, sendo que alguns possuem menos de 10 recomendações devido à desistência de participantes no experimento.
+	\subitem Informações dos produtos que foram recomendados na etapa 4 do experimento, onde os participantes deveriam recomendar 1 produto a alguns participantes de diferentes grupos, considerados desconhecidos. Cada participante possui no máximo 10 recomendações realizadas por desconhecidos, sendo que alguns, devido à desistência de participantes no experimento, possuem menos de 10 recomendações.
 	
 	\item Recomendações realizadas pelo sistema
 	
@@ -25,7 +25,7 @@
 	
 	\item Avaliação prevista do produto pelo sistema
 	
-	\subitem Ao recomendar um produto a um participante, o sistema calcula uma nota prevista para o mesmo. Essas informações foram armazenadas e consideradas durante a análise e exposição dos dados do experimento.
+	\subitem Ao recomendar um produto a um participante, o sistema calcula uma nota prevista para o mesmo. Essas informações foram armazenadas e consideradas durante a análise dos dados do experimento.
 	
 	\item Avaliações dos produtos
 	
@@ -51,15 +51,17 @@
 \section{Análise Comparativa dos Algoritmos de Recomendação}
 \label{sec:analise_comparativa_dos_algoritmos_de_recomendacao}
 
-Nesta seção serão comparados os resultados dos três algoritmos de recomendação e as recomendações diretas feitas tanto por amigos quanto por desconhecidos.
+Nesta seção, serão comparados os resultados dos três algoritmos de recomendação e as recomendações diretas feitas tanto por amigos quanto por desconhecidos.
 
+% TODO ARRUMAR GRÁFICO ///////////////////////////////
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{imagens/grafico_erro}
-    \caption{\it Desvio da nota prevista por tipo de recomendação}
+    \caption{\it Desvio da avaliação prevista por tipo de recomendação}
     \label{fig:erro}
 \end{figure}
 
+% TODO ARRUMAR TABELA ///////////////////////////////
 \begin{table}
 \centering
 \begin{tabular}{c c c}
@@ -75,11 +77,13 @@ RBI & 31.61\% & 23.75\% \\
 RBP & 65.80\% & 34.54\% \\
 \hline        
 \end{tabular}
-\caption{\it Desvio da nota prevista por tipo de recomendação}
+\caption{\it Desvio da avaliação prevista por tipo de recomendação}
 \label{table:erro}
 \end{table}
 
-A Figura~\ref{fig:erro} ilustra o desvio na nota prevista pelos tipos de recomendação. A Tabela~\ref{table:erro} contém os dados utilizados para a construção do gráfico. O desvio é a diferença entre a nota máxima esperada na recomendação e a nota realmente dada pelo participante. Os valores estão descritos em porcentagem em relação ao desvio máximo. A nota máxima prevista na recomendação é 5. Portanto, o desvio máximo é 4, pois a menor nota possível a ser dada é 1. O valor final apresentado é a média desses desvios.
+% Aqui realmente é figura, a tabela veio antes por causa do Latex. Arrumar o texto depois de arrumar o gráfico **********************
+
+A Figura~\ref{fig:erro} ilustra a média e o desvio padrão na avaliação prevista pelos tipos de recomendação. A Tabela~\ref{table:erro} contém os dados utilizados para a construção do gráfico. O desvio é a diferença entre a avaliação máxima esperada na recomendação e a avaliação realmente dada pelo participante. Os valores estão descritos em porcentagem em relação ao desvio máximo. A avaliação máxima prevista na recomendação é 5. Portanto, o desvio máximo é 4, pois a menor nota possível a ser dada é 1. O valor final apresentado é a média desses desvios.
 
 Podemos verificar que o algoritmo RBI demonstrou o melhor desempenho, seguido das recomendações diretas, do algoritmo RBC e, por fim, do algoritmo RBP.
 
@@ -140,7 +144,7 @@ Desconhecidos & 3.36 & 1.40 \\
 \section{Análise de Rejeição das Recomendações}
 \label{sec:analise_de_rejeicao_das_recomendacoes}
 
- Nesta seção serão analisadas a taxa de rejeição das recomendações realizadas pelos algoritmos RBI, RBP e RBC, além das recomendações diretas. Para isso, foram definidas classes de avaliações. As avaliações com notas 1 e 2 são da classe de \textit{Rejeição}, as com nota 3 são da classe \textit{Indiferente} e as com notas 4 e 5 são da classe \textit{Aceitação}. A classe Rejeição denota as recomendação que não foram aceitas e a classe Aceitação denota as recomendações que foram aceitas. Na classe Indiferente estão as recomendações que tiveram avaliações neutras (nota 3).
+ Nesta seção, serão analisadas a taxa de rejeição das recomendações realizadas pelos algoritmos RBI, RBP e RBC, além das recomendações diretas. Para isso, foram definidas classes de avaliações. As avaliações com notas 1 e 2 são da classe de \textit{Rejeição}, as com nota 3 são da classe \textit{Indiferente} e as com notas 4 e 5 são da classe \textit{Aceitação}. A classe Rejeição denota as recomendação que não foram aceitas e a classe Aceitação denota as recomendações que foram aceitas. Na classe Indiferente, estão as recomendações que tiveram avaliações neutras (nota 3).
 
  Podemos verificar pela Figura~\ref{fig:notas} que as recomendações diretas representaram uma maior porcentagem de notas na classe de Aceitação, seguida das recomendações feitas pelo algoritmo RBI, RBC e, por fim, RBP. Os dados utilizados para a elaboração do gráfico constam na Tabela~\ref{table:notas}.
 %TODO concluir análise
@@ -176,7 +180,7 @@ RBP & 58\% & 17\% & 22\% \\
 \section{Taxa de Serendipidade}
 \label{sec:taxa_de_serendipidade}
 
-Serendipidade significa o usuário ter aceitado a recomendação, ou seja, ter dado uma nota 4 ou 5 ao produto e não o conhecer. A taxa de serendipidade foi calculada com base no número de recomendações de produtos desconhecidos aceitas sobre o total de produtos recomendados em cada tipo de algoritmo, considerando também as recomendações diretas. A Figura~\ref{fig:serendipidade} mostra a taxa de serendipidade para os tipos de recomendação, sendo que os dados utilizados para elaborar o gráfico estão na Tabela~\ref{table:serendipidade}.
+Serendipidade significa o usuário ter aceito a recomendação, ou seja, ter dado uma nota 4 ou 5 ao produto e não o conhecer. A taxa de serendipidade foi calculada com base no número de recomendações de produtos desconhecidos aceitas sobre o total de produtos recomendados em cada tipo de algoritmo, considerando também as recomendações diretas. A Figura~\ref{fig:serendipidade} mostra a taxa de serendipidade para os tipos de recomendação, sendo que os dados utilizados para elaborar o gráfico estão na Tabela~\ref{table:serendipidade}.
 
 Verificamos que as recomendações diretas resultaram em um alto grau de serendipidade, se comparado com os graus dos tipos de recomendações que as seguiram: RBI, RBC e RBP.
 
@@ -236,47 +240,52 @@ Desconhecidos & 20\% \\
 \section{Análise do Algoritmo Baseado em Confiança}
 \label{sec:analise_do_algoritmo_baseado_em_confianca}
 
- Com os dados apresentados na seções anteriores, podemos verificar que o algoritmo de recomendação baseado em confiança (RBC) possuiu resultados relativamente bons principalmente com relação ao RBP.
+ Com os dados apresentados na seções anteriores, podemos verificar que o algoritmo de recomendação baseado em confiança (RBC) produziu. em alguns casos, resultados relativamente melhores do que o algoritmo RBP.
  
- Na análise de desvio da nota prevista o RBC não foi tão eficiente quanto as recomendações diretas e o algoritmo RBI, porém mostrou resultados melhores que o RBP. 
+ Na análise de desvio da nota prevista, o RBC não foi tão eficiente quanto as recomendações diretas e o algoritmo RBI, porém mostrou resultados melhores que o RBP. 
  
  Verificando a média de notas dadas, o RBC teve resultado intermediário com relação aos outros dois algoritmos, sendo que as recomendações diretas apresentaram a melhor eficiência. Isso ocorreu principalmente pelo fato dos desconhecidos terem recomendado quase tão bem como os amigos, como mostra a Figura~\ref{fig:notas_medias_diretas}.
  
  Quanto à taxa de serendipidade, o RBC manteve-se na média dos outros algoritmos, sendo que as recomendações diretas foram disparadamente mais eficientes.
  
- De acordo com os dados, o RBC conseguiu recomendar melhor que o RBP, que é o algoritmo que o RBC se baseia para recomendar. O RBC utiliza menos informações que o RBP para recomendar e mesmo assim mostrou-se melhor nos resultados do experimento.
+ De acordo com os dados, o RBC conseguiu recomendar melhor que o RBP. O RBC utiliza menos informações que o RBP, limitando-se aos usuários que realizaram recomendações ao usuário alvo, para recomendar e mesmo assim mostrou-se melhor nos resultados do experimento.
 
 % section analise_do_algoritmo_baseado_em_confianca (end)
 
-\section{Análise das Hipóteses}
+\section{Testes de Hipótese}
 
 Um dos objetivos do experimento foi testar certas hipóteses que, ao serem confirmadas, fornecem uma base mais sólida para a construção de sistemas de recomendação efetivos.
 
 A seguir cada hipótese será analisada. As hipóteses nulas (H0) são todas iguais, elas consideram que as duas diferentes distribuições pouco diferem, tendo por exemplo a mesma média, mediana ou algum critério equivalente que depende exatamente do teste de hipótese utilizado. Para mais informações, consultar a seção apêndice~\ref{anexo_hipoteses}, onde estão listados os testes utilizados e os resultados numéricos dos mesmos.
 
-\subsection{Os amigos recomendam melhor do que os desconhecidos}
+\subsubsection{H1: Os Amigos Recomendam Melhor do que os Desconhecidos}
 A hipótese nula foi rejeitada com um nível de significância de 10\%, confirmando esta hipótese quando também se considera que a média das recomendações dos amigos é maior do que as dos desconhecidos, conforme pode ser visto na figura~\ref{fig:notas_medias_diretas}.
 
 
-\subsection{A recomendação baseada em confiança é melhor do que a baseada em similaridade de perfil dos usuários}
-A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando a hipótese de que o algoritmo apresentado nesta monografia (RBC) é superior ao algoritmo de similaridade de perfil (RBP) que é um dos mais utilizados na filtragem social. As figuras \ref{fig:notas} e \ref{fig:notas_medias} mostram a melhor aceitação da RBC em relação a RBP.
+\subsubsection{H2: A Recomendação Baseada em Confiança é Melhor do que a Baseada em Similaridade de Perfil dos Usuários}
+A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando a hipótese de que o algoritmo apresentado nesta monografia (RBC) tem um desempenho superior ao algoritmo de similaridade de perfil (RBP), que é um dos mais utilizados na filtragem social. As figuras \ref{fig:notas} e \ref{fig:notas_medias} mostram a melhor aceitação da RBC em relação a RBP.
 
-
-\subsection{Hipóteses secundárias}
-
-\subsubsection{As recomendações diretas são melhores do que as RBC}
+\subsubsection{H3: As Recomendações Diretas são Melhores do que as Baseadas em Confiança}
 A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando que as recomendações feitas diretamente pelas pessoas possuem uma aceitação muito maior do que o algoritmo apresentado neste trabalho, como pode ser visto nas figuras~\ref{fig:notas} e \ref{fig:notas_medias}.
 
-\subsubsection{As recomendações baseadas em similaridade de itens são melhores do que as baseadas em confiança}
+\subsubsection{H4: As Recomendações Baseadas em Similaridade de Itens são Melhores do que as Baseadas em Confiança}
 A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirmando, como pode ser visto nas figuras \ref{fig:notas} e \ref{fig:notas_medias}, que a RBI é melhor aceita do que a RBC.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/testes}
+    \caption{\it Resultado dos testes de hipótese}
+    \label{fig:testes}
+\end{figure}
+
+ Tais testes de hipótese são mostrados na Figura~\ref{fig:testes}.
 
 \section{Análise de Desempenho}
 \label{sec:analise_de_desempenho}
 % TODO falar sobre os problemas enfrentados com as consultas SQL e com as estrelinhas para a avaliação do produto (javascript).
 
 
-Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema, como pode se observar na Tabela~\ref{table:before_stats}. Ao analisar estas requisições, foi possível verificar que os principais fatores responsáveis pela degradação da performance estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo excesso no tempo de resposta. Esses problemas de performance foram corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições observados após a otmização estão apresentados na Tabela~\ref{table:after_stats}.
+Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema, como pode se observar na Tabela~\ref{table:before_stats}. Ao analisar estas requisições, foi possível verificar que os principais fatores responsáveis pela degradação do desempenho estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo excesso no tempo de resposta. Esses problemas de desempenho foram corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições observados após a otmização estão apresentados na Tabela~\ref{table:after_stats}.
 
 \begin{table}\centering
 \begin{tabular}{c c c c c}
@@ -318,7 +327,7 @@ ProductsController\#show.html [GET]     & 0.02s &  0.12s &  0.00s &  1.99s \\
 \caption{\it Tempo de resposta das requisições ao banco de dados após a otimização \label{table:after_stats}}
 \end{table}
 
-Para completar a análise da performance do sistema, a Tabela~\ref{table:process_blockers} apresenta as requisições bloqueantes, isto é, aquelas com duração total maior do que um segundo. Os dados apresentados na Tabela~\ref{table:process_blockers} são referentes apenas as requisições feitas após a otimização até o término do experimento.
+Para completar a análise do desempenho do sistema, a Tabela~\ref{table:process_blockers} apresenta as requisições bloqueantes, isto é, aquelas com duração total maior do que um segundo. Os dados apresentados na Tabela~\ref{table:process_blockers} são referentes apenas as requisições feitas após a otimização até o término do experimento.
 
 \begin{table}\centering
 \begin{tabular}{c c c}
