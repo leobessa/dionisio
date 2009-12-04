@@ -20,8 +20,10 @@
  Os mecanismos de busca atualmente utilizados na Web são capazes de listar os sites que contenham os termos desejados, bem como ordená-los de acordo com critérios de relevância. Considerando as dificuldades impostas à interpretação do conteúdo pelos computadores, fica a cargo do usuário a tarefa de identificar quais dos sites obtidos são coerentes com as expectativas de contexto e necessidade.
 
  Cientes disso, o grupo tinha proposto inicialmente um sistema de recomendação baseado em confiança com padrões da web semântica. Todas as informações contidas no repositório seriam documentos semanticamente estruturados em padrões abertos. Com isso, todas as informações sobre avaliações e recomendações de produtos, além de perfis de usuários estariam disponíveis para importação por outros sistemas que entendem a linguagem adotada nesses documentos. Desse modo, a filtragem e localização de produtos mais relevantes aos usuários ganharia a poderosa ferramenta do processamento computacional.
-% subsection web_semantica (end)
-\subsection{Confiança Dependente do Tempo} % (fold)
+
+% subsection web_semantica (end)
+
+\subsection{Confiança Dependente do Tempo} % (fold)
 \label{sub:confianca_dependente_do_tempo}
 
  Em \cite{sabater2001regret} o modelo de reputação proposto é baseado no cálculo do parâmetro de reputação a partir da somatória dos pesos de impressões que o usuário tem de determinada entidade. Porém, o artigo levanta um ponto importante e crucial no modelo: a reputação ser dependente do tempo. Impressões antigas não podem ser consideradas com o mesmo peso das mais recentes. Para isso, os autores propuseram a utilização de uma função dependente do tempo tal como a Equação~\ref{eq:REGRET}.
@@ -43,30 +45,52 @@
  Considerando o nosso sistema proposto, o cálculo da confiança entre dois usuários poderia levar em conta o tempo em que as avaliações dos produtos recomendados foram feitas. Isso porque o usuário pode avaliar mau um produto sem conhecê-lo, apenas demonstrando o seu baixo interesse nele. Após alguns meses, o usuário pode vir a conhecer o produto e passar a ter interesse no mesmo. Com isso, a sua avaliação antiga não estaria condizente com o seu gosto atual.
  
  O grupo não realizou a implementação desse modelo de confiança devido às restrições de tempo para a realização do experimento.
-% subsection confianca_dependente_do_tempo (end)
-\subsection{Feedback das Recomendações} % (fold)
+
+% subsection confianca_dependente_do_tempo (end)
+
+\subsection{Feedback das Recomendações} % (fold)
 \label{sub:feedback_das_recomendacoes}
 
  O conteúdo de uma rede social é tão bom quanto a qualidade da informação compartilhada pelos seus usuários. Novos usuários muitas vezes não entendem o valor dessa contribuição e entram em uma rede apenas para observar os outros e não inserir nenhuma informação ou opinião sua de qualidade. Por isso, a motivação para que novos entrantes ajudem na elaboração do conteúdo da rede social é muito importante e um dos meios para que isso ocorra é o \textit{feedback} que o usuário ganha ao contribuir com algo\cite{burke2009fmm}.
  Desse modo, quando um usuário compartilha alguma informação ele quer saber o que os outros presentes na rede acharam. Esse \textit{feedback} motiva os usuários a compartilharem cada vez mais e, com isso, aumentar o conteúdo presente na rede.
  A proposta de trabalho futuro envolve a adição de \textit{feedbacks} aos usuários que avaliarem ou recomendarem produtos na rede social. O sistema pode mostrar quais amigos do usuário avaliaram o mesmo produto ou simplesmente mostrar a avaliação que uma pessoa deu a um produto recomendado pelo usuário. De acordo com\cite{burke2009fmm}, essa informação de retorno que o sistema dá a um usuário que contribui na rede motiva o mesmo a continuar compartilhando informações.
  Esses mecanismos de \textit{feedback} não foram implementados no sistema utilizado no experimento para que os participantes não tivessem nenhuma influência na hora de avaliar ou recomendar os produtos. Caso o participante recebesse informações de retorno do sistema com relação às suas ações no experimento, ele poderia tentar mudar a sua estratégia de recomendação ou avaliação de produtos e, desse modo, não se comportar na sua maneira natural de agir.
-% subsection feedback_das_recomendacoes (end)
+
+% subsection feedback_das_recomendacoes (end)
 
 %section trabalhos futuros (end)
 
 \section{Conclusão}
 \label{conclusao}
 
-% Comparação entre os algoritmos com nível de significância de 10%
+ A comparação dos algoritmos feita por testes de hipótese tiveram que ser realizadas com índice de
+ significância de 10\% apenas porque as médias de avaliações realizadas por amigos e desconhecidos foram muito
+ próximas. Nos outros testes, a significância foi de 0,5\%.
 
-% Recomendações de amigos/desconhecidos com pouca diferença
+  Um dos pontos que deve ser levado em conta com relação às recomendações realizadas por amigos e desconhecidos
+ é que talvez os integrantes de um mesmo grupo não possuíssem um grau elevado de amizade. Isso ocorre porque
+ durante a fase de formação de grupos, alguns deles tiveram dificuldades em conseguir 5 amigos entre si, fazendo
+ com que alguns integrantes apenas se conhecessem. Com isso, nem todos os presentes no grupo teriam noção
+ completa dos interesses dos outros.
 
-% deficiência na procura de produtos por parte dos usuários
+  A procura por produtos durante a realização do experimento foi uma das deficiências encontradas no sistema.
+ Mesmo com uma base de dados com mais de 120 mil produtos, a busca implementada teve que ser simples, devido às
+ restrições técnicas relacionadas ao desempenho da aplicação. A funcionalidade de busca de produtos no sistema foi considerada inadequada pois procurava apenas por produtos que tivessem no nome o termo procurado de forma exata. Isto dificultou a localização de determinados produtos por alguns participantes. Assim, mesmo que uma pessoa quisesse recomendar um bom produto a outra, se não o encontrasse, recomendaria outro produto que talvez o participante que recebesse a recomendação não demonstrasse o mesmo interesse.
 
-% alguns tipos de recomendação podem ter indicado produtos óbvios
+  Além disso, alguns tipos de recomendação podem ter indicado produtos óbvios aos participantes. Durante a
+ realização do experimento, os participantes eram avisados durante a fase de recomendação para não enviarem
+ recomendações de produtos óbvios aos outros participantes, ou seja, produtos diretamente relacionados aos
+ produtos já avaliados pelo participantes alvo. Por exemplo, a base de produtos possuía CDs e DVDs. Enquanto um
+ participante avaliava um CD de música de uma banda, outro participante acabava lhe recomendando um DVD da mesma
+ banda, sendo óbvio que a pessoa gostaria da recomendação.
 
-% amigos não tão conhecidos e desconhecidos não tão distantes
+  A realização do projeto alcançou o seu objetivo de recomendar produtos com alto índice de relevância aos
+ usuários. Com os resultados adquiridos a partir do experimento, ficou claro que o algoritmo de recomendação
+ baseado em confiança (RBC) possui eficiência melhor do que o algoritmo RBP. O algoritmo RBI apresentou os
+ melhores resultados dentre os tipos de recomendação realizados pelo sistema. Isso porque ele faz uma análise
+ global das recomendações e monta um modelo completo dos produtos e porque ele consegue prever com muita
+ precisão a nota que os usuários darão ao produto. O sistema desenvolvido no projeto alcançou por completo os
+ seus requisitos funcionais e não-funcionais.
 
 % section conclusao (end)
 
