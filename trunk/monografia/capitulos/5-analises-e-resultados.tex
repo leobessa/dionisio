@@ -53,39 +53,34 @@
 
 Nesta seção, serão comparados os resultados dos três algoritmos de recomendação e as recomendações diretas feitas tanto por amigos quanto por desconhecidos.
 
-% TODO ARRUMAR GRÁFICO ///////////////////////////////
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{imagens/grafico_erro}
-    \caption{\it Desvio da avaliação prevista por tipo de recomendação}
-    \label{fig:erro}
+    \includegraphics[width=\textwidth]{imagens/grafico_media_prevista}
+    \caption{\it Nota média das avaliações realizadas comparadas com a nota média prevista pelos algoritmos}
+    \label{fig:media_prevista}
 \end{figure}
-
-% TODO ARRUMAR TABELA ///////////////////////////////
 \begin{table}
 \centering
 \begin{tabular}{c c c}
-    \hline \hline
-    \textbf{Tipo de recomendação} & \textbf{Média}	& \textbf{Desvio-Padrão} \\
+    \hline
+    \hline
+    \textbf{Tipo de recomendação} & \textbf{Nota Média}& \textbf{Nota Média Prevista} \\
+    \hline 
+RBI & 2.964 & 3.70 \\
+
 \hline 
-Direta & 38.60\% & 35.23\% \\
+Direta & 3.46 & 5.00 \\
 \hline 
-RBC & 57.40\% & 37.00\% \\
+RBC & 2.70 & 5.00 \\
 \hline 
-RBI & 31.61\% & 23.75\% \\
-\hline 
-RBP & 65.80\% & 34.54\% \\
+RBP & 2.37 & 5.00 \\
 \hline        
 \end{tabular}
-\caption{\it Desvio da avaliação prevista por tipo de recomendação}
-\label{table:erro}
+\caption{\it Nota média das avaliações realizadas comparadas com a nota média prevista pelos algoritmos}
+\label{table:media_prevista}
 \end{table}
 
-% Aqui realmente é figura, a tabela veio antes por causa do Latex. Arrumar o texto depois de arrumar o gráfico **********************
-
-A Figura~\ref{fig:erro} ilustra a média e o desvio padrão na avaliação prevista pelos tipos de recomendação. A Tabela~\ref{table:erro} contém os dados utilizados para a construção do gráfico. O desvio é a diferença entre a avaliação máxima esperada na recomendação e a avaliação realmente dada pelo participante. Os valores estão descritos em porcentagem em relação ao desvio máximo. A avaliação máxima prevista na recomendação é 5. Portanto, o desvio máximo é 4, pois a menor nota possível a ser dada é 1. O valor final apresentado é a média desses desvios.
-
-Podemos verificar que o algoritmo RBI demonstrou o melhor desempenho, seguido das recomendações diretas, do algoritmo RBC e, por fim, do algoritmo RBP.
+A Figura~\ref{fig:media_prevista} compara a média da nota prevista com a nota média real dada pelos participantes do sistema. A Tabela~\ref{table:media_prevista} contém os dados utilizados para a construção do gráfico. Nota-se que o algoritmos RBC e RBP deram nota 5 para todos os produtos recomendados, resultando em uma grande diferença em relação à avaliação real. O RBI consegue fazer uma previsão bem próxima da real, mostrando que o seu modelo das avaliações é bastante preciso. Para as recomendações diretas, foi considerado que uma pessoa ao recomendar espera que a recomendação seja avaliada com nota máxima, resultando em uma nota prevista 5.
 
  As notas médias dadas pelos participantes estão discriminadas por algoritmos de recomendação e pelas recomendações diretas, como mostra a Figura~\ref{fig:notas_medias}. Os dados utilizados para a elaboração do gráficos estão na Tabela~\ref{table:notas_medias}. As recomendações que resultaram em uma média de notas maior foram as diretas, seguidas das realizadas com o algoritmo RBI, RBC e RBP.
  
@@ -285,7 +280,7 @@ A hipótese nula foi rejeitada com um nível de significância de 0.5\%, confirm
 % TODO falar sobre os problemas enfrentados com as consultas SQL e com as estrelinhas para a avaliação do produto (javascript).
 
 
-Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema, como pode se observar na Tabela~\ref{table:before_stats}. Ao analisar estas requisições, foi possível verificar que os principais fatores responsáveis pela degradação do desempenho estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo excesso no tempo de resposta. Esses problemas de desempenho foram corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições observados após a otmização estão apresentados na Tabela~\ref{table:after_stats}.
+Durante a realização do experimento algumas requisições ao servidor de aplicação foram identificadas como gargalo de desempenho do sistema, como pode se observar na Tabela~\ref{table:before_stats}. Ao analisar estas requisições, foi possível verificar que os principais fatores responsáveis pela degradação do desempenho estavam relaciondos ao tempo e quantidade das requsições ao banco de dados. As consultas SQL na tabela de produtos, com cerca de cento e vinte mil registros, foram as principais responsáveis pelo excesso no tempo de resposta. Esses problemas de desempenho foram corrigidos através da redução do número de requisições ao banco de dados e pela paginação dos resultados. Os tempos de resposta das requisições observados após a otimização estão apresentados na Tabela~\ref{table:after_stats}.
 
 \begin{table}\centering
 \begin{tabular}{c c c c c}

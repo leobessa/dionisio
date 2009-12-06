@@ -39,13 +39,15 @@ def nomes(s):
     return s
 def gen_tabela(x_labels, graph, out_name, title='', xlabel='', ylabel=''):
     keys = sorted(graph.keys())
+    bold = lambda s: r'\textbf{%s}' % s
     out = r"""
 \begin{table}
 \centering
-\begin{tabular}{|r|%s}
+\begin{tabular}{c%s}
+    \hline
     \hline
     %s
-""" % (('c|' * len(x_labels)), 'Tipo de recomendação & ' + '& '.join(x_labels) + r' \\')
+""" % (('c' * len(x_labels)), r'\textbf{Tipo de recomendação} & ' + '& '.join(map(bold, x_labels)) + r' \\')
     for key in keys:
         out += r'\hline '
         out += '\n'
@@ -69,11 +71,11 @@ def call_script(input, output):
     out = run(['./bargraph.pl', '-gnuplot', '-pdf', input])
     file(output,'w+').write(out)
 
-def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel='', sort=False, sort_col=0, rotate=False):
+def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel='', sort=False, sort_col=0, rotate=False, type='cluster'):
     
     conf = NamedTemporaryFile()
-    conf.write('=cluster;%s\n' % ';'.join(x_labels))
-    conf.write('=table\n')
+    conf.write('=%s;%s\n' % (type, ';'.join(x_labels)))
+    conf.write('=table\n=stackabs\n')
     conf.write('yformat=%s\n' % yformat)
     if title:
         conf.write('title=%s\n' % title)
@@ -114,6 +116,15 @@ def gen_erro(c):
         title='Desvio da nota prevista por tipo de recomendação',
         yformat='%g%%', sort=True, sort_col=0)
 
+def gen_media_prevista(c):
+    graph = {}
+    c.execute("select avg(r.stars), avg (sr.predicted_rating), sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm union all select avg(r.stars), 5, 'direta' from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id")
+    for media_rating, media_prevista, algoritmo in c.fetchall():
+        algoritmo = nomes(algoritmo)
+        graph[algoritmo] = [media_rating, media_prevista]
+    gen_bar(['Nota Média Real', 'Nota Média Prevista'], graph, 'grafico_media_prevista.pdf',
+        title='Comparação entre as nota médias das avaliações feitas e as previstas pelos algoritmos',
+        yformat='%g', sort=True, sort_col=1, type='stacked')
 
 def gen_notas(c):
     graph = {}
@@ -175,6 +186,7 @@ def main():
     con.create_aggregate("stddev", 1, StdDev)
     c = con.cursor()
     gen_erro(c)
+    gen_media_prevista(c)
     gen_notas(c)
     gen_notas_medias(c)
     gen_serendipidade(c)
