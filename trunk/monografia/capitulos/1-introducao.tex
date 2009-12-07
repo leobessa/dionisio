@@ -34,7 +34,9 @@
 \section{Metodologia} % (fold)
 \label{sec:metodologia}
 
-  Algumas práticas das metologias de desenvolvimento ágil foram adotadas neste projeto, como o Desenvolvimento Dirigido por Testes (TDD\footnote{Do inglês \textit{Test Driven Development.}}). Nesta prática, sempre que uma nova funcionalidade for adicionada ao sistema, o desenvolvedor deve iniciar o processo testando a mesma. Após executar o teste, em caso de falha o desenvolvedor deve verificar porque o teste falhou e então adicionar o código necessário para corrigi-la. Em uma etapa posterior, o desenvolvedor deve adicionar mais testes para a nova funcionalidade até que ela possa ser considerada pronta.
+ Inicialmente foi realizada uma pesquisa bibliográfica com os assuntos relacionados ao trabalho, como sistemas de recomendação (\textit{recommender systems}), redes sociais (\textit{social networks}), tomada de decisão (\textit{common sense}), entre outros. Após isso, foi feita uma pesquisa bibliográfica detalhada sobre os assuntos que fariam parte do escopo do projeto, como sistemas de recomendação e redes sociais.
+
+ Algumas práticas das metologias de desenvolvimento ágil foram adotadas neste projeto, como o Desenvolvimento Dirigido por Testes (TDD\footnote{Do inglês \textit{Test Driven Development.}}). Nesta prática, sempre que uma nova funcionalidade for adicionada ao sistema, o desenvolvedor deve iniciar o processo testando a mesma. Após executar o teste, em caso de falha o desenvolvedor deve verificar porque o teste falhou e então adicionar o código necessário para corrigi-la. Em uma etapa posterior, o desenvolvedor deve adicionar mais testes para a nova funcionalidade até que ela possa ser considerada pronta.
  
  Outro processo de desenvolvimento de software utilizado no projeto foi a refatoração de código \cite{fowler1999refactoring}. A refatoração de código consiste na mudança da estrutura interna do programa sem afetar o seu comportamento externo. Dessa forma, é possível aprimorar o código fonte existente melhorando a sua legibilidade, aplicando simplificações na estrutura, adequando a paradigmas de programação, melhorando a performance e a extensibilidade.
  
@@ -52,8 +54,6 @@
  O experimento realizado foi dividido em etapas, sendo que enquanto uma etapa não era concluída por todos os participantes, as etapas subseqüentes não eram iniciadas. Com isso, o desenvolvimento das funcionalidades disponíveis pelo sistema foi gradual, proporcionando a correção de erros nas etapas a serem ainda liberadas.
 
  Além disso, enquanto o experimento estava no ar, os participantes que já haviam terminado determinada etapa comunicavam espontaneamente por e-mail as dificuldades ou facilidades que tiveram durante a realização da mesma. Isso facilitava a correção imediata de erros com o sistema no ar e a mitigação dos mesmos na etapas seguintes.
-
- O controle de versão do código fonte criado foi feito com o SVN\footnote{Do inglês \textit{Subversion}. SVN é um sistema de controle de versão de documentos quaisquer.}. Esse sistema de controle ajudou muito no desenvolvimento paralelo do sistema do projeto por todos os integrantes do grupo. Os arquivos utilizados durante todo o desenvolvimento do projeto também foram versionados com o SVN.
 
  O sistema de recomendação implementado utiliza 3 tipos de algoritmos para realizar as recomendações aos usuários.
 
@@ -85,6 +85,8 @@
 \end{figure}
 
  Após o desenvolvimento e implementação dos algoritmos, o sistema foi testado por uma coleção de 60 pessoas, agrupadas em 12 classes, sendo que cada classe indica um grupo de amigos, isto é, pessoas que confiam umas nas outras. Os resultados dos diferentes algoritmos de recomendação foram então comparados através de testes estatísticos.
+
+ O controle de versão do código fonte criado foi feito com o SVN\footnote{Do inglês \textit{Subversion}. SVN é um sistema de controle de versão de documentos quaisquer.}. Esse sistema de controle ajudou muito no desenvolvimento paralelo do sistema do projeto por todos os integrantes do grupo. Os arquivos utilizados durante todo o desenvolvimento do projeto também foram versionados com o SVN.
 
 % section metodologia (end)
 
