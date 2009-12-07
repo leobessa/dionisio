@@ -119,7 +119,7 @@ Os principais requisitos não-funcionais do sistema são:
 
 \begin{itemize}
 
-    \item Interface web compatível as últimas versões dos \textit{browsers} Internet Explorer, Mozilla Firefox e Safari.
+    \item Interface Web compatível as últimas versões dos \textit{browsers} Internet Explorer, Mozilla Firefox e Safari.
     
     \item \textit{Backend} compatível com servidores Linux.
 
@@ -132,7 +132,7 @@ Os principais requisitos não-funcionais do sistema são:
 
 A principal linguagem de programação utilizada no projeto foi Ruby, uma linguagem de script, com tipagem dinâmica, forte e implícita. Além disso, o Ruby permite uma abordagem multi-paradigma bem equilibrada entre os paradigmas orientado a objetos, funcional, imperativo e reflexivo. 
 
-O \emph{framework} web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura \emph{Model-View-Controller} \cite{burbeck1992applications} (MVC) e segue os princípios \emph{Convention over Configuration} \cite{ruby2009agile} (CoC) e \emph{Don't Repeat Yourself} \cite{hunt-don} (DRY).
+O \emph{framework} Web Ruby on Rails foi escolhido para implementação do projeto. O Rails permite a adição de novas funcionalidades de forma ágil, pois é baseado em uma arquitetura \emph{Model-View-Controller} \cite{burbeck1992applications} (MVC) e segue os princípios \emph{Convention over Configuration} \cite{ruby2009agile} (CoC) e \emph{Don't Repeat Yourself} \cite{hunt-don} (DRY).
 
 A linguagem Python também foi utilizada no projeto para algumas tarefas secundárias. Um script foi escrito nesta linguagem para fazer um \emph{crawler} e o \emph{parsing} de cerca de cento e vinte mil produtos do site Submarino\footnote{www.submarino.com} para preencher a base de dados de produtos.
 
@@ -149,7 +149,7 @@ A Figura~\ref{fig:rater-ajax} apresenta o painel de avaliação de produto que u
  \label{fig:rater-ajax}
 \end{figure}
 
-O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem à rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aletório lhe é associado. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
+O sistema conta com uma interface de administração na qual é possível enviar convites para novos usuários se integrarem à rede social. Quando um novo convite é gerado, automaticamente um \emph{token} pseudo-aleatório lhe é associado. Esse \emph{token} é enviado através de e-mail, permitindo o registro apenas do convidado associado ao convite. A autenticação do usuário é feita através de login com e-mail e senha. O \emph{framework} escolhido para prover os mecanismos de autenticação foi o Warden\footnote{http://github.com/hassox/warden}, pois ele é adequado para oferecer poderosas opções de autenticação e pode ser utilizado em aplicações Rails através do Rack\footnote{http://rack.rubyforge.org/}.
 
 A arquitetura cliente/servidor em três camadas, apresentada na Figura~\ref{fig:three_tier}, foi adotada na implementação do projeto. Essa escolha possibilita a modificação ou substituição de uma das camadas sem afetar as demais. Além disso, a separação entre as camadas de aplicação e de dados facilita o balanceamento da carga do sistema. Por fim, as políticas de segurança aplicadas no servidor podem ser rigorosas e, mesmo assim, não incomodarem excessivamente os clientes.
 
