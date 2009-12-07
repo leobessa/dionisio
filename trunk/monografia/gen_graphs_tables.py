@@ -16,6 +16,7 @@ class StdDev:
     def finalize(self):
         return array(self.values).std()
 
+
 def limpa(s):
     try:
         return '%s' % s
