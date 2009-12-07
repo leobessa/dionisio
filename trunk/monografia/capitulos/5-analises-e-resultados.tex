@@ -66,7 +66,7 @@ Nesta seção, serão comparados os resultados dos três algoritmos de recomenda
     \hline
     \textbf{Tipo de recomendação} & \textbf{Nota Média}& \textbf{Nota Média Prevista} \\
     \hline 
-RBI & 2.964 & 3.70 \\
+RBI & 2.96 & 3.70 \\
 
 \hline 
 Direta & 3.46 & 5.00 \\
@@ -82,8 +82,36 @@ RBP & 2.37 & 5.00 \\
 
 A Figura~\ref{fig:media_prevista} compara a média da nota prevista com a nota média real dada pelos participantes do sistema. A Tabela~\ref{table:media_prevista} contém os dados utilizados para a construção do gráfico. Nota-se que o algoritmos RBC e RBP deram nota 5 para todos os produtos recomendados, resultando em uma grande diferença em relação à avaliação real. O RBI consegue fazer uma previsão bem próxima da real, mostrando que o seu modelo das avaliações é bastante preciso. Para as recomendações diretas, foi considerado que uma pessoa ao recomendar espera que a recomendação seja avaliada com nota máxima, resultando em uma nota prevista 5.
 
- As notas médias dadas pelos participantes estão discriminadas por algoritmos de recomendação e pelas recomendações diretas, como mostra a Figura~\ref{fig:notas_medias}. Os dados utilizados para a elaboração do gráficos estão na Tabela~\ref{table:notas_medias}. As recomendações que resultaram em uma média de notas maior foram as diretas, seguidas das realizadas com o algoritmo RBI, RBC e RBP.
- 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imagens/grafico_erro}
+    \caption{\it Erro médio absoluto (MAE) das recomendações}
+    \label{fig:erro}
+\end{figure}
+
+\begin{table}
+\centering
+\begin{tabular}{cc}
+    \hline
+    \hline
+    \textbf{Tipo de recomendação} & \textbf{Erro Médio Absoluto} \\
+\hline 
+Direta & 1.54 \\
+\hline 
+RBC & 2.30 \\
+\hline 
+RBI & 1.26 \\
+\hline 
+RBP & 2.63 \\
+\hline        
+\end{tabular}
+\caption{\it Erro médio absoluto (MAE) das recomendações}
+\label{table:erro}
+\end{table}
+
+Na Figura~\ref{fig:erro}, é mostrada a comparação do Erro Médio Absoluto (MAE)\footnote{Do inglês Mean Average Error} para os diferentes tipos de recomendação. Os dados utilizados estão na Tabela~\ref{table:erro}. Esta medida é utilizada para comparar a acurácia de diferentes sistemas de recomendação. Verifica-se que o algoritmo RBI obteve o melhor resultado, seguido pelas recomendações diretas, RBC e RBP. 
+
+
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{imagens/grafico_notas_medias}
@@ -109,8 +137,8 @@ RBP & 2.37 & 1.38 \\
 \caption{\it Notas por tipo de recomendação}
 \label{table:notas_medias}
 \end{table}
+ As notas médias dadas pelos participantes estão discriminadas por algoritmos de recomendação e pelas recomendações diretas, como mostra a Figura~\ref{fig:notas_medias}. Os dados utilizados para a elaboração do gráficos estão na Tabela~\ref{table:notas_medias}. As recomendações que resultaram em uma média de notas maior foram as diretas, seguidas das realizadas com o algoritmo RBI, RBC e RBP.
 
- As notas médias dadas por recomendações diretas foram separadas entre as realizadas por amigos e as feitas por desconhecidos, como ilustra a Figura~\ref{fig:notas_medias_diretas}. Os dados utilizados para a construção do gráfico está na Tabela~\ref{table:notas_medias_diretas}. Verifica-se que a média de notas dadas por recomendações realizadas por amigos foi ligeiramente maior que as notas dadas a produtos indicados por desconhecidos.
 
 \begin{figure}
     \centering
@@ -133,6 +161,7 @@ Desconhecidos & 3.36 & 1.40 \\
 \caption{\it Notas das recomendações diretas}
 \label{table:notas_medias_diretas}
 \end{table}
+ As notas médias dadas por recomendações diretas foram separadas entre as realizadas por amigos e as feitas por desconhecidos, como ilustra a Figura~\ref{fig:notas_medias_diretas}. Os dados utilizados para a construção do gráfico está na Tabela~\ref{table:notas_medias_diretas}. Verifica-se que a média de notas dadas por recomendações realizadas por amigos foi ligeiramente maior que as notas dadas a produtos indicados por desconhecidos.
 
 % section analise_comparativa_dos_algoritmos_de_recomendacao (end)
 

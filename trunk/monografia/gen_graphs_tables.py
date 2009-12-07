@@ -120,13 +120,13 @@ def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel
 
 def gen_erro(c):
     graph = {}
-    c.execute("select avg(abs(r.stars-sr.predicted_rating))*100/4 as erro, stddev(abs(r.stars-sr.predicted_rating))*100/4, sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm union all select avg(abs(5-r.stars))*100/4, stddev(abs(5-r.stars))*100/4, 'direta' from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id")
-    for erro_medio, erro_desvio, algoritmo in c.fetchall():
+    c.execute("select avg(abs(r.stars-sr.predicted_rating)+0.0) as erro, sr.algorithm from ratings r, system_recommendations sr where r.product_id = sr.product_id and r.user_id = sr.user_id group by sr.algorithm union all select avg(abs(5-r.stars)+0.0), 'direta' from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id")
+    for erro_medio, algoritmo in c.fetchall():
         algoritmo = nomes(algoritmo)
-        graph[algoritmo] = [erro_medio, erro_desvio]
-    gen_bar(['Média', 'Desvio-Padrão'], graph, 'grafico_erro.pdf',
-        title='Desvio da nota prevista por tipo de recomendação',
-        yformat='%g%%', sort=True, sort_col=0)
+        graph[algoritmo] = [erro_medio]
+    gen_bar(['Erro Médio Absoluto'], graph, 'grafico_erro.pdf',
+        title='Erro médio absoluto (MAE) das recomendações',
+        yformat='%g', sort=True, sort_col=0)
 
 def gen_media_prevista(c):
     graph = {}
