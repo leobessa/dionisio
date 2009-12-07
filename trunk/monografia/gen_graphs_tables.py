@@ -16,7 +16,6 @@ class StdDev:
     def finalize(self):
         return array(self.values).std()
 
-
 def limpa(s):
     try:
         return '%s' % s
@@ -72,7 +71,7 @@ def call_script(input, output):
     out = run(['./bargraph.pl', '-gnuplot', '-pdf', input])
     file(output,'w+').write(out)
 
-def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel='', sort=False, sort_col=0, rotate=False, type='cluster'):
+def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel='', sort=False, sort_col=0, rotate=False, type='cluster', errorbar=False):
     
     conf = NamedTemporaryFile()
     conf.write('=%s;%s\n' % (type, ';'.join(x_labels)))
@@ -89,12 +88,24 @@ def gen_bar(x_labels, graph, out_name, yformat='%g', title='', xlabel='', ylabel
     graph_items = graph.items()
     if sort:
         graph_items.sort(cmp=lambda a,b: cmp(a[1][sort_col], b[1][sort_col]))
-    for x, y_list in graph_items:
-        columns = ' '.join(map(str, y_list))
-        conf.write('%s %s\n' % (x, columns))
+    if not errorbar:
+        for x, y_list in graph_items:
+            columns = ' '.join(map(str, y_list))
+            conf.write('%s %s\n' % (x, columns))
+    else:
+        conf.write('=nogridy\n')
+        for x, y_list in graph_items:
+            assert(len(y_list) == 2)
+            columns = ' '.join(map(str, y_list[:1]))
+            conf.write('%s %s\n' % (x, columns))
+        conf.write('=yerrorbars\n')
+        for x, y_list in graph_items:
+            columns = ' '.join(map(lambda x: str(x/2.0), y_list[1:]))
+            conf.write('%s %s\n' % (x, columns))
+
     conf.flush()
     call_script(conf.name, out_name)
-    #raw_input('')
+    #raw_input(out_name)
     conf.close()
     
     sgraph = r"""
@@ -150,8 +161,8 @@ def gen_notas_medias(c):
     for media, desvio, algoritmo in c.fetchall():
         algoritmo = nomes(algoritmo)
         graph[algoritmo] = (media, desvio)
-    gen_bar(['Média', 'Desvio-Padrão'], graph, 'grafico_notas_medias.pdf',
-        title='Notas por tipo de recomendação',yformat='%g', sort=True, sort_col=0)
+    gen_bar(['Média'], graph, 'grafico_notas_medias.pdf',
+        title='Notas por tipo de recomendação',yformat='%g', sort=True, sort_col=0, errorbar=True)
     
     graph = {}
     c.execute("select avg(r.stars), stddev(r.stars) from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id and ur.sender_id in (select _u.id from users _u where _u.group_id = u.group_id and _u.id <> u.id)")
@@ -160,8 +171,8 @@ def gen_notas_medias(c):
     c.execute("select avg(r.stars), stddev(r.stars) from ratings r, user_recommendations ur, users u where r.product_id = ur.product_id and r.user_id = ur.target_id and u.id = r.user_id and ur.sender_id in (select _u.id from users _u where _u.group_id <> u.group_id and _u.id <> u.id)")
     graph['Desconhecidos'] = c.fetchone()
     
-    gen_bar(['Média', 'Desvio-Padrão'], graph, 'grafico_notas_medias_diretas.pdf',
-        title='Notas das recomendações diretas',yformat='%g', sort=True, sort_col=0)
+    gen_bar(['Média'], graph, 'grafico_notas_medias_diretas.pdf',
+        title='Notas das recomendações diretas',yformat='%g', sort=True, sort_col=0, errorbar=True)
     
 def gen_serendipidade(c):
     graph = {}
