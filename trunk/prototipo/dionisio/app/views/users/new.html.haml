@@ -1,0 +1,14 @@
+%h2 Cadastre-se
+= error_messages_for 'user'
+- form_for @user do |f|
+  .text_field
+    = f.label :email
+    = f.text_field :email
+  .text_field
+    = f.label :password, 'Senha'
+    = f.password_field :password
+  .text_field
+    = f.label :password_confirmation, 'Confirmação da Senha'
+    = f.password_field :password_confirmation
+  .form_bottom
+    = f.submit 'Enviar'

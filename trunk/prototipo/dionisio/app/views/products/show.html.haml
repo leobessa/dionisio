@@ -1,0 +1,12 @@
+%dl
+  %dt.product_title= link_to @product.name, @product
+  %dd[@product]
+    - if @product.photo
+      %img{:src => "#{@product.photo}",:alt => "#{@product.img_alt}", :width => 200, :height => 200 }
+    - else
+      = image_tag 'product_pic_unavailable_large.jpg'
+    %blockquote
+      %p= @product.brand
+  %dd.description
+    = @product.description
+    = render :partial => 'ratings/rating', :locals => { :product_id => @product.id, :stars => @product.rating }

@@ -1,0 +1,4 @@
+%h2= "Produtos recomendados"
+%h3= @recommendation_algorithm 
+#productList
+  = render :partial => 'products/product', :collection => @products

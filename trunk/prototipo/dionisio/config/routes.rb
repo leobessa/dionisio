@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.devise_for :users
+  map.resources :ratings
+  map.resources :products
+  map.resources :users
+  
+  map.root :controller => 'home'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

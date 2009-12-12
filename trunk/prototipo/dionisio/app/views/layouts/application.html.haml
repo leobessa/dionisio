@@ -1,0 +1,34 @@
+!!! Strict
+%html{html_attrs}
+  
+  %head
+    %title
+      = h(yield(:title) || "Dionisio")
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag :all
+    = yield(:head)
+  
+  %body
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}"
+    .container_12
+      .prefix_1.grid_3.header
+        %h1
+          = link_to "Dionisio", root_path
+      .grid_7.suffix_1.nav
+        %ul
+          %li
+            = link_to "Nova conta", new_user_path
+          %li
+            - if user_signed_in?
+              = link_to "Logout", destroy_user_session_path
+            - else
+              = link_to "Fazer login", new_user_session_path
+        - form_tag products_path, :method => :get do
+          .text_field
+            = text_field_tag 'query', 'Busca de produtos...'
+          = submit_tag 'Buscar', :id => 'search_submit'
+      .prefix_1.grid_10.suffix_1.main
+        .info
+          = yield
+    = javascript_include_tag 'jquery','jquery.easing.1.3','humanmsg','application', :cache => true

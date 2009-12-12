@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  path: MyString
+  photo: MyString
+  img_alt: MyString
+  category: 
+  selected: false
+  price: 9.99
+  popularity: 1
+
+two:
+  name: MyString
+  description: MyText
+  path: MyString
+  photo: MyString
+  img_alt: MyString
+  category: 
+  selected: false
+  price: 9.99
+  popularity: 1

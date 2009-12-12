@@ -1,0 +1,4 @@
+%h2 Avalie os produtos abaixo para completar seu cadastro
+#productList
+  = render :partial => 'products/product', :collection => products  
+= will_paginate products
