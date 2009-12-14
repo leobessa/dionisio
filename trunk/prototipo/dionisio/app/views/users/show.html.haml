@@ -1,0 +1,8 @@
+- title @user.name
+= render @user
+
+%h2 Amigos
+%ul
+  - for friendship in @user.friendships
+    %li
+      =render :partial => friendship.friend

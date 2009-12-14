@@ -1,4 +1,9 @@
 %h2= "Produtos recomendados"
-%h3= @recommendation_algorithm 
+%h3{:style => 'text-align: right; float: right; margin-right: 10px; font-style: italic;'}= @recommendation_algorithm 
 #productList
   = render :partial => 'products/product', :collection => @products
+- if @products.empty?
+  .border
+    %ol.instructions
+      %li#set
+        %span Nenhuma recomendação disponível

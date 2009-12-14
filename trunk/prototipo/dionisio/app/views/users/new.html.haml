@@ -2,6 +2,9 @@
 = error_messages_for 'user'
 - form_for @user do |f|
   .text_field
+    = f.label :name, 'Nome'
+    = f.text_field :name
+  .text_field
     = f.label :email
     = f.text_field :email
   .text_field

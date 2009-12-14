@@ -6,6 +6,8 @@
 	float: left;
 	width: 620px; /* the width of the entire definition list */
 	position: relative;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 #productList dl dt {

@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
   has_many :ratings
+  has_many :user_recommendations
   named_scope :most_dispersed, :joins => :ratings,
   :select => "'products'.* ,(('ratings'.stars-avg('ratings'.'stars'))*('ratings'.'stars'-avg('ratings'.'stars'))/count(*)) as 'variance'", 
   :group => :product_id, :order => 'variance DESC', :limit => 10

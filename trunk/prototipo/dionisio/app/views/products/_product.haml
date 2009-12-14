@@ -1,13 +1,15 @@
-%dl
-  %dt.product_title= link_to product.name, product
+%dl{:style => 'width: 722px;'}
+  .grid_7.suffix_1.inside_nav
+    %ul{:style => 'width: 749px; margin-left: 0px; margin-right: 0px;'}
+      %li
+        = link_to product.name, product
+      %li
+        = link_to "(Recomendar a um amigo)", new_product_user_recommendation_path(product)        
   %dd[product]
     - if product.photo
       %img{:src => "#{product.photo}",:alt => "#{product.img_alt}", :width => 200, :height => 200 }
     - else
       = image_tag 'product_pic_unavailable_large.jpg'
-    %blockquote
-      %p= product.brand
-  %dd.description
-    = truncate_html(product.description, :length => 400)
     = render :partial => 'ratings/rating', :locals => { :product_id => product.id, :stars => product.rating }
-  
+  %dd.description{:style => 'width: 510px;'}
+    = truncate_html(product.description, :length => 400)

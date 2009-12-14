@@ -1,0 +1,16 @@
+= render @user
+   
+%h3= "Produtos avaliados" 
+
+%table{:style => 'margin-left:12px'}
+  - @ratings.each do |rating|
+    %tr
+      %td
+        %img{:src => "#{rating.product.photo}",:alt => "#{rating.product.img_alt}", :width => 200, :height => 200 }
+      %td{:style => 'vertical-align: middle;'}  
+        %h4
+          = link_to h(rating.product.name), rating.product
+      %td{:style => 'vertical-align: middle;'}
+        %ul.star-rating{:id => "star-rating-for-product-#{rating.product.id}"}
+          %li.current-rating{ :style => "width:#{rating.stars*20}%"}= "#{rating.stars} estrelas"
+

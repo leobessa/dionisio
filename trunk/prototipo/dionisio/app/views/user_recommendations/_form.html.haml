@@ -1,0 +1,9 @@
+- form_for [@product,@user_recommendation] do |f|
+  = f.error_messages
+  #productList
+    = render :partial => @product
+    = f.hidden_field :product_id
+  .text_field
+    = f.label :target_id, 'Recommendar para ...'
+    = f.select(:target_id, current_user.friends.collect {|c| [ c.name, c.id ] })
+  = f.submit "Recomendar"

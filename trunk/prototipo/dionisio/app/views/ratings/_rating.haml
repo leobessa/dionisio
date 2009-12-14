@@ -1,9 +1,8 @@
 %div
   %div{:style => "display: inline-block;"}
     - width = stars.nil? ? 0  : (stars.to_i * 20)
-    - text  = stars.nil? ? '' : "Atualmente #{stars} estrelas"
     %ul.star-rating{:id => "star-rating-for-product-#{product_id}"}                                      
-      %li.current-rating{ :style => "width:#{width}%"}= text
+      %li.current-rating{ :style => "width:#{width}%"}
       - if user_signed_in?
         - (1..5).each do |n|
           %li  

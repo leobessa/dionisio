@@ -1,8 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :users
+  map.resources :friendships
+
   map.resources :ratings
-  map.resources :products
-  map.resources :users
+  map.resources :products do |products|
+    products.resources :user_recommendations, :only => [:new,:create]
+  end
+  map.resources :users, :only => [:new,:create,:show,:index] do |users|
+    users.resources :ratings                   
+    users.resources :user_recommendations, :only => [:index]
+  end
   
   map.root :controller => 'home'
   # The priority is based upon order of creation: first created -> highest priority.

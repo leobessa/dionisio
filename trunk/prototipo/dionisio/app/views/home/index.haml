@@ -1,0 +1,11 @@
+%h2 Recomendações
+.grid_7.suffix_1.inside_nav{:style => 'width: 749px;'}
+  %ul
+    %li
+      = link_to "por similaridade de perfil", url_for(:controller => 'recommendations', :action => 'profile')
+    %li
+      = link_to "por similaridade de item", url_for(:controller => 'recommendations', :action => 'item')
+    %li
+      = link_to "por confiança", url_for(:controller => 'recommendations', :action => 'trust')
+    %li
+      = link_to "de usuários", url_for(:controller => 'recommendations', :action => 'from_users')

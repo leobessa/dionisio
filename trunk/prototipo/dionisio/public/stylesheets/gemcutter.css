@@ -239,7 +239,7 @@ body {
   text-shadow: 1px 1px 1px rgba(255,255,255,0.2);
   background: url('/images/instructions.png');
   padding-top: 12px;
-  height: 310px;
+/*  height: 310px;*/
 }
  
 .main .info ol.instructions li {
@@ -834,7 +834,8 @@ label, .form_links {
 .url_field {
   margin: 0 0 2em 0;
 }
- 
+
+.text_field select,
 .text_field input,
 .password_field input,
 .url_field input {

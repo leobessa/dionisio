@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
       format.js do
         id = "star-rating-for-product-#{@rating.product_id}"
         render :update do |page| 
-          page.replace_html id, :partial => 'product/star_rating', :locals => {:stars => @rating.stars, :product_id => @rating.product_id}
+          element_id = "#star-rating-for-product-#{@rating.product_id} .current-rating"
+          page << "$('#{element_id}').css('width', #{@rating.stars*20} +'%').effect('slide', {}, 500);"
         end                                                           
       end
       format.html { redirect_to(:back)}

@@ -1,0 +1,15 @@
+%dl.profile[user]
+  .picture= avatar_for(user)
+  %h2.title= link_to truncate(user.name,:length => 28), user
+  - if user_signed_in?
+    .grid_7.suffix_1.inside_nav
+      %ul
+        - unless user == current_user
+          - if current_user.friends.include?(user)
+            %li
+              = link_to "Excluir Amizade", Friendship.find_by_user_id_and_friend_id(current_user,user), :method => :delete
+          - else
+            %li
+              = link_to "Adicionar como amigo", friendships_path(:friend_id => user), :method => :post
+        %li
+          = link_to "Ver avaliações", user_ratings_path(user)
