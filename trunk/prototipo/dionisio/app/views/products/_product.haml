@@ -4,12 +4,16 @@
       %li
         = link_to product.name, product
       %li
-        = link_to "(Recomendar a um amigo)", new_product_user_recommendation_path(product)        
+        = link_to "(Recomendar a um amigo)", new_product_user_recommendation_path(product)
   %dd[product]
     - if product.photo
       %img{:src => "#{product.photo}",:alt => "#{product.img_alt}", :width => 200, :height => 200 }
     - else
       = image_tag 'product_pic_unavailable_large.jpg'
     = render :partial => 'ratings/rating', :locals => { :product_id => product.id, :stars => product.rating }
-  %dd.description{:style => 'width: 510px;'}
-    = truncate_html(product.description, :length => 400)
+  %dd.description{:style => 'width: 500px;'}
+    - unless defined?(full_description) && full_description
+      = truncate_html(product.description, :length => 400)
+    - else
+      = product.description
+    

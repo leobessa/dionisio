@@ -1,5 +1,5 @@
 %h2= "Produtos recomendados"
-%h3{:style => 'text-align: right; float: right; margin-right: 10px; font-style: italic;'}= @recommendation_algorithm 
+%h3{:style => 'margin-left:37px; margin-right: 10px; font-style: italic;'}= @recommendation_algorithm 
 #productList
   = render :partial => 'products/product', :collection => @products
 - if @products.empty?

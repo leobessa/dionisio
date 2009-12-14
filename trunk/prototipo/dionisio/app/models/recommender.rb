@@ -121,7 +121,7 @@ class Recommender
                                                     
       rated_product_ids.each do |product_id|
         candidates.each do |candidate|   
-          similarity = Rails.cache.fetch("products_sim_distance#{[product_id,candidate.product_id].sort.inspect}") do 
+          similarity = Rails.cache.fetch("products_sim_distance/#{[product_id,candidate.product_id].map(&:to_i).sort.join('/')}") do 
             Recommender.sim_distance(product_id,candidate.product_id)
           end
           similarity_sum[candidate.product_id] += similarity
