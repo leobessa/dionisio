@@ -8,7 +8,7 @@
 \subsection{Introdução}
 Sistemas de recomendação~\footnote{Em inglês, \textit{Recommender systems}.} são aqueles que sugerem itens ao seus usuários de forma a ajudá-los a encontrar mais efetivamente os itens de maior interesse dentre uma variedade imensa de opções.
 
-A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre um determinado produto antes de comprá-lo ou experimentá-lo. Estas informações são transmitidas boca-a-boca entre amigos e colegas ou através de resenhas especializadas que podem encontradas em revistas e jornais.
+A idéia de recomendar itens é algo que pode ser observado no dia-a-dia das pessoas. Como muitas escolhas precisam ser feitas sem que se tenha uma experiência pessoal das alternativas, as pessoas se baseiam no que as outras dizem sobre um determinado produto antes de comprá-lo ou experimentá-lo. Estas informações são transmitidas boca-a-boca entre amigos e colegas ou através de resenhas especializadas que podem ser encontradas em revistas e jornais.
 
 Os sistemas de recomendação auxiliam este processo social, agregando opiniões e avaliações de uma comunidade de usuários sobre os produtos e recomendando itens de acordo com o perfil do usuário desta comunidade.
 
@@ -23,7 +23,7 @@ A Amazon~\footnote{http://www.amazon.com.} e o Submarino~\footnote{http://www.su
 
 \item O Last.fm~\footnote{http://last.fm.}, uma rede social focada em música, recomenda artistas e canções semelhantes àquelas que os usuários mais gostam de ouvir.
 
-\item O Digg~\footnote{http://digg.com.} e o Delicious~\footnote{http://del.icio.us.}, sistemas de compartilhamento de links~\footnote{Também conhecidos como bookmarks.}, geram uma lista geral de links recomendados baseado nas opiniões dos usuários do sistema.
+\item O Digg~\footnote{http://digg.com.} e o Delicious~\footnote{http://del.icio.us.}, sistemas de compartilhamento de links~\footnote{Também conhecidos como bookmarks.}, geram uma lista geral de links recomendados baseados nas opiniões dos usuários do sistema.
 
 \item O StumbleUpon~\footnote{http://stumbleupon.com.}, também um sistema online de compartilhamento de links, permite que os usuários recebam recomendações de links e avaliem se eles gostaram ou não daquele link, gerando recomendações personalizadas baseadas nessa avaliação.
 \end{itemize}
@@ -105,7 +105,7 @@ O cálculo de $s$ geralmente é realizado utilizando-se o coeficiente de correla
 
 \paragraph{Forma geral da Filtragem Colaborativa.}
 
-Apesar dos primeiras abordagens terem utilizado a similaridade $s$, qualquer peso $w$\footnote{Do inglês \textit{weigth}} pode ser usado na equação \ref{eq:filtragem_colaborativa_similaridade}. Pode-se então reescrevê-la da seguinte maneira geral:
+Apesar das primeiras abordagens terem utilizado a similaridade $s$, qualquer peso $w$\footnote{Do inglês \textit{weigth}} pode ser usado na equação \ref{eq:filtragem_colaborativa_similaridade}. Pode-se então reescrevê-la da seguinte maneira geral:
 
 \begin{equation}
  p_{a,j} = \bar{v_{a}} + k\sum_{i=1}^n{w(a,i) (v_{i,j} - \bar{v_{i})}}
@@ -138,7 +138,7 @@ O algoritmo é dividido em duas partes:
 \begin{enumerate}
 \item{Cálculo da similaridade entre itens}
 
-Neste passo, é calculada a correlação entre as avaliações efetuadas pelos usuários para cada par de itens, usando por exemplo o coeficiente de correlação de Pearson (ver equação \ref{eq:calculo_s}).
+Neste passo, é calculada a correlação entre as avaliações efetuadas pelos usuários para cada par de itens, usando, por exemplo, o coeficiente de correlação de Pearson (ver equação \ref{eq:calculo_s}).
 
 Para um sistema com $n$ itens, o resultado é uma matriz $n \times n$ contendo a correlação entre um item e outro. Este é o ``modelo'' que diferencia esta abordagem daquela da filtragem colaborativa.
 
@@ -190,7 +190,7 @@ Mesmo fazendo com que as pessoas compartilhem informações, a qualidade destas 
 
 A popularização de sites que dão oportunidade às pessoas de contribuírem com suas informações, tais como \textit{weblogs}, \textit{fotologs} e outros meios de compartilhamento de conteúdo digital, fez com que rapidamente a quantidade de conteúdo pessoal na Internet tivesse um crescimento considerado \cite{bonhard2007devil}. Com isso, encontrar algo relevante e pessoas que partilham os mesmos interesses tornou-se uma tarefa muito mais complicada. Os sistemas de recomendação são projetados para aliviar essa dificuldade. Porém, de acordo com \cite{bonhard2007devil}, sistemas de recomendação baseados em um contexto social apresentam recomendações mais eficientes.
 
-Um sistema de recomendação inserido em um contexto social pode se basear na similaridade de itens e pessoas, assim como foi abordado no capítulo sobre Sistemas de Recomendação. Em \cite{bonhard2007devil}, um experimento foi realizado com 60 participantes que avaliaram recomendações de filmes feitas em uma rede social. As pessoas avaliavam recomendações feitas por conhecidos e desconhecidos para que se pudesse verificar qual dos parâmetros dentre a similaridade de perfis e familiaridade seria mais influente em uma recomendação. Os resultados mostraram que os participantes claramente preferiram as recomendações realizadas por pessoas que eles conheciam.
+Um sistema de recomendação inserido em um contexto social pode se basear na similaridade de itens e pessoas, assim como foi abordado na seção ~\ref{sec:sistemas_de_recomendacao}. Em \cite{bonhard2007devil}, um experimento foi realizado com 60 participantes que avaliaram recomendações de filmes feitas em uma rede social. As pessoas avaliavam recomendações feitas por conhecidos e desconhecidos para que se pudesse verificar qual dos parâmetros dentre a similaridade de perfis e familiaridade seria mais influente em uma recomendação. Os resultados mostraram que os participantes claramente preferiram as recomendações realizadas por pessoas que eles conheciam.
 
 % section web_social (end)
 
