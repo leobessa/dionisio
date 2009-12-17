@@ -4,9 +4,11 @@
 \section{Descrição do Experimento}
 \label{cha:descricao_do_experimento}
 
-Foi realizado um experimento com 60 pessoas, que se cadastraram e formaram uma rede social disposta em 12 grupos de 5 amigos. O sistema de recomendação utiliza essa rede social para obter as informações de relações de amizade entre os usuários. Neste contexto, um usuário é considerado amigo do outro quando eles pertencem a um mesmo grupo de amigos. Os grupos de usuários foram definidos a partir do envio de um e-mail com um convite de um usuário já cadastrado no sistema a outra pessoa. Este e-mail possuía um endereço de cadastro onde foi possível a pessoa se cadastrar e automaticamente já fazer parte do grupo de amigos do usuário que a convidou.
+Foi realizado um experimento com 60 pessoas, que se cadastraram e formaram uma rede social disposta em 12 grupos de 5 amigos. O sistema de recomendação utiliza essa rede social para obter as informações de relações de amizade entre as pessoas. Neste contexto, um participante é considerado amigo do outro quando eles pertencem a um mesmo grupo de amigos. Também foi levado em conta que dois amigos se conhecem, mantêm contato frequente e que têm noção dos seus interesses mútuos.
 
-Os usuários receberam recomendações dos seus amigos e de outras pessoas presentes na rede. Além disso, as informações de avaliações de produtos por parte dos usuários foram utilizadas pelo sistema de recomendação para recomendar outros produtos a eles. Como já citado no capítulo ~\ref{cha:introducao}, foram utilizados 3 tipos de algoritmos pelo sistema de recomendação:
+Inicialmente 12 pessoas foram convidadas para participarem do experimento e cada uma delas tinha a tarefa de montar o seu próprio grupo, convidando 4 amigos seus. Os grupos de amigos foram definidos a partir do envio de um e-mail com um convite do participante já cadastrado no sistema a outra pessoa. Este e-mail possuía um endereço de cadastro onde foi possível a pessoa se cadastrar e automaticamente já fazer parte do grupo de amigos do participante que a convidou.
+
+Os participantes receberam recomendações dos seus amigos e de outras pessoas presentes na rede. Além disso, as informações de avaliações de produtos por parte dos participantes foram utilizadas pelo sistema de recomendação para recomendar outros produtos a eles. Como já citado no capítulo ~\ref{cha:introducao}, foram utilizados 3 tipos de algoritmos pelo sistema de recomendação:
 
 \begin{itemize}
   \item Baseado em similaridade entre perfis
@@ -30,14 +32,14 @@ O experimento consistia em 6 etapas, onde os participantes deveriam executar tar
 \subsection{Primeira Etapa}
 \label{cha:primeira_etapa}
 
-Logo após a finalização do cadastro no sistema, a primeira etapa do experimento era iniciada. Ela consistia na avaliação de 20 produtos em comum a todos os participantes de todos os grupos. Esses produtos foram selecionados previamente, com o intuito de abranger os diferentes gostos de todos os participantes. Esta etapa foi necessária para que houvesse um \textit{rating overlap} no sistema, ou seja, para que todos os usuários avaliassem um mesmo conjunto de produtos. Com isso, foi possível calcular a similaridade de perfis entre todos os participantes da rede. Além disso, com esta etapa, resolve-se o problema dos \textit{coldstart users}, pois todos os usuários iniciam o uso do sistema ativamente.
+Logo após a finalização do cadastro no sistema, a primeira etapa do experimento era iniciada. Ela consistia na avaliação de 20 produtos em comum a todos os participantes de todos os grupos. Esses produtos foram selecionados previamente, com o intuito de abranger os diferentes gostos de todos os participantes. Esta etapa foi necessária para que houvesse um \textit{rating overlap} no sistema, ou seja, para que todos os participantes avaliassem um mesmo conjunto de produtos. Com isso, foi possível calcular a similaridade de perfis entre todos os participantes da rede. Além disso, com esta etapa, resolve-se o problema dos \textit{coldstart users}, pois todos os participantes iniciam o uso do sistema ativamente.
 
 Avaliar um produto significa dizer o quanto o participante considera aquele produto como relevante para si, ou seja, o quanto ele se interessa pelo produto. A avaliação é feita por meio da atribuição de uma nota de 1 a 5, sendo que 1 significa ausência de interesse e 5 representa muito interesse. Esse interesse não significa necessariamente uma atitude de compra. O objetivo dessa avaliação é saber realmente o interesse do participante, podendo representar cobiça ou curiosidade, além de admiração pelo produto. A interface de avaliação está apresentada na Figura~\ref{fig:product-rating}.
 
 \begin{figure}[htp]
   \centering
   \includegraphics[width=\textwidth]{imagens/product-rating}
-  \caption{\it Apresentação de produto para avaliação do usuário}
+  \caption{\it Apresentação de produto para avaliação do participante}
   \label{fig:product-rating}
 \end{figure}
 
@@ -63,7 +65,7 @@ Os dados dos produtos foram retirados do site da Submarino\footnote{http://www.s
 
 Uma busca por nome foi implementada para que os participantes pudessem localizar um produto ao seu gosto e avaliá-lo. Nesta etapa, também estava disponível a opção de ``Não conheço'', pois era possível o participante encontrar durante a busca um produto desconhecido que o agradasse. A interface de busca de produtos está ilustrada na Figura~\ref{fig:product-search}.
 
-Esta etapa era necessária para que os participantes avaliassem outros produtos além daqueles da primeira etapa que garantem o \textit{rating overlap}. Além dos produtos em comum, os sistemas de recomendação necessitam que as pessoas contribuam com informações individuais, pois um sistema de recomendação sempre indica produtos que não tenham sido avaliados pelo usuário que receberá a recomendação. Desse modo, além das pessoas avaliarem produtos em comum, é necessário que elas avaliem diferentes produtos para que o sistema de recomendação tenha outros produtos a indicar.
+Esta etapa era necessária para que os participantes avaliassem outros produtos além daqueles da primeira etapa que garantem o \textit{rating overlap}. Além dos produtos em comum, os sistemas de recomendação necessitam que as pessoas contribuam com informações individuais, pois um sistema de recomendação sempre indica produtos que não tenham sido avaliados pelo participante que receberá a recomendação. Desse modo, além das pessoas avaliarem produtos em comum, é necessário que elas avaliem diferentes produtos para que o sistema de recomendação tenha outros produtos a indicar.
 
 \begin{figure}[htp]
   \centering
@@ -79,7 +81,7 @@ Assim que todos os participantes terminassem as duas primeiras etapas do experim
 
 Nesta terceira etapa, o participante deveria recomendar produtos às pessoas do seu grupo. Como todos os integrantes de um grupo eram amigos entre si, era esperado que as recomendações de produtos fossem fáceis de serem realizadas, porque normalmente as pessoas conhecem os gostos dos amigos. Por isso, cada participante deveria recomendar 5 produtos a cada amigo, ou seja, 20 produtos no total.
 
-A Figura~\ref{fig:stage-3} apresenta a interface do usuário no início da etapa 3.
+A Figura~\ref{fig:stage-3} apresenta a interface do participante no início da etapa 3.
 
 A busca de produtos estava disponível nesta etapa, bem como as avaliações de todos os amigos contendo no total os 30 produtos que cada um avaliou nas duas primeiras etapas do experimento. Não era possível um participante recomendar um produto já avaliado pela pessoa que receberia a recomendação, assim como não era possível recomendar o mesmo produto mais de uma vez para a mesma pessoa. Mesmo assim, o participante poderia receber duas recomendações de um mesmo produto, desde que elas fossem feitas por amigos diferentes. Neste caso o sistema armazenava as duas recomendações como distintas e mostrava apenas uma vez o produto para ser avaliado pela pessoa que recebeu a recomendação.
 
